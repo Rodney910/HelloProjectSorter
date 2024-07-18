@@ -1,286 +1,358 @@
+/* Estilos generales */
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    background: linear-gradient(to bottom, #293176 0%, #0092ff 33%, #293176 66%); /* Degradado de colores púrpuras y rosas */
+    color: white; /* Letras de color fucsia */
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5); /* Borde blanco alrededor del texto */
 }
 
 .container {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  margin-top: 1em;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    margin-top: 1em;
+    width: 1000px;
 }
 
+/* Estilo para la barra de progreso */
 .progress {
-  margin: 1em auto;
-  width: 500px;
-  display: none;
+    margin: 1em auto;
+    width: 500px;
+    text-align: center;
 }
 
 .progressbar {
-  position: relative;
-  width: 492px;
-  border: 1px solid black;
-  padding: 3px;
-  margin: 2px 0px;
-}
-
-.progresstext {
-  position: absolute;
-  width: 492px;
-  margin: 3px 0px;
-  text-align: center;
-  font-size: 0.7em;
+    width: 100%;
+    height: 20px;
+    border: 2px solid white; /* Borde de la barra de progreso */
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(to right, #293176, #0092ff); /* Fondo degradado púrpura y rosa */
 }
 
 .progressfill {
-  height: 20px;
-  background-color: lightgreen;
-  width: 0%;
+    height: 100%;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    overflow: hidden;
+    z-index: 10;
+    background: repeating-linear-gradient(-45deg, #fff, #fff 5px, #990099 5px, #990099 10px); /* Líneas diagonales púrpuras y blancas */
+    background-size: 20px 20px; /* Tamaño del patrón de línea */
+    animation: progressAnimation 2s linear forwards; /* Animación de la barra de progreso */
+}
+
+.progresstext {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%);
+    text-align: center;
+    color: white; /* Color del texto */
+    font-size: 0.8em;
+}
+
+/* Animación para la barra de progreso */
+@keyframes progressAnimation {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: calc(var(--percent) * 100%);
+    }
 }
 
 .sorter {
-  margin: 0px auto;
-  display: grid;
-  grid-template-columns: 120px 1fr 120px;
-  grid-gap: 5px;
-  width: 420px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 120px auto 120px; /* Ajuste de columnas */
+    grid-gap: 20px; /* Espacio entre columnas */
+    width: 100%; /* Ajusta el ancho al 100% del contenedor padre */
+    max-width: 900px; /* Limita el ancho máximo del contenedor */
+    text-align: center; /* Centra el texto dentro del contenedor */
+    align-items: center; /* Alinea verticalmente los elementos */
+}
+
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centra verticalmente */
+}
+
+    .image-container img {
+        width: 238px;
+        height: 280px;
+        height: auto; /* Mantiene la proporción de la imagen */
+        border: 2px solid #ffffff; /* Borde blanco de 2px alrededor de las imágenes */
+        border-radius: 10px; /* Esquinas redondeadas para las imágenes */
+    }
+
+.buttons {
+    display: grid;
+    grid-template-rows: repeat(auto-fit, minmax(40px, auto)); /* Ajuste dinámico de las filas de los botones */
+    grid-gap: 10px; /* Espacio entre botones */
+    justify-content: center; /* Centra los botones horizontalmente */
 }
 
 .button {
-  border: 1px solid black;
-  text-align: center;
-  padding: 10%;
-  grid-column: 2 / 3;
-  cursor: pointer;
+    width: 230px;
+    border: 2px solid white; /* Borde más grueso y blanco */
+    text-align: center;
+    padding: 10px 20px; /* Ajusta el padding para un tamaño adecuado */
+    cursor: pointer;
+    background-color: #0092ff; /* Fondo azul para los botones */
+    color: #ffffff; /* Texto blanco */
+    border-radius: 10px; /* Esquinas redondeadas */
+    transition: background-color 0.3s ease; /* Transición suave al cambiar el color de fondo */
 }
+
+    .button:hover {
+        background-color: #0661a5; /* Color más oscuro al pasar el ratón */
+    }
 
 .starting.start.button {
-  grid-row: span 6;
+    grid-row: span 2; /* Ajuste de la altura del botón */
 }
 
-.starting.load.button {
-  grid-row: span 3;
-  display: none;
-}
-
-.sorting.button, .finished.button {
-  grid-row: span 2;
-  display: none;
+.starting.load.button,
+.sorting.button,
+.finished.button,
+.loading.button {
+    display: none; /* Oculta los botones que no se deben mostrar */
 }
 
 .loading.button {
-  grid-row: span 6;
-  display: none;
+    grid-row: span 6;
 }
 
-.loading.button > div {
-  width: 25px;
-  height: 25px;
-  margin: 50px auto;
-  background-color: #333;
+    .loading.button > div {
+        width: 25px;
+        height: 25px;
+        margin: 50px auto;
+        background-color: #333;
+        border-radius: 100%;
+        animation: sk-scaleout 1.0s infinite ease-in-out;
+    }
 
-  border-radius: 100%;  
-  -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
-  animation: sk-scaleout 1.0s infinite ease-in-out;
-}
-
-/* Animation taken from: http://tobiasahlin.com/spinkit/ */
-
-.loading.button > span {
-  margin: auto auto 20%;
-  font-size: 0.7em;
-}
-
-@-webkit-keyframes sk-scaleout {
-  0% { -webkit-transform: scale(0) }
-  100% {
-    -webkit-transform: scale(1.0);
-    opacity: 0;
-  }
-}
+    .loading.button > span {
+        margin: auto auto 20%;
+        font-size: 0.7em;
+    }
 
 @keyframes sk-scaleout {
-  0% { 
-    -webkit-transform: scale(0);
-    transform: scale(0);
-  } 100% {
-    -webkit-transform: scale(1.0);
-    transform: scale(1.0);
-    opacity: 0;
-  }
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1.0);
+        opacity: 0;
+    }
 }
 
 .sorter > .image {
-  width: 120px;
-  height: 180px;
-  margin: auto;
-  grid-row: 1 / 7;
-  cursor: pointer;
+    width: 238px;
+    height: 280px;
+    margin: auto;
+    grid-row: 1 / 7;
+    cursor: pointer;
+    border-radius: 10px; /* Esquinas redondeadas para las imágenes */
 }
 
 .sorter > .text {
-  width: 120px;
-  height: 60px;
-  display: none;
+    width: 120px;
+    height: 60px;
+    display: none;
 }
 
-.sorter > .text > p {
-  margin: 0.5em 5px 0px;
-  width: calc(100%-10px);
-  text-align: center;
-  font-size: 0.8em;
-  line-height: 1.5em;
-}
+    .sorter > .text > p {
+        margin: 0.5em 5px 0px;
+        width: calc(100% - 10px);
+        text-align: center;
+        font-size: 0.8em;
+        line-height: 1.5em;
+    }
 
 .sorter > .left {
-  grid-column: 1 / 2;
-  border: 1px solid #000000;
+    border: 2px solid white; /* Borde más grueso y blanco */
+    border-radius: 10px; /* Esquinas redondeadas para los bordes */
 }
 
 .sorter > .right {
-  grid-column: 3 / 4;
-  border: 1px solid #000000;
+    border: 2px solid white; /* Borde más grueso y blanco */
+    border-radius: 10px; /* Esquinas redondeadas para los bordes */
 }
 
 .options {
-  margin: 1em auto;
-  display: grid;
-  text-align: left;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
-  width: 450px;
+    margin: 1em auto;
+    display: grid;
+    text-align: left;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    width: 450px;
 }
 
-.options > div {
-  font-size: 0.5625em;
-}
+    .options > div {
+        font-size: 0.5625em;
+    }
 
 label {
-  cursor: pointer;
+    cursor: pointer;
+    color: white; /* Color del texto blanco */
 }
 
-label:hover {
-  color: #990000;
-}
+    label:hover {
+        color: #fff;
+    }
 
-.options > .large.option, .options > hr {
-  grid-column: span 3;
-  text-align: center;
-  width: 100%;
+.options > .large.option,
+.options > hr {
+    grid-column: span 3;
+    text-align: center;
+    width: 100%;
 }
 
 .image.selector {
-  margin-top: 0.5em;
-  width: 500px;
-  display: none;
-  text-align: center;
-  font-size: 0.75em;
+    margin-top: 0.5em;
+    width: 500px;
+    display: none;
+    text-align: center;
+    font-size: 0.75em;
 }
 
 .time.taken {
-  margin-top: 0.5em;
-  width: 500px;
-  display: none;
-  text-align: center;
-  font-size: 0.75em;
+    margin-top: 0.5em;
+    width: 500px;
+    display: none;
+    text-align: center;
+    font-size: 0.75em;
 }
 
 .results {
-  font-size: 0.75em;
-  display: flex;
-  align-content: flex-start;
-  width: 80%;
-  margin: 2em auto;
+    font-size: 0.75em;
+    display: flex;
+    align-content: flex-start;
+    width: 80%;
+    margin: 2em auto;
 }
 
 @media all and (min-width: 600px) {
-  .results {
-    flex-flow: column wrap;
-    max-height: calc(5 * (175px + 2px) + 1 * (15px + 2px));
-    /* 2px for borders */
-  }
+    .results {
+        flex-flow: column wrap;
+        max-height: calc(5 * (175px + 2px) + 1 * (15px + 2px));
+        /* 2px for borders */
+    }
 }
 
 @media all and (max-width: 600px) {
-  .results {
-    flex-flow: column nowrap;
-  }
+    .results {
+        flex-flow: column nowrap;
+    }
 }
 
 .result {
-  height: 15px;
-  margin-bottom: -1px;
-  display: grid;
-  width: 211px;
-  grid-template-columns: repeat(2, 1fr);
-  border: 1px solid #000;
-  margin-right: 5px;
+    height: 15px;
+    margin-bottom: -1px;
+    display: grid;
+    width: 211px;
+    grid-template-columns: repeat(2, 1fr);
+    border: 2px solid white; /* Borde más grueso y blanco */
+    margin-right: 5px;
 }
 
-.result.image {
-  height: 175px;
-}
+    .result.image {
+        height: 175px;
+    }
 
-.result.image img {
-  height: 160px;
-}
+        .result.image img {
+            height: 160px;
+        }
 
-.result.spacer {
-  height: 1px;
-  background-color: #000;
-}
+    .result.spacer {
+        height: 1px;
+        background-color: white; /* Borde más grueso y blanco */
+    }
 
-.result.head {
-  background-color: #000;
-  color: #FFF;
-}
+    .result.head {
+        background-color: white; /* Fondo blanco */
+        color: white; /* Texto fucsia */
+    }
 
-.result > .left {
-  width: 35px;
-  padding: 1px 3px 1px 0.5em;
-  grid-column: 1 / 2;
-  text-align: right;
-}
+    .result > .left {
+        width: 35px;
+        padding: 1px 3px 1px 0.5em;
+        grid-column: 1 / 2;
+        text-align: right;
+        color: white; /* Texto blanco */
+    }
 
-.result.image .left {
-  position: relative;
-}
+    .result.image .left {
+        position: relative;
+    }
 
-.result.image > .left span {
-  position: absolute;
-  top: 50%;
-  right: 3px;
-  margin-top: -0.375em;
-}
+    .result.image > .left span {
+        position: absolute;
+        top: 50%;
+        right: 3px;
+        margin-top: -0.375em;
+    }
 
-.result > .right {
-  width: 160px;
-  padding: 1px 0em 1px 0em;
-  grid-column: 2 / 3;
-  border-left: 1px solid #000;
-  text-align: center;
-}
+    .result > .right {
+        width: 160px;
+        padding: 1px 0em 1px 0em;
+        grid-column: 2 / 3;
+        border-left: 2px solid white; /* Borde más grueso y blanco */
+        text-align: center;
+        color: white; /* Texto blanco */
+    }
 
 .info {
-  margin: 2em auto 3em;
-  display: block;
-  text-align: center;
-  font-size: 0.6875em;
-  width: 80%;
-  line-height: 1.2em;
+    margin: 2em auto 3em;
+    display: block;
+    text-align: center;
+    font-size: 0.6875em;
+    width: 80%;
+    line-height: 1.2em;
+    color: white; /* Texto blanco */
 }
 
 a {
-  color: #990000;
-  font-weight: bold;
-  text-decoration: none;
-  cursor: pointer;
+    color: red; /* Texto rojo */
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-a:hover {
-  color: #FF6600;
+    a:hover {
+        color: #FF6600;
+    }
+
+    a:visited {
+        color: #6600FF;
+    }
+
+/* Estilos para la barra de navegación y pestañas */
+.navbar-brand, .nav-link {
+    color: white !important; /* Color del texto blanco */
 }
 
-a:visited {
-  color: #6600FF;
+/* Estilo para el fondo de la barra de navegación */
+.navbar {
+    background: linear-gradient(to right, #293176, #0092ff); /* Degradado de colores púrpuras y rosas */
+    border-bottom: 2px solid white; /* Borde blanco */
+}
+
+.active-tab {
+    background-color: #ee136a !important; /* Fondo fucsia para la pestaña activa */
+    border-bottom: 2px solid white; /* Borde blanco */
+}
+
+nav.navbar {
+    margin-bottom: 1rem;
 }

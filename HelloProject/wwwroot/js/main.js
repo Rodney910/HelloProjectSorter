@@ -274,39 +274,43 @@ function start() {
 }
 
 /** Displays the current state of the sorter. */
+/** Displays the current state of the sorter. */
 function display() {
-  const percent         = Math.floor(sortedNo * 100 / totalBattles);
-  const leftCharIndex   = sortedIndexList[leftIndex][leftInnerIndex];
-  const rightCharIndex  = sortedIndexList[rightIndex][rightInnerIndex];
-  const leftChar        = characterDataToSort[leftCharIndex];
-  const rightChar       = characterDataToSort[rightCharIndex];
+    const percent = Math.floor(sortedNo * 100 / totalBattles);
+    const leftCharIndex = sortedIndexList[leftIndex][leftInnerIndex];
+    const rightCharIndex = sortedIndexList[rightIndex][rightInnerIndex];
+    const leftChar = characterDataToSort[leftCharIndex];
+    const rightChar = characterDataToSort[rightCharIndex];
 
-  const charNameDisp = name => {
-    const charName = reduceTextWidth(name, 'Arial 12.8px', 220);
-    const charTooltip = name !== charName ? name : '';
-    return `<p title="${charTooltip}">${charName}</p>`;
-  };
+    const charNameDisp = name => {
+        const charName = reduceTextWidth(name, 'Arial 12.8px', 220);
+        const charTooltip = name !== charName ? name : '';
+        return `<p title="${charTooltip}">${charName}</p>`;
+    };
 
-  progressBar(`Battle No. ${battleNo}`, percent);
+    // Actualiza el porcentaje en la barra de progreso
+    document.documentElement.style.setProperty('--percent', percent / 100);
 
-  document.querySelector('.left.sort.image').src = leftChar.img;
-  document.querySelector('.right.sort.image').src = rightChar.img;
+    // Actualiza el texto del progreso
+    document.querySelector('.progresstext').textContent = `${percent}%`;
 
-  
+    // Actualiza las imágenes y textos de los personajes
+    document.querySelector('.left.sort.image').src = leftChar.img;
+    document.querySelector('.right.sort.image').src = rightChar.img;
+    document.querySelector('.left.sort.text').innerHTML = charNameDisp(leftChar.name);
+    document.querySelector('.right.sort.text').innerHTML = charNameDisp(rightChar.name);
 
-  document.querySelector('.left.sort.text').innerHTML = charNameDisp(leftChar.name);
-  document.querySelector('.right.sort.text').innerHTML = charNameDisp(rightChar.name);
-
-  /** Autopick if choice has been given. */
-  if (choices.length !== battleNo - 1) {
-    switch (Number(choices[battleNo - 1])) {
-      case 0: pick('left'); break;
-      case 1: pick('right'); break;
-      case 2: pick('tie'); break;
-      default: break;
-    }
-  } else { saveProgress('Autosave'); }
+    /** Autopick if choice has been given. */
+    if (choices.length !== battleNo - 1) {
+        switch (Number(choices[battleNo - 1])) {
+            case 0: pick('left'); break;
+            case 1: pick('right'); break;
+            case 2: pick('tie'); break;
+            default: break;
+        }
+    } else { saveProgress('Autosave'); }
 }
+
 
 /**
  * Sort between two character choices or tie.

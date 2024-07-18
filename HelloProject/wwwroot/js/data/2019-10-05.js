@@ -96,7 +96,7 @@ dataSet[dataSetVersion].characterData = [
     opts: {
       series: ["book", "EoSD"],
       stage: ["st2", "ex"],
-      nameless: true
+      
     },
   },
   {
@@ -121,7 +121,7 @@ dataSet[dataSetVersion].characterData = [
     opts: {
       series: ["book", "EoSD"],
       stage: ["st4"],
-      nameless: true
+      
     }
   },
   {
@@ -922,7 +922,7 @@ dataSet[dataSetVersion].characterData = [
     opts: {
       series: ["book"],
       stage: [],
-      nameless: true
+      
     } 
   },
   {
@@ -1278,7 +1278,7 @@ dataSet[dataSetVersion].characterData = [
       series: ["soku", "AoCF"],
       stage: ["st6"],
       notgirl: true,
-      nameless: true
+      
     }
   },
   {
@@ -1297,7 +1297,7 @@ dataSet[dataSetVersion].characterData = [
       series: ["book"],
       stage: [],
       notgirl: true,
-      nameless: true
+      
     }
   },
   {
