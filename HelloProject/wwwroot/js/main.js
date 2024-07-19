@@ -472,7 +472,7 @@ function progressBar(indicator, percentage) {
  * 
  * @param {number} [imageNum=3] Number of images to display. Defaults to 3.
  */
-function result(imageNum = 3) {
+function result(imageNum = 15) {
     document.querySelectorAll('.finished.button').forEach(el => el.style.display = 'block');
     document.querySelector('.image.selector').style.display = 'block';
     document.querySelector('.time.taken').style.display = 'block';
@@ -482,7 +482,7 @@ function result(imageNum = 3) {
     document.querySelector('.options').style.display = 'none';
     document.querySelector('.info').style.display = 'none';
 
-    const header = '<div class="result head"><div class="left">Order</div><div class="right">Name</div></div>';
+    //const header = '<div class="result head"><div class="left">Order</div><div class="right">Name</div></div>';
     const timeStr = `This sorter was completed on ${new Date(timestamp + timeTaken).toString()} and took ${msToReadableTime(timeTaken)}. <a href="${location.protocol}//${sorterURL}">Do another sorter?</a>`;
 
     // Crear un contenedor de grid para los resultados
@@ -535,7 +535,7 @@ function result(imageNum = 3) {
     const resultTable = document.querySelector('.results');
     const timeElem = document.querySelector('.time.taken');
 
-    resultTable.innerHTML = header;
+    //resultTable.innerHTML = header;
     timeElem.innerHTML = timeStr;
     resultTable.appendChild(resultGrid);
 }
