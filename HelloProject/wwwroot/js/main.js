@@ -106,7 +106,7 @@ function init() {
   document.querySelector('.image.selector').insertAdjacentElement('beforeend', document.createElement('select'));
 
   /** Initialize image quantity selector for results. */
-  for (let i = 0; i <= 10; i++) {
+  for (let i = 15; i <= 100; i++) {
     const select = document.createElement('option');
     select.value = i;
     select.text = i;
@@ -473,58 +473,71 @@ function progressBar(indicator, percentage) {
  * @param {number} [imageNum=3] Number of images to display. Defaults to 3.
  */
 function result(imageNum = 3) {
-  document.querySelectorAll('.finished.button').forEach(el => el.style.display = 'block');
-  document.querySelector('.image.selector').style.display = 'block';
-  document.querySelector('.time.taken').style.display = 'block';
-  
-  document.querySelectorAll('.sorting.button').forEach(el => el.style.display = 'none');
-  document.querySelectorAll('.sort.text').forEach(el => el.style.display = 'none');
-  document.querySelector('.options').style.display = 'none';
-  document.querySelector('.info').style.display = 'none';
+    document.querySelectorAll('.finished.button').forEach(el => el.style.display = 'block');
+    document.querySelector('.image.selector').style.display = 'block';
+    document.querySelector('.time.taken').style.display = 'block';
 
-  const header = '<div class="result head"><div class="left">Order</div><div class="right">Name</div></div>';
-  const timeStr = `This sorter was completed on ${new Date(timestamp + timeTaken).toString()} and took ${msToReadableTime(timeTaken)}. <a href="${location.protocol}//${sorterURL}">Do another sorter?</a>`;
-  const imgRes = (char, num) => {
-    const charName = reduceTextWidth(char.name, 'Arial 12px', 160);
-    const charTooltip = char.name !== charName ? char.name : '';
-    return `<div class="result image"><div class="left"><span>${num}</span></div><div class="right"><img src="${char.img}"><div><span title="${charTooltip}">${charName}</span></div></div></div>`;
-  }
-  const res = (char, num) => {
-    const charName = reduceTextWidth(char.name, 'Arial 12px', 160);
-    const charTooltip = char.name !== charName ? char.name : '';
-    return `<div class="result"><div class="left">${num}</div><div class="right"><span title="${charTooltip}">${charName}</span></div></div>`;
-  }
+    document.querySelectorAll('.sorting.button').forEach(el => el.style.display = 'none');
+    document.querySelectorAll('.sort.text').forEach(el => el.style.display = 'none');
+    document.querySelector('.options').style.display = 'none';
+    document.querySelector('.info').style.display = 'none';
 
-  let rankNum       = 1;
-  let tiedRankNum   = 1;
-  let imageDisplay  = imageNum;
+    const header = '<div class="result head"><div class="left">Order</div><div class="right">Name</div></div>';
+    const timeStr = `This sorter was completed on ${new Date(timestamp + timeTaken).toString()} and took ${msToReadableTime(timeTaken)}. <a href="${location.protocol}//${sorterURL}">Do another sorter?</a>`;
 
-  const finalSortedIndexes = sortedIndexList[0].slice(0);
-  const resultTable = document.querySelector('.results');
-  const timeElem = document.querySelector('.time.taken');
+    // Crear un contenedor de grid para los resultados
+    const resultGrid = document.createElement('div');
+    resultGrid.className = 'result-grid';
 
-  resultTable.innerHTML = header;
-  timeElem.innerHTML = timeStr;
+    // Generar el grid de resultados
+    let rankNum = 1;
+    let imageDisplay = imageNum;
+    let rowNum = 1; // Contador para las filas
 
-  characterDataToSort.forEach((val, idx) => {
-    const characterIndex = finalSortedIndexes[idx];
-    const character = characterDataToSort[characterIndex];
-    if (imageDisplay-- > 0) {
-      resultTable.insertAdjacentHTML('beforeend', imgRes(character, rankNum));
-    } else {
-      resultTable.insertAdjacentHTML('beforeend', res(character, rankNum));
-    }
-    finalCharacters.push({ rank: rankNum, name: character.name });
+    const finalSortedIndexes = sortedIndexList[0].slice(0);
+    characterDataToSort.forEach((val, idx) => {
+        const characterIndex = finalSortedIndexes[idx];
+        const character = characterDataToSort[characterIndex];
 
-    if (idx < characterDataToSort.length - 1) {
-      if (tiedDataList[characterIndex] === finalSortedIndexes[idx + 1]) {
-        tiedRankNum++;            // Indicates how many people are tied at the same rank.
-      } else {
-        rankNum += tiedRankNum;   // Add it to the actual ranking, then reset it.
-        tiedRankNum = 1;          // The default value is 1, so it increments as normal if no ties.
-      }
-    }
-  });
+        // Crear un contenedor para cada personaje
+        const characterDiv = document.createElement('div');
+        characterDiv.className = 'result-grid-item';
+
+        // Agregar la imagen o texto según sea necesario
+        if (imageDisplay-- > 0) {
+            characterDiv.innerHTML = `
+        <div class="result-image">
+          <img src="${character.img}" alt="${character.name}">
+          <div class="result-info">
+            <span class="result-name"><b>${rankNum}.</b>${character.name}</span>
+          </div>
+        </div>
+      `;
+        } else {
+            characterDiv.innerHTML = `
+        <div class="result-text">
+            <span class="result-name"><b>${rankNum}.</b>${character.name}</span>
+        </div>
+      `;
+        }
+        resultGrid.appendChild(characterDiv);
+
+        // Incrementar el número de ranking
+        if (idx < characterDataToSort.length - 1) {
+            if (tiedDataList[characterIndex] === finalSortedIndexes[idx + 1]) {
+                // Handling tied ranks
+            } else {
+                rankNum++;
+            }
+        }
+    });
+
+    const resultTable = document.querySelector('.results');
+    const timeElem = document.querySelector('.time.taken');
+
+    resultTable.innerHTML = header;
+    timeElem.innerHTML = timeStr;
+    resultTable.appendChild(resultGrid);
 }
 
 /** Undo previous choice. */
@@ -651,39 +664,66 @@ function setLatestDataset() {
 
 /** Populate option list. */
 function populateOptions() {
-  const optList = document.querySelector('.options');
-  const optInsert = (name, id, tooltip, checked = true, disabled = false) => {
-    return `<div><label title="${tooltip?tooltip:name}"><input id="cb-${id}" type="checkbox" ${checked?'checked':''} ${disabled?'disabled':''}> ${name}</label></div>`;
-  };
-  const optInsertLarge = (name, id, tooltip, checked = true) => {
-    return `<div class="large option"><label title="${tooltip?tooltip:name}"><input id="cbgroup-${id}" type="checkbox" ${checked?'checked':''}> ${name}</label></div>`;
-  };
+    const optList = document.querySelector('.options');
 
-  /** Clear out any previous options. */
-  optList.innerHTML = '';
+    // Función para insertar opciones con imágenes
+    const optInsert = (name, id, img, tooltip, checked = true, disabled = false) => {
+        return `
+            <div class="option-item">
+                <label title="${tooltip ? tooltip : name}">
+                    <input id="cb-${id}" type="checkbox" ${checked ? 'checked' : ''} ${disabled ? 'disabled' : ''} class="option-checkbox">
+                    <div class="image-wrapper">
+            <img src="${imageRoot + img}" alt="${name}" class="option-image">
+            <div class="option-text">${name}</div>
+        </div>
+                </label>
+            </div>`;
+    };
 
-  /** Insert sorter options and set grouped option behavior. */
-  options.forEach(opt => {
-    if ('sub' in opt) {
-      optList.insertAdjacentHTML('beforeend', optInsertLarge(opt.name, opt.key, opt.tooltip, opt.checked));
-      opt.sub.forEach((subopt, subindex) => {
-        optList.insertAdjacentHTML('beforeend', optInsert(subopt.name, `${opt.key}-${subindex}`, subopt.tooltip, subopt.checked, opt.checked === false));
-      });
-      optList.insertAdjacentHTML('beforeend', '<hr>');
+    // Función para insertar opciones grandes sin imágenes
+    const optInsertLarge = (name, id, tooltip, checked = true) => {
+        return `
+            <div class="large-option-item">
+                <label title="${tooltip ? tooltip : name}">
+                    <input id="cbgroup-${id}" type="checkbox" ${checked ? 'checked' : ''}>
+                    ${name}
+                </label>
+            </div>`;
+    };
 
-      const groupbox = document.getElementById(`cbgroup-${opt.key}`);
+    /** Clear out any previous options. */
+    optList.innerHTML = '';
 
-      groupbox.parentElement.addEventListener('click', () => {
-        opt.sub.forEach((subopt, subindex) => {
-          document.getElementById(`cb-${opt.key}-${subindex}`).disabled = !groupbox.checked;
-          if (groupbox.checked) { document.getElementById(`cb-${opt.key}-${subindex}`).checked = true; }
-        });
-      });
-    } else {
-      optList.insertAdjacentHTML('beforeend', optInsert(opt.name, opt.key, opt.tooltip, opt.checked));
-    }
-  });
+    /** Insert sorter options and set grouped option behavior. */
+    options.forEach(opt => {
+        if ('sub' in opt) {
+            // Insert large option without image
+            optList.insertAdjacentHTML('beforeend', optInsertLarge(opt.name, opt.key, opt.tooltip, opt.checked));
+            opt.sub.forEach((subopt, subindex) => {
+                // Insert sub-options with images
+                optList.insertAdjacentHTML('beforeend', optInsert(subopt.name, `${opt.key}-${subindex}`, subopt.img, subopt.tooltip, subopt.checked, opt.checked === false));
+            });
+            optList.insertAdjacentHTML('beforeend', '<hr>');
+
+            const groupbox = document.getElementById(`cbgroup-${opt.key}`);
+
+            groupbox.parentElement.addEventListener('click', () => {
+                opt.sub.forEach((subopt, subindex) => {
+                    const checkbox = document.getElementById(`cb-${opt.key}-${subindex}`);
+                    checkbox.disabled = !groupbox.checked;
+                    if (groupbox.checked) { checkbox.checked = true; }
+                });
+            });
+        } else {
+            // Insert single option with image
+            optList.insertAdjacentHTML('beforeend', optInsert(opt.name, opt.key, opt.img, opt.tooltip, opt.checked));
+        }
+    });
 }
+
+
+// Asegúrate de llamar a setLatestDataset() y luego a populateOptions() en tu código
+
 
 /**
  * Decodes compressed shareable link query string.

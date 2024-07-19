@@ -1,10 +1,27 @@
 /* Estilos generales */
 body {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    background: linear-gradient(to bottom, #293176 0%, #0092ff 33%, #293176 66%); /* Degradado de colores púrpuras y rosas */
+    font-size: 20px;
+    background: linear-gradient(to bottom, #293176 0%, #0092ff 50%, #293176 100%); /* Degradado de colores púrpuras y rosas */
+    background-attachment: fixed;
     color: white; /* Letras de color fucsia */
     text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5); /* Borde blanco alrededor del texto */
+    margin-top: 80px; /* Ajusta el margen superior del body según la altura del header */
+}
+
+/* Estilo para el header fijo */
+header {
+    position: fixed; /* Fija el header en la parte superior */
+    top: 0; /* Coloca el header en la parte superior de la página */
+    left: 0; /* Alinea el header a la izquierda */
+    width: 100%; /* Asegura que el header ocupe todo el ancho de la ventana */
+    background: linear-gradient(to right, #293176, #0092ff); /* Fondo degradado para el header */
+    border-bottom: 2px solid white; /* Borde blanco en la parte inferior del header */
+    z-index: 1000; /* Asegura que el header esté por encima de otros elementos */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil para destacar el header */
+    /* Eliminar cualquier borde adicional en el header */
+    border-collapse: collapse;
+    border-style: none; /* Elimina cualquier borde adicional aplicado por otros estilos */
 }
 
 .container {
@@ -18,6 +35,7 @@ body {
 /* Estilo para la barra de progreso */
 .progress {
     margin: 1em auto;
+    display:none;
     width: 500px;
     text-align: center;
 }
@@ -39,10 +57,8 @@ body {
     left: 0;
     width: 0;
     overflow: hidden;
-    z-index: 10;
     background: repeating-linear-gradient(-45deg, #fff, #fff 5px, #990099 5px, #990099 10px); /* Líneas diagonales púrpuras y blancas */
     background-size: 20px 20px; /* Tamaño del patrón de línea */
-    animation: progressAnimation 2s linear forwards; /* Animación de la barra de progreso */
 }
 
 .progresstext {
@@ -50,14 +66,13 @@ body {
     top: 50%;
     left: 0;
     width: 100%;
-    transform: translateY(-50%);
     text-align: center;
-    color: white; /* Color del texto */
+    color: black; /* Color del texto */
     font-size: 0.8em;
 }
 
 /* Animación para la barra de progreso */
-@keyframes progressAnimation {
+/*@keyframes progressAnimation {
     from {
         width: 0;
     }
@@ -65,7 +80,7 @@ body {
     to {
         width: calc(var(--percent) * 100%);
     }
-}
+}*/
 
 .sorter {
     margin: 0 auto;
@@ -86,8 +101,8 @@ body {
 }
 
     .image-container img {
-        width: 238px;
-        height: 280px;
+        width: 285px;
+        height: 330px;
         height: auto; /* Mantiene la proporción de la imagen */
         border: 2px solid #ffffff; /* Borde blanco de 2px alrededor de las imágenes */
         border-radius: 10px; /* Esquinas redondeadas para las imágenes */
@@ -157,8 +172,8 @@ body {
 }
 
 .sorter > .image {
-    width: 238px;
-    height: 280px;
+    width: 285px;
+    height: 330px;
     margin: auto;
     grid-row: 1 / 7;
     cursor: pointer;
@@ -190,21 +205,86 @@ body {
 }
 
 .options {
+    font-size: 30px;
     margin: 1em auto;
     display: grid;
-    text-align: left;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr; /* Una sola columna */
     grid-gap: 10px;
-    width: 450px;
+    width: 500px; /* Ajusta según tus necesidades */
 }
 
-    .options > div {
-        font-size: 0.5625em;
+.option-item {
+    position: relative;
+    grid-column: span 2;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    font-size: 0.5625em;
+    max-width:210px;
+}
+
+.image-wrapper {
+    position: relative;
+    width: 210px;
+    height: auto;
+    transition: transform 0.3s ease; /* Añadir transición suave */
+}
+
+.option-item:hover .image-wrapper {
+    transform: scale(1.1); /* Escala al pasar el cursor */
+}
+
+.option-image {
+    width: 210px; /* Ajusta según tus necesidades */
+    height: auto;
+    align-items: center;
+    align-content: center;
+}
+
+.option-checkbox {
+    display: none;
+}
+
+    .option-checkbox:checked + .image-wrapper .option-image {
+        border: 3px solid #00ff00; /* Indicador visual de selección */
+        opacity: 0.7; /* Cambio en la opacidad para resaltar la selección */
     }
+
+.option-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 210px;
+    background: rgba(0, 0, 0, 0.5); /* Fondo translúcido gris */
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.large-option-item {
+    grid-column: span 4; /* Ocupa toda la columna */
+    font-size: 0.5625em;
+    text-align: center;
+    max-width: 500px;
+    align-items: center;
+    align-content: center;
+    margin-bottom: 10px; /* Espacio adicional debajo de las opciones grandes */
+}
+
+    .large-option-item label {
+        display: block;
+        font-size: 1.25em;
+        align-items: center;
+        align-content: center;
+    }
+
 
 label {
     cursor: pointer;
     color: white; /* Color del texto blanco */
+    max-width: 500px;
 }
 
     label:hover {
@@ -256,61 +336,70 @@ label {
     }
 }
 
-.result {
-    height: 15px;
-    margin-bottom: -1px;
+.result-grid {
+    width: 150px;
     display: grid;
-    width: 211px;
-    grid-template-columns: repeat(2, 1fr);
-    border: 2px solid white; /* Borde más grueso y blanco */
-    margin-right: 5px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Ajusta el tamaño de las columnas según el espacio disponible */
+    grid-gap: 10px; /* Espacio entre los elementos del grid */
+    margin: 1em auto;
 }
 
-    .result.image {
-        height: 175px;
-    }
+.result-grid-item {
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #000; /* Fondo negro para los elementos del grid */
+}
 
-        .result.image img {
-            height: 160px;
-        }
+.result-image img {
+    width: 150px; /* Ajusta el tamaño de la imagen al ancho del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+}
 
-    .result.spacer {
-        height: 1px;
-        background-color: white; /* Borde más grueso y blanco */
-    }
+.result-info {
+    width: 150px;
+    padding: 10px;
+    color: #fff;
+    text-align: center;
+    background: linear-gradient(to right, #293176, #0092ff); /* Fondo degradado para el header */
+}
 
-    .result.head {
-        background-color: white; /* Fondo blanco */
-        color: white; /* Texto fucsia */
-    }
+.result-rank {
+    font-size: 1.2em;
+    font-weight: bold;
+}
 
-    .result > .left {
-        width: 35px;
-        padding: 1px 3px 1px 0.5em;
-        grid-column: 1 / 2;
-        text-align: right;
-        color: white; /* Texto blanco */
-    }
+.result-name {
+    font-size: 1em;
+}
 
-    .result.image .left {
-        position: relative;
-    }
+/* Elimina el header de resultados */
+.results .result.head {
+    display: none; /* Oculta el header */
+}
 
-    .result.image > .left span {
-        position: absolute;
-        top: 50%;
-        right: 3px;
-        margin-top: -0.375em;
-    }
+/* Ajusta el fondo del texto en las imágenes */
+.result.image .right .option-text {
+    background: rgba(0, 0, 0, 0.5); /* Fondo translúcido más opaco */
+}
 
-    .result > .right {
-        width: 160px;
-        padding: 1px 0em 1px 0em;
-        grid-column: 2 / 3;
-        border-left: 2px solid white; /* Borde más grueso y blanco */
-        text-align: center;
-        color: white; /* Texto blanco */
-    }
+/* Opcional: Estilo para la visualización de texto en lugar de imágenes */
+.result-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px; /* Ajusta la altura del contenedor de texto */
+    background: #111; /* Fondo oscuro para el texto */
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
 
 .info {
     margin: 2em auto 3em;
@@ -345,7 +434,7 @@ a {
 /* Estilo para el fondo de la barra de navegación */
 .navbar {
     background: linear-gradient(to right, #293176, #0092ff); /* Degradado de colores púrpuras y rosas */
-    border-bottom: 2px solid white; /* Borde blanco */
+    border: none; /* Borde blanco */
 }
 
 .active-tab {
@@ -353,6 +442,22 @@ a {
     border-bottom: 2px solid white; /* Borde blanco */
 }
 
-nav.navbar {
-    margin-bottom: 1rem;
+/* Estilos para las pestañas de navegación */
+.nav-item {
+    display: flex; /* Asegura que el contenido se alinee en línea */
+    align-items: center; /* Centra verticalmente el contenido */
+    margin-right: 1rem; /* Espacio entre las pestañas */
+    position: relative; /* Necesario para posicionar la barra vertical */
 }
+
+    /* Barra vertical entre pestañas */
+    .nav-item:not(:last-child)::after {
+        content: ""; /* Contenido vacío */
+        position: absolute; /* Posicionamiento absoluto */
+        right: -0.5rem; /* Ajusta el margen derecho para que esté al lado de la pestaña */
+        top: 50%; /* Centra verticalmente la barra */
+        transform: translateY(-50%); /* Ajusta el centrado vertical */
+        width: 1px; /* Ancho de la barra vertical */
+        height: 50%; /* Altura de la barra vertical */
+        background-color: white; /* Color de la barra vertical */
+    }

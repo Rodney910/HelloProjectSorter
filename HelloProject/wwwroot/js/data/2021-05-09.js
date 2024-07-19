@@ -4,19 +4,21 @@ dataSet[dataSetVersion] = {};
 dataSet[dataSetVersion].options = [
     {
         name: "Filter by Group",
-        checked: false,
+        checked: true,  // La opción principal no está marcada por defecto
         key: "group",
+        img: "",
         sub: [
-            { name: "Morning Musume '24", key: "momusu" },
-            { name: "ANGERME", key: "angerme" },
-            { name: "Juice=Juice", key: "juice" },
-            { name: "Tsubaki Factory", key: "tsubaki" },
-            { name: "BEYOOOOONDS", key: "beyond" },
-            { name: "Ocha Norma", key: "ocha" },
-            { name: "Rosy Chronicle", key: "rosy" }
+            { name: "Morning Musume '24", key: "momusu", img: "MNMSM2400.jpg", checked: false },
+            { name: "ANGERME", key: "angerme", img: "ANGM00.jpg", checked: false },
+            { name: "Juice=Juice", key: "juice", img: "JCJC00.jpg", checked: false },
+            { name: "Tsubaki Factory", key: "tsubaki", img: "TBKFTR00.jpg", checked: false },
+            { name: "BEYOOOOONDS", key: "beyond", img: "BYNDS00.jpg", checked: false },
+            { name: "Ocha Norma", key: "ocha", img: "OCNM00.jpg", checked: false },
+            { name: "Rosy Chronicle", key: "rosy", img: "RSCNC00.jpg", checked: false }
         ]
     }
 ];
+
 
 dataSet[dataSetVersion].characterData = [
     { name: "Hashida Honoka", img: "RSCNC01.jpg", opts: { group: ["rosy"] } },
