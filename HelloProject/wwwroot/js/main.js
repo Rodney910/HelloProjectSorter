@@ -482,62 +482,84 @@ function result(imageNum = 15) {
     document.querySelector('.options').style.display = 'none';
     document.querySelector('.info').style.display = 'none';
 
-    //const header = '<div class="result head"><div class="left">Order</div><div class="right">Name</div></div>';
     const timeStr = `This sorter was completed on ${new Date(timestamp + timeTaken).toString()} and took ${msToReadableTime(timeTaken)}. <a href="${location.protocol}//${sorterURL}">Do another sorter?</a>`;
 
-    // Crear un contenedor de grid para los resultados
-    const resultGrid = document.createElement('div');
-    resultGrid.className = 'result-grid';
+    const imgRes = (char, num) => {
+        const charName = reduceTextWidth(char.name, 'Arial 12px', 160);
+        const charTooltip = char.name !== charName ? char.name : '';
+        return `<div class="result-grid-item">
+            <div class="left"><span>${num}</span></div>
+            <div class="right">
+                <img src="${char.img}">
+                <div><span title="${charTooltip}">${charName}</span></div>
+            </div>
+        </div>`;
+    }
 
-    // Generar el grid de resultados
+    const res = (char, num) => {
+        const charName = reduceTextWidth(char.name, 'Arial 12px', 160);
+        const charTooltip = char.name !== charName ? char.name : '';
+        return `<div class="result-grid-item"><div class="left">${num}</div><div class="right"><span title="${charTooltip}">${charName}</span></div></div>`;
+    }
+
     let rankNum = 1;
+    let tiedRankNum = 1;
     let imageDisplay = imageNum;
-    let rowNum = 1; // Contador para las filas
+    const maxItemsPerRow = 5; // Tamaño fijo para las filas después de la quinta.
+    let currentRowSize = 1;  // Tamaño de la fila actual (incrementará hasta 5).
 
     const finalSortedIndexes = sortedIndexList[0].slice(0);
+    const resultTable = document.querySelector('.results');
+    const timeElem = document.querySelector('.time.taken');
+
+    resultTable.innerHTML = '';
+    timeElem.innerHTML = timeStr;
+
+    let rowItems = [];
+
     characterDataToSort.forEach((val, idx) => {
         const characterIndex = finalSortedIndexes[idx];
         const character = characterDataToSort[characterIndex];
 
-        // Crear un contenedor para cada personaje
-        const characterDiv = document.createElement('div');
-        characterDiv.className = 'result-grid-item';
-
-        // Agregar la imagen o texto según sea necesario
         if (imageDisplay-- > 0) {
-            characterDiv.innerHTML = `
-        <div class="result-image">
-          <img src="${character.img}" alt="${character.name}">
-          <div class="result-info">
-            <span class="result-name"><b>${rankNum}.</b>${character.name}</span>
-          </div>
-        </div>
-      `;
+            rowItems.push(imgRes(character, rankNum));
         } else {
-            characterDiv.innerHTML = `
-        <div class="result-text">
-            <span class="result-name"><b>${rankNum}.</b>${character.name}</span>
-        </div>
-      `;
+            rowItems.push(res(character, rankNum));
         }
-        resultGrid.appendChild(characterDiv);
 
-        // Incrementar el número de ranking
         if (idx < characterDataToSort.length - 1) {
             if (tiedDataList[characterIndex] === finalSortedIndexes[idx + 1]) {
-                // Handling tied ranks
+                tiedRankNum++;
             } else {
-                rankNum++;
+                rankNum += tiedRankNum;
+                tiedRankNum = 1;
+            }
+        }
+
+        // Determinar el tamaño de la fila actual y agregar la fila a la tabla si se alcanza el tamaño adecuado.
+        const rowSize = (currentRowSize <= 5) ? currentRowSize : maxItemsPerRow;
+
+        if (rowItems.length >= rowSize) {
+            const row = document.createElement('div');
+            row.classList.add('result-grid-row');
+            row.innerHTML = rowItems.join('');
+            resultTable.appendChild(row);
+
+            rowItems = []; // Limpiar los elementos para la siguiente fila.
+
+            if (currentRowSize < 5) {
+                currentRowSize++; // Incrementar el tamaño de la fila hasta 5.
             }
         }
     });
 
-    const resultTable = document.querySelector('.results');
-    const timeElem = document.querySelector('.time.taken');
-
-    //resultTable.innerHTML = header;
-    timeElem.innerHTML = timeStr;
-    resultTable.appendChild(resultGrid);
+    // Agregar los elementos restantes en una última fila si es necesario.
+    if (rowItems.length > 0) {
+        const row = document.createElement('div');
+        row.classList.add('result-grid-row');
+        row.innerHTML = rowItems.join('');
+        resultTable.appendChild(row);
+    }
 }
 
 /** Undo previous choice. */

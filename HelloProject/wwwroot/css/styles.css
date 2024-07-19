@@ -35,7 +35,7 @@ header {
 /* Estilo para la barra de progreso */
 .progress {
     margin: 1em auto;
-    display:none;
+    display: none;
     width: 500px;
     text-align: center;
 }
@@ -221,7 +221,7 @@ header {
     align-content: center;
     justify-content: center;
     font-size: 0.5625em;
-    max-width:210px;
+    max-width: 210px;
 }
 
 .image-wrapper {
@@ -317,31 +317,17 @@ label {
 .results {
     font-size: 0.75em;
     display: flex;
-    align-content: flex-start;
-    width: 80%;
+    flex-direction: column;
+    align-content: center;
+    width: 100%;
+    max-width:650px;
     margin: 2em auto;
 }
 
-@media all and (min-width: 600px) {
-    .results {
-        flex-flow: column wrap;
-        max-height: calc(5 * (175px + 2px) + 1 * (15px + 2px));
-        /* 2px for borders */
-    }
-}
-
-@media all and (max-width: 600px) {
-    .results {
-        flex-flow: column nowrap;
-    }
-}
-
-.result-grid {
-    width: 150px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Ajusta el tamaño de las columnas según el espacio disponible */
-    grid-gap: 10px; /* Espacio entre los elementos del grid */
-    margin: 1em auto;
+.result-grid-row {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .result-grid-item {
@@ -354,19 +340,24 @@ label {
     border-radius: 10px;
     overflow: hidden;
     background: #000; /* Fondo negro para los elementos del grid */
+    margin: 0 5px; /* Espacio horizontal entre elementos */
 }
 
-.result-image img {
-    width: 150px; /* Ajusta el tamaño de la imagen al ancho del contenedor */
-    height: auto; /* Mantiene la proporción de la imagen */
-}
+    .result-grid-item img {
+        width: 150px; /* Ajusta el tamaño de la imagen al ancho del contenedor */
+        height: auto; /* Mantiene la proporción de la imagen */
+    }
 
 .result-info {
-    width: 150px;
+    width: 120px;
     padding: 10px;
     color: #fff;
     text-align: center;
     background: linear-gradient(to right, #293176, #0092ff); /* Fondo degradado para el header */
+    max-width: 100%; /* Asegura que el contenedor no se desborde del área visible */
+    overflow: hidden; /* Oculta el texto que se desborda del contenedor */
+    white-space: nowrap; /* Evita que el texto se ajuste en múltiples líneas */
+    text-overflow: ellipsis; /* Muestra puntos suspensivos si el texto es demasiado largo */
 }
 
 .result-rank {
