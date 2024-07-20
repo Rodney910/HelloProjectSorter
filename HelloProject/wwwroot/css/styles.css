@@ -32,55 +32,65 @@ header {
     width: 1000px;
 }
 
-/* Estilo para la barra de progreso */
-.progress {
+/* Sección de la barra de progreso */
+.progress-section {
     margin: 1em auto;
     display: none;
-    width: 500px;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
 }
 
+/* Barra de progreso general */
 .progressbar {
-    width: 100%;
-    height: 20px;
-    border: 2px solid white; /* Borde de la barra de progreso */
     position: relative;
-    overflow: hidden;
-    background: linear-gradient(to right, #293176, #0092ff); /* Fondo degradado púrpura y rosa */
+    width: 600px; /* Ocupa el ancho disponible */
+    max-width: 600px; /* Limita el ancho máximo */
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 3px;
+    margin: 2px 0px;
 }
 
-.progressfill {
-    height: 100%;
-    background-color: transparent;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    overflow: hidden;
-    background: repeating-linear-gradient(-45deg, #fff, #fff 5px, #990099 5px, #990099 10px); /* Líneas diagonales púrpuras y blancas */
-    background-size: 20px 20px; /* Tamaño del patrón de línea */
-}
-
+/* Texto dentro de la barra de progreso */
 .progresstext {
     position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
+    top: 50%; /* Centra verticalmente */
+    left: 50%; /* Centra horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta el centro del texto */
     text-align: center;
-    color: black; /* Color del texto */
-    font-size: 0.8em;
+    font-size: 0.7em;
+    color: white; /* Color del texto */
 }
 
-/* Animación para la barra de progreso */
-/*@keyframes progressAnimation {
-    from {
-        width: 0;
+/* Parte llena de la barra de progreso con degradado animado */
+.progressfill {
+    height: 20px;
+    background: linear-gradient(to left, #295776, #00eeff 50%, #295776); /* Degradado de colores */
+    border-radius: 10px;
+    border: 1px solid white;
+    width: 0%; /* Inicialmente vacío */
+    background-size: 200% 100%; /* Tamaño del degradado para el movimiento horizontal */
+    animation: gradientAnimation 3s linear infinite; /* Animación continua del degradado */
+    transition: width 0.3s ease; /* Transición suave para el ancho */
+}
+
+/* Animación del degradado */
+@keyframes gradientAnimation {
+    0% {
+        background-position: 200% 0%;
     }
 
-    to {
-        width: calc(var(--percent) * 100%);
+    50% {
+        background-position: 100% 0%;
     }
-}*/
+
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+
 
 .sorter {
     margin: 0 auto;

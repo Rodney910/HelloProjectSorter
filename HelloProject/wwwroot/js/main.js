@@ -261,7 +261,7 @@ function start() {
   document.querySelectorAll('input[type=checkbox]').forEach(cb => cb.disabled = true);
   document.querySelectorAll('.starting.button').forEach(el => el.style.display = 'none');
   document.querySelector('.loading.button').style.display = 'block';
-  document.querySelector('.progress').style.display = 'block';
+  document.querySelector('.progress-section').style.display = 'block';
   loading = true;
 
   preloadImages().then(() => {
@@ -288,15 +288,13 @@ function display() {
         return `<p title="${charTooltip}">${charName}</p>`;
     };
 
-    // Actualiza el porcentaje en la barra de progreso
-    document.documentElement.style.setProperty('--percent', percent / 100);
+    progressBar(`Battle No. ${battleNo}`, percent);
 
-    // Actualiza el texto del progreso
-    document.querySelector('.progresstext').textContent = `${percent}%`;
-
-    // Actualiza las imágenes y textos de los personajes
     document.querySelector('.left.sort.image').src = leftChar.img;
     document.querySelector('.right.sort.image').src = rightChar.img;
+
+
+
     document.querySelector('.left.sort.text').innerHTML = charNameDisp(leftChar.name);
     document.querySelector('.right.sort.text').innerHTML = charNameDisp(rightChar.name);
 
@@ -311,131 +309,131 @@ function display() {
     } else { saveProgress('Autosave'); }
 }
 
-
 /**
  * Sort between two character choices or tie.
- * 
+ *
  * @param {'left'|'right'|'tie'} sortType
  */
 function pick(sortType) {
-  if ((timeTaken && choices.length === battleNo - 1) || loading) { return; }
-  else if (!timestamp) { return start(); }
+    if ((timeTaken && choices.length === battleNo - 1) || loading) { return; }
+    else if (!timestamp) { return start(); }
 
-  sortedIndexListPrev = sortedIndexList.slice(0);
-  recordDataListPrev  = recordDataList.slice(0);
-  parentIndexListPrev = parentIndexList.slice(0);
-  tiedDataListPrev    = tiedDataList.slice(0);
+    sortedIndexListPrev = sortedIndexList.slice(0);
+    recordDataListPrev = recordDataList.slice(0);
+    parentIndexListPrev = parentIndexList.slice(0);
+    tiedDataListPrev = tiedDataList.slice(0);
 
-  leftIndexPrev       = leftIndex;
-  leftInnerIndexPrev  = leftInnerIndex;
-  rightIndexPrev      = rightIndex;
-  rightInnerIndexPrev = rightInnerIndex;
-  battleNoPrev        = battleNo;
-  sortedNoPrev        = sortedNo;
-  pointerPrev         = pointer;
+    leftIndexPrev = leftIndex;
+    leftInnerIndexPrev = leftInnerIndex;
+    rightIndexPrev = rightIndex;
+    rightInnerIndexPrev = rightInnerIndex;
+    battleNoPrev = battleNo;
+    sortedNoPrev = sortedNo;
+    pointerPrev = pointer;
 
-  /** 
-   * For picking 'left' or 'right':
-   * 
-   * Input the selected character's index into recordDataList. Increment the pointer of
-   * recordDataList. Then, check if there are any ties with this character, and keep
-   * incrementing until we find no more ties. 
-   */
-  switch (sortType) {
-    case 'left': {
-      if (choices.length === battleNo - 1) { choices += '0'; }
-      recordData('left');
-      while (tiedDataList[recordDataList[pointer - 1]] != -1) {
-        recordData('left');
-      }
-      break;
+    /**
+     * For picking 'left' or 'right':
+     *
+     * Input the selected character's index into recordDataList. Increment the pointer of
+     * recordDataList. Then, check if there are any ties with this character, and keep
+     * incrementing until we find no more ties.
+     */
+    switch (sortType) {
+        case 'left': {
+            if (choices.length === battleNo - 1) { choices += '0'; }
+            recordData('left');
+            while (tiedDataList[recordDataList[pointer - 1]] != -1) {
+                recordData('left');
+            }
+            break;
+        }
+        case 'right': {
+            if (choices.length === battleNo - 1) { choices += '1'; }
+            recordData('right');
+            while (tiedDataList[recordDataList[pointer - 1]] != -1) {
+                recordData('right');
+            }
+            break;
+        }
+
+        /**
+         * For picking 'tie' (i.e. heretics):
+         *
+         * Proceed as if we picked the 'left' character. Then, we record the right character's
+         * index value into the list of ties (at the left character's index) and then proceed
+         * as if we picked the 'right' character.
+         */
+        case 'tie': {
+            if (choices.length === battleNo - 1) { choices += '2'; }
+            recordData('left');
+            while (tiedDataList[recordDataList[pointer - 1]] != -1) {
+                recordData('left');
+            }
+            tiedDataList[recordDataList[pointer - 1]] = sortedIndexList[rightIndex][rightInnerIndex];
+            recordData('right');
+            while (tiedDataList[recordDataList[pointer - 1]] != -1) {
+                recordData('right');
+            }
+            break;
+        }
+        default: return;
     }
-    case 'right': {
-      if (choices.length === battleNo - 1) { choices += '1'; }
-      recordData('right');
-      while (tiedDataList[recordDataList [pointer - 1]] != -1) {
-        recordData('right');
-      }
-      break;
+
+    /**
+     * Once we reach the limit of the 'right' character list, we
+     * insert all of the 'left' characters into the record, or vice versa.
+     */
+    const leftListLen = sortedIndexList[leftIndex].length;
+    const rightListLen = sortedIndexList[rightIndex].length;
+
+    if (leftInnerIndex < leftListLen && rightInnerIndex === rightListLen) {
+        while (leftInnerIndex < leftListLen) {
+            recordData('left');
+        }
+    } else if (leftInnerIndex === leftListLen && rightInnerIndex < rightListLen) {
+        while (rightInnerIndex < rightListLen) {
+            recordData('right');
+        }
     }
 
-  /** 
-   * For picking 'tie' (i.e. heretics):
-   * 
-   * Proceed as if we picked the 'left' character. Then, we record the right character's
-   * index value into the list of ties (at the left character's index) and then proceed
-   * as if we picked the 'right' character.
-   */
-    case 'tie': {
-      if (choices.length === battleNo - 1) { choices += '2'; }
-      recordData('left');
-      while (tiedDataList[recordDataList[pointer - 1]] != -1) {
-        recordData('left');
-      }
-      tiedDataList[recordDataList[pointer - 1]] = sortedIndexList[rightIndex][rightInnerIndex];
-      recordData('right');
-      while (tiedDataList[recordDataList [pointer - 1]] != -1) {
-        recordData('right');
-      }
-      break;
+    /**
+     * Once we reach the end of both 'left' and 'right' character lists, we can remove
+     * the arrays from the initial mergesort array, since they are now recorded. This
+     * record is a sorted version of both lists, so we can replace their original
+     * (unsorted) parent with a sorted version. Purge the record afterwards.
+     */
+    if (leftInnerIndex === leftListLen && rightInnerIndex === rightListLen) {
+        for (let i = 0; i < leftListLen + rightListLen; i++) {
+            sortedIndexList[parentIndexList[leftIndex]][i] = recordDataList[i];
+        }
+        sortedIndexList.pop();
+        sortedIndexList.pop();
+        leftIndex = leftIndex - 2;
+        rightIndex = rightIndex - 2;
+        leftInnerIndex = 0;
+        rightInnerIndex = 0;
+
+        sortedIndexList.forEach((val, idx) => recordDataList[idx] = 0);
+        pointer = 0;
     }
-    default: return;
-  }
 
-  /**
-   * Once we reach the limit of the 'right' character list, we 
-   * insert all of the 'left' characters into the record, or vice versa.
-   */
-  const leftListLen = sortedIndexList[leftIndex].length;
-  const rightListLen = sortedIndexList[rightIndex].length;
+    /**
+     * If, after shifting the 'left' index on the sorted list, we reach past the beginning
+     * of the sorted array, that means the entire array is now sorted. The original unsorted
+     * array in index 0 is now replaced with a sorted version, and we will now output this.
+     */
+    if (leftIndex < 0) {
+        timeTaken = timeTaken || new Date().getTime() - timestamp;
 
-  if (leftInnerIndex < leftListLen && rightInnerIndex === rightListLen) {
-    while (leftInnerIndex < leftListLen) {
-      recordData('left');
+        progressBar(`Battle No. ${battleNo} - Completed!`, 100);
+
+        result();
+    } else {
+        battleNo++;
+        display();
     }
-  } else if (leftInnerIndex === leftListLen && rightInnerIndex < rightListLen) {
-    while (rightInnerIndex < rightListLen) {
-      recordData('right');
-    }
-  }
-
-  /**
-   * Once we reach the end of both 'left' and 'right' character lists, we can remove 
-   * the arrays from the initial mergesort array, since they are now recorded. This
-   * record is a sorted version of both lists, so we can replace their original 
-   * (unsorted) parent with a sorted version. Purge the record afterwards.
-   */
-  if (leftInnerIndex === leftListLen && rightInnerIndex === rightListLen) {
-    for (let i = 0; i < leftListLen + rightListLen; i++) {
-      sortedIndexList[parentIndexList[leftIndex]][i] = recordDataList[i];
-    }
-    sortedIndexList.pop();
-    sortedIndexList.pop();
-    leftIndex = leftIndex - 2;
-    rightIndex = rightIndex - 2;
-    leftInnerIndex = 0;
-    rightInnerIndex = 0;
-
-    sortedIndexList.forEach((val, idx) => recordDataList[idx] = 0);
-    pointer = 0;
-  }
-
-  /**
-   * If, after shifting the 'left' index on the sorted list, we reach past the beginning
-   * of the sorted array, that means the entire array is now sorted. The original unsorted
-   * array in index 0 is now replaced with a sorted version, and we will now output this.
-   */
-  if (leftIndex < 0) {
-    timeTaken = timeTaken || new Date().getTime() - timestamp;
-
-    progressBar(`Battle No. ${battleNo} - Completed!`, 100);
-
-    result();
-  } else {
-    battleNo++;
-    display();
-  }
 }
+
 
 /**
  * Records data in recordDataList.
@@ -480,6 +478,7 @@ function result(imageNum = 15) {
 
     document.querySelectorAll('.sorting.button').forEach(el => el.style.display = 'none');
     document.querySelectorAll('.sort.text').forEach(el => el.style.display = 'none');
+    document.querySelector('.progress-section').style.display = 'none';
     document.querySelector('.options').style.display = 'none';
     document.querySelector('.info').style.display = 'none';
 
