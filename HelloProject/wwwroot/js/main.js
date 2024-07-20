@@ -636,28 +636,38 @@ function clearProgress() {
 }
 
 function generateImage() {
-  const timeFinished = timestamp + timeTaken;
-  const tzoffset = (new Date()).getTimezoneOffset() * 60000;
-  const filename = 'sort-' + (new Date(timeFinished - tzoffset)).toISOString().slice(0, -5).replace('T', '(') + ').png';
+    const resultContainer = document.querySelector('.results');
+    const timeFinished = timestamp + timeTaken;
+    const tzoffset = (new Date()).getTimezoneOffset() * 60000;
+    const filename = 'sort-' + (new Date(timeFinished - tzoffset)).toISOString().slice(0, -5).replace('T', '(') + ').png';
 
-  html2canvas(document.querySelector('.results')).then(canvas => {
-    const dataURL = canvas.toDataURL();
-    const imgButton = document.querySelector('.finished.getimg.button');
-    const resetButton = document.createElement('a');
+    // Calcula las dimensiones del contenedor .result
+    const containerWidth = resultContainer.offsetWidth;
+    const containerHeight = resultContainer.offsetHeight;
 
-    imgButton.removeEventListener('click', generateImage);
-    imgButton.innerHTML = '';
-    imgButton.insertAdjacentHTML('beforeend', `<a href="${dataURL}" download="${filename}">Download Image</a><br><br>`);
+    html2canvas(resultContainer, {
+        width: containerWidth,
+        height: containerHeight,
+        scale: 2 // Usa la relación de píxeles de la pantalla para alta resolución
+    }).then(canvas => {
+        const dataURL = canvas.toDataURL();
+        const imgButton = document.querySelector('.finished.getimg.button');
+        const resetButton = document.createElement('a');
 
-    resetButton.insertAdjacentText('beforeend', 'Reset');
-    resetButton.addEventListener('click', (event) => {
-      imgButton.addEventListener('click', generateImage);
-      imgButton.innerHTML = 'Generate Image';
-      event.stopPropagation();
+        imgButton.removeEventListener('click', generateImage);
+        imgButton.innerHTML = '';
+        imgButton.insertAdjacentHTML('beforeend', `<a href="${dataURL}" download="${filename}">Download Image</a><br><br>`);
+
+        resetButton.insertAdjacentText('beforeend', 'Reset');
+        resetButton.addEventListener('click', (event) => {
+            imgButton.addEventListener('click', generateImage);
+            imgButton.innerHTML = 'Generate Image';
+            event.stopPropagation();
+        });
+        imgButton.insertAdjacentElement('beforeend', resetButton);
     });
-    imgButton.insertAdjacentElement('beforeend', resetButton);
-  });
 }
+
 
 function generateTextList() {
   const data = finalCharacters.reduce((str, char) => {
