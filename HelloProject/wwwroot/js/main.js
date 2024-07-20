@@ -476,22 +476,27 @@ function result(imageNum = 15) {
     document.querySelectorAll('.finished.button').forEach(el => el.style.display = 'block');
     document.querySelector('.image.selector').style.display = 'block';
     document.querySelector('.time.taken').style.display = 'block';
+    document.querySelector('.results').style.display = 'block';
 
     document.querySelectorAll('.sorting.button').forEach(el => el.style.display = 'none');
     document.querySelectorAll('.sort.text').forEach(el => el.style.display = 'none');
     document.querySelector('.options').style.display = 'none';
     document.querySelector('.info').style.display = 'none';
 
-    const timeStr = `This sorter was completed on ${new Date(timestamp + timeTaken).toString()} and took ${msToReadableTime(timeTaken)}. <a href="${location.protocol}//${sorterURL}">Do another sorter?</a>`;
+    // Formatear la fecha como DD-MM-YYYY
+    const completedDate = new Date(timestamp + timeTaken);
+    const formattedDate = `${completedDate.getDate().toString().padStart(2, '0')}-${(completedDate.getMonth() + 1).toString().padStart(2, '0')}-${completedDate.getFullYear()}`;
+
+    const dateCompleted = `This sorter was completed on ${formattedDate}.`;
+    const timeTakenStr = `It took ${msToReadableTime(timeTaken)} to complete. <a href="${location.protocol}//${sorterURL}">Do another sorter?</a>`;
 
     const imgRes = (char, num) => {
         const charName = reduceTextWidth(char.name, 'Arial 12px', 160);
         const charTooltip = char.name !== charName ? char.name : '';
         return `<div class="result-grid-item">
-            <div class="left"><span>${num}</span></div>
-            <div class="right">
-                <img src="${char.img}">
-                <div><span title="${charTooltip}">${charName}</span></div>
+            <img src="${char.img}">
+            <div class="result-info">
+                <div class="result-name" title="${charTooltip}"><b>${num}.</b>${charName}</div>
             </div>
         </div>`;
     }
@@ -499,7 +504,12 @@ function result(imageNum = 15) {
     const res = (char, num) => {
         const charName = reduceTextWidth(char.name, 'Arial 12px', 160);
         const charTooltip = char.name !== charName ? char.name : '';
-        return `<div class="result-grid-item"><div class="left">${num}</div><div class="right"><span title="${charTooltip}">${charName}</span></div></div>`;
+        return `<div class="result-grid-item">
+            <div class="result-info">
+                <div class="result-rank">${num}</div>
+                <div class="result-name" title="${charTooltip}">${charName}</div>
+            </div>
+        </div>`;
     }
 
     let rankNum = 1;
@@ -512,8 +522,8 @@ function result(imageNum = 15) {
     const resultTable = document.querySelector('.results');
     const timeElem = document.querySelector('.time.taken');
 
-    resultTable.innerHTML = '';
-    timeElem.innerHTML = timeStr;
+    resultTable.innerHTML = '<h2>Ranking Result:</h2>'; // Añadir el título
+    timeElem.innerHTML = `${dateCompleted}<br>${timeTakenStr}`;
 
     let rowItems = [];
 

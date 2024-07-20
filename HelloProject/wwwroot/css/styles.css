@@ -300,43 +300,62 @@ label {
 
 .image.selector {
     margin-top: 0.5em;
-    width: 500px;
+    width: 100%;
     display: none;
     text-align: center;
+    align-content: center;
+    align-items: center;
     font-size: 0.75em;
 }
 
 .time.taken {
     margin-top: 0.5em;
-    width: 500px;
+    width: 100%;
     display: none;
     text-align: center;
+    align-content: center;
+    align-items: center;
     font-size: 0.75em;
 }
 
 .results {
+    margin-top: 5px;
     font-size: 0.75em;
-    display: flex;
+    display: none;
     flex-direction: column;
     align-content: center;
     width: 100%;
-    max-width:650px;
+    max-width: 650px;
     margin: 2em auto;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5); /* Añadir una sombra para darle un poco de profundidad */
 }
 
+    .results h2 {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #1059ef;
+        text-align: center;
+        margin-bottom: 1em;
+    }
+
 .result-grid-row {
+    margin-top: 5px;
     display: flex;
     justify-content: center;
     width: 100%;
 }
 
 .result-grid-item {
+    margin-top:5px;
     width: 150px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 2px solid white;
+    border: 2px solid black;
     border-radius: 10px;
     overflow: hidden;
     background: #000; /* Fondo negro para los elementos del grid */
@@ -344,17 +363,16 @@ label {
 }
 
     .result-grid-item img {
-        width: 150px; /* Ajusta el tamaño de la imagen al ancho del contenedor */
+        width: 100%; /* Ajusta el tamaño de la imagen al ancho del contenedor */
         height: auto; /* Mantiene la proporción de la imagen */
     }
 
 .result-info {
-    width: 120px;
+    width: 100%;
     padding: 10px;
     color: #fff;
     text-align: center;
-    background: linear-gradient(to right, #293176, #0092ff); /* Fondo degradado para el header */
-    max-width: 100%; /* Asegura que el contenedor no se desborde del área visible */
+    background: linear-gradient(to right, #293176, #0092ff); /* Fondo degradado */
     overflow: hidden; /* Oculta el texto que se desborda del contenedor */
     white-space: nowrap; /* Evita que el texto se ajuste en múltiples líneas */
     text-overflow: ellipsis; /* Muestra puntos suspensivos si el texto es demasiado largo */
@@ -363,11 +381,71 @@ label {
 .result-rank {
     font-size: 1.2em;
     font-weight: bold;
+    overflow: hidden; /* Oculta el texto que se desborda del contenedor */
+    white-space: nowrap; /* Evita que el texto se ajuste en múltiples líneas */
+    text-overflow: ellipsis; /* Muestra puntos suspensivos si el texto es demasiado largo */
 }
 
 .result-name {
     font-size: 1em;
+    overflow: hidden; /* Oculta el texto que se desborda del contenedor */
+    white-space: nowrap; /* Evita que el texto se ajuste en múltiples líneas */
+    text-overflow: ellipsis; /* Muestra puntos suspensivos si el texto es demasiado largo */
 }
+
+/* Elimina el header de resultados */
+.results .result.head {
+    display: none; /* Oculta el header */
+}
+
+/* Ajusta el fondo del texto en las imágenes */
+.result.image .right .option-text {
+    background: rgba(0, 0, 0, 0.5); /* Fondo translúcido más opaco */
+}
+
+/* Opcional: Estilo para la visualización de texto en lugar de imágenes */
+.result-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px; /* Ajusta la altura del contenedor de texto */
+    background: #111; /* Fondo oscuro para el texto */
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Ajuste del tamaño de las imágenes según el número de filas */
+@media screen and (max-width: 1024px) {
+    .result-grid-item {
+        width: 120px;
+    }
+
+        .result-grid-item img {
+            width: 120px;
+        }
+}
+
+@media screen and (max-width: 768px) {
+    .result-grid-item {
+        width: 100px;
+    }
+
+        .result-grid-item img {
+            width: 100px;
+        }
+}
+
+@media screen and (max-width: 480px) {
+    .result-grid-item {
+        width: 80px;
+    }
+
+        .result-grid-item img {
+            width: 80px;
+        }
+}
+
 
 /* Elimina el header de resultados */
 .results .result.head {
