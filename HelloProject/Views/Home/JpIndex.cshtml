@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Member Sorter";
+    ViewData["Title"] = "Home Page";
 }
 
 <!DOCTYPE html>
@@ -24,7 +24,7 @@
     <link href="~/css/styles.css" rel="stylesheet" type="text/css">
 
     <script src="~/js/data.js"></script>
-    <script src="~/js/data/2021-05-09.js"></script>
+    <script src="~/js/data/2021-03-29.js"></script>
 
     <script src="~/js/html2canvas.min.js"></script>
     <script src="~/js/lz-string.min.js"></script>
@@ -45,11 +45,11 @@
 <body>
     <div class="container">
 
-        <div class="titlehp row">
-            <div class="col-12 box">
+        <div class="titlehp row" style="text-align: center;align-items: center;align-content: center;">
+            <div class="col-12 box" style="text-align: center;align-items: center;align-content: center;">
                 <p>Hello! Project Member Sorter</p>
                 <p class="lang">
-                    <a asp-controller="Home" asp-action="JpIndex">日本語</a>
+                    <a asp-controller="Home" asp-action="Index">Romaji</a>
                 </p>
             </div>
         </div>
@@ -64,14 +64,14 @@
         </div>
 
         <div class="mobrow row">
-            <div class="col-4">
+            <div class="col-md-4">
                 <div class="image-container left-container">
                     <img src="~/assets/icons/HProsterL.png" class="left sort image">
                     <div class="left sort text"><p></p></div>
                 </div>
             </div>
 
-            <div class="col-4">
+            <div class="col-md-4">
                 <div class="buttons" style="text-align:center;">
                     <div class="starting start button">Click to Start!</div>
                     <div class="starting load button">Load <span></span></div>
@@ -85,7 +85,7 @@
                 </div>
             </div>
 
-            <div class="col-4">
+            <div class="col-md-4">
                 <div class="image-container right-container">
                     <img src="~/assets/icons/HProsterR.png" class="right sort image">
                     <div class="right sort text"><p></p></div>

@@ -13,7 +13,7 @@ dataSet[dataSetVersion].options = [
             { name: "Juice=Juice", key: "juice", img: "JCJC00.jpg", checked: false },
             { name: "Tsubaki Factory", key: "tsubaki", img: "TBKFTR00.jpg", checked: false },
             { name: "BEYOOOOONDS", key: "beyond", img: "BYNDS00.jpg", checked: false },
-            { name: "Ocha Norma", key: "ocha", img: "OCNM00.jpg", checked: false },
+            { name: "OCHA NORMA", key: "ocha", img: "OCNM00.jpg", checked: false },
             { name: "Rosy Chronicle", key: "rosy", img: "RSCNC00.jpg", checked: false }
         ]
     }
@@ -31,7 +31,7 @@ dataSet[dataSetVersion].characterData = [
     { name: "Kamimura Rena", img: "RSCNC08.jpg", opts: { group: ["rosy"] } },
     { name: "Soma Yume", img: "RSCNC09.jpg", opts: { group: ["rosy"] } },
     { name: "Saito Madoka", img: "OCNM01.jpg", opts: { group: ["ocha"] } },
-    { name: "Hiromoto Ruli", img: "OCNM02.jpg", opts: { group: ["ocha"] } },
+    { name: "Hiromoto Ruri", img: "OCNM02.jpg", opts: { group: ["ocha"] } },
     { name: "Ishiguri Kanami", img: "OCNM03.jpg", opts: { group: ["ocha"] } },
     { name: "Yonemura Kirara", img: "OCNM04.jpg", opts: { group: ["ocha"] } },
     { name: "Kubota Nanami", img: "OCNM05.jpg", opts: { group: ["ocha"] } },

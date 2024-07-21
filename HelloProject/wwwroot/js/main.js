@@ -268,7 +268,8 @@ function start() {
     loading = false;
     document.querySelector('.loading.button').style.display = 'none';
     document.querySelectorAll('.sorting.button').forEach(el => el.style.display = 'block');
-    document.querySelectorAll('.sort.text').forEach(el => el.style.display = 'block');
+      document.querySelectorAll('.sort.text').forEach(el => el.style.display = 'block');
+      document.querySelector('.titlehp').style.display = 'none';
     display();
   });
 }
@@ -288,7 +289,7 @@ function display() {
         return `<p title="${charTooltip}">${charName}</p>`;
     };
 
-    progressBar(`Battle No. ${battleNo}`, percent);
+    progressBar(`Round N°: ${battleNo}`, percent);
 
     document.querySelector('.left.sort.image').src = leftChar.img;
     document.querySelector('.right.sort.image').src = rightChar.img;
