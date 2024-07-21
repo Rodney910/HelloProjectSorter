@@ -69,7 +69,7 @@ function init() {
   
   document.querySelector('.finished.save.button').addEventListener('click', () => saveProgress('Last Result'));
   document.querySelector('.finished.getimg.button').addEventListener('click', generateImage);
-  document.querySelector('.finished.list.button').addEventListener('click', generateTextList);
+  /*document.querySelector('.finished.list.button').addEventListener('click', generateTextList);*/
 
   document.querySelector('.clearsave').addEventListener('click', clearProgress);
 

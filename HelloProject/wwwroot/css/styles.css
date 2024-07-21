@@ -6,7 +6,6 @@ body {
     background-attachment: fixed;
     color: white;
     width:100%;
-    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
     margin-top: 80px;
 }
 
@@ -424,22 +423,6 @@ label {
     text-align: center;
 }
 
-/* Ajuste del tamaño de las imágenes según el número de filas */
-@media screen and (max-width: 1024px) {
-    .result-grid-item {
-        width: 120px;
-    }
-
-        .result-grid-item img {
-            width: 120px;
-        }
-
-    .result-info {
-        font-size: 0.6em;
-    }
-}
-
-
 /* Elimina el header de resultados */
 .results .result.head {
     display: none; /* Oculta el header */
@@ -558,6 +541,15 @@ a {
     .option-item {
         margin-bottom: 10px; /* Espacio inferior entre opciones */
     }
+
+        /* Efecto active para dispositivos móviles */
+        .option-item:active .image-wrapper {
+            transform: scale(1.1);
+        }
+
+        .option-item:hover .image-wrapper {
+            transform: none;
+        }
 }
 
 /* Estilos para la barra de progreso en dispositivos móviles */
@@ -642,4 +634,34 @@ a {
 
 }
 
+/* Estilos adicionales para pantallas más pequeñas */
+@media screen and (max-width: 1024px) {
+    .results {
+        max-width: 100%;
+        padding: 5px;
+    }
+
+        .results h2 {
+            font-size: 1.0em;
+        }
+
+    .result-grid-item {
+        width: 70px; /* Reducir tamaño de los elementos del grid */
+        margin: 0 2px; /* Ajustar márgenes */
+    }
+
+        .result-grid-item img {
+            width: 100%; /* Ajusta el tamaño de la imagen al ancho del contenedor */
+            height: auto; /* Mantiene la proporción de la imagen */
+        }
+
+    .result-info {
+        padding: 5px; /* Reducir padding */
+        font-size: 0.7em; /* Reducir tamaño de fuente */
+    }
+
+    .result-name {
+        font-size: 0.7em; /* Reducir tamaño de fuente */
+    }
+}
 
