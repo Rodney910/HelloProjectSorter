@@ -2,10 +2,10 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
-    background: linear-gradient(to bottom, #293176 0%, #0092ff 50%, #293176 100%);
+    background: linear-gradient(to bottom, #562976 0%, #fb00ff 50%, #562976 100%);
     background-attachment: fixed;
     color: white;
-    width:100%;
+    width: 100%;
     margin-top: 80px;
 }
 
@@ -15,7 +15,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    background: linear-gradient(to right, #293176, #0092ff);
+    background: linear-gradient(to right, #562976, #fb00ff);
     border-bottom: 2px solid white;
     z-index: 1000;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -66,7 +66,7 @@ header {
 /* Parte llena de la barra de progreso con degradado animado */
 .progressfill {
     height: 20px;
-    background: linear-gradient(to left, #295776, #00eeff 50%, #295776);
+    background: linear-gradient(to left, #3f2976, #a600ff 50%, #3f2976);
     border-radius: 10px;
     border: 1px solid white;
     width: 0%;
@@ -129,14 +129,14 @@ header {
     text-align: center;
     padding: 10px 20px;
     cursor: pointer;
-    background-color: #0092ff;
+    background-color: #fb00ff;
     color: #ffffff;
     border-radius: 10px;
     transition: background-color 0.3s ease;
 }
 
     .button:hover {
-        background-color: #0661a5;
+        background-color: #4606a5;
     }
 
 .starting.start.button {
@@ -344,7 +344,7 @@ label {
     .results h2 {
         font-size: 1.5em;
         font-weight: bold;
-        color: #1059ef;
+        color: #7810ef;
         text-align: center;
         margin-bottom: 1em;
     }
@@ -380,7 +380,7 @@ label {
     padding: 10px;
     color: #fff;
     text-align: center;
-    background: linear-gradient(to right, #293176, #0092ff); /* Fondo degradado */
+    background: linear-gradient(to right, #562976, #fb00ff); /* Fondo degradado */
     overflow: hidden; /* Oculta el texto que se desborda del contenedor */
     white-space: nowrap; /* Evita que el texto se ajuste en múltiples líneas */
     text-overflow: ellipsis; /* Muestra puntos suspensivos si el texto es demasiado largo */
@@ -465,26 +465,26 @@ label {
     align-self: center;
     cursor: pointer;
 }
-.lang a:link,
-.lang a:visited,
-.lang a:hover,
-.lang a:active {
-    color: red !important;
-}
+    .lang a:link,
+    .lang a:visited,
+    .lang a:hover,
+    .lang a:active {
+        color: #00ffff !important;
+    }
 
 a {
-    color: red; /* Texto rojo */
+    color: #00ffff; /* Texto rojo */
     font-weight: bold;
     text-decoration: none;
     cursor: pointer;
 }
 
     a:hover {
-        color: red;
+        color: #00ffff;
     }
 
     a:visited {
-        color: red;
+        color: #00ffff;
     }
 
 /* Estilos para la barra de navegación y pestañas */
@@ -494,7 +494,7 @@ a {
 
 /* Estilo para el fondo de la barra de navegación */
 .navbar {
-    background: linear-gradient(to right, #293176, #0092ff); /* Degradado de colores púrpuras y rosas */
+    background: linear-gradient(to right, #562976, #fb00ff); /* Degradado de colores púrpuras y rosas */
     border: none; /* Borde blanco */
 }
 
