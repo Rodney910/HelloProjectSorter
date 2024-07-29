@@ -541,9 +541,6 @@ function result(imageNum = 50) {
             if (tiedDataList[characterIndex] === finalSortedIndexes[idx + 1]) {
                 tiedRankNum++;
             } else {
-                if (rankNum === 1) {
-                    currentRowSize = tiedRankNum;
-                }
                 rankNum += tiedRankNum;
                 tiedRankNum = 1;
             }
