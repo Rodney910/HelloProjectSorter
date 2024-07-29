@@ -575,7 +575,7 @@ a {
 }
 
 /* Estilos generales para las imágenes y botones en móviles */
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1290px) {
 
     .image-container {
         height: auto;

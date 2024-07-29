@@ -106,7 +106,7 @@ function init() {
   document.querySelector('.image.selector').insertAdjacentElement('beforeend', document.createElement('select'));
 
   /** Initialize image quantity selector for results. */
-  for (let i = 15; i <= 100; i++) {
+  for (let i = 0; i <= 200; i++) {
     const select = document.createElement('option');
     select.value = i;
     select.text = i;
@@ -469,9 +469,9 @@ function progressBar(indicator, percentage) {
 /**
  * Shows the result of the sorter.
  * 
- * @param {number} [imageNum=3] Number of images to display. Defaults to 3.
+ * @param {number} [imageNum=50] Number of images to display. Defaults to 3.
  */
-function result(imageNum = 15) {
+function result(imageNum = 50) {
     document.querySelectorAll('.finished.button').forEach(el => el.style.display = 'block');
     document.querySelector('.image.selector').style.display = 'block';
     document.querySelector('.time.taken').style.display = 'block';
@@ -541,6 +541,9 @@ function result(imageNum = 15) {
             if (tiedDataList[characterIndex] === finalSortedIndexes[idx + 1]) {
                 tiedRankNum++;
             } else {
+                if (rankNum === 1) {
+                    currentRowSize = tiedRankNum;
+                }
                 rankNum += tiedRankNum;
                 tiedRankNum = 1;
             }
@@ -708,7 +711,7 @@ function setLatestDataset() {
 function populateOptions() {
     const optList = document.querySelector('.options');
 
-    // Función para insertar opciones con imágenes
+    // Función para insertar sub-opciones con imágenes
     const optInsert = (name, id, img, tooltip, checked = true, disabled = false) => {
         return `
             <div class="option-item">
@@ -717,6 +720,19 @@ function populateOptions() {
                     <div class="image-wrapper">
             <img src="${imageRoot + img}" alt="${name}" class="option-image">
             <div class="option-text">${name}</div>
+        </div>
+                </label>
+            </div>`;
+    };
+
+    // Función para insertar sub-opciones sin imágenes
+    const optInsertNo = (name, id, img, tooltip, checked = true, disabled = false) => {
+        return `
+            <div class="option-item" style="margin-top: 30px">
+                <label title="${tooltip ? tooltip : name}">
+                    <input id="cb-${id}" type="checkbox" ${checked ? 'checked' : ''} ${disabled ? 'disabled' : ''} class="option-checkbox">
+                    <div class="image-wrapper">
+            <div class="option-text2">${name}</div>
         </div>
                 </label>
             </div>`;
@@ -743,7 +759,12 @@ function populateOptions() {
             optList.insertAdjacentHTML('beforeend', optInsertLarge(opt.name, opt.key, opt.tooltip, opt.checked));
             opt.sub.forEach((subopt, subindex) => {
                 // Insert sub-options with images
-                optList.insertAdjacentHTML('beforeend', optInsert(subopt.name, `${opt.key}-${subindex}`, subopt.img, subopt.tooltip, subopt.checked, opt.checked === false));
+                if (subopt.img === "") {
+                    optList.insertAdjacentHTML('beforeend', optInsertNo(subopt.name, `${opt.key}-${subindex}`, subopt.tooltip, subopt.checked, opt.checked === false));
+                }
+                else {
+                    optList.insertAdjacentHTML('beforeend', optInsert(subopt.name, `${opt.key}-${subindex}`, subopt.img, subopt.tooltip, subopt.checked, opt.checked === false));
+                }
             });
             optList.insertAdjacentHTML('beforeend', '<hr>');
 
@@ -757,11 +778,16 @@ function populateOptions() {
                 });
             });
         } else {
+            if (subopt.img === "")
+            {
+                optList.insertAdjacentHTML('beforeend', optInsertNo(opt.name, opt.key, opt.img, opt.tooltip, opt.checked));
+            }
             // Insert single option with image
             optList.insertAdjacentHTML('beforeend', optInsert(opt.name, opt.key, opt.img, opt.tooltip, opt.checked));
         }
     });
 }
+
 
 
 // Asegúrate de llamar a setLatestDataset() y luego a populateOptions() en tu código

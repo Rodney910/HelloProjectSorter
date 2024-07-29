@@ -260,6 +260,23 @@ header {
         opacity: 0.7;
     }
 
+    .option-checkbox:checked + .image-wrapper .option-text2 {
+        border: 3px solid #00ff00;
+        opacity: 0.7;
+    }
+
+.option-text2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 210px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
 .option-text {
     position: absolute;
     bottom: 0;

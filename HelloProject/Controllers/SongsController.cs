@@ -6,7 +6,12 @@ namespace HelloProject.Controllers
     public class SongsController : Controller
     {
         // GET: SongsController
-        public ActionResult Index()
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult JpIndex()
         {
             return View();
         }
