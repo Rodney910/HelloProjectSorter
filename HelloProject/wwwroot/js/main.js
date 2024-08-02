@@ -644,36 +644,31 @@ function generateImage() {
     const tzoffset = (new Date()).getTimezoneOffset() * 60000;
     const filename = 'sort-' + (new Date(timeFinished - tzoffset)).toISOString().slice(0, -5).replace('T', '(') + ').png';
 
-    var scale = 2;
+    // Calcula las dimensiones del contenedor .result
+    const containerWidth = resultContainer.offsetWidth;
+    const containerHeight = resultContainer.offsetHeight;
 
-    domtoimage.toPng(resultContainer, {
+    html2canvas(resultContainer, {
+        width: containerWidth,
+        height: containerHeight,
+        scale: 2 // Usa la relación de píxeles de la pantalla para alta resolución
+    }).then(canvas => {
+        const dataURL = canvas.toDataURL();
+        const imgButton = document.querySelector('.finished.getimg.button');
+        const resetButton = document.createElement('a');
 
-        width: resultContainer.offsetWidth * scale,
-        height: resultContainer.offsetHeight * scale,
-        style: {
-            'transform': 'scale(' + scale + ')',
-            'transform-origin': 'top left',
-        }
-    })
-        .then(dataUrl => {
-            const imgButton = document.querySelector('.finished.getimg.button');
-            const resetButton = document.createElement('a');
+        imgButton.removeEventListener('click', generateImage);
+        imgButton.innerHTML = '';
+        imgButton.insertAdjacentHTML('beforeend', `<a href="${dataURL}" download="${filename}">Download Image</a><br><br>`);
 
-            imgButton.removeEventListener('click', generateImage);
-            imgButton.innerHTML = '';
-            imgButton.insertAdjacentHTML('beforeend', `<a href="${dataUrl}" download="${filename}">Download Image</a><br><br>`);
-
-            resetButton.insertAdjacentText('beforeend', 'Reset');
-            resetButton.addEventListener('click', (event) => {
-                imgButton.addEventListener('click', generateImage);
-                imgButton.innerHTML = 'Generate Image';
-                event.stopPropagation();
-            });
-            imgButton.insertAdjacentElement('beforeend', resetButton);
-        })
-        .catch(error => {
-            console.error('Error generating image:', error);
+        resetButton.insertAdjacentText('beforeend', 'Reset');
+        resetButton.addEventListener('click', (event) => {
+            imgButton.addEventListener('click', generateImage);
+            imgButton.innerHTML = 'Generate Image';
+            event.stopPropagation();
         });
+        imgButton.insertAdjacentElement('beforeend', resetButton);
+    });
 }
 
 
