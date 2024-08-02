@@ -69,7 +69,7 @@ function init() {
   
   document.querySelector('.finished.save.button').addEventListener('click', () => saveProgress('Last Result'));
   document.querySelector('.finished.getimg.button').addEventListener('click', generateImage);
-  /*document.querySelector('.finished.list.button').addEventListener('click', generateTextList);*/
+  document.querySelector('.finished.list.button').addEventListener('click', generateTextList);
 
   document.querySelector('.clearsave').addEventListener('click', clearProgress);
 
@@ -493,7 +493,7 @@ function result(imageNum = 50) {
     const imgRes = (char, num) => {
         const charName = reduceTextWidth(char.name, 'Arial 12px', 160);
         const charTooltip = char.name !== charName ? char.name : '';
-        return `<div class="result-grid-item">
+        return `<div class="result-grid-item" style="border-color: ${char.color};">
             <img src="${char.img}">
             <div class="result-info">
                 <div class="result-name" title="${charTooltip}"><b>${num}.</b>${charName}</div>
@@ -504,7 +504,7 @@ function result(imageNum = 50) {
     const res = (char, num) => {
         const charName = reduceTextWidth(char.name, 'Arial 12px', 160);
         const charTooltip = char.name !== charName ? char.name : '';
-        return `<div class="result-grid-item">
+        return `<div class="result-grid-item" style="border-color: ${char.color};">
             <div class="result-info">
                 <div class="result-rank">${num}</div>
                 <div class="result-name" title="${charTooltip}">${charName}</div>
@@ -530,6 +530,8 @@ function result(imageNum = 50) {
     characterDataToSort.forEach((val, idx) => {
         const characterIndex = finalSortedIndexes[idx];
         const character = characterDataToSort[characterIndex];
+
+        finalCharacters.push({ rank: rankNum, name: character.name, color: character.color });
 
         if (imageDisplay-- > 0) {
             rowItems.push(imgRes(character, rankNum));
@@ -642,42 +644,106 @@ function generateImage() {
     const tzoffset = (new Date()).getTimezoneOffset() * 60000;
     const filename = 'sort-' + (new Date(timeFinished - tzoffset)).toISOString().slice(0, -5).replace('T', '(') + ').png';
 
-    // Calcula las dimensiones del contenedor .result
-    const containerWidth = resultContainer.offsetWidth;
-    const containerHeight = resultContainer.offsetHeight;
+    var scale = 2;
 
-    html2canvas(resultContainer, {
-        width: containerWidth,
-        height: containerHeight,
-        scale: 2 // Usa la relación de píxeles de la pantalla para alta resolución
-    }).then(canvas => {
-        const dataURL = canvas.toDataURL();
-        const imgButton = document.querySelector('.finished.getimg.button');
-        const resetButton = document.createElement('a');
+    domtoimage.toPng(resultContainer, {
 
-        imgButton.removeEventListener('click', generateImage);
-        imgButton.innerHTML = '';
-        imgButton.insertAdjacentHTML('beforeend', `<a href="${dataURL}" download="${filename}">Download Image</a><br><br>`);
+        width: resultContainer.offsetWidth * scale,
+        height: resultContainer.offsetHeight * scale,
+        style: {
+            'transform': 'scale(' + scale + ')',
+            'transform-origin': 'top left',
+        }
+    })
+        .then(dataUrl => {
+            const imgButton = document.querySelector('.finished.getimg.button');
+            const resetButton = document.createElement('a');
 
-        resetButton.insertAdjacentText('beforeend', 'Reset');
-        resetButton.addEventListener('click', (event) => {
-            imgButton.addEventListener('click', generateImage);
-            imgButton.innerHTML = 'Generate Image';
-            event.stopPropagation();
+            imgButton.removeEventListener('click', generateImage);
+            imgButton.innerHTML = '';
+            imgButton.insertAdjacentHTML('beforeend', `<a href="${dataUrl}" download="${filename}">Download Image</a><br><br>`);
+
+            resetButton.insertAdjacentText('beforeend', 'Reset');
+            resetButton.addEventListener('click', (event) => {
+                imgButton.addEventListener('click', generateImage);
+                imgButton.innerHTML = 'Generate Image';
+                event.stopPropagation();
+            });
+            imgButton.insertAdjacentElement('beforeend', resetButton);
+        })
+        .catch(error => {
+            console.error('Error generating image:', error);
         });
-        imgButton.insertAdjacentElement('beforeend', resetButton);
-    });
 }
 
 
 function generateTextList() {
-  const data = finalCharacters.reduce((str, char) => {
-    str += `${char.rank}. ${char.name}<br>`;
-    return str;
-  }, '');
-  const oWindow = window.open("", "", "height=640,width=480");
-  oWindow.document.write(data);
+    const data = finalCharacters.reduce((str, char) => {
+        // Usar el color del personaje para el fondo
+        const charColor = char.color || '#fff'; // Usar color predeterminado si no se proporciona
+
+        str += `
+      <div class="character-container">
+        <div class="character-rank" style="background-color: ${charColor};">${char.rank}</div>
+        <div class="character-name" style="background-color: ${charColor};">${char.name}</div>
+      </div><br>`;
+        return str;
+    }, '');
+
+    const oWindow = window.open("", "", "height=640,width=480");
+    oWindow.document.write(`
+    <html>
+      <head>
+        <style>
+          body {
+            background-color: #fff;
+            color: #fff;
+            font-family: Arial, sans-serif;
+          }
+          .character-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0px;
+          }
+          .character-rank, .character-name {
+            border: 2px solid #000;
+            padding: 2px 5px;
+            margin: 2px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 
+  1px 0 0 #000, 
+  0 1px 0 #000, 
+  -1px 0 0 #000, 
+  0 -1px 0 #000, 
+  1px 1px 0 #000, 
+  -1px -1px 0 #000, 
+  1px -1px 0 #000, 
+  -1px 1px 0 #000,
+  2px 0 0 #000,
+  -2px 0 0 #000,
+  0 2px 0 #000,
+  0 -2px 0 #000,
+  2px 2px 0 #000,
+  -2px -2px 0 #000,
+  2px -2px 0 #000,
+  -2px 2px 0 #000;
+          }
+          .character-rank {
+            margin-right: 5px;
+          }
+          .character-name {
+            white-space: nowrap;
+          }
+        </style>
+      </head>
+      <body>
+        ${data}
+      </body>
+    </html>
+  `);
 }
+
 
 function generateSavedata() {
   const saveData = `${timeError?'|':''}${timestamp}|${timeTaken}|${choices}|${optStr}${suboptStr}`;
