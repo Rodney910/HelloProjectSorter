@@ -649,6 +649,7 @@ function generateImage() {
     const containerHeight = resultContainer.offsetHeight;
 
     html2canvas(resultContainer, {
+        useCORS: true,
         width: containerWidth,
         height: containerHeight,
         scale: 2 // Usa la relación de píxeles de la pantalla para alta resolución
@@ -674,12 +675,69 @@ function generateImage() {
 
 function generateTextList() {
     const data = finalCharacters.reduce((str, char) => {
-        str += `${char.rank}. ${char.name}<br>`;
+        // Usar el color del personaje para el fondo
+        const charColor = char.color || '#fff'; // Usar color predeterminado si no se proporciona
+
+        str += `
+      <div class="character-container">
+        <div class="character-rank" style="background-color: ${charColor};">${char.rank}</div>
+        <div class="character-name" style="background-color: ${charColor};">${char.name}</div>
+      </div><br>`;
         return str;
     }, '');
 
     const oWindow = window.open("", "", "height=640,width=480");
-    oWindow.document.write(data);
+    oWindow.document.write(`
+    <html>
+      <head>
+        <style>
+          body {
+            background-color: #fff;
+            color: #fff;
+            font-family: Arial, sans-serif;
+          }
+          .character-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0px;
+          }
+          .character-rank, .character-name {
+            border: 2px solid #000;
+            padding: 2px 5px;
+            margin: 2px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 
+  1px 0 0 #000, 
+  0 1px 0 #000, 
+  -1px 0 0 #000, 
+  0 -1px 0 #000, 
+  1px 1px 0 #000, 
+  -1px -1px 0 #000, 
+  1px -1px 0 #000, 
+  -1px 1px 0 #000,
+  2px 0 0 #000,
+  -2px 0 0 #000,
+  0 2px 0 #000,
+  0 -2px 0 #000,
+  2px 2px 0 #000,
+  -2px -2px 0 #000,
+  2px -2px 0 #000,
+  -2px 2px 0 #000;
+          }
+          .character-rank {
+            margin-right: 5px;
+          }
+          .character-name {
+            white-space: nowrap;
+          }
+        </style>
+      </head>
+      <body>
+        ${data}
+      </body>
+    </html>
+  `);
 }
 
 

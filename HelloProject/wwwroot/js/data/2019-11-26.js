@@ -952,25 +952,25 @@ dataSet[dataSetVersion].characterData = [
 
     //A Sides
 
-    { name: "Dosukoi! Kenkyo ni Daitan", img: "KBSFTRMS01.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "Ramen Daisuki Koizumi-san no Uta", img: "KBSFTRMS02.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "Nen ni wa Nen (Nen'iri Ver.)", img: "KBSFTRMS03.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "Sakura Night Fever", img: "KBSFTRMS04.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "Chotto Guchoku ni! Chototsu Moushin", img: "KBSFTRMS05.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "Osu! Kobushi Tamashii", img: "KBSFTRMS06.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "Samba! Kobushi Janeiro", img: "KBSFTRMS07.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "Bacchikoi Seishun!", img: "KBSFTRMS08.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "Ora wa Ninkimono", img: "KBSFTRMS09.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "Shalala! Yareru Hazu sa", img: "KBSFTRMS10.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "Ee ja nai ka Ninja nai ka", img: "KBSFTRMS11.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "Kore Kara da!", img: "KBSFTRMS12.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "Ashita Tenki ni Naare", img: "KBSFTRMS13.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "Kitto Watashi wa", img: "KBSFTRMS14.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "Naseba Naru", img: "KBSFTRMS15.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "Oh No Ounou", img: "KBSFTRMS16.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "Haru Urara", img: "KBSFTRMS17.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "Seishun no Hana", img: "KBSFTRMS18.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "Start Line", img: "KBSFTRMS19.jpg", group: ["kobushi"], include: ["aside"] },
+    { name: "Dosukoi! Kenkyo ni Daitan", img: "KBSFTRMS01.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "Ramen Daisuki Koizumi-san no Uta", img: "KBSFTRMS02.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "Nen ni wa Nen (Nen'iri Ver.)", img: "KBSFTRMS03.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "Sakura Night Fever", img: "KBSFTRMS04.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "Chotto Guchoku ni! Chototsu Moushin", img: "KBSFTRMS05.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "Osu! Kobushi Tamashii", img: "KBSFTRMS06.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "Samba! Kobushi Janeiro", img: "KBSFTRMS07.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "Bacchikoi Seishun!", img: "KBSFTRMS08.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "Ora wa Ninkimono", img: "KBSFTRMS09.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "Shalala! Yareru Hazu sa", img: "KBSFTRMS10.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "Ee ja nai ka Ninja nai ka", img: "KBSFTRMS11.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "Kore Kara da!", img: "KBSFTRMS12.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "Ashita Tenki ni Naare", img: "KBSFTRMS13.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "Kitto Watashi wa", img: "KBSFTRMS14.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "Naseba Naru", img: "KBSFTRMS15.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "Oh No Ounou", img: "KBSFTRMS16.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "Haru Urara", img: "KBSFTRMS17.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "Seishun no Hana", img: "KBSFTRMS18.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "Start Line", img: "KBSFTRMS19.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
 
     //Albums
 
@@ -999,26 +999,26 @@ dataSet[dataSetVersion].characterData = [
 
     //A Sides
 
-    { name: "Itooshikutte Gomen ne", img: "CTGRLSMS01.jpg", group: ["country"], include: ["aside"] },
-    { name: "Koi Dorobou", img: "CTGRLSMS02.jpg", group: ["country"], include: ["aside"] },
-    { name: "Wakatteiru no ni Gomen ne", img: "CTGRLSMS03.jpg", group: ["country"], include: ["aside"] },
-    { name: "Tamerai Summer Time", img: "CTGRLSMS04.jpg", group: ["country"], include: ["aside"] },
-    { name: "Boogie Woogie LOVE", img: "CTGRLSMS05.jpg", group: ["country"], include: ["aside"] },
-    { name: "Koi wa Magnet", img: "CTGRLSMS06.jpg", group: ["country"], include: ["aside"] },
-    { name: "Ranrarun ~Anata ni Muchuu~", img: "CTGRLSMS07.jpg", group: ["country"], include: ["aside"] },
-    { name: "Dou Datte Ii no", img: "CTGRLSMS08.jpg", group: ["country"], include: ["aside"] },
-    { name: "Namida no Request", img: "CTGRLSMS09.jpg", group: ["country"], include: ["aside"] },
-    { name: "Good Boy Bad Girl", img: "CTGRLSMS10.jpg", group: ["country"], include: ["aside"] },
-    { name: "Peanut Butter Jelly Love", img: "CTGRLSMS11.jpg", group: ["country"], include: ["aside"] },
+    { name: "Itooshikutte Gomen ne", img: "CTGRLSMS01.jpg", opts: { group: ["country"], include: ["aside"] } },
+    { name: "Koi Dorobou", img: "CTGRLSMS02.jpg", opts: { group: ["country"], include: ["aside"] } },
+    { name: "Wakatteiru no ni Gomen ne", img: "CTGRLSMS03.jpg", opts: { group: ["country"], include: ["aside"] } },
+    { name: "Tamerai Summer Time", img: "CTGRLSMS04.jpg", opts: { group: ["country"], include: ["aside"] } },
+    { name: "Boogie Woogie LOVE", img: "CTGRLSMS05.jpg", opts: { group: ["country"], include: ["aside"] } },
+    { name: "Koi wa Magnet", img: "CTGRLSMS06.jpg", opts: { group: ["country"], include: ["aside"] } },
+    { name: "Ranrarun ~Anata ni Muchuu~", img: "CTGRLSMS07.jpg", opts: { group: ["country"], include: ["aside"] } },
+    { name: "Dou Datte Ii no", img: "CTGRLSMS08.jpg", opts: { group: ["country"], include: ["aside"] } },
+    { name: "Namida no Request", img: "CTGRLSMS09.jpg", opts: { group: ["country"], include: ["aside"] } },
+    { name: "Good Boy Bad Girl", img: "CTGRLSMS10.jpg", opts: { group: ["country"], include: ["aside"] } },
+    { name: "Peanut Butter Jelly Love", img: "CTGRLSMS11.jpg", opts: { group: ["country"], include: ["aside"] } },
 
     //Digital songs
 
-    { name: "Kaite wa Keshite no \"I Love You\"", img: "CTGRLSDS01.jpg", group: ["country"], include: ["digitalsong"] },
-    { name: "Konamaiki Girl", img: "CTGRLSDS02.jpg", group: ["country"], include: ["digitalsong"] },
-    { name: "Matenai After Five", img: "CTGRLSDS03.jpg", group: ["country"], include: ["digitalsong"] },
-    { name: "Kasa wo Sasu Senpai", img: "CTGRLSDS04.jpg", group: ["country"], include: ["digitalsong"] },
-    { name: "One Summer Night ~Manatsu no Kesshin~", img: "CTGRLSDS05.jpg", group: ["country"], include: ["digitalsong"] },
-    { name: "Natsuiro no Palette", img: "CTGRLSDS06.jpg", group: ["country"], include: ["digitalsong"] },
+    { name: "Kaite wa Keshite no \"I Love You\"", img: "CTGRLSDS01.jpg", opts: { group: ["country"], include: ["digitalsong"] } },
+    { name: "Konamaiki Girl", img: "CTGRLSDS02.jpg", opts: { group: ["country"], include: ["digitalsong"] } },
+    { name: "Matenai After Five", img: "CTGRLSDS03.jpg", opts: { group: ["country"], include: ["digitalsong"] } },
+    { name: "Kasa wo Sasu Senpai", img: "CTGRLSDS04.jpg", opts: { group: ["country"], include: ["digitalsong"] } },
+    { name: "One Summer Night ~Manatsu no Kesshin~", img: "CTGRLSDS05.jpg", opts: { group: ["country"], include: ["digitalsong"] } },
+    { name: "Natsuiro no Palette", img: "CTGRLSDS06.jpg", opts: { group: ["country"], include: ["digitalsong"] } },
 
     //Albums
 

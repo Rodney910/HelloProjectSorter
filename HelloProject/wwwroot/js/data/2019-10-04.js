@@ -951,25 +951,25 @@ dataSet[dataSetVersion].characterData = [
 
     //A Sides
 
-    { name: "ドスコイ!ケンキョにダイタン", img: "KBSFTRMS01.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "ラーメン大好き小泉さんの唄", img: "KBSFTRMS02.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "念には念（念入りVer.）", img: "KBSFTRMS03.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "桜ナイトフィーバー", img: "KBSFTRMS04.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "チョット愚直に!猪突猛進", img: "KBSFTRMS05.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "押忍!こぶし魂", img: "KBSFTRMS06.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "サンバ!こぶしジャネイロ", img: "KBSFTRMS07.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "バッチ来い青春!", img: "KBSFTRMS08.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "オラはにんきもの", img: "KBSFTRMS09.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "シャララ!やれるはずさ", img: "KBSFTRMS10.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "エエジャナイカ ニンジャナイカ", img: "KBSFTRMS11.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "これからだ!", img: "KBSFTRMS12.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "明日テンキになあれ", img: "KBSFTRMS13.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "きっと私は", img: "KBSFTRMS14.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "ナセバナル", img: "KBSFTRMS15.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "Oh No 懊悩", img: "KBSFTRMS16.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "ハルウララ", img: "KBSFTRMS17.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "青春の花", img: "KBSFTRMS18.jpg", group: ["kobushi"], include: ["aside"] },
-    { name: "スタートライン", img: "KBSFTRMS19.jpg", group: ["kobushi"], include: ["aside"] },
+    { name: "ドスコイ!ケンキョにダイタン", img: "KBSFTRMS01.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "ラーメン大好き小泉さんの唄", img: "KBSFTRMS02.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "念には念（念入りVer.）", img: "KBSFTRMS03.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "桜ナイトフィーバー", img: "KBSFTRMS04.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "チョット愚直に!猪突猛進", img: "KBSFTRMS05.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "押忍!こぶし魂", img: "KBSFTRMS06.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "サンバ!こぶしジャネイロ", img: "KBSFTRMS07.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "バッチ来い青春!", img: "KBSFTRMS08.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "オラはにんきもの", img: "KBSFTRMS09.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "シャララ!やれるはずさ", img: "KBSFTRMS10.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "エエジャナイカ ニンジャナイカ", img: "KBSFTRMS11.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "これからだ!", img: "KBSFTRMS12.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "明日テンキになあれ", img: "KBSFTRMS13.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "きっと私は", img: "KBSFTRMS14.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "ナセバナル", img: "KBSFTRMS15.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "Oh No 懊悩", img: "KBSFTRMS16.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "ハルウララ", img: "KBSFTRMS17.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "青春の花", img: "KBSFTRMS18.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
+    { name: "スタートライン", img: "KBSFTRMS19.jpg", opts: { group: ["kobushi"], include: ["aside"] } },
 
     //Albums
 
@@ -998,26 +998,26 @@ dataSet[dataSetVersion].characterData = [
 
     //A Sides
 
-    { name: "愛おしくってごめんね", img: "CTGRLSMS01.jpg", group: ["country"], include: ["aside"] },
-    { name: "恋泥棒", img: "CTGRLSMS02.jpg", group: ["country"], include: ["aside"] },
-    { name: "わかっているのにごめんね", img: "CTGRLSMS03.jpg", group: ["country"], include: ["aside"] },
-    { name: "ためらいサマータイム", img: "CTGRLSMS04.jpg", group: ["country"], include: ["aside"] },
-    { name: "ブギウギLOVE", img: "CTGRLSMS05.jpg", group: ["country"], include: ["aside"] },
-    { name: "恋はマグネット", img: "CTGRLSMS06.jpg", group: ["country"], include: ["aside"] },
-    { name: "ランラルン〜あなたに夢中〜", img: "CTGRLSMS07.jpg", group: ["country"], include: ["aside"] },
-    { name: "どーだっていいの", img: "CTGRLSMS08.jpg", group: ["country"], include: ["aside"] },
-    { name: "涙のリクエスト", img: "CTGRLSMS09.jpg", group: ["country"], include: ["aside"] },
-    { name: "Good Boy Bad Girl", img: "CTGRLSMS10.jpg", group: ["country"], include: ["aside"] },
-    { name: "ピーナッツバタージェリーラブ", img: "CTGRLSMS11.jpg", group: ["country"], include: ["aside"] },
+    { name: "愛おしくってごめんね", img: "CTGRLSMS01.jpg", opts: { group: ["country"], include: ["aside"] } },
+    { name: "恋泥棒", img: "CTGRLSMS02.jpg", opts: { group: ["country"], include: ["aside"] } },
+    { name: "わかっているのにごめんね", img: "CTGRLSMS03.jpg", opts: { group: ["country"], include: ["aside"] } },
+    { name: "ためらいサマータイム", img: "CTGRLSMS04.jpg", opts: { group: ["country"], include: ["aside"] } },
+    { name: "ブギウギLOVE", img: "CTGRLSMS05.jpg", opts: { group: ["country"], include: ["aside"] } },
+    { name: "恋はマグネット", img: "CTGRLSMS06.jpg", opts: { group: ["country"], include: ["aside"] } },
+    { name: "ランラルン〜あなたに夢中〜", img: "CTGRLSMS07.jpg", opts: { group: ["country"], include: ["aside"] } },
+    { name: "どーだっていいの", img: "CTGRLSMS08.jpg", opts: { group: ["country"], include: ["aside"] } },
+    { name: "涙のリクエスト", img: "CTGRLSMS09.jpg", opts: { group: ["country"], include: ["aside"] } },
+    { name: "Good Boy Bad Girl", img: "CTGRLSMS10.jpg", opts: { group: ["country"], include: ["aside"] } },
+    { name: "ピーナッツバタージェリーラブ", img: "CTGRLSMS11.jpg", opts: { group: ["country"], include: ["aside"] } },
 
     //Digital songs
 
-    { name: "書いては消しての “I Love You”", img: "CTGRLSDS01.jpg", group: ["country"], include: ["digitalsong"] },
-    { name: "小生意気ガール", img: "CTGRLSDS02.jpg", group: ["country"], include: ["digitalsong"] },
-    { name: "待てないアフターファイブ", img: "CTGRLSDS03.jpg", group: ["country"], include: ["digitalsong"] },
-    { name: "傘をさす先輩", img: "CTGRLSDS04.jpg", group: ["country"], include: ["digitalsong"] },
-    { name: "One Summer Night〜真夏の決心〜", img: "CTGRLSDS05.jpg", group: ["country"], include: ["digitalsong"] },
-    { name: "夏色のパレット", img: "CTGRLSDS06.jpg", group: ["country"], include: ["digitalsong"] },
+    { name: "書いては消しての “I Love You”", img: "CTGRLSDS01.jpg", opts: { group: ["country"], include: ["digitalsong"] } },
+    { name: "小生意気ガール", img: "CTGRLSDS02.jpg", opts: { group: ["country"], include: ["digitalsong"] } },
+    { name: "待てないアフターファイブ", img: "CTGRLSDS03.jpg", opts: { group: ["country"], include: ["digitalsong"] } },
+    { name: "傘をさす先輩", img: "CTGRLSDS04.jpg", opts: { group: ["country"], include: ["digitalsong"] } },
+    { name: "One Summer Night〜真夏の決心〜", img: "CTGRLSDS05.jpg", opts: { group: ["country"], include: ["digitalsong"] } },
+    { name: "夏色のパレット", img: "CTGRLSDS06.jpg", opts: { group: ["country"], include: ["digitalsong"] } },
 
     //Albums
 
