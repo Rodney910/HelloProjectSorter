@@ -645,22 +645,41 @@ function generateImage() {
     const filename = 'sort-' + (new Date(timeFinished - tzoffset)).toISOString().slice(0, -5).replace('T', '(') + ').png';
 
     // Calcula las dimensiones del contenedor .result
-    const containerWidth = resultContainer.offsetWidth;
-    const containerHeight = resultContainer.offsetHeight;
+    const containerWidth = resultContainer.scrollWidth;
+    const containerHeight = resultContainer.scrollHeight;
 
-    html2canvas(resultContainer, {
-        useCORS: true,
-        width: containerWidth,
-        height: containerHeight,
-        scale: 2 // Usa la relación de píxeles de la pantalla para alta resolución
-    }).then(canvas => {
-        const dataURL = canvas.toDataURL();
+    resultContainer.style.boxShadow = 'none';
+    resultContainer.style.marginTop = '0';
+    resultContainer.style.marginBottom = '30px';
+
+    domtoimage.toPng(resultContainer, {
+        width: containerWidth * 2, // Aumenta el ancho para mejorar la calidad
+        height: containerHeight * 2, // Aumenta la altura para mejorar la calidad
+        style: {
+            'transform': 'scale(2)', // Escala el contenido
+            'transform-origin': 'top left', // Asegura que la escala se aplique correctamente
+            'width': containerWidth + 'px', // Ajusta el ancho del contenedor
+            'height': containerHeight + 'px', // Ajusta la altura del contenedor
+        }
+    }).then(dataUrl => {
+        return domtoimage.toPng(resultContainer, {
+            width: containerWidth * 2, // Aumenta el ancho para mejorar la calidad
+            height: containerHeight * 2, // Aumenta la altura para mejorar la calidad
+            style: {
+                'transform': 'scale(2)', // Escala el contenido
+                'transform-origin': 'top left', // Asegura que la escala se aplique correctamente
+                'width': containerWidth + 'px', // Ajusta el ancho del contenedor
+                'height': containerHeight + 'px', // Ajusta la altura del contenedor
+            }
+    });
+    }).then(dataUrl2 => {
+
         const imgButton = document.querySelector('.finished.getimg.button');
         const resetButton = document.createElement('a');
 
         imgButton.removeEventListener('click', generateImage);
         imgButton.innerHTML = '';
-        imgButton.insertAdjacentHTML('beforeend', `<a href="${dataURL}" download="${filename}">Download Image</a><br><br>`);
+        imgButton.insertAdjacentHTML('beforeend', `<a href="${dataUrl2}" download="${filename}">Download Image</a><br><br>`);
 
         resetButton.insertAdjacentText('beforeend', 'Reset');
         resetButton.addEventListener('click', (event) => {
@@ -669,6 +688,8 @@ function generateImage() {
             event.stopPropagation();
         });
         imgButton.insertAdjacentElement('beforeend', resetButton);
+    }).catch(error => {
+        console.error('Error generating image:', error);
     });
 }
 

@@ -369,7 +369,8 @@ label {
     overflow: hidden;
     background: #000; /* Fondo negro para los elementos del grid */
     margin: 0 5px; /* Espacio horizontal entre elementos */
-    outline: 1px solid #000;
+    box-shadow: 0 0 0 1px #000;
+    /*outline: 1px solid #000;*/
 }
 
     .result-grid-item img {
@@ -652,6 +653,8 @@ a {
         margin: 0 2px; /* Ajustar márgenes */
         border-width: 2px;
         border-style: solid;
+        box-shadow: 0 0 0 1px #000;
+        border-radius: 10px;
     }
 
         .result-grid-item img {

@@ -29,7 +29,8 @@ dataSet[dataSetVersion].options = [
             { name: "A Sides", key: "aside", img: "", checked: true },
             { name: "Indie songs", key: "indiesong", img: "", checked: false },
             { name: "Digital songs", key: "digitalsong", img: "", checked: false },
-            { name: "Album songs", key: "album", img: "", checked: false }
+            { name: "Album songs", key: "album", img: "", checked: false },
+            { name: "2024 songs", key: "2024", img: "", checked: false }
         ]
     }
 ];
@@ -947,7 +948,7 @@ dataSet[dataSetVersion].characterData = [
     //Indie songs
 
     { name: "念には念", img: "KBSFTRIS01.jpg", opts: { group: ["kobushi"], include: ["indiesong"] } },
-    { name: "サバイバー", img: "KBSFTRIS02.jpg", opts: { group: ["kobushi"], include: ["indiesong"] } },
+    { name: "サバイバー", img: "KBSFTRIS01.jpg", opts: { group: ["kobushi"], include: ["indiesong"] } },
 
     //A Sides
 
@@ -1015,9 +1016,9 @@ dataSet[dataSetVersion].characterData = [
     { name: "書いては消しての “I Love You”", img: "CTGRLSDS01.jpg", opts: { group: ["country"], include: ["digitalsong"] } },
     { name: "小生意気ガール", img: "CTGRLSDS02.jpg", opts: { group: ["country"], include: ["digitalsong"] } },
     { name: "待てないアフターファイブ", img: "CTGRLSDS03.jpg", opts: { group: ["country"], include: ["digitalsong"] } },
-    { name: "傘をさす先輩", img: "CTGRLSDS04.jpg", opts: { group: ["country"], include: ["digitalsong"] } },
-    { name: "One Summer Night〜真夏の決心〜", img: "CTGRLSDS05.jpg", opts: { group: ["country"], include: ["digitalsong"] } },
-    { name: "夏色のパレット", img: "CTGRLSDS06.jpg", opts: { group: ["country"], include: ["digitalsong"] } },
+    { name: "傘をさす先輩", img: "CTGRLSDS03.jpg", opts: { group: ["country"], include: ["digitalsong"] } },
+    { name: "One Summer Night〜真夏の決心〜", img: "CTGRLSDS04.jpg", opts: { group: ["country"], include: ["digitalsong"] } },
+    { name: "夏色のパレット", img: "CTGRLSDS04.jpg", opts: { group: ["country"], include: ["digitalsong"] } },
 
     //Albums
 

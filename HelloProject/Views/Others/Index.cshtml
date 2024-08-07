@@ -1,9 +1,4 @@
-﻿@{
-    ViewData["Title"] = "Page Not Found";
-}
-
-<!DOCTYPE html>
-
+﻿<!DOCTYPE html>
 <html>
 
 <head>
@@ -13,47 +8,58 @@
     <meta name="og:site_name" content="Hello! Project Sorter">
     <meta name="og:description" content="A simple website for sorting H!P idols in a formatted list.">
     <meta name="og:image" content="https://i.imgur.com/IZzJMk6.jpg">
-@*    <meta http-equiv="Content-Security-Policy" content="default-src 'self' blob: data: gap:; style-src 'self' 'unsafe-inline' blob: data: gap:; script-src 'self' 'unsafe-eval' 'unsafe-inline' blob: data: gap:; object-src 'self' blob: data: gap:; img-src 'self' 'unsafe-inline' blob: data: gap:; connect-src 'self' 'unsafe-inline' blob: data: gap:; frame-src 'self' blob: data: gap: https://embed.music.apple.com;">
-*@    <title>404 - Page Not Found</title>
+    <title>Idol Sorter</title>
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet">
     <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" rel="stylesheet">
     <link href="~/css/styles3.css" rel="stylesheet" type="text/css">
+    <style>
+        .character-list img {
+            max-width: 150px;
+            border: 2px solid #ffffff;
+            border-radius: 10px;
+            margin: 10px;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-12 text-center" style="padding-top: 40px;">
-                <h1 class="display-1">404</h1>
-                <h2>Oops! Page not found</h2>
-                <p>Sorry, but the page you were looking for doesn't exist.</p>
+            <div class="col-12 text-center box" style="padding-top: 40px;">
+                <h1>Idol Sorter</h1>
+                <p>Select a group to see group members:</p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 text-center" style="padding-top:20px;">
-                <div>
-                    <img src="~/assets/icons/MakinoSad.jpg" style="align-content:center;align-items:center;max-width:500px;max-height:500px;border: 2px solid #ffffff;border-radius: 10px;">
+
+        <div class="row" style="justify-content: center;">
+            <div class="col-8 box" style="justify-content: center;">
+                <div id="groupOptions" class="carousel-container">
+                    <button class="carousel-button left" id="carouselLeft">&#9664;</button>
+                    <div class="carousel-wrapper">
+                        <div class="carousel-content"></div>
+                    </div>
+                    <button class="carousel-button right" id="carouselRight">&#9654;</button>
                 </div>
             </div>
         </div>
+
         <div class="row">
-            <div class="col-12 text-center" style="padding-top: 20px;">
-                <div>
-                    <a href="~/" class="button">Return to Home</a>
+            <div class="col-12 text-center box">
+
+                <div id="characterList">
+                    <div class="result-grid-row" id="characterRow">
+                        <!-- Characters will be displayed here -->
+                    </div>
                 </div>
+
             </div>
         </div>
-        <div clas="row">
-            <div class="col-12 justify-content-center">
-                <a class="twitter-timeline" href="https://twitter.com/angerme_upfront?ref_src=twsrc%5Etfw">Tweets by angerme_upfront</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-            </div>
-        </div>
-@*        <div>
-            <h1>Listen to "Ai no Tane" on Apple Music</h1>
-            <iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="200" style="width:100%;max-width:285px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/jp/song/ai-no-tane/278362727?l=en-US"></iframe>
-        </div>*@
     </div>
+
+    <script src="~/js/data.js"></script>
+    <script src="~/js/data/2021-05-09.js"></script>
+    <script src="~/js/showImage.js"></script>
 </body>
 
 </html>

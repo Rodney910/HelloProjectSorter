@@ -215,23 +215,29 @@ header {
 .options {
     font-size: 30px;
     margin: 1em auto;
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en múltiples filas */
     grid-gap: 10px;
     width: 100%;
     max-width: 500px;
 }
 
 .option-item {
-    position: relative;
-    grid-column: span 2;
-    display: flex;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    font-size: 0.5625em;
-    max-width: 210px;
+    flex: 0 0 33.33%; /* Mostrar solo tres elementos a la vez */
+    box-sizing: border-box; /* Asegurar que el borde se incluya en el tamaño del elemento */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    text-align: center;
+    padding: 10px; /* Añadir padding para evitar que el borde se corte */
 }
+
+
+    .option-item.highlighted {
+        transform: scale(1.1); /* Tamaño mayor para el elemento destacado */
+    }
+
+    .option-item:not(.highlighted) {
+        transform: scale(0.9);
+    }
 
 .image-wrapper {
     position: relative;
@@ -260,6 +266,52 @@ header {
         opacity: 0.7;
     }
 
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px 0; /* Añadir relleno para evitar que se corten las opciones */
+}
+
+.carousel-wrapper {
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    position: relative;
+}
+
+.carousel-content {
+    display: flex;
+    transition: transform 0.3s ease;
+    will-change: transform;
+}
+
+
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+    .carousel-button.left {
+        left: 0;
+    }
+
+    .carousel-button.right {
+        right: 0;
+    }
+
+
+
 .option-text {
     position: absolute;
     bottom: 0;
@@ -273,8 +325,8 @@ header {
 }
 
 .large-option-item {
-    grid-column: span 4;
-    font-size: 0.5625em;
+/*    grid-column: span 4;
+*/    font-size: 0.5625em;
     text-align: center;
     max-width: 500px;
     align-items: center;
@@ -329,11 +381,10 @@ label {
 .results {
     margin-top: 5px;
     font-size: 0.75em;
-    display: none;
+    display: flex;
     flex-direction: column;
     align-content: center;
-    width: 100%;
-    max-width: 650px;
+    width: 800px;
     margin: 2em auto;
     background: white;
     padding: 10px;
@@ -341,17 +392,10 @@ label {
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
 }
 
-    .results h2 {
-        font-size: 1.5em;
-        font-weight: bold;
-        color: #7810ef;
-        text-align: center;
-        margin-bottom: 1em;
-    }
-
 .result-grid-row {
     margin-top: 5px;
     display: flex;
+    flex-wrap: wrap; /* Permite que las tarjetas se ajusten en varias filas */
     justify-content: center;
     width: 100%;
 }
@@ -363,11 +407,12 @@ label {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 2px solid black;
+    border: 4px solid; /* Color del borde se añadirá dinámicamente */
     border-radius: 10px;
     overflow: hidden;
     background: #000; /* Fondo negro para los elementos del grid */
-    margin: 0 5px; /* Espacio horizontal entre elementos */
+    margin: 10px; /* Espacio horizontal entre elementos */
+    box-shadow: 0 0 0 1px #000;
 }
 
     .result-grid-item img {
@@ -531,14 +576,12 @@ a {
     }
 
     .options {
-        display: flex;
-        flex-direction: column; /* Coloca los elementos en columna */
-        align-items: center; /* Centra los elementos */
         width: 100%; /* Ancho completo para la sección de opciones */
         margin: 10px auto; /* Espacio alrededor de la sección de opciones */
     }
 
     .option-item {
+        padding: 5px; /* Reducir padding para ajustar el tamaño */
         margin-bottom: 10px; /* Espacio inferior entre opciones */
     }
 
@@ -550,6 +593,12 @@ a {
         .option-item:hover .image-wrapper {
             transform: none;
         }
+
+    .carousel-container {
+        max-width: 420px;
+        margin: 10px auto;
+    }
+
 }
 
 /* Estilos para la barra de progreso en dispositivos móviles */
@@ -633,6 +682,7 @@ a {
     }
 
 }
+
 
 /* Estilos adicionales para pantallas más pequeñas */
 @media screen and (max-width: 1024px) {

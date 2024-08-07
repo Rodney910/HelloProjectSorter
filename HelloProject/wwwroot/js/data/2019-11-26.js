@@ -948,7 +948,7 @@ dataSet[dataSetVersion].characterData = [
     //Indie songs
 
     { name: "Nen ni wa Nen", img: "KBSFTRIS01.jpg", opts: { group: ["kobushi"], include: ["indiesong"] } },
-    { name: "Survivor", img: "KBSFTRIS02.jpg", opts: { group: ["kobushi"], include: ["indiesong"] } },
+    { name: "Survivor", img: "KBSFTRIS01.jpg", opts: { group: ["kobushi"], include: ["indiesong"] } },
 
     //A Sides
 
@@ -1016,9 +1016,9 @@ dataSet[dataSetVersion].characterData = [
     { name: "Kaite wa Keshite no \"I Love You\"", img: "CTGRLSDS01.jpg", opts: { group: ["country"], include: ["digitalsong"] } },
     { name: "Konamaiki Girl", img: "CTGRLSDS02.jpg", opts: { group: ["country"], include: ["digitalsong"] } },
     { name: "Matenai After Five", img: "CTGRLSDS03.jpg", opts: { group: ["country"], include: ["digitalsong"] } },
-    { name: "Kasa wo Sasu Senpai", img: "CTGRLSDS04.jpg", opts: { group: ["country"], include: ["digitalsong"] } },
-    { name: "One Summer Night ~Manatsu no Kesshin~", img: "CTGRLSDS05.jpg", opts: { group: ["country"], include: ["digitalsong"] } },
-    { name: "Natsuiro no Palette", img: "CTGRLSDS06.jpg", opts: { group: ["country"], include: ["digitalsong"] } },
+    { name: "Kasa wo Sasu Senpai", img: "CTGRLSDS03.jpg", opts: { group: ["country"], include: ["digitalsong"] } },
+    { name: "One Summer Night ~Manatsu no Kesshin~", img: "CTGRLSDS04.jpg", opts: { group: ["country"], include: ["digitalsong"] } },
+    { name: "Natsuiro no Palette", img: "CTGRLSDS04.jpg", opts: { group: ["country"], include: ["digitalsong"] } },
 
     //Albums
 
