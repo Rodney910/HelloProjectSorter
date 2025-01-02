@@ -6,10 +6,14 @@ namespace HelloProject.Controllers
     public class OthersController : Controller
     {
         // GET: OthersController
-        public ActionResult Index()
+        public IActionResult Index()
         {
             return View();
         }
 
+        public IActionResult JpIndex()
+        {
+            return View();
+        }
     }
 }

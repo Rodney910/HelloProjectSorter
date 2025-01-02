@@ -1,4 +1,4 @@
-dataSetVersion = "2019-10-04"; // Cambia esto al crear una nueva versión del conjunto de datos en formato YYYY-MM-DD.
+dataSetVersion = "songsK200824"; // Cambia esto al crear una nueva versión del conjunto de datos en formato YYYY-MM-DD.
 dataSet[dataSetVersion] = {};
 
 dataSet[dataSetVersion].options = [
@@ -27,10 +27,12 @@ dataSet[dataSetVersion].options = [
         img: "",
         sub: [
             { name: "A Sides", key: "aside", img: "", checked: true },
+            { name: "B Sides", key: "bside", img: "", checked: false },
             { name: "Indie songs", key: "indiesong", img: "", checked: false },
             { name: "Digital songs", key: "digitalsong", img: "", checked: false },
             { name: "Album songs", key: "album", img: "", checked: false },
-            { name: "2024 songs", key: "2024", img: "", checked: false }
+            { name: "2024 songs", key: "2024", img: "", checked: false },
+            { name: "2024 album songs", key: "a2024", img: "", checked: false }
         ]
     }
 ];
@@ -152,6 +154,83 @@ dataSet[dataSetVersion].characterData = [
     { name: "Neverending Shine", img: "MNMSMISA106.jpg" , opts: { group: ["momusu"], include: ["aside"] } },
     { name: "なんだかセンチメンタルな時の歌", img: "MNMSMISA107.jpg", opts: { group: ["momusu"], include: ["aside", "2024"] } },
     { name: "最KIYOU", img: "MNMSMISA108.jpg", opts: { group: ["momusu"], include: ["aside", "2024"] } },
+
+    //B Sides
+    { name: "A MEMORY OF SUMMER '98", img: "MNMSMISA02.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "例えば", img: "MNMSMISA03.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Happy Night", img: "MNMSMISA04.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Never Forget", img: "MNMSMISA04.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "恋の始発列車", img: "MNMSMISA05.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "忘れらんない", img: "MNMSMISA06.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "21世紀", img: "MNMSMISA07.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "恋はロケンロー", img: "MNMSMISA08.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "通学列車", img: "MNMSMISA09.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "あこがれ My Boy", img: "MNMSMISA10.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "インスピレーション!", img: "MNMSMISA11.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "でっかい宇宙に愛がある", img: "MNMSMISA12.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "ポップコーンラブ!", img: "MNMSMISA13.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "モーニングコーヒー(2002 ver.)", img: "MNMSMISA14.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "ちょっとイカしたPURE BOY", img: "MNMSMISA15.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "純LOVER", img: "MNMSMISA16.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "宝石箱", img: "MNMSMISA17.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Never Forget(Rock ver.)", img: "MNMSMISA18.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "涙にはしたくない", img: "MNMSMISA19.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "恋ING", img: "MNMSMISA20.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "出来る女", img: "MNMSMISA21.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "ファインエモーション!", img: "MNMSMISA22.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "がんばれ 日本 サッカー ファイト!", img: "MNMSMISA23.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "寝坊です。デートなのに…", img: "MNMSMISA24.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "ラヴ&ピィ〜ス!HEROがやって来たっ。", img: "MNMSMISA25.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "NATURE IS GOOD!", img: "MNMSMISA26.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "愛と太陽に包まれて", img: "MNMSMISA27.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "恋は発想 Do The Hustle!", img: "MNMSMISA28.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "チャンス チャンス ブギ", img: "MNMSMISA29.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "わたしがついてる。", img: "MNMSMISA30.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "踊れ!モーニングカレー", img: "MNMSMISA31.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "サヨナラのかわりに", img: "MNMSMISA32.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Hand made CITY", img: "MNMSMISA33.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Please!自由の扉", img: "MNMSMISA34.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "ボン キュッ!ボン キュッ!BOMB GIRL", img: "MNMSMISA35.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "その場面でビビっちゃいけないじゃん!", img: "MNMSMISA36.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "ロマンス", img: "MNMSMISA37.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "弱虫", img: "MNMSMISA38.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "3,2,1 BREAKIN'OUT!", img: "MNMSMISA39.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "秋麗", img: "MNMSMISA40.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "すべては愛の力", img: "MNMSMISA40.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "愛して 愛して 後一分", img: "MNMSMISA41.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "泣き出すかもしれないよ", img: "MNMSMISA42.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "友(とも)", img: "MNMSMISA43.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "愛され過ぎることはないのよ", img: "MNMSMISA44.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "もっと愛してほしいの", img: "MNMSMISA45.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "やめてよ!シンドバッド", img: "MNMSMISA46.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "彼と一緒にお店がしたい!", img: "MNMSMISA47.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "自信持って 夢を持って 飛び立つから", img: "MNMSMISA47.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "悲しき恋のメロディー", img: "MNMSMISA48.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "私がいて 君がいる", img: "MNMSMISA49.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "笑顔に涙〜THANK YOU! DEAR MY FRIENDS〜", img: "MNMSMISA49.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "私の時代!", img: "MNMSMISA50.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "アイサレタイノニ…", img: "MNMSMISA50.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "青春ど真ん中", img: "MNMSMISA50.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Loveイノベーション", img: "MNMSMISA51.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "普通の少女A", img: "MNMSMISA51.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "大好き100万点", img: "MNMSMISA51.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "信念だけは貫き通せ!", img: "MNMSMISA51.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "大好きだから絶対に許さない", img: "MNMSMISA52.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Happy大作戦", img: "MNMSMISA52.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "哀愁ロマンティック", img: "MNMSMISA52.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "私のでっかい花", img: "MNMSMISA52.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "なには友あれ!", img: "MNMSMISA52.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "A B C D E-cha E-chaしたい", img: "MNMSMISA53.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "トキメクトキメケ", img: "MNMSMISA53.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "いつもとおんなじ制服で", img: "MNMSMISA53.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Rockの定義", img: "MNMSMISA53.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "負ける気しない 今夜の勝負", img: "MNMSMISA54.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "坊や", img: "MNMSMISA54.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "ふんわり恋人一年生", img: "MNMSMISA54.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Password is 0 (モリ娘。 ver.)", img: "MNMSMISA62.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "モーニングみそ汁", img: "MNMSMISA81.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Get you!", img: "MNMSMISA81.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Y字路の途中", img: "MNMSMISA88.jpg", opts: { group: ["momusu"], include: ["bside"] } },
 
     //Digital Songs
     { name: "五線譜のたすき", img: "MNMSMDS01.jpg", opts: { group: ["momusu"], include: ["digitalsong"] } },
@@ -314,6 +393,27 @@ dataSet[dataSetVersion].characterData = [
     { name: "Hey! Unfair Baby", img: "MNMSMA16.jpg", opts: { group: ["momusu"], include: ["album"] } },
     { name: "恋愛Destiny～本音を論じたい～", img: "MNMSMA16.jpg", opts: { group: ["momusu"], include: ["album"] } },
 
+    // Professionals - 17th
+    { name: "勇敢なダンス", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album","a2024"] } },
+    { name: "おっちょこちょいなファンタジアロマンス", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album", "a2024"] } },
+    { name: "「恋人」", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album", "a2024"] } },
+    { name: "ムカ好き！", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album", "a2024"] } },
+    { name: "内緒だよ", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album", "a2024"] } },
+    { name: "会えてよかった", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album", "a2024"] } },
+    { name: "幸せ指数 発表されたい", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album", "a2024"] } },
+    { name: "大空に向かって", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album", "a2024"] } },
+
+    //Best Album Songs
+    { name: "Say Yeah! ～もっとミラクルナイト～", img: "MNMSMBA01.jpg", opts: { group: ["momusu"], include: ["album"] } },
+    { name: "YAH! 愛したい!", img: "MNMSMBA02.jpg", opts: { group: ["momusu"], include: ["album"] } },
+    { name: "HELLO TO YOU〜ハロー!プロジェクト10周年記念テーマ〜", img: "MNMSMBA03.jpg", opts: { group: ["momusu"], include: ["album"] } },
+    { name: "ウルフボーイ", img: "MNMSMBA04.jpg", opts: { group: ["momusu"], include: ["album"] } },
+    { name: "I surrender 愛されど愛", img: "MNMSMBA05.jpg", opts: { group: ["momusu"], include: ["album"] } },
+    { name: "恋してみたくて", img: "MNMSMBA05.jpg", opts: { group: ["momusu"], include: ["album"] } },
+    { name: "HEAVY GATE", img: "MNMSMBA06.jpg", opts: { group: ["momusu"], include: ["album"] } },
+    { name: "なんざんしょ そうざんしょ", img: "MNMSMBA06.jpg", opts: { group: ["momusu"], include: ["album"] } },
+    { name: "悲しくなるようなRainy day", img: "MNMSMBA06.jpg", opts: { group: ["momusu"], include: ["album"] } },
+
     /* ANGERME */
 
     //Indie songs
@@ -387,6 +487,8 @@ dataSet[dataSetVersion].characterData = [
     { name: "美々たる一撃", img: "ANGMMS62.jpg", opts: { group: ["angerme"], include: ["aside", "2024"] } },
     { name: "うわさのナルシー", img: "ANGMMS63.jpg", opts: { group: ["angerme"], include: ["aside", "2024"] } },
     { name: "THANK YOU, HELLO GOOD BYE", img: "ANGMMS64.jpg", opts: { group: ["angerme"], include: ["aside", "2024"] } },
+    { name: "初恋、花冷え", img: "ANGMMS65.jpg", opts: { group: ["angerme"], include: ["aside", "2024"] } },
+    { name: "悠々閑々 gonna be alright!!", img: "ANGMMS66.jpg", opts: { group: ["angerme"], include: ["aside", "2024"] } },
 
     //Digital songs
     { name: "マナーモード", img: "ANGMDS01.jpg", opts: { group: ["angerme"], include: ["digitalsong"] } },
@@ -394,6 +496,31 @@ dataSet[dataSetVersion].characterData = [
     { name: "君だけじゃないさ...friends", img: "ANGMDS01.jpg", opts: { group: ["angerme"], include: ["digitalsong"] } },
     { name: "SHAKA SHAKA TO LOVE", img: "ANGMDS02.jpg", opts: { group: ["angerme"], include: ["digitalsong"] } },
     { name: "SHAKA SHAKA #2 LOVE カラフルライフ編", img: "ANGMDS03.jpg", opts: { group: ["angerme"], include: ["digitalsong"] } },
+
+    //B Sides
+    { name: "サンキュ!クレームブリュレの友情", img: "ANGMMS01.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "○○ がんばらなくてもいいんだよ!!", img: "ANGMMS02.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "スマイル美人", img: "ANGMMS02.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "ちょこっとLOVE", img: "ANGMMS03.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "乙女 パスタに感動", img: "ANGMMS04.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "パン屋さんのアルバイト", img: "ANGMMS04.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "恋をしちゃいました!", img: "ANGMMS05.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "初恋の貴方へ", img: "ANGMMS05.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "チュッ！夏パ～ティ", img: "ANGMMS06.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "自転車チリリン", img: "ANGMMS06.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "スマイル音丼", img: "ANGMMS07.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "ボギートレイン’１１", img: "ANGMMS07.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "手を握って歩きたい", img: "ANGMMS08.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "こんにちは こんばんは", img: "ANGMMS08.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "涙GIRL", img: "ANGMMS09.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "チャンス到来", img: "ANGMMS09.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "恋人は心の応援団", img: "ANGMMS10.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "すまいるブルース", img: "ANGMMS10.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "君は自転車　私は電車で帰宅", img: "ANGMMS11.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "私、ちょいとカワイイ裏番長", img: "ANGMMS12.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "どうしよう", img: "ANGMMS13.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "明晩、ギャラクシー劇場で", img: "ANGMMS47.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "うれしいのにね、泣けちゃうわ", img: "ANGMMS65.jpg", opts: { group: ["angerme"], include: ["bside", "2024"] } },
 
     //Albums
 
@@ -435,6 +562,9 @@ dataSet[dataSetVersion].characterData = [
     { name: "Sister Sister", img: "ANGMA04.jpg", opts: { group: ["angerme"], include: ["album"] } },
     { name: "まぁ、いっか！", img: "ANGMA04.jpg", opts: { group: ["angerme"], include: ["album"] } },
     { name: "Forever Friend", img: "ANGMA04.jpg", opts: { group: ["angerme"], include: ["album"] } },
+
+    //Best Album Songs
+    { name: "黄色い自転車とサンドウィッチ", img: "ANGMBA01.jpg", opts: { group: ["angerme"], include: ["album"] } },
 
     /* JUICE=JUICE */
 
@@ -486,6 +616,11 @@ dataSet[dataSetVersion].characterData = [
     { name: "ナイモノラブ", img: "JCJCMS41.jpg", opts: { group: ["juice"], include: ["aside", "2024"] } },
     { name: "おあいこ", img: "JCJCMS42.jpg", opts: { group: ["juice"], include: ["aside", "2024"] } },
 
+    //B Sides
+    { name: "続いていくSTORY (Symphonic Version feat. Karin)", img: "JCJCMS29.jpg", opts: { group: ["juice"], include: ["bside"] } },
+    { name: "Borderline", img: "JCJCMS29.jpg", opts: { group: ["juice"], include: ["bside"] } },
+    { name: "Va-Va-Voom", img: "JCJCMS30.jpg", opts: { group: ["juice"], include: ["bside"] } },
+
     //Digital songs
     { name: "Fiesta! Fiesta!", img: "JCJCDS01.jpg", opts: { group: ["juice"], include: ["digitalsong"] } },
 
@@ -526,6 +661,9 @@ dataSet[dataSetVersion].characterData = [
     { name: "雨の中の口笛", img: "JCJCA03.jpg", opts: { group: ["juice"], include: ["album"] } },
     { name: "プラトニック・プラネット", img: "JCJCA03.jpg", opts: { group: ["juice"], include: ["album"] } },
 
+    //Best Album Songs
+    { name: "ボン・ヴォヤージュ～想いの軌跡～", img: "JCJCBA01.jpg", opts: { group: ["juice"], include: ["album"] } },
+
     /* TSUBAKI FACTORY */
 
     //Indie songs
@@ -565,9 +703,15 @@ dataSet[dataSetVersion].characterData = [
     { name: "勇気 It's my Life！", img: "TBKFTRMS28.jpg", opts: { group: ["tsubaki"], include: ["aside"] } },
     { name: "妄想だけならフリーダム", img: "TBKFTRMS29.jpg", opts: { group: ["tsubaki"], include: ["aside"] } },
     { name: "でも…いいよ", img: "TBKFTRMS30.jpg", opts: { group: ["tsubaki"], include: ["aside"] } },
-    //{ name: "ベイビースパイダー", img: "TBKFTRMS31.jpg", opts: { group: ["tsubaki"], include: ["aside", "2024"] } },
-    //{ name: "青春エクサバイト", img: "TBKFTRMS32.jpg", opts: { group: ["tsubaki"], include: ["aside", "2024"] } },
-    //{ name: "鼓動OK？", img: "TBKFTRMS33.jpg", opts: { group: ["tsubaki"], include: ["aside", "2024"] } },
+    { name: "ベイビースパイダー", img: "TBKFTRMS31.jpg", opts: { group: ["tsubaki"], include: ["aside", "2024"] } },
+    { name: "青春エクサバイト", img: "TBKFTRMS32.jpg", opts: { group: ["tsubaki"], include: ["aside", "2024"] } },
+    { name: "鼓動OK？", img: "TBKFTRMS33.jpg", opts: { group: ["tsubaki"], include: ["aside", "2024"] } },
+
+    //B Sides
+    { name: "もうサイコー！", img: "TBKFTRMS13.jpg", opts: { group: ["tsubaki"], include: ["bside"] } },
+    { name: "Hair up 空へ！", img: "TBKFTRMS16.jpg", opts: { group: ["tsubaki"], include: ["bside"] } },
+    { name: "My Darling ~Do you love me?~", img: "TBKFTRMS17.jpg", opts: { group: ["tsubaki"], include: ["bside"] } },
+    { name: "恋のUFOキャッチャー", img: "TBKFTRMS18.jpg", opts: { group: ["tsubaki"], include: ["bside"] } },
 
     //Albums
 
@@ -589,17 +733,17 @@ dataSet[dataSetVersion].characterData = [
     { name: "ナインティーンの蜃気楼", img: "TBKFTRA02.jpg", opts: { group: ["tsubaki"], include: ["album", "digitalsong"] } },
 
     // 3rd -Moment-
-    { name: "Power Flower ～今こそ一丸となれ～", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "2024"] } },
-    { name: "Stay free & Stay tuned", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "2024"] } },
-    { name: "七分咲きのつづき", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "2024"] } },
-    { name: "EZPZ!!", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "2024"] } },
-    { name: "サマー・チャレンジャー", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "2024"] } },
-    { name: "アマヤドリのエピローグ", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "2024"] } },
-    { name: "アタシリズム", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "2024"] } },
-    { name: "君と僕の絆", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "2024"] } },
-    { name: "You're My Friend feat. KIKI", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "2024"] } },
-    { name: "カッコイイ歌", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "2024"] } },
-    { name: "BE", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "2024"] } },
+    { name: "Power Flower ～今こそ一丸となれ～", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
+    { name: "Stay free & Stay tuned", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
+    { name: "七分咲きのつづき", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
+    { name: "EZPZ!!", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
+    { name: "サマー・チャレンジャー", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
+    { name: "アマヤドリのエピローグ", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
+    { name: "アタシリズム", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
+    { name: "君と僕の絆", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
+    { name: "You're My Friend feat. KIKI", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
+    { name: "カッコイイ歌", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
+    { name: "BE", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
 
     /* BEYOOOOONDS */
 
@@ -617,6 +761,14 @@ dataSet[dataSetVersion].characterData = [
     { name: "灰toダイヤモンド", img: "BYNDSMS11.jpg", opts: { group: ["beyond"], include: ["aside", "2024"] } },
     { name: "Go City Go", img: "BYNDSMS12.jpg", opts: { group: ["beyond"], include: ["aside", "2024"] } },
     { name: "フックの法則", img: "BYNDSMS13.jpg", opts: { group: ["beyond"], include: ["aside", "2024"] } },
+
+    //B Sides
+    { name: "GIRL ZONE", img: "BYNDSMS01.jpg", opts: { group: ["beyond"], include: ["bside"] } },
+    { name: "文化祭実行委員長の恋", img: "BYNDSMS02.jpg", opts: { group: ["beyond"], include: ["bside"] } },
+    { name: "都営大江戸線の六本木駅で抱きしめて", img: "BYNDSMS03.jpg", opts: { group: ["beyond"], include: ["bside"] } },
+    { name: "ヤバイ恋の刃", img: "BYNDSMS04.jpg", opts: { group: ["beyond"], include: ["bside"] } },
+    { name: "ワタシと踊りなさい！", img: "BYNDSMS05.jpg", opts: { group: ["beyond"], include: ["bside"] } },
+    { name: "二年前の横浜駅西口", img: "BYNDSMS06.jpg", opts: { group: ["beyond"], include: ["bside"] } },
 
     //Digital songs
     { name: "フレフレ・エブリデイ", img: "BYNDSDS01.jpg", opts: { group: ["beyond"], include: ["digitalsong", "album"] } },
@@ -659,6 +811,15 @@ dataSet[dataSetVersion].characterData = [
     { name: "オチャノマ マホロバ イコイノバ～昭和も令和もワッチャワチャ～", img: "OCNMMS06.jpg", opts: { group: ["ocha"], include: ["aside"] } },
     { name: "シェケナーレ", img: "OCNMMS07.jpg", opts: { group: ["ocha"], include: ["aside"] } },
     { name: "ヨリドリME DREAM", img: "OCNMMS08.jpg", opts: { group: ["ocha"], include: ["aside"] } },
+    { name: "ちはやぶる", img: "OCNMMS09.jpg", opts: { group: ["ocha"], include: ["aside", "2024"] } },
+    { name: "友達天体図", img: "OCNMMS10.jpg", opts: { group: ["ocha"], include: ["aside", "2024"] } },
+
+    //B Sides
+    { name: "デート前夜狂想曲", img: "OCNMMS01.jpg", opts: { group: ["ocha"], include: ["bside"] } },
+    { name: "Go Your Way", img: "OCNMMS03.jpg", opts: { group: ["ocha"], include: ["bside"] } },
+    { name: "素肌は熱帯夜", img: "OCNMMS04.jpg", opts: { group: ["ocha"], include: ["bside"] } },
+    { name: "Super Duper Sugar Power", img: "OCNMMS09.jpg", opts: { group: ["ocha"], include: ["bside", "2024"] } },
+    { name: "ウットーシー！", img: "OCNMMS10.jpg", opts: { group: ["ocha"], include: ["bside", "2024"] } },
 
     //Digital songs
     { name: "ラーメン大好き小泉さんの唄", img: "OCNMDS01.jpg", opts: { group: ["ocha"], include: ["digitalsong"] } },
@@ -666,17 +827,17 @@ dataSet[dataSetVersion].characterData = [
     //Albums
 
     //CHAnnel #1
-    { name: "宇宙規模でダイスキ宣言！", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "2024"] } },
-    { name: "ラヴィ・ダヴィ", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "2024"] } },
-    { name: "Hello! 生まれた意味がきっとある (OCHA NORMA Ver.)", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "2024"] } },
-    { name: "ミステイク (OCHA NORMA ver.)", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "2024"] } },
-    { name: "cha cha SING (2024 OCHA NORMA ver.)", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "2024"] } },
-    { name: "Good Luckの胸騒ぎ", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "2024"] } },
-    { name: "なんだかんだエヴリデー！", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "2024"] } },
-    { name: "イージーイージー", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "2024"] } },
-    { name: "1/2", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "2024"] } },
-    { name: "Peek a Boo", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "2024"] } },
-    { name: "今じゃなきゃ、君じゃなきゃ", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "2024"] } },
+    { name: "宇宙規模でダイスキ宣言！", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
+    { name: "ラヴィ・ダヴィ", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
+    { name: "Hello! 生まれた意味がきっとある (OCHA NORMA Ver.)", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
+    { name: "ミステイク (OCHA NORMA ver.)", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
+    { name: "cha cha SING (2024 OCHA NORMA ver.)", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
+    { name: "Good Luckの胸騒ぎ", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
+    { name: "なんだかんだエヴリデー！", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
+    { name: "イージーイージー", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
+    { name: "1/2", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
+    { name: "Peek a Boo", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
+    { name: "今じゃなきゃ、君じゃなきゃ", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
 
     /* °C-ute */
 
@@ -734,6 +895,38 @@ dataSet[dataSetVersion].characterData = [
     { name: "To Tomorrow", img: "CUTEMS43.jpg", opts: { group: ["cute"], include: ["aside"] } },
     { name: "ファイナルスコール", img: "CUTEMS44.jpg", opts: { group: ["cute"], include: ["aside"] } },
     { name: "The Curtain Rises", img: "CUTEMS45.jpg", opts: { group: ["cute"], include: ["aside"] } },
+
+    //B Sides
+    { name: "JUMP", img: "CUTEMS01.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "美少女心理", img: "CUTEMS02.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "私立共学", img: "CUTEMS03.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "最高級のエンジョイGIRLS", img: "CUTEMS04.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "ダーリン I LOVE YOU (℃-ute Ver.)", img: "CUTEMS05.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "「忘れたくない夏」", img: "CUTEMS06.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "セブンティーンズ VOW", img: "CUTEMS07.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "Go Go Go！", img: "CUTEMS08.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "「残暑 お見舞い 申し上げます。」", img: "CUTEMS09.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "甘い罠", img: "CUTEMS10.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "生きようぜ！", img: "CUTEMS11.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "立ち上がれ 乙女達", img: "CUTEMS12.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "これ以上 嫌われたくないの", img: "CUTEMS13.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "青春！無限パワー", img: "CUTEMS14.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "二十歳前の女の子", img: "CUTEMS15.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "FARAWAY", img: "CUTEMS16.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "偉大な力を！", img: "CUTEMS17.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "「愛はいつもいつも」", img: "CUTEMS18.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "悲しきヘブン", img: "CUTEMS19.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "最高ミュージック", img: "CUTEMS19.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "この街 (Dance Groove Ver.)", img: "CUTEMS20.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "雨", img: "CUTEMS20.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "ハエ男", img: "CUTEMS20.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "ザ☆トレジャーボックス", img: "CUTEMS21.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "地球からの三重奏", img: "CUTEMS21.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "私は天才", img: "CUTEMS21.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "誰にも内緒の恋しているの", img: "CUTEMS22.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "あったかい腕で包んで", img: "CUTEMS22.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "Please, love me more!", img: "CUTEMS24.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "誘惑の休日", img: "CUTEMS24.jpg", opts: { group: ["cute"], include: ["bside"] } },
 
     //Albums
 
@@ -814,6 +1007,15 @@ dataSet[dataSetVersion].characterData = [
     { name: "夜風のMessage", img: "CUTEA09.jpg", opts: { group: ["cute"], include: ["album"] } },
     { name: "℃maj9 (reprise)", img: "CUTEA09.jpg", opts: { group: ["cute"], include: ["album"] } },
 
+    //Best Album Songs
+    { name: "「大好き」の意味を教えて!", img: "CUTEBA01.jpg", opts: { group: ["cute"], include: ["album"] } },
+    { name: "雪がチラリ", img: "CUTEBA02.jpg", opts: { group: ["cute"], include: ["album"] } },
+    { name: "Come Together (℃-ute Ver.)", img: "CUTEBA02.jpg", opts: { group: ["cute"], include: ["album"] } },
+    { name: "ジュリエット ジュリエット", img: "CUTEBA02.jpg", opts: { group: ["cute"], include: ["album"] } },
+    { name: "夢", img: "CUTEBA02.jpg", opts: { group: ["cute"], include: ["album"] } },
+    { name: "凜", img: "CUTEBA02.jpg", opts: { group: ["cute"], include: ["album"] } },
+    { name: "全部終わった帰り道", img: "CUTEBA02.jpg", opts: { group: ["cute"], include: ["album"] } },
+
     /* Berryz Koubou */
 
     //A Sides
@@ -861,6 +1063,41 @@ dataSet[dataSetVersion].characterData = [
     { name: "普通、アイドル10年やってらんないでしょ!?", img: "BRKBMS42.jpg", opts: { group: ["berryz"], include: ["aside"] } },
     { name: "ロマンスを語って", img: "BRKBMS43.jpg", opts: { group: ["berryz"], include: ["aside"] } },
     { name: "永久の歌", img: "BRKBMS44.jpg", opts: { group: ["berryz"], include: ["aside"] } },
+
+    //B Sides
+    { name: "BERRY FIELDS", img: "BRKBMS01.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "夏わかめ", img: "BRKBMS02.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "かっちょええ!", img: "BRKBMS03.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "友情 純情 oh 青春", img: "BRKBMS04.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "パッション E-CHA E-CHA", img: "BRKBMS05.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "恋してる時はいつも…", img: "BRKBMS06.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "夢で ドゥーアップ", img: "BRKBMS07.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "秘密のウ・タ・ヒ・メ", img: "BRKBMS08.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "にぎやかな冬", img: "BRKBMS09.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "図書室待機", img: "BRKBMS10.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "素肌ピチピチ", img: "BRKBMS11.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "あいたいけど…", img: "BRKBMS12.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "ガキ大将", img: "BRKBMS13.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "青春大通り", img: "BRKBMS14.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "我ら! Berryz仮面", img: "BRKBMS15.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "ダーリン I LOVE YOU（Berryz工房 Ver.）", img: "BRKBMS16.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "マジ グッドチャンス サマー", img: "BRKBMS17.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "フラれパターン", img: "BRKBMS18.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "そのすべての愛に", img: "BRKBMS19.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "MOON POWER", img: "BRKBMS26.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "雄叫びボーイ WAO!（スパークVer.）", img: "BRKBMS26.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "ちょっとさみしいな", img: "BRKBMS27.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "ヒーロー現る!", img: "BRKBMS28.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "思い出", img: "BRKBMS29.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "大人にはなりたくない 早く大人になりたい", img: "BRKBMS30.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "もう、子供じゃない私なのに…", img: "BRKBMS31.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "Loving you Too much", img: "BRKBMS32.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "ももち! 許してにゃん♡体操", img: "BRKBMS32.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "勇気をください!", img: "BRKBMS33.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "世界で一番大切な人", img: "BRKBMS34.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "I like a picnic", img: "BRKBMS34.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "I'm so cool!", img: "BRKBMS37.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "恋するテクニック", img: "BRKBMS37.jpg", opts: { group: ["berryz"], include: ["bside"] } },
 
     //Albums
 
@@ -942,6 +1179,12 @@ dataSet[dataSetVersion].characterData = [
     { name: "なんだかんだで良い感じ！", img: "BRKBA09.jpg", opts: { group: ["berryz"], include: ["album"] } },
     { name: "恋いとしき季節", img: "BRKBA09.jpg", opts: { group: ["berryz"], include: ["album"] } },
     { name: "まっすぐな私", img: "BRKBA09.jpg", opts: { group: ["berryz"], include: ["album"] } },
+
+    //Best Album Songs
+    { name: "男の子", img: "BRKBBA01.jpg", opts: { group: ["berryz"], include: ["album"] } },
+    { name: "コイセヨ！", img: "BRKBBA02.jpg", opts: { group: ["berryz"], include: ["album"] } },
+    { name: "女の子にしかわかんない丁度があるの", img: "BRKBBA02.jpg", opts: { group: ["berryz"], include: ["album"] } },
+    { name: "Love together!", img: "BRKBBA03.jpg", opts: { group: ["berryz"], include: ["album"] } },
 
     /* Kobushi Factory */
 

@@ -1,0 +1,130 @@
+﻿@{
+    ViewData["Title"] = "Member Sorter";
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <link rel="shortcut icon" href="~/assets/icons/Hermandad.ico" type="image/x-icon">
+    <link rel="icon" href="~/assets/icons/Hermandad.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
+    <meta name="og:site_name" content="Hello! Project Sorter">
+    <meta name="og:description" content="A simple website for sorting H!P idols in a formatted list.">
+    <meta name="og:image" content="https://i.imgur.com/IZzJMk6.jpg">
+    <title>Hello! Projec Sorting</title>
+
+    @*<link rel="stylesheet" type="text/css" href="~/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="~/css/styles.css">*@
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" rel="stylesheet">
+    <link href="~/css/styles3.css" rel="stylesheet" type="text/css">
+
+    <script src="~/js/data.js"></script>
+    <script src="~/js/data/extraK200824.js"></script>
+
+    <script src="~/js/dom-to-image.min.js"></script>
+    <script src="~/js/html2canvas.min.js"></script>
+    <script src="~/js/lz-string.min.js"></script>
+    <script src="~/js/seedrandom.min.js"></script>
+    <script src="~/js/main.js"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-64784129-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-64784129-2');
+    </script>
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="titlehp row">
+            <div class="col-12 box">
+                <p><b>Hello! Project Extra Sorters</b></p>
+                <p class="lang">
+                    <a asp-controller="Others" asp-action="Index">Romaji</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="progress-section col-12 box">
+                <span class="progressbattle"></span>
+                <div class="progressbar">
+                    <div class="progressfill"><span class="progresstext"></span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mobrow row">
+            <div class="col-4">
+                <div class="image-container left-container">
+                    <img src="~/assets/icons/HProsterL.png" class="left sort image">
+                    <div class="left sort text"><p></p></div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="buttons" style="text-align:center;">
+                    <div class="starting start button">Click to Start!</div>
+                    <div class="starting load button">Load <span></span></div>
+                    <div class="loading button"><div></div><span>Loading...</span></div>
+                    <div class="sorting tie button">Tie</div>
+                    <div class="sorting undo button">Undo</div>
+                    <div class="sorting save button">Save Progress</div>
+                    <div class="finished save button">Generate Result URL</div>
+                    <div class="finished getimg button">Generate Image</div>
+                    <div class="finished list button">Generate Text List</div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="image-container right-container">
+                    <img src="~/assets/icons/HProsterR.png" class="right sort image">
+                    <div class="right sort text"><p></p></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12">
+                <div id="options" class="options"> </div>
+                <div class="image selector">Display Images on Result: </div>
+                <div class="time taken"> </div>
+                <div class="results double-border"> </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 info">
+                <h4>Keyboard Controls</h4>
+                <p><span class="keyboard">Keyboard controls during sorting:</span> <br><span class="keyboard">H/LeftArrow</span> (pick left) <br><span class="keyboard">J/DownArrow</span> (undo) <br><span class="keyboard">K/UpArrow</span> (tie) <br><span class="keyboard">L/RightArrow</span> (pick right) <br><span class="keyboard">S</span> (save progress).</p>
+                <p><span class="keyboard">Before sorting: </span><br><span class="keyboard">S/Enter</span> (start sorting) <br><span class="keyboard">L</span> (load progress).</p>
+                <p><span class="keyboard">1/2/3</span> always correspond to the first/second/third buttons.</p>
+
+                <br>
+                <a href="#" class="clearsave">Clear Save Data</a>
+                <p>By <a href="https://x.com/rodneyamarilla1">Nakajima</a> Modified from <a href="https://github.com/execfera/charasort/">charasort by execfera</a><br>Data updated by <a href="https://x.com/rodneyamarilla1">Nakajima</a></p>
+                <p>This site is just a fan site and doesn't affiliate with UP-FRONT PROMOTION.</p>
+                <p>Dedicado a la Hermandad H!P.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

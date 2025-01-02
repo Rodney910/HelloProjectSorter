@@ -1,4 +1,4 @@
-dataSetVersion = "2021-03-29"; // Cambia esto al crear una nueva versión del conjunto de datos en formato YYYY-MM-DD.
+dataSetVersion = "idolsK200824"; // Cambia esto al crear una nueva versión del conjunto de datos en formato YYYY-MM-DD.
 dataSet[dataSetVersion] = {};
 
 dataSet[dataSetVersion].options = [
@@ -87,7 +87,7 @@ dataSet[dataSetVersion].characterData = [
     { name: "川嶋美楓", img: "JCJC10.jpg", color: "#DC0026", opts: { group: ["juice"] } },  // pure red
 
     { name: "上國料萌衣", img: "ANGM01.jpg", color: "#6BCCDC", opts: { group: ["angerme"] } }, // aqua blue
-    { name: "川村文乃", img: "ANGM02.jpg", color: "#9674EF", opts: { group: ["angerme"] } }, // light purple
+    { name: "川村文乃", img: "ANGM02.jpg", color: "#9674EF", opts: { group: ["angermeog"] } }, // light purple
     { name: "伊勢鈴蘭", img: "ANGM03.jpg", color: "#FF8C00", opts: { group: ["angerme"] } }, // orange
     { name: "橋迫鈴", img: "ANGM04.jpg", color: "#DC0026", opts: { group: ["angerme"] } }, // pure red
     { name: "川名凜", img: "ANGM05.jpg", color: "#009900", opts: { group: ["angerme"] } }, // green
@@ -98,7 +98,7 @@ dataSet[dataSetVersion].characterData = [
     { name: "後藤花", img: "ANGM10.jpg", color: "#00BBFF", opts: { group: ["angerme"] } },  // sea blue
 
     { name: "生田衣梨奈", img: "MNMSM2401.jpg", color: "#9ACD32", opts: { group: ["momusu"] } }, // yellow-green
-    { name: "石田亜佑美", img: "MNMSM2402.jpg", color: "#0000FF", opts: { group: ["momusu"] } }, // royal blue
+    { name: "石田亜佑美", img: "MNMSM2402.jpg", color: "#0000FF", opts: { group: ["momusuog"] } }, // royal blue
     { name: "小田さくら", img: "MNMSM2403.jpg", color: "#B57EDC", opts: { group: ["momusu"] } }, // lavender
     { name: "野中美希", img: "MNMSM2404.jpg", color: "#572A7B", opts: { group: ["momusu"] } }, // purple
     { name: "牧野真莉愛", img: "MNMSM2405.jpg", color: "#FF90CF", opts: { group: ["momusu"] } }, // pink
@@ -111,7 +111,7 @@ dataSet[dataSetVersion].characterData = [
     { name: "井上春華", img: "MNMSM2412.jpg", color: "#02CCBD", opts: { group: ["momusu"] } }, // mint green
     { name: "弓桁朱琴", img: "MNMSM2413.jpg", color: "#DC0026", opts: { group: ["momusu"] } },  // pure red
 
-    { name: "河野空愛", img: "KSS01.jpg", color: "", opts: { group: ["kss"] } },
+    /*{ name: "河野空愛", img: "KSS01.jpg", color: "", opts: { group: ["kss"] } },*/
     { name: "牧野永愛", img: "KSS02.jpg", color: "", opts: { group: ["kss"] } },
     { name: "林仁愛", img: "KSS03.jpg", color: "", opts: { group: ["kss"] } },
     { name: "浅野優莉花", img: "KSS04.jpg", color: "", opts: { group: ["kss"] } },

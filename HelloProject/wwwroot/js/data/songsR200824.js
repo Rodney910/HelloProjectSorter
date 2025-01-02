@@ -1,4 +1,4 @@
-dataSetVersion = "2019-11-26"; // Cambia esto al crear una nueva versión del conjunto de datos en formato YYYY-MM-DD.
+dataSetVersion = "songsR200824"; // Cambia esto al crear una nueva versión del conjunto de datos en formato YYYY-MM-DD.
 dataSet[dataSetVersion] = {};
 
 dataSet[dataSetVersion].options = [
@@ -27,10 +27,12 @@ dataSet[dataSetVersion].options = [
         img: "",
         sub: [
             { name: "A Sides", key: "aside", img: "", checked: true },
+            { name: "B Sides", key: "bside", img: "", checked: false },
             { name: "Indie songs", key: "indiesong", img: "", checked: false },
             { name: "Digital songs", key: "digitalsong", img: "", checked: false },
             { name: "Album songs", key: "album", img: "", checked: false },
-            { name: "2024 songs", key: "2024", img: "", checked: false }
+            { name: "2024 songs", key: "2024", img: "", checked: false },
+            { name: "2024 album songs", key: "a2024", img: "", checked: false }
         ]
     }
 ];
@@ -152,6 +154,83 @@ dataSet[dataSetVersion].characterData = [
     { name: "Neverending Shine", img: "MNMSMISA106.jpg", opts: { group: ["momusu"], include: ["aside"] } },
     { name: "Nandaka Sentimental na Toki no Uta", img: "MNMSMISA107.jpg", opts: { group: ["momusu"], include: ["aside", "2024"] } },
     { name: "SaiKIYOU.", img: "MNMSMISA108.jpg", opts: { group: ["momusu"], include: ["aside", "2024"] } },
+
+    //B Sides
+    { name: "A MEMORY OF SUMMER '98", img: "MNMSMISA02.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Tatoeba", img: "MNMSMISA03.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Happy Night", img: "MNMSMISA04.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Never Forget", img: "MNMSMISA04.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Koi no Shihatsu Ressha", img: "MNMSMISA05.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Wasurerannai", img: "MNMSMISA06.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "21seiki", img: "MNMSMISA07.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Koi wa Rock n' Roll", img: "MNMSMISA08.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Tsuugaku Ressha", img: "MNMSMISA09.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Akogare My Boy", img: "MNMSMISA10.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Inspiration!", img: "MNMSMISA11.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Dekkai Uchuu ni Ai ga Aru", img: "MNMSMISA12.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Popcorn Love!", img: "MNMSMISA13.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Morning Coffee (2002 ver.)", img: "MNMSMISA14.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Chotto Ikashita PURE BOY", img: "MNMSMISA15.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Jun LOVER", img: "MNMSMISA16.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Housekibako", img: "MNMSMISA17.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Never Forget (Rock ver.)", img: "MNMSMISA18.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Namida ni wa Shitakunai", img: "MNMSMISA19.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Koi ING", img: "MNMSMISA20.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Dekiru Onna", img: "MNMSMISA21.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Fine Emotion!", img: "MNMSMISA22.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Ganbare Nippon Soccer Fight!", img: "MNMSMISA23.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Nebou desu. Date na no ni...", img: "MNMSMISA24.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Love & Pea~ce! HERO ga Yattekita.", img: "MNMSMISA25.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "NATURE IS GOOD!", img: "MNMSMISA26.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Ai to Taiyou ni Tsutsumarete", img: "MNMSMISA27.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Koi wa Hassou Do The Hustle!", img: "MNMSMISA28.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Chance Chance Boogie", img: "MNMSMISA29.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Watashi ga Tsuiteru.", img: "MNMSMISA30.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Odore! Morning Curry", img: "MNMSMISA31.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Sayonara no Kawari ni", img: "MNMSMISA32.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Hand made CITY", img: "MNMSMISA33.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Please! Jiyuu no Tobira", img: "MNMSMISA34.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Bon Kyu! Bon Kyu! BOMB GIRL", img: "MNMSMISA35.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Sono Bamen de Bibiccha Ikenai jan!", img: "MNMSMISA36.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Romance", img: "MNMSMISA37.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Yowamushi", img: "MNMSMISA38.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "3,2,1 BREAKIN'OUT!", img: "MNMSMISA39.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Aki Urara", img: "MNMSMISA40.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Subete wa Ai no Chikara", img: "MNMSMISA40.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Aishite Aishite Ato Ippun", img: "MNMSMISA41.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Nakidasu Kamo Shirenai yo", img: "MNMSMISA42.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Tomo", img: "MNMSMISA43.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Aisare Sugiru Koto wa Nai no yo", img: "MNMSMISA44.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Motto Aishite Hoshii no", img: "MNMSMISA45.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Yamete yo! Sinbad", img: "MNMSMISA46.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Kare to Issho ni Omise ga Shitai!", img: "MNMSMISA47.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Jishin Motte Yume wo Motte Tobitatsu kara", img: "MNMSMISA47.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Kanashiki Koi no Melody", img: "MNMSMISA48.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Watashi ga Ite Kimi ga Iru", img: "MNMSMISA49.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Egao ni Namida 〜THANK YOU! DEAR MY FRIENDS〜", img: "MNMSMISA49.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Watashi no Jidai!", img: "MNMSMISA50.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Aisaretai no ni...", img: "MNMSMISA50.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Seishun Domannaka", img: "MNMSMISA50.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Love Innovation", img: "MNMSMISA51.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Futsuu no Shoujo A", img: "MNMSMISA51.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Daisuki 100 Manten", img: "MNMSMISA51.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Shinnen dake wa Tsuranukitoose!", img: "MNMSMISA51.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Daisuki Dakara Zettai ni Yurusanai", img: "MNMSMISA52.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Happy Daisakusen", img: "MNMSMISA52.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Aishuu Romantic", img: "MNMSMISA52.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Watashi no Dekkai Hana", img: "MNMSMISA52.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Nani wa Tomo Are!", img: "MNMSMISA52.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "A B C D E-cha E-cha Shitai", img: "MNMSMISA53.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Tokimeku Tokimeke", img: "MNMSMISA53.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Itsumo to Onnaji Seifuku de", img: "MNMSMISA53.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Rock no Teigi", img: "MNMSMISA53.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Makeru Ki Shinai Konya no Shoubu", img: "MNMSMISA54.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Bouya", img: "MNMSMISA54.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Funwari Koibito Ichinensei", img: "MNMSMISA54.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Password is 0 (Mori Musume. ver.)", img: "MNMSMISA62.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Morning Misoshiru", img: "MNMSMISA81.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Get you!", img: "MNMSMISA81.jpg", opts: { group: ["momusu"], include: ["bside"] } },
+    { name: "Y Jiro no Tochuu", img: "MNMSMISA88.jpg", opts: { group: ["momusu"], include: ["bside"] } },
 
     //Digital Songs
     { name: "Gosenfu no Tasuki", img: "MNMSMDS01.jpg", opts: { group: ["momusu"], include: ["digitalsong"] } },
@@ -314,6 +393,27 @@ dataSet[dataSetVersion].characterData = [
     { name: "Hey! Unfair Baby", img: "MNMSMA16.jpg", opts: { group: ["momusu"], include: ["album"] } },
     { name: "Ren'ai Destiny ~Honne wo Ronjitai~", img: "MNMSMA16.jpg", opts: { group: ["momusu"], include: ["album"] } },
 
+    // Professionals - 17th
+    { name: "Yuukan na Dance", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album", "a2024"] } },
+    { name: "Occhokochoi na Fantasia Romance", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album", "a2024"] } },
+    { name: "Koibito", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album", "a2024"] } },
+    { name: "Mukasuki!", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album", "a2024"] } },
+    { name: "Naisho da yo", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album", "a2024"] } },
+    { name: "Aete Yokatta", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album", "a2024"] } },
+    { name: "Shiawase Shisuu Happyou Saretai", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album", "a2024"] } },
+    { name: "Oozora ni Mukatte", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album", "a2024"] } },
+
+    //Best Album Songs
+    { name: "Say Yeah! ~Motto Miracle Night~", img: "MNMSMBA01.jpg", opts: { group: ["momusu"], include: ["album"] } },
+    { name: "YAH! Aishitai!", img: "MNMSMBA02.jpg", opts: { group: ["momusu"], include: ["album"] } },
+    { name: "HELLO TO YOU ~Hello! Project 10 Shuunen Kinen Theme~", img: "MNMSMBA03.jpg", opts: { group: ["momusu"], include: ["album"] } },
+    { name: "Wolf Boy", img: "MNMSMBA04.jpg", opts: { group: ["momusu"], include: ["album"] } },
+    { name: "I surrender Ai Saredo Ai", img: "MNMSMBA05.jpg", opts: { group: ["momusu"], include: ["album"] } },
+    { name: "Koishite Mitakute", img: "MNMSMBA05.jpg", opts: { group: ["momusu"], include: ["album"] } },
+    { name: "HEAVY GATE", img: "MNMSMBA06.jpg", opts: { group: ["momusu"], include: ["album"] } },
+    { name: "Nanzansho Souzansho", img: "MNMSMBA06.jpg", opts: { group: ["momusu"], include: ["album"] } },
+    { name: "Kanashiku Naru You na Rainy day", img: "MNMSMBA06.jpg", opts: { group: ["momusu"], include: ["album"] } },
+
     /* ANGERME */
 
     //Indie songs
@@ -387,6 +487,33 @@ dataSet[dataSetVersion].characterData = [
     { name: "Bibitaru Ichigeki", img: "ANGMMS62.jpg", opts: { group: ["angerme"], include: ["aside", "2024"] } },
     { name: "Uwasa no Narushii", img: "ANGMMS63.jpg", opts: { group: ["angerme"], include: ["aside", "2024"] } },
     { name: "THANK YOU, HELLO GOOD BYE", img: "ANGMMS64.jpg", opts: { group: ["angerme"], include: ["aside", "2024"] } },
+    { name: "Hatsukoi, Hanabie", img: "ANGMMS65.jpg", opts: { group: ["angerme"], include: ["aside", "2024"] } },
+    { name: "Yuuyuu Kankan gonna be alright!!", img: "ANGMMS66.jpg", opts: { group: ["angerme"], include: ["aside", "2024"] } },
+
+    //B Sides
+    { name: "Thank You! Crème Brûlée no Yuujou", img: "ANGMMS01.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "○○ Ganbaranakutemo Iin da yo!!", img: "ANGMMS02.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "Smile Bijin", img: "ANGMMS02.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "Chokotto LOVE", img: "ANGMMS03.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "Otome Pasta ni Kandou", img: "ANGMMS04.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "Panya-san no Arbeit", img: "ANGMMS04.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "Koi wo Shichaimashita!", img: "ANGMMS05.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "Hatsukoi no Anata e", img: "ANGMMS05.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "Chu! Natsu Party", img: "ANGMMS06.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "Jitensha Chiririn", img: "ANGMMS06.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "Smile Ondon", img: "ANGMMS07.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "Boogie Train '11", img: "ANGMMS07.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "Te wo Nigitte Arukitai", img: "ANGMMS08.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "Konnichiwa Konbanwa", img: "ANGMMS08.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "Namida GIRL", img: "ANGMMS09.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "Chance Tourai", img: "ANGMMS09.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "Koibito wa Kokoro no Ouendan", img: "ANGMMS10.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "Smile Blues", img: "ANGMMS10.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "Kimi wa Jitensha Watashi wa Densha de Kitaku", img: "ANGMMS11.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "Watashi, Choito Kawaii Urabanchou", img: "ANGMMS12.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "Doushiyou", img: "ANGMMS13.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "Myouban, Galaxy Gekijou de", img: "ANGMMS47.jpg", opts: { group: ["angerme"], include: ["bside"] } },
+    { name: "Ureshii no ni ne, Nakechau wa", img: "ANGMMS65.jpg", opts: { group: ["angerme"], include: ["bside", "2024"] } },
 
     //Digital songs
     { name: "Manner Mode", img: "ANGMDS01.jpg", opts: { group: ["angerme"], include: ["digitalsong"] } },
@@ -435,6 +562,9 @@ dataSet[dataSetVersion].characterData = [
     { name: "Sister Sister", img: "ANGMA04.jpg", opts: { group: ["angerme"], include: ["album"] } },
     { name: "Maa, Ikka!", img: "ANGMA04.jpg", opts: { group: ["angerme"], include: ["album"] } },
     { name: "Forever Friend", img: "ANGMA04.jpg", opts: { group: ["angerme"], include: ["album"] } },
+
+    //Best Album Songs
+    { name: "Kiiroi Jitensha to Sandwich", img: "ANGMBA01.jpg", opts: { group: ["angerme"], include: ["album"] } },
 
     /* JUICE=JUICE */
 
@@ -486,6 +616,11 @@ dataSet[dataSetVersion].characterData = [
     { name: "Naimono Love", img: "JCJCMS41.jpg", opts: { group: ["juice"], include: ["aside", "2024"] } },
     { name: "Oaiko", img: "JCJCMS42.jpg", opts: { group: ["juice"], include: ["aside", "2024"] } },
 
+    //B Sides
+    { name: "Tsudzuiteiku STORY (Symphonic Version feat. Karin)", img: "JCJCMS29.jpg", opts: { group: ["juice"], include: ["bside"] } },
+    { name: "Borderline", img: "JCJCMS29.jpg", opts: { group: ["juice"], include: ["bside"] } },
+    { name: "Va-Va-Voom", img: "JCJCMS30.jpg", opts: { group: ["juice"], include: ["bside"] } },
+
     //Digital songs
     { name: "Fiesta! Fiesta!", img: "JCJCDS01.jpg", opts: { group: ["juice"], include: ["digitalsong", "album"] } },
 
@@ -526,6 +661,9 @@ dataSet[dataSetVersion].characterData = [
     { name: "Ame no Naka no Kuchibue", img: "JCJCA03.jpg", opts: { group: ["juice"], include: ["album"] } },
     { name: "Platonic Planet (Ultimate Juice Ver.)", img: "JCJCA03.jpg", opts: { group: ["juice"], include: ["album"] } },
 
+    //Best Album Songs
+    { name: "Bon Voyage ~Omoi no Kiseki~", img: "JCJCBA01.jpg", opts: { group: ["juice"], include: ["album"] } },
+
     /* TSUBAKI FACTORY */
 
     //Indie songs
@@ -565,9 +703,15 @@ dataSet[dataSetVersion].characterData = [
     { name: "Yuuki It's my Life!", img: "TBKFTRMS28.jpg", opts: { group: ["tsubaki"], include: ["aside"] } },
     { name: "Mousou Dake Nara Freedom", img: "TBKFTRMS29.jpg", opts: { group: ["tsubaki"], include: ["aside"] } },
     { name: "Demo... Ii yo", img: "TBKFTRMS30.jpg", opts: { group: ["tsubaki"], include: ["aside"] } },
-    //{ name: "Baby Spider", img: "TBKFTRMS31.jpg", opts: { group: ["tsubaki"], include: ["aside", "2024"] } },
-    //{ name: "Seishun Exabyte", img: "TBKFTRMS32.jpg", opts: { group: ["tsubaki"], include: ["aside", "2024"] } },
-    //{ name: "Kodou OK?", img: "TBKFTRMS33.jpg", opts: { group: ["tsubaki"], include: ["aside", "2024"] } },
+    { name: "Baby Spider", img: "TBKFTRMS31.jpg", opts: { group: ["tsubaki"], include: ["aside", "2024"] } },
+    { name: "Seishun Exabyte", img: "TBKFTRMS32.jpg", opts: { group: ["tsubaki"], include: ["aside", "2024"] } },
+    { name: "Kodou OK?", img: "TBKFTRMS33.jpg", opts: { group: ["tsubaki"], include: ["aside", "2024"] } },
+
+    //B Sides
+    { name: "Mou Saikou!", img: "TBKFTRMS13.jpg", opts: { group: ["tsubaki"], include: ["bside"] } },
+    { name: "Hair up Sora e!", img: "TBKFTRMS16.jpg", opts: { group: ["tsubaki"], include: ["bside"] } },
+    { name: "My Darling ~Do you love me?~", img: "TBKFTRMS17.jpg", opts: { group: ["tsubaki"], include: ["bside"] } },
+    { name: "Koi no UFO Catcher", img: "TBKFTRMS18.jpg", opts: { group: ["tsubaki"], include: ["bside"] } },
 
     //Albums
 
@@ -589,17 +733,17 @@ dataSet[dataSetVersion].characterData = [
     { name: "Nineteen no Shinkirou", img: "TBKFTRA02.jpg", opts: { group: ["tsubaki"], include: ["album", "digitalsong"] } },
 
     // 3rd -Moment-
-    { name: "Power Flower ~Ima Koso Ichigan to Nare~", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "2024"] } },
-    { name: "Stay free & Stay tuned", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "2024"] } },
-    { name: "Shichibuzaki no Tsuzuki", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "2024"] } },
-    { name: "EZPZ!!", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "2024"] } },
-    { name: "Summer Challenger", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "2024"] } },
-    { name: "Amayadori no Epilogue", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "2024"] } },
-    { name: "Atashi Rhythm", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "2024"] } },
-    { name: "Kimi to Boku no Kizuna", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "2024"] } },
-    { name: "You're My Friend feat. KIKI", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "2024"] } },
-    { name: "Kacchoii Uta", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "2024"] } },
-    { name: "BE", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "2024"] } },
+    { name: "Power Flower ~Ima Koso Ichigan to Nare~", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
+    { name: "Stay free & Stay tuned", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
+    { name: "Shichibuzaki no Tsuzuki", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
+    { name: "EZPZ!!", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
+    { name: "Summer Challenger", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
+    { name: "Amayadori no Epilogue", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
+    { name: "Atashi Rhythm", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
+    { name: "Kimi to Boku no Kizuna", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
+    { name: "You're My Friend feat. KIKI", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
+    { name: "Kacchoii Uta", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
+    { name: "BE", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
 
     /* BEYOOOOONDS */
 
@@ -617,6 +761,14 @@ dataSet[dataSetVersion].characterData = [
     { name: "Hai to Diamond", img: "BYNDSMS11.jpg", opts: { group: ["beyond"], include: ["aside", "2024"] } },
     { name: "Go City Go", img: "BYNDSMS12.jpg", opts: { group: ["beyond"], include: ["aside", "2024"] } },
     { name: "Hooke no Housoku", img: "BYNDSMS13.jpg", opts: { group: ["beyond"], include: ["aside", "2024"] } },
+
+    //B Sides
+    { name: "GIRL ZONE", img: "BYNDSMS01.jpg", opts: { group: ["beyond"], include: ["bside"] } },
+    { name: "Bunkasai Jikkou Iinchou no Koi", img: "BYNDSMS02.jpg", opts: { group: ["beyond"], include: ["bside"] } },
+    { name: "Toei Oedo Sen no Roppongi Eki de Dakishimete", img: "BYNDSMS03.jpg", opts: { group: ["beyond"], include: ["bside"] } },
+    { name: "Yabai Koi no Yaiba", img: "BYNDSMS04.jpg", opts: { group: ["beyond"], include: ["bside"] } },
+    { name: "Watashi to Odorinasai!", img: "BYNDSMS05.jpg", opts: { group: ["beyond"], include: ["bside"] } },
+    { name: "Ninenmae no Yokohama Eki Nishiguchi", img: "BYNDSMS06.jpg", opts: { group: ["beyond"], include: ["bside"] } },
 
     //Digital songs
     { name: "Furefure Everyday", img: "BYNDSDS01.jpg", opts: { group: ["beyond"], include: ["digitalsong", "album"] } },
@@ -659,6 +811,15 @@ dataSet[dataSetVersion].characterData = [
     { name: "Ocha no Ma Mahoroba Ikoi no Ba ~Showa mo Reiwa mo Wacchawacha~", img: "OCNMMS06.jpg", opts: { group: ["ocha"], include: ["aside"] } },
     { name: "Shekenaare", img: "OCNMMS07.jpg", opts: { group: ["ocha"], include: ["aside"] } },
     { name: "Yoridori ME DREAM", img: "OCNMMS08.jpg", opts: { group: ["ocha"], include: ["aside"] } },
+    { name: "Chihayaburu", img: "OCNMMS09.jpg", opts: { group: ["ocha"], include: ["aside", "2024"] } },
+    { name: "Tomodachi Tentaizu", img: "OCNMMS10.jpg", opts: { group: ["ocha"], include: ["aside", "2024"] } },
+
+    //B Sides
+    { name: "Date Zen'ya Kyousoukyoku", img: "OCNMMS01.jpg", opts: { group: ["ocha"], include: ["bside"] } },
+    { name: "Go Your Way", img: "OCNMMS03.jpg", opts: { group: ["ocha"], include: ["bside"] } },
+    { name: "Suhada wa Nettaiya", img: "OCNMMS04.jpg", opts: { group: ["ocha"], include: ["bside"] } },
+    { name: "Super Duper Sugar Power", img: "OCNMMS09.jpg", opts: { group: ["ocha"], include: ["bside", "2024"] } },
+    { name: "Uttoushi!", img: "OCNMMS10.jpg", opts: { group: ["ocha"], include: ["bside", "2024"] } },
 
     //Digital songs
     { name: "Ramen Daisuki Koizumi-san no Uta", img: "OCNMDS01.jpg", opts: { group: ["ocha"], include: ["digitalsong"] } },
@@ -666,17 +827,17 @@ dataSet[dataSetVersion].characterData = [
     //Albums
 
     //CHAnnel #1
-    { name: "Uchuu Kibo de Daisuki Sengen!", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "2024"] } },
-    { name: "Lovey-Dovey", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "2024"] } },
-    { name: "Hello! Umareta Imi ga Kitto Aru (OCHA NORMA Ver.)", img: "OCNMA01.jpg", opts: { group: ["ocha", "2024"], include: ["album", "2024"] } },
-    { name: "Mistake (OCHA NORMA ver.)", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "2024"] } },
-    { name: "cha cha SING (2024 OCHA NORMA ver.)", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "2024"] } },
-    { name: "Good Luck no Munasawagi", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "2024"] } },
-    { name: "Nanda Kanda Everyday!", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "2024"] } },
-    { name: "Easy Easy", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "2024"] } },
-    { name: "1/2", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "2024"] } },
-    { name: "Peek a Boo", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "2024"] } },
-    { name: "Ima ja Nakya, Kimi ja Nakya", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "2024"] } },
+    { name: "Uchuu Kibo de Daisuki Sengen!", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
+    { name: "Lovey-Dovey", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
+    { name: "Hello! Umareta Imi ga Kitto Aru (OCHA NORMA Ver.)", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
+    { name: "Mistake (OCHA NORMA ver.)", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
+    { name: "cha cha SING (2024 OCHA NORMA ver.)", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
+    { name: "Good Luck no Munasawagi", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
+    { name: "Nanda Kanda Everyday!", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
+    { name: "Easy Easy", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
+    { name: "1/2", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
+    { name: "Peek a Boo", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
+    { name: "Ima ja Nakya, Kimi ja Nakya", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
 
     /* °C-ute */
 
@@ -734,6 +895,38 @@ dataSet[dataSetVersion].characterData = [
     { name: "To Tomorrow", img: "CUTEMS43.jpg", opts: { group: ["cute"], include: ["aside"] } },
     { name: "Final Squall", img: "CUTEMS44.jpg", opts: { group: ["cute"], include: ["aside"] } },
     { name: "The Curtain Rises", img: "CUTEMS45.jpg", opts: { group: ["cute"], include: ["aside"] } },
+
+    //B Sides
+    { name: "JUMP", img: "CUTEMS01.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "Bishoujo Shinri", img: "CUTEMS02.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "Shiritsu Kyougaku", img: "CUTEMS03.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "Saikoukyuu no Enjoy GIRLS", img: "CUTEMS04.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "Darling I LOVE YOU (℃-ute Ver.)", img: "CUTEMS05.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "\"Wasuretakunai Natsu\"", img: "CUTEMS06.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "Seventeen's VOW", img: "CUTEMS07.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "Go Go Go!", img: "CUTEMS08.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "\"Zansho Omimai Moushiagemasu.\"", img: "CUTEMS09.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "Amai Wana", img: "CUTEMS10.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "Ikiyou ze!", img: "CUTEMS11.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "Tachiagare Otome-tachi", img: "CUTEMS12.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "Kore Ijou Kirawaretakunai no", img: "CUTEMS13.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "Seishun! Mugen Power", img: "CUTEMS14.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "Hatachi Mae no Onna no Ko", img: "CUTEMS15.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "FARAWAY", img: "CUTEMS16.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "Idai na Chikara wo!", img: "CUTEMS17.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "\"Ai wa Itsumo Itsumo\"", img: "CUTEMS18.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "Kanashiki Heaven", img: "CUTEMS19.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "Saikou Music", img: "CUTEMS19.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "Kono Machi (Dance Groove Ver.)", img: "CUTEMS20.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "Ame", img: "CUTEMS20.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "Hae Otoko", img: "CUTEMS20.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "The ☆ Treasure Box", img: "CUTEMS21.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "Chikyuu kara no Sanjuusou", img: "CUTEMS21.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "Watashi wa Tensai", img: "CUTEMS21.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "Dare ni mo Naisho ni Koishiteiru no", img: "CUTEMS22.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "Attakai Ude de Tsutsunde", img: "CUTEMS22.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "Please, love me more!", img: "CUTEMS24.jpg", opts: { group: ["cute"], include: ["bside"] } },
+    { name: "Yuuwaku no Kyuujitsu", img: "CUTEMS24.jpg", opts: { group: ["cute"], include: ["bside"] } },
 
     //Albums
 
@@ -814,6 +1007,15 @@ dataSet[dataSetVersion].characterData = [
     { name: "Yokaze no Message", img: "CUTEA09.jpg", opts: { group: ["cute"], include: ["album"] } },
     { name: "℃maj9 (reprise)", img: "CUTEA09.jpg", opts: { group: ["cute"], include: ["album"] } },
 
+    //Best Album Songs
+    { name: "\"Daisuki\" no Imi wo Oshiete!", img: "CUTEBA01.jpg", opts: { group: ["cute"], include: ["album"] } },
+    { name: "Yuki ga Chirari", img: "CUTEBA02.jpg", opts: { group: ["cute"], include: ["album"] } },
+    { name: "Come Together (℃-ute Ver.)", img: "CUTEBA02.jpg", opts: { group: ["cute"], include: ["album"] } },
+    { name: "Juliet Juliet", img: "CUTEBA02.jpg", opts: { group: ["cute"], include: ["album"] } },
+    { name: "Yume", img: "CUTEBA02.jpg", opts: { group: ["cute"], include: ["album"] } },
+    { name: "RIN", img: "CUTEBA02.jpg", opts: { group: ["cute"], include: ["album"] } },
+    { name: "Zenbu Owatta Kaerimichi", img: "CUTEBA02.jpg", opts: { group: ["cute"], include: ["album"] } },
+
     /* Berryz Koubou */
 
     //A Sides
@@ -861,6 +1063,41 @@ dataSet[dataSetVersion].characterData = [
     { name: "Futsuu, Idol 10nen Yatterannai Desho!?", img: "BRKBMS42.jpg", opts: { group: ["berryz"], include: ["aside"] } },
     { name: "Romance wo Katatte", img: "BRKBMS43.jpg", opts: { group: ["berryz"], include: ["aside"] } },
     { name: "Towa no Uta", img: "BRKBMS44.jpg", opts: { group: ["berryz"], include: ["aside"] } },
+
+    //B Sides
+    { name: "BERRY FIELDS", img: "BRKBMS01.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "Natsu Wakame", img: "BRKBMS02.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "Kaccho Ee!", img: "BRKBMS03.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "Yuujou Junjou oh Seishun", img: "BRKBMS04.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "Passion E-CHA E-CHA", img: "BRKBMS05.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "Koishiteru Toki wa Itsumo...", img: "BRKBMS06.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "Yume de Do Up", img: "BRKBMS07.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "Himitsu no U・ta・hi・me", img: "BRKBMS08.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "Nigiyaka na Fuyu", img: "BRKBMS09.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "Toshoshitsu Taiki", img: "BRKBMS10.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "Suhada Pichipichi", img: "BRKBMS11.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "Aitai Kedo...", img: "BRKBMS12.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "Gaki Taishou", img: "BRKBMS13.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "Seishun Oodoori", img: "BRKBMS14.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "Warera! Berryz Kamen", img: "BRKBMS15.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "Darling I LOVE YOU (Berryz Koubou Ver.)", img: "BRKBMS16.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "Maji Good Chance Summer", img: "BRKBMS17.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "Furare Pattern", img: "BRKBMS18.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "Sono Subete no Ai ni", img: "BRKBMS19.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "MOON POWER", img: "BRKBMS26.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "Otakebi Boy WAO! (Spark Ver.)", img: "BRKBMS26.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "Chotto Samishii na", img: "BRKBMS27.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "Hero Arawaru!", img: "BRKBMS28.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "Omoide", img: "BRKBMS29.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "Otona ni wa Naritakunai Hayaku Otona ni Naritai", img: "BRKBMS30.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "Mou, Kodomo Janai Watashi na no ni...", img: "BRKBMS31.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "Loving you Too much", img: "BRKBMS32.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "Momochi! Yurushite Nyan♡Taisou", img: "BRKBMS32.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "Yuuki wo Kudasai!", img: "BRKBMS33.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "Sekai de Ichiban Taisetsu na Hito", img: "BRKBMS34.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "I like a picnic", img: "BRKBMS34.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "I'm so cool!", img: "BRKBMS37.jpg", opts: { group: ["berryz"], include: ["bside"] } },
+    { name: "Koisuru Technique", img: "BRKBMS37.jpg", opts: { group: ["berryz"], include: ["bside"] } },
 
     //Albums
 
@@ -942,6 +1179,12 @@ dataSet[dataSetVersion].characterData = [
     { name: "Nanda Kanda de Ii Kanji!", img: "BRKBA09.jpg", opts: { group: ["berryz"], include: ["album"] } },
     { name: "Koi Itoshiki Kisetsu", img: "BRKBA09.jpg", opts: { group: ["berryz"], include: ["album"] } },
     { name: "Massugu na Watashi", img: "BRKBA09.jpg", opts: { group: ["berryz"], include: ["album"] } },
+
+    //Best Album Songs
+    { name: "Otoko no Ko", img: "BRKBBA01.jpg", opts: { group: ["berryz"], include: ["album"] } },
+    { name: "Koiseyo!", img: "BRKBBA02.jpg", opts: { group: ["berryz"], include: ["album"] } },
+    { name: "Onna no Ko ni Shika Wakannai Chodo ga Aru no", img: "BRKBBA02.jpg", opts: { group: ["berryz"], include: ["album"] } },
+    { name: "Love together!", img: "BRKBBA03.jpg", opts: { group: ["berryz"], include: ["album"] } },
 
     /* Kobushi Factory */
 

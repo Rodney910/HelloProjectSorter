@@ -1,4 +1,4 @@
-dataSetVersion = "2021-05-09"; // Cambia esto al crear una nueva versión del conjunto de datos en formato YYYY-MM-DD.
+dataSetVersion = "idolsR200824"; // Cambia esto al crear una nueva versión del conjunto de datos en formato YYYY-MM-DD.
 dataSet[dataSetVersion] = {};
 
 dataSet[dataSetVersion].options = [
@@ -87,7 +87,7 @@ dataSet[dataSetVersion].characterData = [
     { name: "Kawashima Mifu", img: "JCJC10.jpg", color: "#DC0026", opts: { group: ["juice"] } },  // pure red
 
     { name: "Kamikokuryo Moe", img: "ANGM01.jpg", color: "#6BCCDC", opts: { group: ["angerme"] } }, // aqua blue
-    { name: "Kawamura Ayano", img: "ANGM02.jpg", color: "#9674EF", opts: { group: ["angerme"] } }, // light purple
+    { name: "Kawamura Ayano", img: "ANGM02.jpg", color: "#9674EF", opts: { group: ["angermeog"] } }, // light purple
     { name: "Ise Layla", img: "ANGM03.jpg", color: "#FF8C00", opts: { group: ["angerme"] } }, // orange
     { name: "Hashisako Rin", img: "ANGM04.jpg", color: "#DC0026", opts: { group: ["angerme"] } }, // pure red
     { name: "Kawana Rin", img: "ANGM05.jpg", color: "#009900", opts: { group: ["angerme"] } }, // green
@@ -98,7 +98,7 @@ dataSet[dataSetVersion].characterData = [
     { name: "Goto Hana", img: "ANGM10.jpg", color: "#00BBFF", opts: { group: ["angerme"] } },  // sea blue
 
     { name: "Ikuta Erina", img: "MNMSM2401.jpg", color: "#9ACD32", opts: { group: ["momusu"] } }, // yellow-green
-    { name: "Ishida Ayumi", img: "MNMSM2402.jpg", color: "#0000FF", opts: { group: ["momusu"] } }, // royal blue
+    { name: "Ishida Ayumi", img: "MNMSM2402.jpg", color: "#0000FF", opts: { group: ["momusuog"] } }, // royal blue
     { name: "Oda Sakura", img: "MNMSM2403.jpg", color: "#B57EDC", opts: { group: ["momusu"] } }, // lavender
     { name: "Nonaka Miki", img: "MNMSM2404.jpg", color: "#572A7B", opts: { group: ["momusu"] } }, // purple
     { name: "Makino Maria", img: "MNMSM2405.jpg", color: "#FF90CF", opts: { group: ["momusu"] } }, // pink
@@ -111,7 +111,7 @@ dataSet[dataSetVersion].characterData = [
     { name: "Inoue Haruka", img: "MNMSM2412.jpg", color: "#02CCBD", opts: { group: ["momusu"] } }, // mint green
     { name: "Yumigeta Ako", img: "MNMSM2413.jpg", color: "#DC0026", opts: { group: ["momusu"] } },  // pure red
 
-    { name: "Kawano Soara", img: "KSS01.jpg", color: "", opts: { group: ["kss"] } },
+    /*{ name: "Kawano Soara", img: "KSS01.jpg", color: "", opts: { group: ["kss"] } },*/
     { name: "Makino Toa", img: "KSS02.jpg", color: "", opts: { group: ["kss"] } },
     { name: "Hayashi Niina", img: "KSS03.jpg", color: "", opts: { group: ["kss"] } },
     { name: "Asano Yurika", img: "KSS04.jpg", color: "", opts: { group: ["kss"] } },

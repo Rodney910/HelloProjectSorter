@@ -1,0 +1,104 @@
+﻿@{
+    ViewData["Title"] = "Members";
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="~/assets/icons/Hermandad.ico" type="image/x-icon">
+    <link rel="icon" href="~/assets/icons/Hermandad.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
+    <meta name="og:site_name" content="Hello! Project Sorter">
+    <meta name="og:description" content="A simple website for sorting H!P idols in a formatted list.">
+    <meta name="og:image" content="https://i.imgur.com/IZzJMk6.jpg">
+    <title>Hello! Projec Sorting</title>
+
+    @*<link rel="stylesheet" type="text/css" href="~/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="~/css/styles.css">*@
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" rel="stylesheet">
+    <link href="~/css/styles4.css" rel="stylesheet" type="text/css">
+
+    <script src="~/js/data.js"></script>
+    <script src="~/js/data/2021-03-29.js"></script>
+
+    <script src="~/js/dom-to-image.min.js"></script>
+    <script src="~/js/html2canvas.min.js"></script>
+    <script src="~/js/lz-string.min.js"></script>
+    <script src="~/js/seedrandom.min.js"></script>
+    <script src="~/js/main.js"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-64784129-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-64784129-2');
+    </script>
+
+    <style>
+
+        .pfont{
+            font-family: "Comic Sans MS"
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="titlehp row" style="text-align: center;align-items: center;align-content: center;">
+        <div class="col-12 box" style="text-align: center;align-items: center;align-content: center;">
+            <p><b>Morning Musume '24</b></p>
+        </div>
+    </div>
+
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-12 results">
+                <div class="result-grid-item" style="border-color: #9ACD32">
+                    <img src="/assets/idols/MNMSM2401.jpg">
+                    <div class="result-info">
+                        <div class="result-name" title="Ikuta Erina">Ikuta Erina</div>
+                    </div>
+                </div>
+                <div class="pfont" style="justify-content:center; margin: 0 auto;">
+                    <p style="color: #9ACD32;text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;">
+                        <em><u><b>Profile:</b></u></em><br />
+                        <b>
+                            Nicknames: Eripon (えりぽん)<br/>
+                            Birthdate: July 7, 1997 (age 27)<br />
+                            Birthplace: Fukuoka, Japan<br />
+                            Blood Type: A<br />
+                            Height: 157 cm<br />
+                            Western Zodiac: Cancer<br />
+                            Eastern Zodiac: Ox<br />
+                        </b>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 info">
+                <p>By <a href="https://x.com/rodneyamarilla1">Nakajima</a> Modified from <a href="https://github.com/execfera/charasort/">charasort by execfera</a><br>Data updated by <a href="https://x.com/rodneyamarilla1">Nakajima</a></p>
+                <p>This site is just a fan site and doesn't affiliate with UP-FRONT PROMOTION.</p>
+                <p>Dedicado a la Hermandad H!P.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

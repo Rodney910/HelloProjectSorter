@@ -1,0 +1,671 @@
+/* Estilos generales */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    background: linear-gradient(to bottom, #215961 0%, #00cde6 50%, #215961 100%);
+    background-attachment: fixed;
+    color: white;
+    width: 100%;
+    margin-top: 80px;
+}
+
+/* Estilo para el header fijo */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to right, #215961, #00cde6);
+    border-bottom: 2px solid white;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-collapse: collapse;
+    border-style: none;
+}
+
+.container {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    margin-top: 1em;
+    max-width: 1000px;
+    width: 100%;
+}
+
+/* Sección de la barra de progreso */
+.progress-section {
+    margin: 1em auto;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Barra de progreso general */
+.progressbar {
+    position: relative;
+    width: 600px; /* Ocupa el ancho disponible */
+    max-width: 600px; /* Limita el ancho máximo */
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 3px;
+    margin: 2px 0px;
+}
+
+/* Texto dentro de la barra de progreso */
+.progresstext {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 0.7em;
+    color: white;
+}
+
+/* Parte llena de la barra de progreso con degradado animado */
+.progressfill {
+    height: 20px;
+    background: linear-gradient(to left, #297657, #00ff91 50%, #297657);
+    border-radius: 10px;
+    border: 1px solid white;
+    width: 0%;
+    background-size: 200% 100%;
+    animation: gradientAnimation 3s linear infinite;
+    transition: width 0.3s ease;
+}
+
+/* Animación del degradado */
+@keyframes gradientAnimation {
+    0% {
+        background-position: 200% 0%;
+    }
+
+    50% {
+        background-position: 100% 0%;
+    }
+
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+.sorter {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 120px auto 120px;
+    grid-gap: 20px;
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+    align-items: center;
+}
+
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+    .image-container img {
+        width: 285px;
+        height: 330px;
+        height: auto;
+        border: 2px solid #ffffff;
+        border-radius: 10px;
+    }
+
+.buttons {
+    display: grid;
+    grid-template-rows: repeat(auto-fit, minmax(40px, auto));
+    grid-gap: 10px;
+    justify-content: center;
+}
+
+.button {
+    width: 230px;
+    border: 2px solid white;
+    text-align: center;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #00cde6;
+    color: #ffffff;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+    .button:hover {
+        background-color: #068da5;
+    }
+
+.starting.start.button {
+    grid-row: span 2;
+}
+
+.starting.load.button,
+.sorting.button,
+.finished.button,
+.loading.button {
+    display: none;
+}
+
+.loading.button {
+    grid-row: span 6;
+}
+
+    .loading.button > div {
+        width: 25px;
+        height: 25px;
+        margin: 50px auto;
+        background-color: #333;
+        border-radius: 100%;
+        animation: sk-scaleout 1.0s infinite ease-in-out;
+    }
+
+    .loading.button > span {
+        margin: auto auto 20%;
+        font-size: 0.7em;
+    }
+
+@keyframes sk-scaleout {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1.0);
+        opacity: 0;
+    }
+}
+
+.sorter > .image {
+    width: 285px;
+    height: 330px;
+    margin: auto;
+    grid-row: 1 / 7;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.sorter > .text {
+    width: 120px;
+    height: 60px;
+    display: none;
+}
+
+    .sorter > .text > p {
+        margin: 0.5em 5px 0px;
+        width: calc(100% - 10px);
+        text-align: center;
+        font-size: 0.8em;
+        line-height: 1.5em;
+    }
+
+.sorter > .left {
+    border: 2px solid white; /* Borde más grueso y blanco */
+    border-radius: 10px; /* Esquinas redondeadas para los bordes */
+}
+
+.sorter > .right {
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+.options {
+    font-size: 30px;
+    margin: 1em auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.option-item {
+    position: relative;
+    grid-column: span 2;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    font-size: 0.5625em;
+    max-width: 210px;
+}
+
+.image-wrapper {
+    position: relative;
+    width: 210px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.option-item:hover .image-wrapper {
+    transform: scale(1.1);
+}
+
+.option-image {
+    width: 210px;
+    height: auto;
+    align-items: center;
+    align-content: center;
+}
+
+.option-checkbox {
+    display: none;
+}
+
+    .option-checkbox:checked + .image-wrapper .option-image {
+        border: 3px solid #00ff00;
+        opacity: 0.7;
+    }
+
+.option-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 210px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.large-option-item {
+    grid-column: span 4;
+    font-size: 0.5625em;
+    text-align: center;
+    max-width: 500px;
+    align-items: center;
+    align-content: center;
+    margin-bottom: 10px;
+}
+
+    .large-option-item label {
+        display: block;
+        font-size: 1.25em;
+        align-items: center;
+        align-content: center;
+    }
+
+label {
+    cursor: pointer;
+    color: white;
+    max-width: 500px;
+}
+
+    label:hover {
+        color: #fff;
+    }
+
+.options > .large.option,
+.options > hr {
+    grid-column: span 3;
+    text-align: center;
+    width: 100%;
+}
+
+.image.selector {
+    margin-top: 0.5em;
+    width: 100%;
+    display: none;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    font-size: 0.75em;
+}
+
+.time.taken {
+    margin-top: 0.5em;
+    width: 100%;
+    display: none;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    font-size: 0.75em;
+}
+
+.results {
+    margin-top: 5px;
+    display: flex;
+    font-size: 0.75em;
+    flex-direction: row;
+    align-content: center;
+    width: 800px;
+    margin: 2em auto;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+    .results h2 {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #0f8ad1;
+        text-align: center;
+        margin-bottom: 1em;
+    }
+
+.result-grid-row {
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.result-grid-item {
+    margin-top: 5px;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-width: 4px;
+    border-style: solid;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #000; /* Fondo negro para los elementos del grid */
+    margin: 0 5px; /* Espacio horizontal entre elementos */
+    box-shadow: 0 0 0 1px #000;
+    /*outline: 1px solid #000;*/
+}
+
+    .result-grid-item img {
+        width: 100%; /* Ajusta el tamaño de la imagen al ancho del contenedor */
+        height: auto; /* Mantiene la proporción de la imagen */
+    }
+
+.result-info {
+    width: 100%;
+    padding: 10px;
+    color: #fff;
+    text-align: center;
+    background: linear-gradient(to right, #215961, #00cde6); /* Fondo degradado */
+    overflow: hidden; /* Oculta el texto que se desborda del contenedor */
+    white-space: nowrap; /* Evita que el texto se ajuste en múltiples líneas */
+    text-overflow: ellipsis; /* Muestra puntos suspensivos si el texto es demasiado largo */
+}
+
+.result-rank {
+    font-size: 1.2em;
+    font-weight: bold;
+    overflow: hidden; /* Oculta el texto que se desborda del contenedor */
+    white-space: nowrap; /* Evita que el texto se ajuste en múltiples líneas */
+    text-overflow: ellipsis; /* Muestra puntos suspensivos si el texto es demasiado largo */
+}
+
+.result-name {
+    font-size: 1em;
+    overflow: hidden; /* Oculta el texto que se desborda del contenedor */
+    white-space: nowrap; /* Evita que el texto se ajuste en múltiples líneas */
+    text-overflow: ellipsis; /* Muestra puntos suspensivos si el texto es demasiado largo */
+}
+
+/* Elimina el header de resultados */
+.results .result.head {
+    display: none; /* Oculta el header */
+}
+
+/* Ajusta el fondo del texto en las imágenes */
+.result.image .right .option-text {
+    background: rgba(0, 0, 0, 0.5); /* Fondo translúcido más opaco */
+}
+
+/* Opcional: Estilo para la visualización de texto en lugar de imágenes */
+.result-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px; /* Ajusta la altura del contenedor de texto */
+    background: #111; /* Fondo oscuro para el texto */
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Elimina el header de resultados */
+.results .result.head {
+    display: none; /* Oculta el header */
+}
+
+/* Ajusta el fondo del texto en las imágenes */
+.result.image .right .option-text {
+    background: rgba(0, 0, 0, 0.5); /* Fondo translúcido más opaco */
+}
+
+/* Opcional: Estilo para la visualización de texto en lugar de imágenes */
+.result-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px; /* Ajusta la altura del contenedor de texto */
+    background: #111; /* Fondo oscuro para el texto */
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+
+.info {
+    margin: 2em auto 3em;
+    display: block;
+    text-align: center;
+    font-size: 0.6875em;
+    width: 80%;
+    line-height: 1.2em;
+    color: white; /* Texto blanco */
+}
+
+.lang {
+    text-decoration: none;
+    color: darkorange !important;
+    align-content: center;
+    text-align: center;
+    align-items: center;
+    align-self: center;
+    cursor: pointer;
+}
+
+    .lang a:link,
+    .lang a:visited,
+    .lang a:hover,
+    .lang a:active {
+        color: darkorange !important;
+    }
+
+a {
+    color: darkorange; /* Texto rojo */
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+    a:hover {
+        color: darkorange;
+    }
+
+    a:visited {
+        color: darkorange;
+    }
+
+/* Estilos para la barra de navegación y pestañas */
+.navbar-brand, .nav-link {
+    color: white !important; /* Color del texto blanco */
+}
+
+/* Estilo para el fondo de la barra de navegación */
+.navbar {
+    background: linear-gradient(to right, #215961, #00cde6); /* Degradado de colores púrpuras y rosas */
+    border: none; /* Borde blanco */
+}
+
+.active-tab {
+    background-color: #ee136a !important; /* Fondo fucsia para la pestaña activa */
+    border-bottom: 2px solid white; /* Borde blanco */
+}
+
+/* Estilos para las pestañas de navegación */
+.nav-item {
+    display: flex; /* Asegura que el contenido se alinee en línea */
+    align-items: center; /* Centra verticalmente el contenido */
+    margin-right: 1rem; /* Espacio entre las pestañas */
+    position: relative; /* Necesario para posicionar la barra vertical */
+}
+
+    /* Barra vertical entre pestañas */
+    .nav-item:not(:last-child)::after {
+        content: ""; /* Contenido vacío */
+        position: absolute; /* Posicionamiento absoluto */
+        right: -0.5rem; /* Ajusta el margen derecho para que esté al lado de la pestaña */
+        top: 50%; /* Centra verticalmente la barra */
+        transform: translateY(-50%); /* Ajusta el centrado vertical */
+        width: 1px; /* Ancho de la barra vertical */
+        height: 50%; /* Altura de la barra vertical */
+        background-color: white; /* Color de la barra vertical */
+    }
+
+/* Estilos generales para dispositivos móviles */
+@media screen and (max-width: 1024px) {
+
+    .lang {
+        font-size: 0.7em; /* Ajusta el tamaño del texto */
+    }
+
+    .options {
+        display: flex;
+        flex-direction: column; /* Coloca los elementos en columna */
+        align-items: center; /* Centra los elementos */
+        width: 100%; /* Ancho completo para la sección de opciones */
+        margin: 10px auto; /* Espacio alrededor de la sección de opciones */
+    }
+
+    .option-item {
+        margin-bottom: 10px; /* Espacio inferior entre opciones */
+    }
+
+        /* Efecto active para dispositivos móviles */
+        .option-item:active .image-wrapper {
+            transform: scale(1.1);
+        }
+
+        .option-item:hover .image-wrapper {
+            transform: none;
+        }
+}
+
+/* Estilos para la barra de progreso en dispositivos móviles */
+@media screen and (max-width: 1024px) {
+    .progress-section {
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        padding: 0.5em;
+    }
+
+    .progressbar {
+        width: 90%; /* Ajusta el ancho de la barra de progreso */
+    }
+
+    .progressfill {
+        height: 15px; /* Ajusta la altura de la parte llena de la barra de progreso */
+    }
+
+    .progresstext {
+        font-size: 0.6em; /* Ajusta el tamaño del texto */
+    }
+}
+
+/* Estilos generales para las imágenes y botones en móviles */
+@media screen and (max-width: 1290px) {
+
+    .image-container {
+        height: auto;
+        font-size: 0.6em; /* Ajusta el tamaño del texto */
+    }
+
+
+        .image-container img {
+            height: 100%;
+            max-width: 100%;
+        }
+
+    .buttons {
+        width: auto;
+        font-size: 0.6em; /* Ajusta el tamaño del texto */
+        margin: 0 auto;
+    }
+
+    .starting.start.button {
+        width: auto;
+        max-width: 80%;
+        margin: 0 auto;
+    }
+
+    .starting.load.button,
+    .sorting.button,
+    .finished.button,
+    .loading.button {
+        width: auto;
+        max-width: 80%;
+        margin: 0 auto;
+    }
+
+    .loading.button {
+        width: auto;
+        max-width: 80%;
+        margin: 0 auto;
+    }
+
+        .loading.button > div {
+            width: auto;
+            max-width: 80%;
+            margin: 0 auto;
+        }
+
+        .loading.button > span {
+            width: auto;
+            max-width: 80%;
+            margin: 0 auto;
+        }
+
+    .col-4 {
+        padding: 0px;
+    }
+}
+
+/* Estilos adicionales para pantallas más pequeñas */
+@media screen and (max-width: 1024px) {
+    .results {
+        max-width: 100%;
+        padding: 5px;
+    }
+
+        .results h2 {
+            font-size: 1.0em;
+        }
+
+    .result-grid-item {
+        width: 70px; /* Reducir tamaño de los elementos del grid */
+        margin: 0 2px; /* Ajustar márgenes */
+        border-width: 2px;
+        border-style: solid;
+        box-shadow: 0 0 0 1px #000;
+        border-radius: 10px;
+    }
+
+        .result-grid-item img {
+            width: 100%; /* Ajusta el tamaño de la imagen al ancho del contenedor */
+            height: auto; /* Mantiene la proporción de la imagen */
+        }
+
+    .result-info {
+        padding: 5px; /* Reducir padding */
+        font-size: 0.7em; /* Reducir tamaño de fuente */
+    }
+
+    .result-name {
+        font-size: 0.7em; /* Reducir tamaño de fuente */
+    }
+}
