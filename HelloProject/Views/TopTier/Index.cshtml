@@ -1,0 +1,299 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Manual Top Sorter</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/styles3.css" />
+    <script src="/js/html2canvas.min.js"></script>
+    <script src="/js/data.js"></script>
+    <script src="/js/data/idolsR200824.js"></script>
+    <style>
+        /* Mantén tu CSS existente */
+        #pyramid-container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+        }
+
+        .pyramid-row, .result-grid-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .pyramid-slot, .result-grid-item, .idol-card {
+            width: 90px;
+            height: 110px;
+            background-color: #eaeaea;
+            border: 2px dashed #ccc;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+            .pyramid-slot:hover, .result-grid-item:hover, .idol-card:hover {
+                transform: scale(1.05);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            .idol-card img, .pyramid-slot img {
+                width: 100%;
+                height: 70px;
+                object-fit: cover;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+            }
+
+            .result-info, .idol-card p {
+                font-size: 0.75rem;
+                margin: 5px;
+                text-align: center;
+            }
+
+        .group-header {
+            font-weight: bold;
+            font-size: 1rem;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-bottom: 5px;
+        }
+
+        .idol-list-group {
+            margin-bottom: 20px;
+        }
+
+        #error-message {
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .btn {
+            transition: transform 0.2s ease;
+        }
+
+            .btn:hover {
+                transform: scale(1.05);
+            }
+
+        .info {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .clearsave {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="titlehp row">
+            <div class="col-12 box text-center">
+                <p><b>Hello! Project Top</b></p>
+            </div>
+        </div>
+
+        <!-- Contenedor para la pirámide -->
+        <div id="pyramid-container" class="pyramid-container mt-4"></div>
+
+        <!-- Contenedor para la lista de grupos -->
+        <div id="idol-list-container" class="idol-list mt-4"></div>
+
+        <div class="row">
+            <div class="col-12 box text-center">
+                <button class="btn btn-success m-2" onclick="generateTopImage()">Generar Imagen</button>
+                <button class="btn btn-danger m-2" onclick="clearTop()">Limpiar Top</button>
+                <p id="error-message" class="text-danger"></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 info">
+                <a href="#" class="clearsave">Clear Save Data</a>
+                <p>
+                    By <a href="https://x.com/rodneyamarilla1">Nakajima</a> - Modified from
+                    <a href="https://github.com/execfera/charasort/">charasort by execfera</a><br />
+                    Data updated by <a href="https://x.com/rodneyamarilla1">Nakajima</a>
+                </p>
+                <p>This site is just a fan site and doesn't affiliate with UP-FRONT PROMOTION.</p>
+                <p>Dedicado a la Hermandad H!P.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const topSize = 10;
+        const topList = Array(topSize).fill(null);
+
+        // Asegúrate que dataSet y dataSetVersion están definidos en tus archivos data.js/idolsR200824.js
+        // Por ejemplo:
+        // const dataSetVersion = "idolsR200824";
+        // const dataSet = {
+        //     idolsR200824: {
+        //         options: [{ sub: [...] }],
+        //         characterData: [...]
+        //     }
+        // };
+
+        // Puedes definir dataSetVersion aquí si no está
+        const dataSetVersion = "idolsR200824";
+
+        function renderPyramid() {
+            const container = document.getElementById("pyramid-container");
+            container.innerHTML = "";
+            let index = 0;
+            for (let row = 1; index < topSize; row++) {
+                const rowEl = document.createElement("div");
+                rowEl.className = "result-grid-row";
+
+                for (let i = 0; i < row && index < topSize; i++, index++) {
+                    const idol = topList[index];
+                    const slot = document.createElement("div");
+                    slot.className = "result-grid-item pyramid-slot";
+                    slot.dataset.index = index;
+
+                    if (idol) {
+                        slot.style.borderColor = idol.color;
+                        slot.innerHTML = `
+                            <img src="/assets/idols/${idol.img}" alt="${idol.name}">
+                            <div class="result-info">
+                                <div class="result-name" title="${idol.name}">${idol.name}</div>
+                            </div>
+                        `;
+                    }
+
+                    slot.onclick = () => removeIdolFromTop(index);
+                    rowEl.appendChild(slot);
+                }
+                container.appendChild(rowEl);
+            }
+        }
+
+        function renderGroupList() {
+            const container = document.getElementById("idol-list-container");
+            container.innerHTML = "";
+
+            const groups = dataSet[dataSetVersion].options[0].sub;
+
+            groups.forEach(group => {
+                const wrapper = document.createElement("div");
+                wrapper.className = "idol-list-group";
+
+                const header = document.createElement("div");
+                header.className = "group-header";
+                header.textContent = group.name;
+                header.onclick = () => toggleGroup(group.key);
+                wrapper.appendChild(header);
+
+                const list = document.createElement("div");
+                list.id = `list-${group.key}`;
+                list.style.display = "none";
+                list.style.flexWrap = "wrap";
+                list.style.display = "flex";
+
+                const idols = dataSet[dataSetVersion].characterData.filter(c =>
+                    c.opts.group.includes(group.key)
+                );
+                idols.forEach(idol => {
+                    const card = document.createElement("div");
+                    card.className = "result-grid-item idol-card";
+                    card.style.borderColor = idol.color;
+                    card.onclick = () => addIdolToTop(idol);
+
+                    card.innerHTML = `
+                        <img src="/assets/idols/${idol.img}" alt="${idol.name}">
+                        <div class="result-info">
+                            <div class="result-name" title="${idol.name}">${idol.name}</div>
+                        </div>
+                    `;
+
+                    list.appendChild(card);
+                });
+
+                wrapper.appendChild(list);
+                container.appendChild(wrapper);
+            });
+        }
+
+        function toggleGroup(key) {
+            const el = document.getElementById(`list-${key}`);
+            if (!el) return;
+            el.style.display = el.style.display === "none" ? "flex" : "none";
+            if (el.style.display === "flex") el.style.flexWrap = "wrap";
+        }
+
+        function addIdolToTop(idol) {
+            if (topList.includes(idol)) return;
+            const index = topList.findIndex(x => x === null);
+            if (index !== -1) {
+                topList[index] = idol;
+                renderPyramid();
+            }
+        }
+
+        function removeIdolFromTop(index) {
+            topList[index] = null;
+            renderPyramid();
+        }
+
+        function validateTop() {
+            let foundEmpty = false;
+            for (let i = 0; i < topList.length; i++) {
+                if (topList[i] === null) {
+                    foundEmpty = true;
+                } else if (foundEmpty) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function generateTopImage() {
+            if (!validateTop()) {
+                document.getElementById("error-message").textContent = "Debes llenar los puestos en orden sin huecos en medio.";
+                return;
+            }
+            document.getElementById("error-message").textContent = "";
+            html2canvas(document.getElementById("pyramid-container")).then(canvas => {
+                const img = canvas.toDataURL("image/png");
+                const link = document.createElement("a");
+                link.href = img;
+                link.download = "top-idols.png";
+                link.click();
+            });
+        }
+
+        function clearTop() {
+            for (let i = 0; i < topList.length; i++) topList[i] = null;
+            renderPyramid();
+            document.getElementById("error-message").textContent = "";
+        }
+
+        // Inicialización
+        document.addEventListener("DOMContentLoaded", () => {
+            renderPyramid();
+            renderGroupList();
+        });
+    </script>
+</body>
+</html>

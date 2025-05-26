@@ -14,6 +14,7 @@ dataSet[dataSetVersion].options = [
             { name: "つばきファクトリー", key: "tsubaki", img: "TBKFTRLOGO.jpg", checked: false },
             { name: "BEYOOOOONDS", key: "beyond", img: "BYNDSLOGO.jpg", checked: false },
             { name: "OCHA NORMA", key: "ocha", img: "OCNMLOGO.jpg", checked: false },
+            { name: "ロージークロニクル", key: "rosy", img: "RSCNCLOGO.jpg", checked: false },
             { name: "°C-ute", key: "cute", img: "CUTELOGO.jpg", checked: false },
             { name: "Berryz工房", key: "berryz", img: "BRKBLOGO.jpg", checked: false },
             { name: "こぶしファクトリー", key: "kobushi", img: "KBSFTRLOGO.jpg", checked: false },
@@ -32,7 +33,8 @@ dataSet[dataSetVersion].options = [
             { name: "Digital songs", key: "digitalsong", img: "", checked: false },
             { name: "Album songs", key: "album", img: "", checked: false },
             { name: "2024 songs", key: "2024", img: "", checked: false },
-            { name: "2024 album songs", key: "a2024", img: "", checked: false }
+            { name: "2024 album songs", key: "a2024", img: "", checked: false },
+            { name: "2025 songs", key: "2025", img: "", checked: false }
         ]
     }
 ];
@@ -489,6 +491,8 @@ dataSet[dataSetVersion].characterData = [
     { name: "THANK YOU, HELLO GOOD BYE", img: "ANGMMS64.jpg", opts: { group: ["angerme"], include: ["aside", "2024"] } },
     { name: "初恋、花冷え", img: "ANGMMS65.jpg", opts: { group: ["angerme"], include: ["aside", "2024"] } },
     { name: "悠々閑々 gonna be alright!!", img: "ANGMMS66.jpg", opts: { group: ["angerme"], include: ["aside", "2024"] } },
+    { name: "アンドロイドは夢を見るか？", img: "ANGMMS67.jpg", opts: { group: ["angerme"], include: ["aside", "2025"] } },
+    { name: "光のうた", img: "ANGMMS68.jpg", opts: { group: ["angerme"], include: ["aside", "2025"] } },
 
     //Digital songs
     { name: "マナーモード", img: "ANGMDS01.jpg", opts: { group: ["angerme"], include: ["digitalsong"] } },
@@ -615,6 +619,8 @@ dataSet[dataSetVersion].characterData = [
     { name: "トウキョウ・ブラー", img: "JCJCMS40.jpg", opts: { group: ["juice"], include: ["aside", "2024"] } },
     { name: "ナイモノラブ", img: "JCJCMS41.jpg", opts: { group: ["juice"], include: ["aside", "2024"] } },
     { name: "おあいこ", img: "JCJCMS42.jpg", opts: { group: ["juice"], include: ["aside", "2024"] } },
+    { name: "初恋の亡霊", img: "JCJCMS43.jpg", opts: { group: ["juice"], include: ["aside", "2025"] } },
+    { name: "今夜はHearty Party", img: "JCJCMS44.jpg", opts: { group: ["juice"], include: ["aside", "2025"] } },
 
     //B Sides
     { name: "続いていくSTORY (Symphonic Version feat. Karin)", img: "JCJCMS29.jpg", opts: { group: ["juice"], include: ["bside"] } },
@@ -706,12 +712,16 @@ dataSet[dataSetVersion].characterData = [
     { name: "ベイビースパイダー", img: "TBKFTRMS31.jpg", opts: { group: ["tsubaki"], include: ["aside", "2024"] } },
     { name: "青春エクサバイト", img: "TBKFTRMS32.jpg", opts: { group: ["tsubaki"], include: ["aside", "2024"] } },
     { name: "鼓動OK？", img: "TBKFTRMS33.jpg", opts: { group: ["tsubaki"], include: ["aside", "2024"] } },
+    { name: "My Days for You", img: "TBKFTRMS34.jpg", opts: { group: ["tsubaki"], include: ["aside", "2025"] } },
+    { name: "悲しみがとまらない", img: "TBKFTRMS35.jpg", opts: { group: ["tsubaki"], include: ["aside", "2025"] } },
 
     //B Sides
     { name: "もうサイコー！", img: "TBKFTRMS13.jpg", opts: { group: ["tsubaki"], include: ["bside"] } },
     { name: "Hair up 空へ！", img: "TBKFTRMS16.jpg", opts: { group: ["tsubaki"], include: ["bside"] } },
     { name: "My Darling ~Do you love me?~", img: "TBKFTRMS17.jpg", opts: { group: ["tsubaki"], include: ["bside"] } },
     { name: "恋のUFOキャッチャー", img: "TBKFTRMS18.jpg", opts: { group: ["tsubaki"], include: ["bside"] } },
+    { name: "大好きなのに、大好きだから", img: "TBKFTRMS34.jpg", opts: { group: ["tsubaki"], include: ["bside", "2025"] } },
+    { name: "月夜のパ・ド・ドゥ", img: "TBKFTRMS35.jpg", opts: { group: ["tsubaki"], include: ["bside", "2025"] } },
 
     //Albums
 
@@ -761,6 +771,8 @@ dataSet[dataSetVersion].characterData = [
     { name: "灰toダイヤモンド", img: "BYNDSMS11.jpg", opts: { group: ["beyond"], include: ["aside", "2024"] } },
     { name: "Go City Go", img: "BYNDSMS12.jpg", opts: { group: ["beyond"], include: ["aside", "2024"] } },
     { name: "フックの法則", img: "BYNDSMS13.jpg", opts: { group: ["beyond"], include: ["aside", "2024"] } },
+    { name: "Do-Did-Done", img: "BYNDSMS14.jpg", opts: { group: ["beyond"], include: ["aside", "2025"] } },
+    { name: "あゝ君に転生", img: "BYNDSMS15.jpg", opts: { group: ["beyond"], include: ["aside", "2025"] } },
 
     //B Sides
     { name: "GIRL ZONE", img: "BYNDSMS01.jpg", opts: { group: ["beyond"], include: ["bside"] } },
@@ -769,6 +781,11 @@ dataSet[dataSetVersion].characterData = [
     { name: "ヤバイ恋の刃", img: "BYNDSMS04.jpg", opts: { group: ["beyond"], include: ["bside"] } },
     { name: "ワタシと踊りなさい！", img: "BYNDSMS05.jpg", opts: { group: ["beyond"], include: ["bside"] } },
     { name: "二年前の横浜駅西口", img: "BYNDSMS06.jpg", opts: { group: ["beyond"], include: ["bside"] } },
+    { name: "恋する銀河", img: "BYNDSMS11.jpg", opts: { group: ["beyond"], include: ["bside", "2024"] } },
+    { name: "WORKER讃歌", img: "BYNDSMS12.jpg", opts: { group: ["beyond"], include: ["bside", "2024"] } },
+    { name: "Oh！カンターレ", img: "BYNDSMS13.jpg", opts: { group: ["beyond"], include: ["bside", "2024"] } },
+    { name: "ディスコ・カーニバル", img: "BYNDSMS14.jpg", opts: { group: ["beyond"], include: ["bside", "2025"] } },
+    { name: "マイ・ファースト・ピアス", img: "BYNDSMS15.jpg", opts: { group: ["beyond"], include: ["bside", "2025"] } },
 
     //Digital songs
     { name: "フレフレ・エブリデイ", img: "BYNDSDS01.jpg", opts: { group: ["beyond"], include: ["digitalsong", "album"] } },
@@ -838,6 +855,17 @@ dataSet[dataSetVersion].characterData = [
     { name: "1/2", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
     { name: "Peek a Boo", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
     { name: "今じゃなきゃ、君じゃなきゃ", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
+
+    /* ROSY CHRONICLE */
+
+    //A Sides
+    { name: "へいらっしゃい！〜ニッポンで会いましょう〜", img: "RSCNCMS01.jpg", opts: { group: ["rosy"], include: ["aside", "2025"] } },
+    { name: "ウブとズル", img: "RSCNCMS02.jpg", opts: { group: ["rosy"], include: ["aside", "2025"] } },
+
+    //B Sides
+    { name: "CHOちょこっとロッケンロール", img: "RSCNCMS01.jpg", opts: { group: ["rosy"], include: ["bside", "2025"] } },
+    { name: "M未来ハジマリ", img: "RSCNCMS02.jpg", opts: { group: ["rosy"], include: ["bside", "2025"] } },
+    { name: "8bit片想い", img: "RSCNCMS02.jpg", opts: { group: ["rosy"], include: ["bside", "2025"] } },
 
     /* °C-ute */
 

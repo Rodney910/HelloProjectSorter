@@ -8,7 +8,7 @@ dataSet[dataSetVersion].options = [
         key: "group",
         img: "",
         sub: [
-            { name: "Morning Musume '24", key: "momusu", img: "MNMSM2400.jpg", checked: false },
+            { name: "Morning Musume '25", key: "momusu", img: "MNMSM2500.jpg", checked: false },
             { name: "ANGERME", key: "angerme", img: "ANGM00.jpg", checked: false },
             { name: "Juice=Juice", key: "juice", img: "JCJC00.jpg", checked: false },
             { name: "Tsubaki Factory", key: "tsubaki", img: "TBKFTR00.jpg", checked: false },
@@ -24,7 +24,8 @@ dataSet[dataSetVersion].options = [
             { name: "ANGERME OG", key: "angermeog", img: "ANGMLOGO.jpg", checked: false },
             { name: "Juice=Juice OG", key: "juiceog", img: "JCJCLOGO.jpg", checked: false },
             { name: "Tsubaki Factory OG", key: "tsubakiog", img: "TBKFTRLOGO.jpg", checked: false },
-            { name: "BEYOOOOONDS OG", key: "beyondog", img: "BYNDSLOGO.jpg", checked: false }
+            { name: "BEYOOOOONDS OG", key: "beyondog", img: "BYNDSLOGO.jpg", checked: false },
+            { name: "OCHA NORMA OG", key: "ochaog", img: "OCNMLOGO.jpg", checked: false }
         ]
     }
 ];
@@ -43,14 +44,14 @@ dataSet[dataSetVersion].characterData = [
 
     { name: "Saito Madoka", img: "OCNM01.jpg", color: "#00BBFF", opts: { group: ["ocha"] } }, // sea blue
     { name: "Hiromoto Ruri", img: "OCNM02.jpg", color: "#FFFF00", opts: { group: ["ocha"] } }, // yellow
-    { name: "Ishiguri Kanami", img: "OCNM03.jpg", color: "#FF8C00", opts: { group: ["ocha"] } }, // orange
     { name: "Yonemura Kirara", img: "OCNM04.jpg", color: "#FF0000", opts: { group: ["ocha"] } }, // italian red
     { name: "Kubota Nanami", img: "OCNM05.jpg", color: "#FF90CF", opts: { group: ["ocha"] } }, // pink
-    { name: "Tashiro Sumire", img: "OCNM06.jpg", color: "#9674EF", opts: { group: ["ocha"] } }, // light purple
     { name: "Nakayama Natsume", img: "OCNM07.jpg", color: "#FFFFFF", opts: { group: ["ocha"] } }, // white
     { name: "Nishizaki Miku", img: "OCNM08.jpg", color: "#572A7B", opts: { group: ["ocha"] } }, // purple
     { name: "Kitahara Momo", img: "OCNM09.jpg", color: "#9ACD32", opts: { group: ["ocha"] } }, // light green
     { name: "Tsutsui Roko", img: "OCNM10.jpg", color: "#0000FF", opts: { group: ["ocha"] } },  // royal blue
+    { name: "Ishiguri Kanami", img: "OCNM03.jpg", color: "#FF8C00", opts: { group: ["ochaog"] } }, // orange
+    { name: "Tashiro Sumire", img: "OCNM06.jpg", color: "#9674EF", opts: { group: ["ochaog"] } }, // light purple
 
     { name: "Shimakura Rika", img: "BYNDS01.jpg", color: "#B57EDC", opts: { group: ["beyond"] } }, // lavender
     { name: "Nishida Shiori", img: "BYNDS02.jpg", color: "#FF33A3", opts: { group: ["beyond"] } }, // hot pink
@@ -68,7 +69,7 @@ dataSet[dataSetVersion].characterData = [
     { name: "Onoda Saori", img: "TBKFTR03.jpg", color: "#FF90CF", opts: { group: ["tsubaki"] } }, // peach (pink)
     { name: "Akiyama Mao", img: "TBKFTR04.jpg", color: "#FF4D4D", opts: { group: ["tsubaki"] } }, // light red
     { name: "Kasai Yuumi", img: "TBKFTR05.jpg", color: "#572A7B", opts: { group: ["tsubaki"] } }, // purple
-    { name: "Yagi Shiori", img: "TBKFTR06.jpg", color: "#FF8C00", opts: { group: ["tsubaki"] } }, // orange
+    { name: "Yagi Shiori", img: "TBKFTR06.jpg", color: "#FF8C00", opts: { group: ["tsubakiog"] } }, // orange
     { name: "Fukuda Marine", img: "TBKFTR07.jpg", color: "#0000FF", opts: { group: ["tsubaki"] } }, // royal blue
     { name: "Yofu Runo", img: "TBKFTR08.jpg", color: "#F9C926", opts: { group: ["tsubaki"] } }, // mustard
     { name: "Ishii Mihane", img: "TBKFTR09.jpg", color: "#FFFFFF", opts: { group: ["tsubaki"] } }, // white
@@ -87,32 +88,30 @@ dataSet[dataSetVersion].characterData = [
     { name: "Kawashima Mifu", img: "JCJC10.jpg", color: "#DC0026", opts: { group: ["juice"] } },  // pure red
 
     { name: "Kamikokuryo Moe", img: "ANGM01.jpg", color: "#6BCCDC", opts: { group: ["angerme"] } }, // aqua blue
-    { name: "Kawamura Ayano", img: "ANGM02.jpg", color: "#9674EF", opts: { group: ["angermeog"] } }, // light purple
-    { name: "Ise Layla", img: "ANGM03.jpg", color: "#FF8C00", opts: { group: ["angerme"] } }, // orange
-    { name: "Hashisako Rin", img: "ANGM04.jpg", color: "#DC0026", opts: { group: ["angerme"] } }, // pure red
-    { name: "Kawana Rin", img: "ANGM05.jpg", color: "#009900", opts: { group: ["angerme"] } }, // green
-    { name: "Tamenaga Shion", img: "ANGM06.jpg", color: "#FF90CF", opts: { group: ["angerme"] } }, // pink
-    { name: "Matsumoto Wakana", img: "ANGM07.jpg", color: "#FFFFFF", opts: { group: ["angerme"] } }, // white
-    { name: "Hirayama Yuki", img: "ANGM08.jpg", color: "#9ACD32", opts: { group: ["angerme"] } }, // light green
-    { name: "Shimoitani Yukiho", img: "ANGM09.jpg", color: "#FF33A3", opts: { group: ["angerme"] } }, // hot pink
-    { name: "Goto Hana", img: "ANGM10.jpg", color: "#00BBFF", opts: { group: ["angerme"] } },  // sea blue
+    { name: "Ise Layla", img: "ANGM02.jpg", color: "#FF8C00", opts: { group: ["angerme"] } }, // orange
+    { name: "Hashisako Rin", img: "ANGM03.jpg", color: "#DC0026", opts: { group: ["angerme"] } }, // pure red
+    { name: "Kawana Rin", img: "ANGM04.jpg", color: "#009900", opts: { group: ["angerme"] } }, // green
+    { name: "Tamenaga Shion", img: "ANGM05.jpg", color: "#FF90CF", opts: { group: ["angerme"] } }, // pink
+    { name: "Matsumoto Wakana", img: "ANGM06.jpg", color: "#FFFFFF", opts: { group: ["angerme"] } }, // white
+    { name: "Hirayama Yuki", img: "ANGM07.jpg", color: "#9ACD32", opts: { group: ["angerme"] } }, // light green
+    { name: "Shimoitani Yukiho", img: "ANGM08.jpg", color: "#FF33A3", opts: { group: ["angerme"] } }, // hot pink
+    { name: "Goto Hana", img: "ANGM09.jpg", color: "#00BBFF", opts: { group: ["angerme"] } },  // sea blue
 
-    { name: "Ikuta Erina", img: "MNMSM2401.jpg", color: "#9ACD32", opts: { group: ["momusu"] } }, // yellow-green
-    { name: "Ishida Ayumi", img: "MNMSM2402.jpg", color: "#0000FF", opts: { group: ["momusuog"] } }, // royal blue
-    { name: "Oda Sakura", img: "MNMSM2403.jpg", color: "#B57EDC", opts: { group: ["momusu"] } }, // lavender
-    { name: "Nonaka Miki", img: "MNMSM2404.jpg", color: "#572A7B", opts: { group: ["momusu"] } }, // purple
-    { name: "Makino Maria", img: "MNMSM2405.jpg", color: "#FF90CF", opts: { group: ["momusu"] } }, // pink
-    { name: "Haga Akane", img: "MNMSM2406.jpg", color: "#FF8C00", opts: { group: ["momusu"] } }, // orange
-    { name: "Yokoyama Reina", img: "MNMSM2407.jpg", color: "#F9C926", opts: { group: ["momusu"] } }, // golden yellow
-    { name: "Kitagawa Rio", img: "MNMSM2408.jpg", color: "#00BBFF", opts: { group: ["momusu"] } }, // sea blue
-    { name: "Okamura Homare", img: "MNMSM2409.jpg", color: "#FFE433", opts: { group: ["momusu"] } }, // daisy
-    { name: "Yamazaki Mei", img: "MNMSM2410.jpg", color: "#3EB235", opts: { group: ["momusu"] } }, // bright green
-    { name: "Sakurai Rio", img: "MNMSM2411.jpg", color: "#EECBAD", opts: { group: ["momusu"] } }, // milk tea
-    { name: "Inoue Haruka", img: "MNMSM2412.jpg", color: "#02CCBD", opts: { group: ["momusu"] } }, // mint green
-    { name: "Yumigeta Ako", img: "MNMSM2413.jpg", color: "#DC0026", opts: { group: ["momusu"] } },  // pure red
+    { name: "Ikuta Erina", img: "MNMSM2501.jpg", color: "#9ACD32", opts: { group: ["momusu"] } }, // yellow-green
+    { name: "Oda Sakura", img: "MNMSM2502.jpg", color: "#B57EDC", opts: { group: ["momusu"] } }, // lavender
+    { name: "Nonaka Miki", img: "MNMSM2503.jpg", color: "#572A7B", opts: { group: ["momusu"] } }, // purple
+    { name: "Makino Maria", img: "MNMSM2504.jpg", color: "#FF90CF", opts: { group: ["momusu"] } }, // pink
+    { name: "Haga Akane", img: "MNMSM2505.jpg", color: "#FF8C00", opts: { group: ["momusu"] } }, // orange
+    { name: "Yokoyama Reina", img: "MNMSM2506.jpg", color: "#F9C926", opts: { group: ["momusu"] } }, // golden yellow
+    { name: "Kitagawa Rio", img: "MNMSM2507.jpg", color: "#00BBFF", opts: { group: ["momusu"] } }, // sea blue
+    { name: "Okamura Homare", img: "MNMSM2508.jpg", color: "#FFE433", opts: { group: ["momusu"] } }, // daisy
+    { name: "Yamazaki Mei", img: "MNMSM2509.jpg", color: "#3EB235", opts: { group: ["momusu"] } }, // bright green
+    { name: "Sakurai Rio", img: "MNMSM2510.jpg", color: "#EECBAD", opts: { group: ["momusu"] } }, // milk tea
+    { name: "Inoue Haruka", img: "MNMSM2511.jpg", color: "#02CCBD", opts: { group: ["momusu"] } }, // mint green
+    { name: "Yumigeta Ako", img: "MNMSM2512.jpg", color: "#DC0026", opts: { group: ["momusu"] } },  // pure red
 
     /*{ name: "Kawano Soara", img: "KSS01.jpg", color: "", opts: { group: ["kss"] } },*/
-    { name: "Makino Toa", img: "KSS02.jpg", color: "", opts: { group: ["kss"] } },
+    /*{ name: "Makino Toa", img: "KSS02.jpg", color: "", opts: { group: ["kss"] } },*/
     { name: "Hayashi Niina", img: "KSS03.jpg", color: "", opts: { group: ["kss"] } },
     { name: "Asano Yurika", img: "KSS04.jpg", color: "", opts: { group: ["kss"] } },
     { name: "Miyakoshi Chihiro", img: "KSS05.jpg", color: "", opts: { group: ["kss"] } },
@@ -121,6 +120,15 @@ dataSet[dataSetVersion].characterData = [
     { name: "Yoshida Hikari", img: "KSS08.jpg", color: "", opts: { group: ["kss"] } },
     { name: "Sugihara Meisa", img: "KSS09.jpg", color: "", opts: { group: ["kss"] } },
     { name: "Hattori Rua", img: "KSS10.jpg", color: "", opts: { group: ["kss"] } },
+    { name: "Nagano Momoha", img: "KSS11.jpg", color: "", opts: { group: ["kss"] } },
+    { name: "Sakamoto Aoi", img: "KSS12.jpg", color: "", opts: { group: ["kss"] } },
+    { name: "Suzuki Moa", img: "KSS13.jpg", color: "", opts: { group: ["kss"] } },
+    { name: "Ishikawa Hanano", img: "KSS14.jpg", color: "", opts: { group: ["kss"] } },
+    { name: "Nemoto Karin", img: "KSS15.jpg", color: "", opts: { group: ["kss"] } },
+    { name: "Miyazaki Riho", img: "KSS16.jpg", color: "", opts: { group: ["kss"] } },
+    { name: "Ohno Airi", img: "KSS17.jpg", color: "", opts: { group: ["kss"] } },
+    { name: "Higuchi Aika", img: "KSS18.jpg", color: "", opts: { group: ["kss"] } },
+    { name: "Someya Sara", img: "KSS19.jpg", color: "", opts: { group: ["kss"] } },
 
     { name: "Yajima Maimi", img: "CUTE01.jpg", color: "#FF2200", opts: { group: ["cute"] } }, // red
     { name: "Nakajima Saki", img: "CUTE02.jpg", color: "#0033FF", opts: { group: ["cute"] } }, // blue
@@ -189,6 +197,7 @@ dataSet[dataSetVersion].characterData = [
     { name: "Kudo Haruka", img: "MNMSMOG31.jpg", color: "#FF8C00", opts: { group: ["momusuog"] } }, // orange
     { name: "Ogata Haruna", img: "MNMSMOG32.jpg", color: "#00BBFF", opts: { group: ["momusuog"] } }, // sea blue
     { name: "Kaga Kaede", img: "MNMSMOG33.jpg", color: "#FF0000", opts: { group: ["momusuog"] } }, // italian red
+    { name: "Ishida Ayumi", img: "MNMSM2402.jpg", color: "#0000FF", opts: { group: ["momusuog"] } }, // royal blue
 
     { name: "Wada Ayaka", img: "ANGMOG01.jpg", color: "#FF3300", opts: { group: ["angermeog"] } }, // red
     { name: "Maeda Yuuka", img: "ANGMOG02.jpg", color: "#FF90CF", opts: { group: ["angermeog"] } }, // pink
@@ -204,6 +213,7 @@ dataSet[dataSetVersion].characterData = [
     { name: "Sasaki Rikako", img: "ANGMOG12.jpg", color: "#FFFF00", opts: { group: ["angermeog"] } }, // yellow
     { name: "Kasahara Momona", img: "ANGMOG13.jpg", color: "#FF33A3", opts: { group: ["angermeog"] } }, // hot pink
     { name: "Oota Haruka", img: "ANGMOG14.jpg", color: "#3EB235", opts: { group: ["angermeog"] } },  // bright green
+    { name: "Kawamura Ayano", img: "ANGMOG15.jpg", color: "#9674EF", opts: { group: ["angermeog"] } }, // light purple
 
     { name: "Miyazaki Yuka", img: "JCJCOG01.jpg", color: "#FAAFBE", opts: { group: ["juiceog"] } }, // peach
     { name: "Kanazawa Tomoko", img: "JCJCOG02.jpg", color: "#FF3300", opts: { group: ["juiceog"] } }, // apple

@@ -14,6 +14,7 @@ dataSet[dataSetVersion].options = [
             { name: "Tsubaki Factory", key: "tsubaki", img: "TBKFTRLOGO.jpg", checked: false },
             { name: "BEYOOOOONDS", key: "beyond", img: "BYNDSLOGO.jpg", checked: false },
             { name: "OCHA NORMA", key: "ocha", img: "OCNMLOGO.jpg", checked: false },
+            { name: "Rosy Chronicle", key: "rosy", img: "RSCNCLOGO.jpg", checked: false },
             { name: "°C-ute", key: "cute", img: "CUTELOGO.jpg", checked: false },
             { name: "Berryz Koubou", key: "berryz", img: "BRKBLOGO.jpg", checked: false },
             { name: "Kobushi Factory", key: "kobushi", img: "KBSFTRLOGO.jpg", checked: false },
@@ -32,7 +33,8 @@ dataSet[dataSetVersion].options = [
             { name: "Digital songs", key: "digitalsong", img: "", checked: false },
             { name: "Album songs", key: "album", img: "", checked: false },
             { name: "2024 songs", key: "2024", img: "", checked: false },
-            { name: "2024 album songs", key: "a2024", img: "", checked: false }
+            { name: "2024 album songs", key: "a2024", img: "", checked: false },
+            { name: "2025 songs", key: "2025", img: "", checked: false }
         ]
     }
 ];
@@ -489,6 +491,8 @@ dataSet[dataSetVersion].characterData = [
     { name: "THANK YOU, HELLO GOOD BYE", img: "ANGMMS64.jpg", opts: { group: ["angerme"], include: ["aside", "2024"] } },
     { name: "Hatsukoi, Hanabie", img: "ANGMMS65.jpg", opts: { group: ["angerme"], include: ["aside", "2024"] } },
     { name: "Yuuyuu Kankan gonna be alright!!", img: "ANGMMS66.jpg", opts: { group: ["angerme"], include: ["aside", "2024"] } },
+    { name: "Android wa Yume wo Miru ka?", img: "ANGMMS67.jpg", opts: { group: ["angerme"], include: ["aside", "2025"] } },
+    { name: "Hikari no Uta", img: "ANGMMS68.jpg", opts: { group: ["angerme"], include: ["aside", "2025"] } },
 
     //B Sides
     { name: "Thank You! Crème Brûlée no Yuujou", img: "ANGMMS01.jpg", opts: { group: ["angerme"], include: ["bside"] } },
@@ -615,6 +619,8 @@ dataSet[dataSetVersion].characterData = [
     { name: "Tokyo Blur", img: "JCJCMS40.jpg", opts: { group: ["juice"], include: ["aside", "2024"] } },
     { name: "Naimono Love", img: "JCJCMS41.jpg", opts: { group: ["juice"], include: ["aside", "2024"] } },
     { name: "Oaiko", img: "JCJCMS42.jpg", opts: { group: ["juice"], include: ["aside", "2024"] } },
+    { name: "Hatsukoi no Bourei", img: "JCJCMS43.jpg", opts: { group: ["juice"], include: ["aside", "2025"] } },
+    { name: "Kon'ya wa Hearty Party", img: "JCJCMS44.jpg", opts: { group: ["juice"], include: ["aside", "2025"] } },
 
     //B Sides
     { name: "Tsudzuiteiku STORY (Symphonic Version feat. Karin)", img: "JCJCMS29.jpg", opts: { group: ["juice"], include: ["bside"] } },
@@ -706,12 +712,16 @@ dataSet[dataSetVersion].characterData = [
     { name: "Baby Spider", img: "TBKFTRMS31.jpg", opts: { group: ["tsubaki"], include: ["aside", "2024"] } },
     { name: "Seishun Exabyte", img: "TBKFTRMS32.jpg", opts: { group: ["tsubaki"], include: ["aside", "2024"] } },
     { name: "Kodou OK?", img: "TBKFTRMS33.jpg", opts: { group: ["tsubaki"], include: ["aside", "2024"] } },
+    { name: "My Days for You", img: "TBKFTRMS34.jpg", opts: { group: ["tsubaki"], include: ["aside", "2025"] } },
+    { name: "Kanashimi ga Tomaranai", img: "TBKFTRMS35.jpg", opts: { group: ["tsubaki"], include: ["aside", "2025"] } },
 
     //B Sides
     { name: "Mou Saikou!", img: "TBKFTRMS13.jpg", opts: { group: ["tsubaki"], include: ["bside"] } },
     { name: "Hair up Sora e!", img: "TBKFTRMS16.jpg", opts: { group: ["tsubaki"], include: ["bside"] } },
     { name: "My Darling ~Do you love me?~", img: "TBKFTRMS17.jpg", opts: { group: ["tsubaki"], include: ["bside"] } },
     { name: "Koi no UFO Catcher", img: "TBKFTRMS18.jpg", opts: { group: ["tsubaki"], include: ["bside"] } },
+    { name: "Daisuki na no ni, Daisuki Dakara", img: "TBKFTRMS34.jpg", opts: { group: ["tsubaki"], include: ["bside", "2025"] } },
+    { name: "Tsukiyo no Pas de Deux", img: "TBKFTRMS35.jpg", opts: { group: ["tsubaki"], include: ["bside", "2025"] } },
 
     //Albums
 
@@ -761,6 +771,8 @@ dataSet[dataSetVersion].characterData = [
     { name: "Hai to Diamond", img: "BYNDSMS11.jpg", opts: { group: ["beyond"], include: ["aside", "2024"] } },
     { name: "Go City Go", img: "BYNDSMS12.jpg", opts: { group: ["beyond"], include: ["aside", "2024"] } },
     { name: "Hooke no Housoku", img: "BYNDSMS13.jpg", opts: { group: ["beyond"], include: ["aside", "2024"] } },
+    { name: "Do-Did-Done", img: "BYNDSMS14.jpg", opts: { group: ["beyond"], include: ["aside", "2025"] } },
+    { name: "Aa Kimi ni Tensei", img: "BYNDSMS15.jpg", opts: { group: ["beyond"], include: ["aside", "2025"] } },
 
     //B Sides
     { name: "GIRL ZONE", img: "BYNDSMS01.jpg", opts: { group: ["beyond"], include: ["bside"] } },
@@ -769,6 +781,11 @@ dataSet[dataSetVersion].characterData = [
     { name: "Yabai Koi no Yaiba", img: "BYNDSMS04.jpg", opts: { group: ["beyond"], include: ["bside"] } },
     { name: "Watashi to Odorinasai!", img: "BYNDSMS05.jpg", opts: { group: ["beyond"], include: ["bside"] } },
     { name: "Ninenmae no Yokohama Eki Nishiguchi", img: "BYNDSMS06.jpg", opts: { group: ["beyond"], include: ["bside"] } },
+    { name: "Koisuru Ginga", img: "BYNDSMS11.jpg", opts: { group: ["beyond"], include: ["bside", "2024"] } },
+    { name: "WORKER Sanka", img: "BYNDSMS12.jpg", opts: { group: ["beyond"], include: ["bside", "2024"] } },
+    { name: "Oh! Cantare", img: "BYNDSMS13.jpg", opts: { group: ["beyond"], include: ["bside", "2024"] } },
+    { name: "Disco Carnival", img: "BYNDSMS14.jpg", opts: { group: ["beyond"], include: ["bside", "2025"] } },
+    { name: "My First Pierce", img: "BYNDSMS15.jpg", opts: { group: ["beyond"], include: ["bside", "2025"] } },
 
     //Digital songs
     { name: "Furefure Everyday", img: "BYNDSDS01.jpg", opts: { group: ["beyond"], include: ["digitalsong", "album"] } },
@@ -838,6 +855,17 @@ dataSet[dataSetVersion].characterData = [
     { name: "1/2", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
     { name: "Peek a Boo", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
     { name: "Ima ja Nakya, Kimi ja Nakya", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
+
+    /* ROSY CHRONICLE */
+
+    //A Sides
+    { name: "Heirasshai! ~Nippon de Aimashou~", img: "RSCNCMS01.jpg", opts: { group: ["rosy"], include: ["aside", "2025"] } },
+    { name: "Ubu to Zuru", img: "RSCNCMS02.jpg", opts: { group: ["rosy"], include: ["aside", "2025"] } },
+
+    //B Sides
+    { name: "CHO Chokotto Rock'n'Roll", img: "RSCNCMS01.jpg", opts: { group: ["rosy"], include: ["bside", "2025"] } },
+    { name: "Mirai Hajimari", img: "RSCNCMS02.jpg", opts: { group: ["rosy"], include: ["bside", "2025"] } },
+    { name: "8bit Kataomoi", img: "RSCNCMS02.jpg", opts: { group: ["rosy"], include: ["bside", "2025"] } },
 
     /* °C-ute */
 
