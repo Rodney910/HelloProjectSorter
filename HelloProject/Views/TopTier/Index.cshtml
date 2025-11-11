@@ -6,50 +6,125 @@
     <title>Manual Top Sorter</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet" />
-    <link rel="stylesheet" href="/css/styles3.css" />
     <script src="/js/html2canvas.min.js"></script>
     <script src="/js/data.js"></script>
     <script src="/js/data/idolsR200824.js"></script>
+
     <style>
+        body {
+            font-family: "Montserrat", sans-serif;
+            background: linear-gradient(to bottom, #ff003c, #400010);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+            margin-top: 80px;
+        }
+
+        /* Estilo para el header fijo */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to right, #762929, #ff003c);
+            border-bottom: 2px solid white;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-collapse: collapse;
+            border-style: none;
+        }
+
+
+        /* ---- PIRÁMIDE ---- */
         #pyramid-container {
-            background-color: white;
+            background-color: #141a28;
             border-radius: 12px;
             padding: 20px;
             box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
             display: flex;
             flex-direction: column;
             align-items: center;
+            min-height: 650px;
         }
 
         .pyramid-row {
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             margin-bottom: 15px;
         }
 
+        /* Slots vacíos del top */
         .pyramid-slot {
-            width: 90px;
-            height: 110px;
-            background-color: #000;
-            border: 2px solid #fff;
+            width: 150px;
+            height: auto;
+            aspect-ratio: 100 / 133;
+            background-color: #1f2739;
+            border: 2px dashed rgba(255,255,255,0.3);
+            border-radius: 10px;
             background-size: cover;
             background-position: center;
-            cursor: pointer;
-            border-radius: 10px;
+            cursor: default;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-            .pyramid-slot:hover {
+        /* Tarjeta en el top */
+        .result-grid-item {
+            margin-top: 5px;
+            width: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid black;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #000;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+            .result-grid-item:hover {
                 transform: scale(1.05);
                 box-shadow: 0 4px 8px rgba(255, 0, 60, 0.6);
             }
 
+            .result-grid-item img {
+                width: 100%;
+                height: auto;
+            }
+
+        .result-info {
+            width: 100%;
+            padding: 10px;
+            color: #fff;
+            text-align: center;
+            background: linear-gradient(to right, #762929, #ff003c);
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .result-name {
+            font-size: 1em;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        /* ---- LISTA DE GRUPOS ---- */
+        #idol-list-container {
+            max-height: 80vh;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
         .idol-list-group {
-            background-color: white;
+            background-color: #141a28;
             padding: 10px;
             border-radius: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
         }
 
@@ -65,37 +140,51 @@
             margin-bottom: 5px;
         }
 
+        .idol-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 5px;
+            display: none;
+        }
+
         .idol-card {
-            display: inline-block;
-            width: 70px;
-            margin: 5px;
-            text-align: center;
-            cursor: pointer;
+            width: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             border: 2px solid white;
             border-radius: 10px;
+            overflow: hidden;
             background-color: #000;
             color: white;
             box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            cursor: pointer;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
+
+            .idol-card img {
+                width: 100%;
+                height: auto;
+            }
+
+            .idol-card p {
+                font-size: 0.8rem;
+                margin: 5px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
 
             .idol-card:hover {
                 transform: scale(1.05);
                 box-shadow: 0 4px 6px rgba(255, 0, 60, 0.4);
             }
 
-            .idol-card img {
-                width: 100%;
-                height: 70px;
-                object-fit: cover;
-                border-top-left-radius: 10px;
-                border-top-right-radius: 10px;
-            }
-
-            .idol-card p {
-                font-size: 0.75rem;
-                margin: 5px;
-            }
+        /* ---- BOTONES DENTRO DE LA PIRÁMIDE ---- */
+        .pyramid-actions {
+            margin-top: 25px;
+            text-align: center;
+        }
 
         .btn {
             transition: transform 0.2s ease;
@@ -106,8 +195,9 @@
             }
 
         #error-message {
-            font-size: 1.1em;
+            font-size: 1em;
             font-weight: bold;
+            margin-top: 10px;
         }
 
         .info {
@@ -116,43 +206,84 @@
             color: white;
             margin-top: 30px;
         }
+
+        /* Estilos para la barra de navegación y pestañas */
+        .navbar-brand, .nav-link {
+            color: white !important; /* Color del texto blanco */
+        }
+
+        /* Estilo para el fondo de la barra de navegación */
+        .navbar {
+            background: linear-gradient(to right, #762929, #ff003c); /* Degradado de colores púrpuras y rosas */
+            border: none; /* Borde blanco */
+        }
+
+        .active-tab {
+            background-color: #ee136a !important; /* Fondo fucsia para la pestaña activa */
+            border-bottom: 2px solid white; /* Borde blanco */
+        }
+
+        /* Estilos para las pestañas de navegación */
+        .nav-item {
+            display: flex; /* Asegura que el contenido se alinee en línea */
+            align-items: center; /* Centra verticalmente el contenido */
+            margin-right: 1rem; /* Espacio entre las pestañas */
+            position: relative; /* Necesario para posicionar la barra vertical */
+        }
+
+            /* Barra vertical entre pestañas */
+            .nav-item:not(:last-child)::after {
+                content: ""; /* Contenido vacío */
+                position: absolute; /* Posicionamiento absoluto */
+                right: -0.5rem; /* Ajusta el margen derecho para que esté al lado de la pestaña */
+                top: 50%; /* Centra verticalmente la barra */
+                transform: translateY(-50%); /* Ajusta el centrado vertical */
+                width: 1px; /* Ancho de la barra vertical */
+                height: 50%; /* Altura de la barra vertical */
+                background-color: white; /* Color de la barra vertical */
+            }
+
     </style>
 </head>
 <body>
     <div class="container">
         <div class="row text-center">
-            <div class="col-12"><h2 style="color: white;">Hello! Project Top</h2></div>
+            <div class="col-12"><h2>Hello! Project Top</h2></div>
         </div>
 
         <div class="row">
-            <div class="col-md-8"><div id="pyramid-container"></div></div>
-            <div class="col-md-4"><div id="idol-list-container"></div></div>
-        </div>
-
-        <div class="row">
-            <div class="col-12 text-center">
+            <div class="col-md-8">
+                <div id="pyramid-container">
+                    <div id="pyramid"></div>
+                    <div class="pyramid-actions">
+                        <p id="error-message" class="text-danger"></p>
+                    </div>
+                </div>
                 <button class="btn btn-success m-2" onclick="generateTopImage()">Generar Imagen</button>
                 <button class="btn btn-danger m-2" onclick="clearTop()">Limpiar Top</button>
-                <p id="error-message" class="text-danger"></p>
+            </div>
+
+            <div class="col-md-4">
+                <div id="idol-list-container"></div>
             </div>
         </div>
 
         <div class="info">
             <a href="#" class="clearsave">Clear Save Data</a>
             <p>
-                By <a href="https://x.com/rodneyamarilla1">Nakajima</a> - Modificado de <a href="https://github.com/execfera/charasort/">charasort</a><br />
+                By <a href="https://x.com/rodneyamarilla1">Nakajima</a> - Modificado de
+                <a href="https://github.com/execfera/charasort/">charasort</a><br />
                 Dedicado a la Hermandad H!P.
             </p>
         </div>
     </div>
 
-    <!-- ARCHIVO ACTUALIZADO -->
     <script>
         const topSize = 10;
         const topList = Array(topSize).fill(null);
 
         function renderPyramid() {
-          const container = document.getElementById("pyramid-container");
+          const container = document.getElementById("pyramid");
           container.innerHTML = "";
           let index = 0;
           for (let row = 1; index < topSize; row++) {
@@ -160,13 +291,12 @@
             rowEl.className = "pyramid-row";
             for (let i = 0; i < row && index < topSize; i++, index++) {
               const slotWrapper = document.createElement("div");
-              slotWrapper.onclick = () => removeIdolFromTop(index);
-
               if (topList[index]) {
                 const char = topList[index];
                 const item = document.createElement("div");
                 item.className = "result-grid-item";
                 item.style.borderColor = char.color;
+                item.onclick = () => removeIdolFromTop(index);
 
                 const img = document.createElement("img");
                 img.src = `/assets/idols/${char.img}`;
@@ -174,11 +304,9 @@
 
                 const info = document.createElement("div");
                 info.className = "result-info";
-
                 const name = document.createElement("div");
                 name.className = "result-name";
-                name.innerHTML = `<b>${index + 1}.</b>${char.name}`;
-
+                name.innerHTML = `<b>${index + 1}.</b> ${char.name}`;
                 info.appendChild(name);
                 item.appendChild(info);
                 slotWrapper.appendChild(item);
@@ -187,7 +315,6 @@
                 empty.className = "pyramid-slot";
                 slotWrapper.appendChild(empty);
               }
-
               rowEl.appendChild(slotWrapper);
             }
             container.appendChild(rowEl);
@@ -210,30 +337,23 @@
             wrapper.appendChild(header);
 
             const list = document.createElement("div");
+            list.className = "idol-list";
             list.id = `list-${group.key}`;
-            list.style.display = "none";
-            list.style.flexWrap = "wrap";
 
             const idols = dataSet[dataSetVersion].characterData.filter(c => c.opts.group.includes(group.key));
             idols.forEach(idol => {
               const card = document.createElement("div");
-              card.className = "result-grid-item";
+              card.className = "idol-card";
               card.style.borderColor = idol.color;
               card.onclick = () => addIdolToTop(idol);
 
               const img = document.createElement("img");
               img.src = `/assets/idols/${idol.img}`;
+              const name = document.createElement("p");
+              name.textContent = idol.name;
+
               card.appendChild(img);
-
-              const info = document.createElement("div");
-              info.className = "result-info";
-
-              const name = document.createElement("div");
-              name.className = "result-name";
-              name.innerHTML = idol.name;
-
-              info.appendChild(name);
-              card.appendChild(info);
+              card.appendChild(name);
               list.appendChild(card);
             });
 
@@ -244,7 +364,7 @@
 
         function toggleGroup(key) {
           const el = document.getElementById(`list-${key}`);
-          el.style.display = el.style.display === "none" ? "flex" : "none";
+          el.style.display = el.style.display === "none" ? "grid" : "none";
         }
 
         function addIdolToTop(idol) {
@@ -264,18 +384,16 @@
         function validateTop() {
           let foundEmpty = false;
           for (let i = 0; i < topList.length; i++) {
-            if (topList[i] === null) {
-              foundEmpty = true;
-            } else if (foundEmpty) {
-              return false;
-            }
+            if (topList[i] === null) foundEmpty = true;
+            else if (foundEmpty) return false;
           }
           return true;
         }
 
         function generateTopImage() {
           if (!validateTop()) {
-            document.getElementById("error-message").textContent = "Debes llenar los puestos en orden sin huecos en medio.";
+            document.getElementById("error-message").textContent =
+              "Debes llenar los puestos en orden sin huecos en medio.";
             return;
           }
           document.getElementById("error-message").textContent = "";
@@ -294,10 +412,8 @@
           document.getElementById("error-message").textContent = "";
         }
 
-        // Init
         renderPyramid();
         renderGroupList();
     </script>
-
 </body>
 </html>

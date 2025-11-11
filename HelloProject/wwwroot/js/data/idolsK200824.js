@@ -95,17 +95,17 @@ dataSet[dataSetVersion].characterData = [
     { name: "後藤花", img: "ANGM08.jpg", color: "#00BBFF", opts: { group: ["angerme"] } },  // sea blue
     { name: "長野桃羽", img: "ANGM09.jpg", color: "#FFFF00", opts: { group: ["angerme"] } }, //yellow
 
+    { name: "野中美希", img: "MNMSM2501.jpg", color: "#572A7B", opts: { group: ["momusu"] } }, // purple
     { name: "小田さくら", img: "MNMSM2502.jpg", color: "#B57EDC", opts: { group: ["momusu"] } }, // lavender
-    { name: "野中美希", img: "MNMSM2503.jpg", color: "#572A7B", opts: { group: ["momusu"] } }, // purple
-    { name: "牧野真莉愛", img: "MNMSM2504.jpg", color: "#FF90CF", opts: { group: ["momusu"] } }, // pink
-    { name: "羽賀朱音", img: "MNMSM2505.jpg", color: "#FF8C00", opts: { group: ["momusu"] } }, // orange
-    { name: "横山玲奈", img: "MNMSM2506.jpg", color: "#F9C926", opts: { group: ["momusu"] } }, // golden yellow
-    { name: "北川莉央", img: "MNMSM2507.jpg", color: "#00BBFF", opts: { group: ["momusu"] } }, // sea blue
-    { name: "岡村ほまれ", img: "MNMSM2508.jpg", color: "#FFE433", opts: { group: ["momusu"] } }, // daisy
-    { name: "山﨑愛生", img: "MNMSM2509.jpg", color: "#3EB235", opts: { group: ["momusu"] } }, // bright green
-    { name: "櫻井梨央", img: "MNMSM2510.jpg", color: "#EECBAD", opts: { group: ["momusu"] } }, // milk tea
-    { name: "井上春華", img: "MNMSM2511.jpg", color: "#02CCBD", opts: { group: ["momusu"] } }, // mint green
-    { name: "弓桁朱琴", img: "MNMSM2512.jpg", color: "#DC0026", opts: { group: ["momusu"] } },  // pure red
+    { name: "牧野真莉愛", img: "MNMSM2503.jpg", color: "#FF90CF", opts: { group: ["momusu"] } }, // pink
+    { name: "羽賀朱音", img: "MNMSM2504.jpg", color: "#FF8C00", opts: { group: ["momusu"] } }, // orange
+    { name: "横山玲奈", img: "MNMSM2505.jpg", color: "#F9C926", opts: { group: ["momusu"] } }, // golden yellow
+    { name: "北川莉央", img: "MNMSM2506.jpg", color: "#00BBFF", opts: { group: ["momusu"] } }, // sea blue
+    { name: "岡村ほまれ", img: "MNMSM2507.jpg", color: "#FFE433", opts: { group: ["momusu"] } }, // daisy
+    { name: "山﨑愛生", img: "MNMSM2508.jpg", color: "#3EB235", opts: { group: ["momusu"] } }, // bright green
+    { name: "櫻井梨央", img: "MNMSM2509.jpg", color: "#EECBAD", opts: { group: ["momusu"] } }, // milk tea
+    { name: "井上春華", img: "MNMSM2510.jpg", color: "#02CCBD", opts: { group: ["momusu"] } }, // mint green
+    { name: "弓桁朱琴", img: "MNMSM2511.jpg", color: "#DC0026", opts: { group: ["momusu"] } },  // pure red
 
     { name: "宮越千尋", img: "KSS01.jpg", color: "", opts: { group: ["kss"] } },
     { name: "大坪茉乃", img: "KSS02.jpg", color: "", opts: { group: ["kss"] } },
@@ -189,8 +189,8 @@ dataSet[dataSetVersion].characterData = [
     { name: "工藤遥", img: "MNMSMOG31.jpg", color: "#FF8C00", opts: { group: ["momusuog"] } }, // orange
     { name: "尾形春水", img: "MNMSMOG32.jpg", color: "#00BBFF", opts: { group: ["momusuog"] } }, // sea blue
     { name: "加賀楓", img: "MNMSMOG33.jpg", color: "#FF0000", opts: { group: ["momusuog"] } },  // italian red
-    { name: "石田亜佑美", img: "MNMSM2402.jpg", color: "#0000FF", opts: { group: ["momusuog"] } }, // royal blue
-    { name: "生田衣梨奈", img: "MNMSM2501.jpg", color: "#9ACD32", opts: { group: ["momusuog"] } }, // yellow-green
+    { name: "石田亜佑美", img: "MNMSMOG34.jpg", color: "#0000FF", opts: { group: ["momusuog"] } }, // royal blue
+    { name: "生田衣梨奈", img: "MNMSMOG35.jpg", color: "#9ACD32", opts: { group: ["momusuog"] } }, // yellow-green
 
     { name: "和田彩花", img: "ANGMOG01.jpg", color: "#FF3300", opts: { group: ["angermeog"] } }, // red
     { name: "前田憂佳", img: "ANGMOG02.jpg", color: "#FF90CF", opts: { group: ["angermeog"] } }, // pink
