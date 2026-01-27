@@ -71,8 +71,6 @@ function init() {
     document.querySelector('.finished.getimg.button').addEventListener('click', generateImage);
     document.querySelector('.finished.list.button').addEventListener('click', generateTextList);
 
-    document.querySelector('.clearsave').addEventListener('click', clearProgress);
-
     /** Define keyboard controls (up/down/left/right vimlike k/j/h/l). */
     document.addEventListener('keypress', (ev) => {
         /** If sorting is in progress. */
@@ -482,6 +480,8 @@ function result(imageNum = 50) {
     document.querySelector('.progress-section').style.display = 'none';
     document.querySelector('.options').style.display = 'none';
     document.querySelector('.info').style.display = 'none';
+    document.querySelector('.image-container.left-container').style.display = 'none';
+    document.querySelector('.image-container.right-container').style.display = 'none';
 
     // Formatear la fecha como DD-MM-YYYY
     const completedDate = new Date(timestamp + timeTaken);
@@ -493,7 +493,7 @@ function result(imageNum = 50) {
     const imgRes = (char, num) => {
         const charName = reduceTextWidth(char.name, 'Arial 12px', 160);
         const charTooltip = char.name !== charName ? char.name : '';
-        return `<div class="result-grid-item">
+        return `<div class="result-grid-item" style="border-color: ${char.color};">
             <img src="${char.img}">
             <div class="result-info">
                 <div class="result-name" title="${charTooltip}"><b>${num}.</b>${charName}</div>
@@ -504,7 +504,7 @@ function result(imageNum = 50) {
     const res = (char, num) => {
         const charName = reduceTextWidth(char.name, 'Arial 12px', 160);
         const charTooltip = char.name !== charName ? char.name : '';
-        return `<div class="result-grid-item">
+        return `<div class="result-grid-item" style="border-color: ${char.color};">
             <div class="result-info">
                 <div class="result-rank">${num}</div>
                 <div class="result-name" title="${charTooltip}">${charName}</div>
@@ -531,7 +531,7 @@ function result(imageNum = 50) {
         const characterIndex = finalSortedIndexes[idx];
         const character = characterDataToSort[characterIndex];
 
-        finalCharacters.push({ rank: rankNum, name: character.name });
+        finalCharacters.push({ rank: rankNum, name: character.name, color: character.color });
 
         if (imageDisplay-- > 0) {
             rowItems.push(imgRes(character, rankNum));
@@ -628,15 +628,15 @@ function loadProgress() {
 /** 
  * Clear progress from local browser storage.
 */
-function clearProgress() {
-    storedSaveType = '';
+//function clearProgress() {
+//  storedSaveType = '';
 
-    localStorage.removeItem(`${sorterURL}_saveData`);
-    localStorage.removeItem(`${sorterURL}_saveType`);
+//  localStorage.removeItem(`${sorterURL}_saveData`);
+//  localStorage.removeItem(`${sorterURL}_saveType`);
 
-    document.querySelectorAll('.starting.start.button').forEach(el => el.style['grid-row'] = 'span 6');
-    document.querySelectorAll('.starting.load.button').forEach(el => el.style.display = 'none');
-}
+//  document.querySelectorAll('.starting.start.button').forEach(el => el.style['grid-row'] = 'span 6');
+//  document.querySelectorAll('.starting.load.button').forEach(el => el.style.display = 'none');
+//}
 
 function generateImage() {
     const resultContainer = document.querySelector('.results');
@@ -645,21 +645,41 @@ function generateImage() {
     const filename = 'sort-' + (new Date(timeFinished - tzoffset)).toISOString().slice(0, -5).replace('T', '(') + ').png';
 
     // Calcula las dimensiones del contenedor .result
-    const containerWidth = resultContainer.offsetWidth;
-    const containerHeight = resultContainer.offsetHeight;
+    const containerWidth = resultContainer.scrollWidth;
+    const containerHeight = resultContainer.scrollHeight;
 
-    html2canvas(resultContainer, {
-        width: containerWidth,
-        height: containerHeight,
-        scale: 2 // Usa la relación de píxeles de la pantalla para alta resolución
-    }).then(canvas => {
-        const dataURL = canvas.toDataURL();
+    resultContainer.style.boxShadow = 'none';
+    resultContainer.style.marginTop = '0';
+    resultContainer.style.marginBottom = '30px';
+
+    domtoimage.toPng(resultContainer, {
+        width: containerWidth * 2, // Aumenta el ancho para mejorar la calidad
+        height: containerHeight * 2, // Aumenta la altura para mejorar la calidad
+        style: {
+            'transform': 'scale(2)', // Escala el contenido
+            'transform-origin': 'top left', // Asegura que la escala se aplique correctamente
+            'width': containerWidth + 'px', // Ajusta el ancho del contenedor
+            'height': containerHeight + 'px', // Ajusta la altura del contenedor
+        }
+    }).then(dataUrl => {
+        return domtoimage.toPng(resultContainer, {
+            width: containerWidth * 2, // Aumenta el ancho para mejorar la calidad
+            height: containerHeight * 2, // Aumenta la altura para mejorar la calidad
+            style: {
+                'transform': 'scale(2)', // Escala el contenido
+                'transform-origin': 'top left', // Asegura que la escala se aplique correctamente
+                'width': containerWidth + 'px', // Ajusta el ancho del contenedor
+                'height': containerHeight + 'px', // Ajusta la altura del contenedor
+            }
+        });
+    }).then(dataUrl2 => {
+
         const imgButton = document.querySelector('.finished.getimg.button');
         const resetButton = document.createElement('a');
 
         imgButton.removeEventListener('click', generateImage);
         imgButton.innerHTML = '';
-        imgButton.insertAdjacentHTML('beforeend', `<a href="${dataURL}" download="${filename}">Download Image</a><br><br>`);
+        imgButton.insertAdjacentHTML('beforeend', `<a href="${dataUrl2}" download="${filename}">Download Image</a><br><br>`);
 
         resetButton.insertAdjacentText('beforeend', 'Reset');
         resetButton.addEventListener('click', (event) => {
@@ -668,18 +688,77 @@ function generateImage() {
             event.stopPropagation();
         });
         imgButton.insertAdjacentElement('beforeend', resetButton);
+    }).catch(error => {
+        console.error('Error generating image:', error);
     });
 }
 
 
 function generateTextList() {
     const data = finalCharacters.reduce((str, char) => {
-        str += `${char.rank}. ${char.name}<br>`;
+        // Usar el color del personaje para el fondo
+        const charColor = char.color || '#fff'; // Usar color predeterminado si no se proporciona
+
+        str += `
+      <div class="character-container">
+        <div class="character-rank" style="background-color: ${charColor};">${char.rank}</div>
+        <div class="character-name" style="background-color: ${charColor};">${char.name}</div>
+      </div><br>`;
         return str;
     }, '');
 
     const oWindow = window.open("", "", "height=640,width=480");
-    oWindow.document.write(data);
+    oWindow.document.write(`
+    <html>
+      <head>
+        <style>
+          body {
+            background-color: #fff;
+            color: #fff;
+            font-family: Arial, sans-serif;
+          }
+          .character-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0px;
+          }
+          .character-rank, .character-name {
+            border: 2px solid #000;
+            padding: 2px 5px;
+            margin: 2px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 
+  1px 0 0 #000, 
+  0 1px 0 #000, 
+  -1px 0 0 #000, 
+  0 -1px 0 #000, 
+  1px 1px 0 #000, 
+  -1px -1px 0 #000, 
+  1px -1px 0 #000, 
+  -1px 1px 0 #000,
+  2px 0 0 #000,
+  -2px 0 0 #000,
+  0 2px 0 #000,
+  0 -2px 0 #000,
+  2px 2px 0 #000,
+  -2px -2px 0 #000,
+  2px -2px 0 #000,
+  -2px 2px 0 #000;
+          }
+          .character-rank {
+            margin-right: 5px;
+          }
+          .character-name {
+            white-space: nowrap;
+          }
+        </style>
+      </head>
+      <body>
+        ${data}
+      </body>
+    </html>
+  `);
 }
 
 
@@ -712,78 +791,116 @@ function setLatestDataset() {
 function populateOptions() {
     const optList = document.querySelector('.options');
 
-    // Función para insertar sub-opciones con imágenes
-    const optInsert = (name, id, img, tooltip, checked = true, disabled = false) => {
-        return `
-            <div class="option-item">
-                <label title="${tooltip ? tooltip : name}">
-                    <input id="cb-${id}" type="checkbox" ${checked ? 'checked' : ''} ${disabled ? 'disabled' : ''} class="option-checkbox">
-                    <div class="image-wrapper">
-            <img src="${imageRoot + img}" alt="${name}" class="option-image">
-            <div class="option-text">${name}</div>
-        </div>
-                </label>
-            </div>`;
-    };
+    // Templates ---------------
+    const optInsert = (name, id, img, tooltip, checked = true, disabled = false) => `
+        <div class="option-item">
+            <label title="${tooltip || name}">
+                <input id="cb-${id}" type="checkbox" 
+                       ${checked ? 'checked' : ''} 
+                       ${disabled ? 'disabled' : ''} 
+                       class="option-checkbox">
+                <div class="image-wrapper">
+                    <img src="${imageRoot + img}" class="option-image" alt="${name}">
+                    <div class="option-text">${name}</div>
+                </div>
+            </label>
+        </div>`;
 
-    // Función para insertar sub-opciones sin imágenes
-    const optInsertNo = (name, id, img, tooltip, checked = true, disabled = false) => {
-        return `
-            <div class="option-item" style="margin-top: 30px">
-                <label title="${tooltip ? tooltip : name}">
-                    <input id="cb-${id}" type="checkbox" ${checked ? 'checked' : ''} ${disabled ? 'disabled' : ''} class="option-checkbox">
-                    <div class="image-wrapper">
-            <div class="option-text2">${name}</div>
-        </div>
-                </label>
-            </div>`;
-    };
+    const optInsertNo = (name, id, tooltip, checked = true, disabled = false) => `
+        <div class="option-item" style="margin-top: 30px">
+            <label title="${tooltip || name}">
+                <input id="cb-${id}" type="checkbox" 
+                       ${checked ? 'checked' : ''} 
+                       ${disabled ? 'disabled' : ''} 
+                       class="option-checkbox">
+                <div class="image-wrapper">
+                    <div class="option-text2">${name}</div>
+                </div>
+            </label>
+        </div>`;
 
-    // Función para insertar opciones grandes sin imágenes
-    const optInsertLarge = (name, id, tooltip, checked = true) => {
-        return `
-            <div class="large-option-item">
-                <label title="${tooltip ? tooltip : name}">
-                    <input id="cbgroup-${id}" type="checkbox" ${checked ? 'checked' : ''}>
-                    ${name}
-                </label>
-            </div>`;
-    };
+    const optInsertLarge = (name, id, tooltip, checked = true) => `
+        <div class="large-option-item">
+            <label title="${tooltip || name}">
+                <input id="cbgroup-${id}" type="checkbox" ${checked ? 'checked' : ''}>
+                ${name}
+            </label>
+        </div>`;
 
-    /** Clear out any previous options. */
+    // Clear list
     optList.innerHTML = '';
 
-    /** Insert sorter options and set grouped option behavior. */
+    // Generate options ----------
     options.forEach(opt => {
         if ('sub' in opt) {
-            // Insert large option without image
-            optList.insertAdjacentHTML('beforeend', optInsertLarge(opt.name, opt.key, opt.tooltip, opt.checked));
+            // Insert category header
+            optList.insertAdjacentHTML('beforeend',
+                optInsertLarge(opt.name, opt.key, opt.tooltip, opt.checked)
+            );
+
+            // Insert sub-options
             opt.sub.forEach((subopt, subindex) => {
-                // Insert sub-options with images
-                if (subopt.img === "") {
-                    optList.insertAdjacentHTML('beforeend', optInsertNo(subopt.name, `${opt.key}-${subindex}`, subopt.tooltip, subopt.checked, opt.checked === false));
+                const id = `${opt.key}-${subindex}`;
+
+                if (subopt.img && subopt.img !== "") {
+                    // Suboption WITH image
+                    optList.insertAdjacentHTML('beforeend',
+                        optInsert(subopt.name, id, subopt.img, subopt.tooltip, subopt.checked)
+                    );
+                } else {
+                    // Suboption WITHOUT image
+                    optList.insertAdjacentHTML('beforeend',
+                        optInsertNo(subopt.name, id, subopt.tooltip, subopt.checked)
+                    );
                 }
-                else {
-                    optList.insertAdjacentHTML('beforeend', optInsert(subopt.name, `${opt.key}-${subindex}`, subopt.img, subopt.tooltip, subopt.checked, opt.checked === false));
-                }
+
+                // --------------- NUEVO: Autoactivar grupo si se marca una subopción ---------------
+                setTimeout(() => {  // Esperar a que el elemento exista en el DOM
+                    const checkbox = document.getElementById(`cb-${id}`);
+                    const groupbox = document.getElementById(`cbgroup-${opt.key}`);
+
+                    checkbox.addEventListener("change", () => {
+
+                        // Si marcó una subopción → activar grupo
+                        if (checkbox.checked) {
+                            groupbox.checked = true;
+                            return;
+                        }
+
+                        // Si desmarcó → ver si quedan otras marcadas
+                        const anyChecked = opt.sub.some((_, idx) => {
+                            const cb = document.getElementById(`cb-${opt.key}-${idx}`);
+                            return cb && cb.checked;
+                        });
+
+                        // Activamos o desactivamos el grupo según haya o no subopciones marcadas
+                        groupbox.checked = anyChecked;
+                    });
+                });
+                // -------------------------------------------------------------------------------
+
             });
+
+            // Divider
             optList.insertAdjacentHTML('beforeend', '<hr>');
 
+            // Group select behavior (NO deshabilitamos nada)
             const groupbox = document.getElementById(`cbgroup-${opt.key}`);
 
-            groupbox.parentElement.addEventListener('click', () => {
+            groupbox.addEventListener("change", () => {
                 opt.sub.forEach((subopt, subindex) => {
                     const checkbox = document.getElementById(`cb-${opt.key}-${subindex}`);
-                    checkbox.disabled = !groupbox.checked;
-                    if (groupbox.checked) { checkbox.checked = true; }
+
+                    // Seleccionar/deseleccionar todos, pero NO deshabilitar
+                    checkbox.checked = groupbox.checked;
                 });
             });
+
         } else {
-            if (subopt.img === "") {
-                optList.insertAdjacentHTML('beforeend', optInsertNo(opt.name, opt.key, opt.img, opt.tooltip, opt.checked));
-            }
-            // Insert single option with image
-            optList.insertAdjacentHTML('beforeend', optInsert(opt.name, opt.key, opt.img, opt.tooltip, opt.checked));
+            // Single option (rarely used in your sorter)
+            optList.insertAdjacentHTML('beforeend',
+                optInsert(opt.name, opt.key, opt.img, opt.tooltip, opt.checked)
+            );
         }
     });
 }

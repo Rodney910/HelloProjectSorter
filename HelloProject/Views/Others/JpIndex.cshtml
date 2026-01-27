@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Member Sorter";
+    ViewData["Title"] = "Extra Sorter";
 }
 
 <!DOCTYPE html>
@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="~/css/styles.css">*@
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
     <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" rel="stylesheet">
     <link href="~/css/styles3.css" rel="stylesheet" type="text/css">
 
@@ -30,7 +31,6 @@
     <script src="~/js/html2canvas.min.js"></script>
     <script src="~/js/lz-string.min.js"></script>
     <script src="~/js/seedrandom.min.js"></script>
-    <script src="~/js/main.js"></script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-64784129-2"></script>
     <script>
@@ -41,90 +41,654 @@
         gtag('config', 'UA-64784129-2');
     </script>
 
+    <style>
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* 🔹 Queda detrás del contenido */
+            pointer-events: none; /* No bloquea clics */
+        }
+
+        .pyramid-slot {
+            overflow: hidden;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+            .pyramid-slot:hover {
+                transform: scale(1.03);
+                box-shadow: 0 0 15px #ff5252;
+            }
+
+        .idol-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.06);
+            padding: 0.6rem;
+            border-radius: 0.5rem;
+            margin-bottom: 6px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+            .idol-item:hover {
+                background: rgba(255,255,255,0.12);
+            }
+
+            .idol-item img {
+                width: 55px;
+                height: 55px;
+                border-radius: 10px;
+                object-fit: cover;
+            }
+
+            .idol-item.selected {
+                position: relative;
+            }
+
+                .idol-item.selected::after {
+                    content: "✔";
+                    position: absolute;
+                    right: 10px;
+                    top: 10px;
+                    font-size: 2rem;
+                    color: green;
+                    font-weight: bold;
+                }
+
+
+        .group-btn {
+            background: #ff5252;
+            color: white;
+            padding: 0.30rem 0.6rem;
+            font-size: 0.78rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            cursor: pointer;
+            box-shadow: 0 0 6px #ff5252;
+        }
+
+            .group-btn:hover {
+                box-shadow: 0 0 15px #ff5252;
+            }
+
+            .group-btn[data-checked="1"] {
+                background: #942f2f; /* Más oscuro */
+                box-shadow: 0 0 12px #ff5252;
+                border: 2px solid #ff8080;
+            }
+
+        .result-grid-item {
+            cursor: pointer;
+        }
+
+        #extra-list {
+            max-height: 250px; /* 🔹 límite visual */
+            overflow-y: auto; /* 🔹 scroll cuando haya muchos */
+        }
+
+            #extra-list::-webkit-scrollbar {
+                width: 6px;
+            }
+
+            #extra-list::-webkit-scrollbar-thumb {
+                background: #ff5252;
+                border-radius: 10px;
+            }
+
+        #extra-groups {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 1rem;
+            max-height: 140px; /* 🔹 límite visual */
+            overflow-y: auto; /* 🔹 scroll cuando haya muchos */
+            padding-right: 6px; /* 🔹 evita que tape el scrollbar */
+        }
+
+            #extra-groups::-webkit-scrollbar {
+                width: 6px;
+            }
+
+            #extra-groups::-webkit-scrollbar-thumb {
+                background: #ff5252;
+                border-radius: 10px;
+            }
+
+        .pyramid-placeholder {
+            width: 100px; /* igual que tu imagen */
+            height: 100px;
+            border: 2px dashed rgba(255,255,255,0.2);
+            border-radius: 10px;
+            margin: auto;
+        }
+    </style>
+
 </head>
 
 <body>
-    <div class="container">
 
+    <canvas id="particles"></canvas>
+
+    <div class="main-container">
+
+        <!-- TÍTULO -->
         <div class="titlehp row">
             <div class="col-12 box">
-                <p><b>Hello! Project Extra Sorters</b></p>
+                <p class="hp-title">
+                    <b>Hello! Project Ranking</b>
+                </p>
                 <p class="lang">
                     <a asp-controller="Others" asp-action="Index">Romaji</a>
                 </p>
             </div>
         </div>
 
-        <div class="row">
-            <div class="progress-section col-12 box">
-                <span class="progressbattle"></span>
-                <div class="progressbar">
-                    <div class="progressfill"><span class="progresstext"></span></div>
-                </div>
-            </div>
-        </div>
+        <!-- ===================================== -->
+        <!--  CONTENEDOR GENERAL (Lista + Pirámide) -->
+        <!-- ===================================== -->
+        <div style="display:flex; gap:2rem; width:100%; margin-top:1rem;">
 
-        <div class="mobrow row">
-            <div class="col-4">
-                <div class="image-container left-container">
-                    <img src="~/assets/icons/HProsterL.png" class="left sort image">
-                    <div class="left sort text"><p></p></div>
-                </div>
-            </div>
+            <!-- =============== -->
+            <!--    PIRÁMIDE     -->
+            <!-- =============== -->
+            <div style="width:60%;">
 
-            <div class="col-4">
-                <div class="buttons" style="text-align:center;">
-                    <div class="starting start button">Click to Start!</div>
-                    <div class="starting load button">Load <span></span></div>
-                    <div class="loading button"><div></div><span>Loading...</span></div>
-                    <div class="sorting tie button">Tie</div>
-                    <div class="sorting undo button">Undo</div>
-                    <div class="sorting save button">Save Progress</div>
-                    <div class="finished save button">Generate Result URL</div>
-                    <div class="finished getimg button">Generate Image</div>
-                    <div class="finished list button">Generate Text List</div>
+                <div class="buttons" style="display:flex; gap:10px; margin-bottom: 0px;">
+                    <div class="button" id="download-btn" style="margin-bottom: 0px;">Download</div>
+                    <div class="button" id="clear-btn" style="margin-bottom: 0px;">Clear</div>
                 </div>
-            </div>
 
-            <div class="col-4">
-                <div class="image-container right-container">
-                    <img src="~/assets/icons/HProsterR.png" class="right sort image">
-                    <div class="right sort text"><p></p></div>
+                <div class="results double-border" id="pyramid-container" style="margin-top:1rem;">
+
+                    <div>
+                        <h2>Ranking Result:</h2>
+                    </div>
+
+                    <div id="pyramid-message"
+                         style="text-align:center; font-size:1.2rem; color:#000; margin:10px 0; font-weight: bold;">
+                        Select up to 15 idols
+                    </div>
+
+                    <!-- FILA 1 -->
+                    <div class="result-grid-row pyramid-row" data-row="1">
+                        <div class="result-grid-item pyramid-slot" data-slot="1"></div>
+                    </div>
+
+                    <!-- FILA 2 -->
+                    <div class="result-grid-row pyramid-row" data-row="2">
+                        <div class="result-grid-item pyramid-slot" data-slot="2"></div>
+                        <div class="result-grid-item pyramid-slot" data-slot="3"></div>
+                    </div>
+
+                    <!-- FILA 3 -->
+                    <div class="result-grid-row pyramid-row" data-row="3">
+                        <div class="result-grid-item pyramid-slot" data-slot="4"></div>
+                        <div class="result-grid-item pyramid-slot" data-slot="5"></div>
+                        <div class="result-grid-item pyramid-slot" data-slot="6"></div>
+                    </div>
+
+                    <!-- FILA 4 -->
+                    <div class="result-grid-row pyramid-row" data-row="4">
+                        <div class="result-grid-item pyramid-slot" data-slot="7"></div>
+                        <div class="result-grid-item pyramid-slot" data-slot="8"></div>
+                        <div class="result-grid-item pyramid-slot" data-slot="9"></div>
+                        <div class="result-grid-item pyramid-slot" data-slot="10"></div>
+                    </div>
+
+                    <!-- FILA 5 -->
+                    <div class="result-grid-row pyramid-row" data-row="5">
+                        <div class="result-grid-item pyramid-slot" data-slot="11"></div>
+                        <div class="result-grid-item pyramid-slot" data-slot="12"></div>
+                        <div class="result-grid-item pyramid-slot" data-slot="13"></div>
+                        <div class="result-grid-item pyramid-slot" data-slot="14"></div>
+                        <div class="result-grid-item pyramid-slot" data-slot="15"></div>
+                    </div>
                 </div>
-            </div>
 
+            </div>
+            <!-- ===================== -->
+            <!--         LISTA         -->
+            <!-- ===================== -->
+            <div style="width:40%;">
+
+                <!-- BUSCADOR -->
+                <input id="extra-search" placeholder="🔍 Search..."
+                       style="
+                    width:100%;
+                    padding:0.6rem;
+                    background:#0f1318;
+                    border:1px solid #2a2f35;
+                    border-radius:0.6rem;
+                    color:white;
+                " />
+
+                <!-- LISTA -->
+                <div id="extra-list" style="margin-top:1rem; overflow-y:auto;"></div>
+
+                <!-- GRUPOS: SE GENERAN AUTOMÁTICAMENTE -->
+                <div id="extra-groups" class="groups-filter"
+                     style="display:flex; flex-wrap:wrap; gap:8px; margin-top:1rem;">
+                </div>
+
+            </div>
         </div>
     </div>
 
-    <div class="container">
+    @*INFO*@ 
 
-        <div class="row">
-            <div class="col-12">
-                <div id="options" class="options"> </div>
-                <div class="image selector">Display Images on Result: </div>
-                <div class="time taken"> </div>
-                <div class="results double-border"> </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="container">
+    <div>
         <div class="row">
             <div class="col-12 info">
-                <h4>Keyboard Controls</h4>
-                <p><span class="keyboard">Keyboard controls during sorting:</span> <br><span class="keyboard">H/LeftArrow</span> (pick left) <br><span class="keyboard">J/DownArrow</span> (undo) <br><span class="keyboard">K/UpArrow</span> (tie) <br><span class="keyboard">L/RightArrow</span> (pick right) <br><span class="keyboard">S</span> (save progress).</p>
-                <p><span class="keyboard">Before sorting: </span><br><span class="keyboard">S/Enter</span> (start sorting) <br><span class="keyboard">L</span> (load progress).</p>
-                <p><span class="keyboard">1/2/3</span> always correspond to the first/second/third buttons.</p>
-
-                <br>
-                <a href="#" class="clearsave">Clear Save Data</a>
-                <p>By <a href="https://x.com/rodneyamarilla1">Nakajima</a> Modified from <a href="https://github.com/execfera/charasort/">charasort by execfera</a><br>Data updated by <a href="https://x.com/rodneyamarilla1">Nakajima</a></p>
+                <p>By <a href="https://x.com/rodneyamarilla1">Nakajima</a> Modified from <a href="https://hello-project.github.io/?lang=ja">Hello! Project Ranking</a><br>Data updated by <a href="https://x.com/rodneyamarilla1">Nakajima</a></p>
                 <p>This site is just a fan site and doesn't affiliate with UP-FRONT PROMOTION.</p>
                 <p>Dedicado a la Hermandad H!P.</p>
             </div>
         </div>
     </div>
+
+    <div id="warn-toast"
+         style="
+        position:fixed;
+        bottom:20px;
+        right:20px;
+        background:yellow;
+        color:black;
+        padding:0.8rem 1.2rem;
+        border-radius:0.5rem;
+        font-weight:bold;
+        display:none;
+     ">
+        You can only select up to 15 idols.
+    </div>
+
+
+    <script>
+           const canvas = document.getElementById('particles');
+           const ctx = canvas.getContext('2d');
+           let particles = [];
+           const color = '#ff5252';
+           const maxParticles = 80;
+
+                   function showWarning() {
+               const toast = document.getElementById("warn-toast");
+               toast.style.display = "block";
+               setTimeout(() => toast.style.display = "none", 2000);
+           }
+
+           function resizeCanvas() {
+             canvas.width = window.innerWidth;
+             canvas.height = window.innerHeight;
+           }
+
+           window.addEventListener('resize', resizeCanvas);
+           resizeCanvas();
+
+           function createParticle() {
+             return {
+               x: Math.random() * canvas.width,
+               y: Math.random() * canvas.height,
+               size: Math.random() * 3 + 1,
+               speedY: Math.random() * 0.6 - 0.3,
+               speedX: Math.random() * 0.6 - 0.3,
+               alpha: Math.random(),
+               life: Math.random() * 100 + 50,
+             };
+           }
+
+           function drawParticles() {
+             ctx.clearRect(0, 0, canvas.width, canvas.height);
+             for (let i = 0; i < particles.length; i++) {
+               const p = particles[i];
+               ctx.beginPath();
+               ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+               ctx.fillStyle = color + Math.floor(p.alpha * 255).toString(16).padStart(2, '0');
+               ctx.fill();
+               p.x += p.speedX;
+               p.y += p.speedY;
+               p.alpha -= 0.003;
+               p.life--;
+               if (p.alpha <= 0 || p.life <= 0) {
+                 particles[i] = createParticle(); // reemplaza la partícula
+               }
+             }
+
+             if (particles.length < maxParticles) {
+               particles.push(createParticle());
+             }
+
+             requestAnimationFrame(drawParticles);
+           }
+
+           // Inicializa las partículas
+           for (let i = 0; i < maxParticles; i++) {
+             particles.push(createParticle());
+           }
+
+           drawParticles();
+
+               const version = dataSetVersion;
+           const ds = dataSet[version];
+           const ALL_IDOLS = ds.characterData;
+           const OPTIONS = ds.options[0].sub;   // ← EXACTAMENTE COMO EN populateOptions
+           const root = imageRoot;
+
+           /* Estado de la pirámide */
+           let pyramidSlots = {};
+           let activeGroups = new Set();
+
+           /* ===============================
+              GENERAR GRUPOS IGUAL QUE OPTIONS
+           =============================== */
+
+           function renderGroupsFromDataset() {
+               const box = document.getElementById("extra-groups");
+               box.innerHTML = "";
+
+               OPTIONS.forEach(sub => {
+                   const g = document.createElement("div");
+                   g.className = "group-btn";
+                   g.dataset.group = sub.key;
+                   g.dataset.checked = sub.checked ? "1" : "0";
+                   g.innerText = sub.name;
+
+                   if (sub.checked) activeGroups.add(sub.key);
+
+                           g.onclick = () => {
+            // Reiniciar todos los botones
+            document.querySelectorAll(".group-btn").forEach(btn => {
+                btn.dataset.checked = "0";
+            });
+
+            // Activar SOLO el que se clicó
+            g.dataset.checked = "1";
+
+            // Limpiar y cargar solo este grupo
+            activeGroups.clear();
+            activeGroups.add(sub.key);
+
+            renderList();
+        };
+
+                   box.appendChild(g);
+               });
+           }
+
+           /* ===============================
+              GENERAR LISTA USANDO GROUPS ACTIVOS
+           =============================== */
+           function renderList() {
+               const list = document.getElementById("extra-list");
+               list.innerHTML = "";
+
+               let idols = ALL_IDOLS.filter(i =>
+                   i.opts.group?.some(gr => activeGroups.has(gr))
+               );
+
+               const q = document.getElementById("extra-search").value.toLowerCase();
+               if (q) idols = idols.filter(i => i.name.toLowerCase().includes(q));
+
+               idols.forEach(i => {
+                   const html = `
+                       <div class="idol-item" data-name="${i.name}">
+                           <img src="${root + i.img}">
+                           <div>${i.name}</div>
+                       </div>
+                   `;
+                   list.insertAdjacentHTML("beforeend", html);
+
+                           // Marcar si esta idol ya está en la pirámide
+           const isSelected = Object.values(pyramidSlots).some(p => p.name === i.name);
+           if (isSelected) {
+               const lastAdded = list.lastElementChild;
+               lastAdded.classList.add("selected");
+           }
+
+               });
+
+               document.querySelectorAll(".idol-item").forEach(item => {
+                   item.onclick = () => {
+                       const idol = ALL_IDOLS.find(i => i.name === item.dataset.name);
+                       toggleInPyramid(idol);
+                          renderList();
+                      };
+               });
+           }
+
+           document.getElementById("extra-search").addEventListener("input", renderList);
+
+           /* ===============================
+              PIRÁMIDE ESTILO RESULTADOS
+           =============================== */
+
+           function nextFreeSlot() {
+               for (let i = 1; i <= 15; i++)
+                   if (!pyramidSlots[i]) return i;
+               return null;
+           }
+
+                  function renderPyramid() {
+
+                              // Mostrar u ocultar el mensaje
+        const msg = document.getElementById("pyramid-message");
+        const hasItems = Object.keys(pyramidSlots).length > 0;
+        msg.style.display = hasItems ? "none" : "block";
+
+
+               // Para cada fila de la pirámide
+               document.querySelectorAll(".pyramid-row").forEach(row => {
+
+                   const slots = Array.from(row.querySelectorAll(".pyramid-slot"));
+
+                   // Obtener los idols realmente cargados en esta fila
+                   let filled = slots.filter(slot => {
+                       const id = slot.dataset.slot;
+                       return pyramidSlots[id];
+                   });
+
+                   // Primero ocultamos todos
+                   slots.forEach(s => {
+                       s.style.display = "none";
+                   });
+
+                   // Luego mostramos solo los que tienen idol
+                   filled.forEach(s => {
+                       s.style.display = "flex";
+                       s.style.justifyContent = "center";
+                       s.style.alignItems = "center";
+                   });
+
+                   // Centrado automático
+                   row.style.display = "flex";
+                   row.style.justifyContent = "center";
+
+                   // Finalmente dibujamos cada idol dentro de su slot
+                   slots.forEach(slot => {
+                       const idol = pyramidSlots[slot.dataset.slot];
+
+                       // limpiar slot
+                               if (!idol) {
+            const id = parseInt(slot.dataset.slot);
+
+            // saber cuál es el último slot ocupado
+            const used = Object.keys(pyramidSlots).map(n => parseInt(n));
+            const maxUsed = used.length ? Math.max(...used) : 0;
+
+            // si ES el último slot vacío → ocultarlo
+            if (id > maxUsed) {
+                slot.style.display = "none";
+                return;
+            }
+
+            // si NO es el último -> mostrar placeholder
+            slot.style.display = "flex";
+            slot.innerHTML = `<div class="pyramid-placeholder"></div>`;
+            return;
+        }
+
+                       // render idol
+                       slot.style.borderColor = idol.color || "#fff";
+
+                       slot.innerHTML = `
+                           <img src="${root + idol.img}">
+                           <div class="result-info">
+                               <div class="result-name"><b>${slot.dataset.slot}.</b> ${idol.name}</div>
+                           </div>
+                       `;
+                   });
+
+               });
+           }
+
+           function toggleInPyramid(idol) {
+               const existing = Object.values(pyramidSlots).find(i => i.name === idol.name);
+
+               if (existing) {
+                   delete pyramidSlots[existing.slot];
+                   renderPyramid();
+                   return;
+               }
+
+                       const free = nextFreeSlot();
+           if (!free) {
+               showWarning();   // ← muestra el cartel
+               return;
+           }
+
+               pyramidSlots[free] = {
+                   name: idol.name,
+                   img: idol.img,
+                   color: idol.color,
+                   slot: free
+               };
+
+               renderPyramid();
+           }
+
+           document.querySelectorAll(".pyramid-slot").forEach(s => {
+               s.onclick = () => {
+                   const n = s.dataset.slot;
+                   if (pyramidSlots[n]) {
+                       delete pyramidSlots[n];
+                       renderPyramid();
+                       renderList();
+                   }
+               };
+           });
+
+
+           /* ========================
+              DESCARGA DE LA PIRÁMIDE
+           ======================== */
+
+           function generateImage() {
+
+               const resultContainer = document.getElementById("pyramid-container");
+
+               // --- Adaptación para timestamp ---
+               const timestamp = Date.now();
+               const timeTaken = 0;
+               const timeFinished = timestamp + timeTaken;
+
+               const tzoffset = (new Date()).getTimezoneOffset() * 60000;
+               const filename = 'pyramid-' +
+                   (new Date(timeFinished - tzoffset))
+                       .toISOString()
+                       .slice(0, -5)
+                       .replace('T', '(') +
+                   ').png';
+
+               const containerWidth = resultContainer.scrollWidth;
+               const containerHeight = resultContainer.scrollHeight;
+
+               // Preparar estilo temporal
+               const prevBoxShadow = resultContainer.style.boxShadow;
+               const prevMarginTop = resultContainer.style.marginTop;
+               const prevMarginBottom = resultContainer.style.marginBottom;
+
+               resultContainer.style.boxShadow = 'none';
+               resultContainer.style.marginTop = '0';
+               resultContainer.style.marginBottom = '30px';
+
+               domtoimage.toPng(resultContainer, {
+                   width: containerWidth * 2,
+                   height: containerHeight * 2,
+                   style: {
+                       'transform': 'scale(2)',
+                       'transform-origin': 'top left',
+                       'width': containerWidth + 'px',
+                       'height': containerHeight + 'px',
+                   }
+               })
+               .then(() => {
+                   return domtoimage.toPng(resultContainer, {
+                       width: containerWidth * 2,
+                       height: containerHeight * 2,
+                       style: {
+                           'transform': 'scale(2)',
+                           'transform-origin': 'top left',
+                           'width': containerWidth + 'px',
+                           'height': containerHeight + 'px',
+                       }
+                   });
+               })
+               .then(dataUrl => {
+
+                   // Restaurar estilos
+                   resultContainer.style.boxShadow = prevBoxShadow;
+                   resultContainer.style.marginTop = prevMarginTop;
+                   resultContainer.style.marginBottom = prevMarginBottom;
+
+                   // Forzar descarga
+                   const link = document.createElement("a");
+                   link.href = dataUrl;
+                   link.download = filename;
+                   document.body.appendChild(link);
+                   link.click();
+                   document.body.removeChild(link);
+
+               })
+               .catch(err => console.error("Error generating image:", err));
+           }
+
+
+           /* ========================
+              LIMPIAR LA PIRÁMIDE
+           ======================== */
+
+           function clearPyramid() {
+               pyramidSlots = {};
+               renderPyramid();
+               renderList();
+           }
+
+
+           /* ========================
+              EVENTOS DE LOS BOTONES
+           ======================== */
+
+           document.getElementById("download-btn").addEventListener("click", () => {
+               generateImage();
+           });
+
+           document.getElementById("clear-btn").addEventListener("click", () => {
+               clearPyramid();
+           });
+
+
+        /* ========================
+           INICIALIZAR
+        ======================== */
+           renderGroupsFromDataset();
+           renderList();
+           renderPyramid();
+
+    </script>
+
 </body>
 
 </html>

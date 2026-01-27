@@ -1,12 +1,31 @@
-/* Estilos generales */
+/* =========================================================
+   🎨 DARK NEON EDITION – IDOLS SORTER
+   Mantiene compatibilidad total con main.js
+   ========================================================= */
+
+:root {
+    --idol-main: #d500f9;
+    --idol-dark1: #140d17;
+    --idol-dark2: #201622;
+    --idol-glow: rgba(213, 0, 249, 0.6);
+    --text-light: #f5f6f8;
+    --text-muted: #a59bb0;
+    --border-glow: rgba(255, 255, 255, 0.08);
+    --dark-bg2: #161B22;
+}
+
+/* ================================
+   🌌 BODY GENERAL
+================================== */
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
     font-size: 20px;
-    background: linear-gradient(to bottom, #562976 0%, #fb00ff 50%, #562976 100%);
+    color: var(--text-light);
+    background: radial-gradient(circle at top left, #2a2e36, #373d47, #40495c);
     background-attachment: fixed;
-    color: white;
     width: 100%;
-    margin-top: 80px;
+    padding-top: 60px;
+    transition: background 0.5s ease;
 }
 
 /* Estilo para el header fijo */
@@ -15,65 +34,104 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    background: linear-gradient(to right, #562976, #fb00ff);
-    border-bottom: 2px solid white;
-    z-index: 1000;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 100;
     border-collapse: collapse;
     border-style: none;
 }
 
-.container {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    margin-top: 1em;
-    max-width: 1000px;
-    width: 100%;
-}
+    header::after {
+        content: "";
+        display: block;
+        height: 20px; /* espacio para el glow */
+        width: 100%;
+    }
 
-/* Sección de la barra de progreso */
-.progress-section {
-    margin: 1em auto;
-    display: none;
-    flex-direction: column;
-    align-items: center;
+.hp-title {
+    font-family: 'Orbitron', sans-serif;
+    color: #d500f9;
+    font-size: 1.8rem;
+    margin: 0;
     text-align: center;
 }
 
-/* Barra de progreso general */
+.main-container {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    max-width: 80%;
+    margin-top: 1em;
+    margin: 2rem auto;
+    background: var(--dark-bg2);
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    border: 2px solid var(--idol-main);
+    animation: fadeIn 0.6s ease;
+    padding: 1.5rem;
+}
+
+.mobrow {
+    width: 85%;
+}
+
+/* ================================
+   ⚡ TITLES & CONTAINERS
+================================== */
+.sorter-container {
+    background: var(--idol-dark2);
+    border-radius: 1rem;
+    border: 1px solid var(--border-glow);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    padding: 2rem;
+    animation: fadeIn 0.6s ease;
+}
+
+.sorter-title {
+    text-shadow: 0 0 12px var(--idol-glow);
+    color: var(--text-light);
+}
+
+/* ================================
+   🔄 PROGRESS BAR
+================================== */
+.progress-section {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin: 1em auto;
+    text-align: center;
+}
+
 .progressbar {
     position: relative;
-    width: 600px; /* Ocupa el ancho disponible */
-    max-width: 600px; /* Limita el ancho máximo */
+    width: 600px;
+    max-width: 600px;
     border: 1px solid white;
     border-radius: 10px;
     padding: 3px;
-    margin: 2px 0px;
+    margin: 2px 0;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.1);
 }
 
-/* Texto dentro de la barra de progreso */
+.progressfill {
+    height: 20px;
+    background: linear-gradient(to left, #1d0045, var(--idol-main) 50%, #1d0045);
+    border-radius: 10px;
+    background-size: 200% 100%;
+    animation: gradientAnimation 3s linear infinite;
+    transition: width 0.3s ease;
+    box-shadow: 0 0 15px var(--idol-glow);
+}
+
 .progresstext {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    text-align: center;
-    font-size: 0.7em;
-    color: white;
+    font-size: 0.8em;
+    color: var(--text-light);
 }
 
-/* Parte llena de la barra de progreso con degradado animado */
-.progressfill {
-    height: 20px;
-    background: linear-gradient(to left, #3f2976, #a600ff 50%, #3f2976);
-    border-radius: 10px;
-    border: 1px solid white;
-    width: 0%;
-    background-size: 200% 100%;
-    animation: gradientAnimation 3s linear infinite;
-    transition: width 0.3s ease;
-}
 
 /* Animación del degradado */
 @keyframes gradientAnimation {
@@ -114,35 +172,37 @@ header {
         height: auto;
         border: 2px solid #ffffff;
         border-radius: 10px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-.buttons {
-    display: grid;
-    grid-template-rows: repeat(auto-fit, minmax(40px, auto));
-    grid-gap: 10px;
-    justify-content: center;
-}
+    .image-container:hover img {
+        transform: scale(1.03);
+        box-shadow: 0 0 25px var(--idol-glow);
+    }
 
+/* ================================
+   🔘 BOTONES GENERALES
+================================== */
 .button {
-    width: 230px;
-    border: 2px solid white;
-    text-align: center;
-    padding: 10px 20px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 0.6rem;
+    background: linear-gradient(90deg, var(--idol-main), #3e2852);
+    color: #fff;
+    font-weight: 500;
+    padding: 0.6rem 1.2rem;
+    box-shadow: 0 0 10px var(--idol-glow);
     cursor: pointer;
-    background-color: #fb00ff;
-    color: #ffffff;
-    border-radius: 10px;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
     .button:hover {
-        background-color: #4606a5;
+        box-shadow: 0 0 20px var(--idol-glow);
+        transform: translateY(-2px);
+        background: linear-gradient(90deg, #e241ff, #5a3380);
     }
 
-.starting.start.button {
-    grid-row: span 2;
-}
-
+/* Estados ocultos heredados (respetando main.js) */
 .starting.load.button,
 .sorting.button,
 .finished.button,
@@ -216,21 +276,23 @@ header {
     font-size: 30px;
     margin: 1em auto;
     display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 10px;
+    grid-template-columns: repeat(3, 1fr); /* 🔹 ahora son 3 columnas */
+    gap: 15px; /* un poco más de espacio entre elementos */
     width: 100%;
-    max-width: 500px;
+    max-width: 900px; /* más ancho para acomodar las 3 columnas */
+    justify-items: center; /* centra los items dentro de cada celda */
 }
 
 .option-item {
     position: relative;
-    grid-column: span 2;
+    grid-column: span 1;
     display: flex;
     align-items: center;
     align-content: center;
     justify-content: center;
     font-size: 0.5625em;
     max-width: 210px;
+    border: 1px solid var(--border-glow);
 }
 
 .image-wrapper {
@@ -381,6 +443,7 @@ label {
     align-items: center;
     justify-content: center;
     border: 2px solid black;
+    border-style: solid;
     border-radius: 10px;
     overflow: hidden;
     background: #000; /* Fondo negro para los elementos del grid */
@@ -402,6 +465,10 @@ label {
     white-space: nowrap; /* Evita que el texto se ajuste en múltiples líneas */
     text-overflow: ellipsis; /* Muestra puntos suspensivos si el texto es demasiado largo */
 }
+
+/*background: linear-gradient( -72deg, #ca7345, #ffdeca 16%, #ca7345 21%, #ffdeca 24%, #a14521 27%, #ca7345 36%, #ffdeca 45%, #ffdeca 60%, #ca7345 72%, #ffdeca 80%, #ca7345 84%, #732100 );*/
+/*background: linear-gradient( -72deg, #dedede, #ffffff 16%, #dedede 21%, #ffffff 24%, #454545 27%, #dedede 36%, #ffffff 45%, #ffffff 60%, #dedede 72%, #ffffff 80%, #dedede 84%, #a1a1a1 );*/
+/*background: linear-gradient( -72deg, #ffde45, #ffffff 16%, #ffde45 21%, #ffffff 24%, #a17434 27%, #ffde45 36%, #ffffff 45%, #ffffff 60%, #ffde45 72%, #ffffff 80%, #ffde45 84%, #a17434 );*/
 
 .result-rank {
     font-size: 1.2em;
@@ -502,64 +569,73 @@ a {
 
     a:visited {
         color: #00ffff;
+}
+
+/* ================================
+   🧭 NAVBAR / LAYOUT
+================================== */
+.main-navbar {
+    background: linear-gradient(90deg, var(--idol-main), #1d0045);
+    box-shadow: 0 0 15px var(--idol-main);
+    border-bottom: 2px solid var(--idol-main);
+    transition: all 0.4s ease;
+}
+
+.navbar-logo {
+    width: 40px;
+    height: 40px;
+    filter: drop-shadow(0 0 5px var(--idol-glow));
+}
+
+.navbar .nav-link {
+    color: #fff !important;
+    font-weight: 500;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+    transition: all 0.3s ease;
+}
+
+    .navbar .nav-link:hover {
+        opacity: 0.85;
+        color: var(--idol-main) !important;
     }
 
-/* Estilos para la barra de navegación y pestañas */
-.navbar-brand, .nav-link {
-    color: white !important; /* Color del texto blanco */
-}
-
-/* Estilo para el fondo de la barra de navegación */
-.navbar {
-    background: linear-gradient(to right, #562976, #fb00ff); /* Degradado de colores púrpuras y rosas */
-    border: none; /* Borde blanco */
-}
-
-.active-tab {
-    background-color: #ee136a !important; /* Fondo fucsia para la pestaña activa */
-    border-bottom: 2px solid white; /* Borde blanco */
-}
-
-/* Estilos para las pestañas de navegación */
-.nav-item {
-    display: flex; /* Asegura que el contenido se alinee en línea */
-    align-items: center; /* Centra verticalmente el contenido */
-    margin-right: 1rem; /* Espacio entre las pestañas */
-    position: relative; /* Necesario para posicionar la barra vertical */
-}
-
-    /* Barra vertical entre pestañas */
-    .nav-item:not(:last-child)::after {
-        content: ""; /* Contenido vacío */
-        position: absolute; /* Posicionamiento absoluto */
-        right: -0.5rem; /* Ajusta el margen derecho para que esté al lado de la pestaña */
-        top: 50%; /* Centra verticalmente la barra */
-        transform: translateY(-50%); /* Ajusta el centrado vertical */
-        width: 1px; /* Ancho de la barra vertical */
-        height: 50%; /* Altura de la barra vertical */
-        background-color: white; /* Color de la barra vertical */
+    .navbar .nav-link.active {
+        color: var(--idol-main) !important;
+        text-shadow: 0 0 10px var(--idol-main);
     }
 
-/* Estilos generales para dispositivos móviles */
+.main-content {
+    animation: fadeIn 0.6s ease;
+}
+
+/* 🔹 Estilos móviles unificados */
 @media screen and (max-width: 1024px) {
 
+    /* Idioma / cabecera */
     .lang {
-        font-size: 0.7em; /* Ajusta el tamaño del texto */
+        font-size: 0.7em;
     }
 
+    .main-container {
+        max-width: 100%;
+        padding: 0.6rem;
+    }
+
+    /* -----------------------------
+       🔸 Sección de opciones
+    ------------------------------*/
     .options {
         display: flex;
-        flex-direction: column; /* Coloca los elementos en columna */
-        align-items: center; /* Centra los elementos */
-        width: 100%; /* Ancho completo para la sección de opciones */
-        margin: 10px auto; /* Espacio alrededor de la sección de opciones */
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin: 10px auto;
     }
 
     .option-item {
-        margin-bottom: 10px; /* Espacio inferior entre opciones */
+        margin-bottom: 10px;
     }
 
-        /* Efecto active para dispositivos móviles */
         .option-item:active .image-wrapper {
             transform: scale(1.1);
         }
@@ -567,38 +643,19 @@ a {
         .option-item:hover .image-wrapper {
             transform: none;
         }
-}
 
-/* Estilos para la barra de progreso en dispositivos móviles */
-@media screen and (max-width: 1024px) {
-    .progress-section {
-        flex-direction: column;
-        align-items: center;
-        display: none;
-        padding: 0.5em;
+    /* -----------------------------
+       🔸 Sección de batalla (imágenes y botones)
+    ------------------------------*/
+
+    .mobrow {
+        width: 100%;
     }
-
-    .progressbar {
-        width: 90%; /* Ajusta el ancho de la barra de progreso */
-    }
-
-    .progressfill {
-        height: 15px; /* Ajusta la altura de la parte llena de la barra de progreso */
-    }
-
-    .progresstext {
-        font-size: 0.6em; /* Ajusta el tamaño del texto */
-    }
-}
-
-/* Estilos generales para las imágenes y botones en móviles */
-@media screen and (max-width: 1024px) {
 
     .image-container {
         height: auto;
         font-size: 0.6em; /* Ajusta el tamaño del texto */
     }
-
 
         .image-container img {
             height: 100%;
@@ -609,6 +666,9 @@ a {
         width: auto;
         font-size: 0.6em; /* Ajusta el tamaño del texto */
         margin: 0 auto;
+        display: grid;
+        grid-template-rows: repeat(auto-fit, minmax(40px, auto));
+        grid-gap: 10px;
     }
 
     .starting.start.button {
@@ -644,41 +704,121 @@ a {
             margin: 0 auto;
         }
 
-    .col-4
-    {
-        padding:0px;
+    .col-4 {
+        padding: 0px;
     }
 
-}
+    /* -----------------------------
+       🔸 Barra de progreso
+    ------------------------------*/
 
-/* Estilos adicionales para pantallas más pequeñas */
-@media screen and (max-width: 1024px) {
+    .progressbar {
+        width: 300px;
+        max-width: 300px;
+    }
+
+    .progressfill {
+        height: 15px;
+    }
+
+    .progresstext {
+        font-size: 0.6em;
+    }
+
+    /* -----------------------------
+       🔸 Resultados (mantiene diseño actual)
+    ------------------------------*/
     .results {
         max-width: 100%;
         padding: 5px;
     }
 
         .results h2 {
-            font-size: 1.0em;
+            font-size: 1em;
         }
 
     .result-grid-item {
-        width: 70px; /* Reducir tamaño de los elementos del grid */
-        margin: 0 2px; /* Ajustar márgenes */
+        width: 70px;
+        margin: 0 2px;
+        border-width: 2px;
+        border-style: solid;
+        box-shadow: 0 0 0 1px #000;
+        border-radius: 5px;
     }
 
         .result-grid-item img {
-            width: 100%; /* Ajusta el tamaño de la imagen al ancho del contenedor */
-            height: auto; /* Mantiene la proporción de la imagen */
+            width: 100%;
+            height: auto;
         }
 
     .result-info {
-        padding: 5px; /* Reducir padding */
-        font-size: 0.7em; /* Reducir tamaño de fuente */
+        padding: 5px;
+        font-size: 0.7em;
     }
 
     .result-name {
-        font-size: 0.7em; /* Reducir tamaño de fuente */
+        font-size: 0.7em;
+    }
+
+    .navbar-toggler {
+        border-color: #fff !important;
+    }
+
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+    }
+
+    /* NAVBAR */
+    .navbar {
+        min-height: 56px;
+        padding: 0 16px;
+    }
+
+        .navbar img {
+            width: 32px;
+            height: 32px;
+            margin-right: 8px;
+        }
+
+        .navbar span {
+            font-size: 0.85rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+    .hp-title {
+        font-size: 1.25rem;
+        line-height: 1.25;
     }
 }
 
+
+/* ================================
+   ✨ ANIMACIONES
+================================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 200% 0%;
+    }
+
+    50% {
+        background-position: 100% 0%;
+    }
+
+    100% {
+        background-position: 0% 0%;
+    }
+}

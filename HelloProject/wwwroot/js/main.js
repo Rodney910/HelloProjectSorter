@@ -71,8 +71,6 @@ function init() {
   document.querySelector('.finished.getimg.button').addEventListener('click', generateImage);
   document.querySelector('.finished.list.button').addEventListener('click', generateTextList);
 
-  document.querySelector('.clearsave').addEventListener('click', clearProgress);
-
   /** Define keyboard controls (up/down/left/right vimlike k/j/h/l). */
   document.addEventListener('keypress', (ev) => {
     /** If sorting is in progress. */
@@ -482,6 +480,8 @@ function result(imageNum = 50) {
     document.querySelector('.progress-section').style.display = 'none';
     document.querySelector('.options').style.display = 'none';
     document.querySelector('.info').style.display = 'none';
+    document.querySelector('.image-container.left-container').style.display = 'none';
+    document.querySelector('.image-container.right-container').style.display = 'none';
 
     // Formatear la fecha como DD-MM-YYYY
     const completedDate = new Date(timestamp + timeTaken);
@@ -628,15 +628,15 @@ function loadProgress() {
 /** 
  * Clear progress from local browser storage.
 */
-function clearProgress() {
-  storedSaveType = '';
+//function clearProgress() {
+//  storedSaveType = '';
 
-  localStorage.removeItem(`${sorterURL}_saveData`);
-  localStorage.removeItem(`${sorterURL}_saveType`);
+//  localStorage.removeItem(`${sorterURL}_saveData`);
+//  localStorage.removeItem(`${sorterURL}_saveType`);
 
-  document.querySelectorAll('.starting.start.button').forEach(el => el.style['grid-row'] = 'span 6');
-  document.querySelectorAll('.starting.load.button').forEach(el => el.style.display = 'none');
-}
+//  document.querySelectorAll('.starting.start.button').forEach(el => el.style['grid-row'] = 'span 6');
+//  document.querySelectorAll('.starting.load.button').forEach(el => el.style.display = 'none');
+//}
 
 function generateImage() {
     const resultContainer = document.querySelector('.results');

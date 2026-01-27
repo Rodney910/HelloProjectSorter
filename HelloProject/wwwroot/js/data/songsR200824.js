@@ -22,19 +22,26 @@ dataSet[dataSetVersion].options = [
         ]
     },
     {
-        name: "Include:",
-        checked: true,  // La opción principal no está marcada por defecto
+        name: "Filter by Type",
+        checked: true,
         key: "include",
         img: "",
         sub: [
-            { name: "A Sides", key: "aside", img: "", checked: true },
-            { name: "B Sides", key: "bside", img: "", checked: false },
+            { name: "A Side", key: "aside", img: "" , checked: true },
+            { name: "B Side", key: "bside", img: "", checked: false },
+            { name: "Album", key: "album", img: "", checked: false },
             { name: "Indie songs", key: "indiesong", img: "", checked: false },
             { name: "Digital songs", key: "digitalsong", img: "", checked: false },
-            { name: "Album songs", key: "album", img: "", checked: false },
-            { name: "2024 songs", key: "2024", img: "", checked: false },
-            { name: "2024 album songs", key: "a2024", img: "", checked: false },
-            { name: "2025 songs", key: "2025", img: "", checked: false }
+        ]
+    },
+    {
+        name: "Filter by Year",
+        checked: false,
+        key: "year",
+        img: "",
+        sub: [
+            { name: "2024", key: "2024", img: "", checked: false },
+            { name: "2025", key: "2025", img: "", checked: false }
         ]
     }
 ];
@@ -154,8 +161,12 @@ dataSet[dataSetVersion].characterData = [
     { name: "Suggoi FEVER!", img: "MNMSMISA104.jpg", opts: { group: ["momusu"], include: ["aside"] } },
     { name: "Wake-up Call ~Mezameru Toki~", img: "MNMSMISA105.jpg", opts: { group: ["momusu"], include: ["aside"] } },
     { name: "Neverending Shine", img: "MNMSMISA106.jpg", opts: { group: ["momusu"], include: ["aside"] } },
-    { name: "Nandaka Sentimental na Toki no Uta", img: "MNMSMISA107.jpg", opts: { group: ["momusu"], include: ["aside", "2024"] } },
-    { name: "SaiKIYOU.", img: "MNMSMISA108.jpg", opts: { group: ["momusu"], include: ["aside", "2024"] } },
+    { name: "Nandaka Sentimental na Toki no Uta", img: "MNMSMISA107.jpg", opts: { group: ["momusu"], include: ["aside"], year: ["2024"] } },
+    { name: "SaiKIYOU", img: "MNMSMISA108.jpg", opts: { group: ["momusu"], include: ["aside"], year: ["2024"] } },
+    { name: "Ki ni Naru Sono Ki no Uta", img: "MNMSMISA109.jpg", opts: { group: ["momusu"], include: ["aside"], year: ["2025"] } },
+    { name: "Akaruku Ii Ko", img: "MNMSMISA110.jpg", opts: { group: ["momusu"], include: ["aside"], year: ["2025"] } },
+    { name: "Teka HAPPY no HAPPY!", img: "MNMSMISA111.jpg", opts: { group: ["momusu"], include: ["aside"], year: ["2025"] } },
+    { name: "Watashi no Lamentazione", img: "MNMSMISA112.jpg", opts: { group: ["momusu"], include: ["aside"], year: ["2025"] } },
 
     //B Sides
     { name: "A MEMORY OF SUMMER '98", img: "MNMSMISA02.jpg", opts: { group: ["momusu"], include: ["bside"] } },
@@ -396,14 +407,14 @@ dataSet[dataSetVersion].characterData = [
     { name: "Ren'ai Destiny ~Honne wo Ronjitai~", img: "MNMSMA16.jpg", opts: { group: ["momusu"], include: ["album"] } },
 
     // Professionals - 17th
-    { name: "Yuukan na Dance", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album", "a2024"] } },
-    { name: "Occhokochoi na Fantasia Romance", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album", "a2024"] } },
-    { name: "Koibito", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album", "a2024"] } },
-    { name: "Mukasuki!", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album", "a2024"] } },
-    { name: "Naisho da yo", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album", "a2024"] } },
-    { name: "Aete Yokatta", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album", "a2024"] } },
-    { name: "Shiawase Shisuu Happyou Saretai", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album", "a2024"] } },
-    { name: "Oozora ni Mukatte", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album", "a2024"] } },
+    { name: "Yuukan na Dance", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album"], year: ["2024"] } },
+    { name: "Occhokochoi na Fantasia Romance", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album"], year: ["2024"] } },
+    { name: "Koibito", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album"], year: ["2024"] } },
+    { name: "Mukasuki!", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album"], year: ["2024"] } },
+    { name: "Naisho da yo", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album"], year: ["2024"] } },
+    { name: "Aete Yokatta", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album"], year: ["2024"] } },
+    { name: "Shiawase Shisuu Happyou Saretai", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album"], year: ["2024"] } },
+    { name: "Oozora ni Mukatte", img: "MNMSMA17.jpg", opts: { group: ["momusu"], include: ["album"], year: ["2024"] } },
 
     //Best Album Songs
     { name: "Say Yeah! ~Motto Miracle Night~", img: "MNMSMBA01.jpg", opts: { group: ["momusu"], include: ["album"] } },
@@ -486,13 +497,13 @@ dataSet[dataSetVersion].characterData = [
     { name: "Dousousei", img: "ANGMMS59.jpg", opts: { group: ["angerme"], include: ["aside"] } },
     { name: "RED LINE", img: "ANGMMS60.jpg", opts: { group: ["angerme"], include: ["aside"] } },
     { name: "Life is Beautiful!", img: "ANGMMS61.jpg", opts: { group: ["angerme"], include: ["aside"] } },
-    { name: "Bibitaru Ichigeki", img: "ANGMMS62.jpg", opts: { group: ["angerme"], include: ["aside", "2024"] } },
-    { name: "Uwasa no Narushii", img: "ANGMMS63.jpg", opts: { group: ["angerme"], include: ["aside", "2024"] } },
-    { name: "THANK YOU, HELLO GOOD BYE", img: "ANGMMS64.jpg", opts: { group: ["angerme"], include: ["aside", "2024"] } },
-    { name: "Hatsukoi, Hanabie", img: "ANGMMS65.jpg", opts: { group: ["angerme"], include: ["aside", "2024"] } },
-    { name: "Yuuyuu Kankan gonna be alright!!", img: "ANGMMS66.jpg", opts: { group: ["angerme"], include: ["aside", "2024"] } },
-    { name: "Android wa Yume wo Miru ka?", img: "ANGMMS67.jpg", opts: { group: ["angerme"], include: ["aside", "2025"] } },
-    { name: "Hikari no Uta", img: "ANGMMS68.jpg", opts: { group: ["angerme"], include: ["aside", "2025"] } },
+    { name: "Bibitaru Ichigeki", img: "ANGMMS62.jpg", opts: { group: ["angerme"], include: ["aside"], year: ["2024"] } },
+    { name: "Uwasa no Narushii", img: "ANGMMS63.jpg", opts: { group: ["angerme"], include: ["aside"], year: ["2024"] } },
+    { name: "THANK YOU, HELLO GOOD BYE", img: "ANGMMS64.jpg", opts: { group: ["angerme"], include: ["aside"], year: ["2024"] } },
+    { name: "Hatsukoi, Hanabie", img: "ANGMMS65.jpg", opts: { group: ["angerme"], include: ["aside"], year: ["2024"] } },
+    { name: "Yuuyuu Kankan gonna be alright!!", img: "ANGMMS66.jpg", opts: { group: ["angerme"], include: ["aside"], year: ["2024"] } },
+    { name: "Android wa Yume wo Miru ka?", img: "ANGMMS67.jpg", opts: { group: ["angerme"], include: ["aside"], year: ["2025"] } },
+    { name: "Hikari no Uta", img: "ANGMMS68.jpg", opts: { group: ["angerme"], include: ["aside"], year: ["2025"] } },
 
     //B Sides
     { name: "Thank You! Crème Brûlée no Yuujou", img: "ANGMMS01.jpg", opts: { group: ["angerme"], include: ["bside"] } },
@@ -517,7 +528,7 @@ dataSet[dataSetVersion].characterData = [
     { name: "Watashi, Choito Kawaii Urabanchou", img: "ANGMMS12.jpg", opts: { group: ["angerme"], include: ["bside"] } },
     { name: "Doushiyou", img: "ANGMMS13.jpg", opts: { group: ["angerme"], include: ["bside"] } },
     { name: "Myouban, Galaxy Gekijou de", img: "ANGMMS47.jpg", opts: { group: ["angerme"], include: ["bside"] } },
-    { name: "Ureshii no ni ne, Nakechau wa", img: "ANGMMS65.jpg", opts: { group: ["angerme"], include: ["bside", "2024"] } },
+    { name: "Ureshii no ni ne, Nakechau wa", img: "ANGMMS65.jpg", opts: { group: ["angerme"], include: ["bside"], year: ["2024"] } },
 
     //Digital songs
     { name: "Manner Mode", img: "ANGMDS01.jpg", opts: { group: ["angerme"], include: ["digitalsong"] } },
@@ -566,6 +577,14 @@ dataSet[dataSetVersion].characterData = [
     { name: "Sister Sister", img: "ANGMA04.jpg", opts: { group: ["angerme"], include: ["album"] } },
     { name: "Maa, Ikka!", img: "ANGMA04.jpg", opts: { group: ["angerme"], include: ["album"] } },
     { name: "Forever Friend", img: "ANGMA04.jpg", opts: { group: ["angerme"], include: ["album"] } },
+
+    // Keep Your Smile!
+    { name: "FAST PASS", img: "ANGMA05.jpg", opts: { group: ["angerme"], include: ["album"], year: ["2025"] } },
+    { name: "Celebrate! Celebrate!", img: "ANGMA05.jpg", opts: { group: ["angerme"], include: ["album"], year: ["2025"] } },
+    { name: "Troublemaker", img: "ANGMA05.jpg", opts: { group: ["angerme"], include: ["album"], year: ["2025"] } },
+    { name: "Prison Breaker", img: "ANGMA05.jpg", opts: { group: ["angerme"], include: ["album"], year: ["2025"] } },
+    { name: "Migi Naname Ushiro Kara", img: "ANGMA05.jpg", opts: { group: ["angerme"], include: ["album"], year: ["2025"] } },
+    { name: "Gogo 3ji Scramble", img: "ANGMA05.jpg", opts: { group: ["angerme"], include: ["album"], year: ["2025"] } },
 
     //Best Album Songs
     { name: "Kiiroi Jitensha to Sandwich", img: "ANGMBA01.jpg", opts: { group: ["angerme"], include: ["album"] } },
@@ -616,11 +635,13 @@ dataSet[dataSetVersion].characterData = [
     { name: "Eeny Meeny Miny Moe Koi no Rival Sengen", img: "JCJCMS37.jpg", opts: { group: ["juice"], include: ["aside"] } },
     { name: "Pride Bright", img: "JCJCMS38.jpg", opts: { group: ["juice"], include: ["aside"] } },
     { name: "FUNKY FLUSHIN'", img: "JCJCMS39.jpg", opts: { group: ["juice"], include: ["aside"] } },
-    { name: "Tokyo Blur", img: "JCJCMS40.jpg", opts: { group: ["juice"], include: ["aside", "2024"] } },
-    { name: "Naimono Love", img: "JCJCMS41.jpg", opts: { group: ["juice"], include: ["aside", "2024"] } },
-    { name: "Oaiko", img: "JCJCMS42.jpg", opts: { group: ["juice"], include: ["aside", "2024"] } },
-    { name: "Hatsukoi no Bourei", img: "JCJCMS43.jpg", opts: { group: ["juice"], include: ["aside", "2025"] } },
-    { name: "Kon'ya wa Hearty Party", img: "JCJCMS44.jpg", opts: { group: ["juice"], include: ["aside", "2025"] } },
+    { name: "Tokyo Blur", img: "JCJCMS40.jpg", opts: { group: ["juice"], include: ["aside"], year: ["2024"] } },
+    { name: "Naimono Love", img: "JCJCMS41.jpg", opts: { group: ["juice"], include: ["aside"], year: ["2024"] } },
+    { name: "Oaiko", img: "JCJCMS42.jpg", opts: { group: ["juice"], include: ["aside"], year: ["2024"] } },
+    { name: "Hatsukoi no Bourei", img: "JCJCMS43.jpg", opts: { group: ["juice"], include: ["aside"], year: ["2025"] } },
+    { name: "Kon'ya wa Hearty Party", img: "JCJCMS44.jpg", opts: { group: ["juice"], include: ["aside"], year: ["2025"] } },
+    { name: "Shi no Go no Iwazu Satto Wakarete Ageta", img: "JCJCMS45.jpg", opts: { group: ["juice"], include: ["aside"], year: ["2025"] } },
+    { name: "More! Mi Amore", img: "JCJCMS46.jpg", opts: { group: ["juice"], include: ["aside"], year: ["2025"] } },
 
     //B Sides
     { name: "Tsudzuiteiku STORY (Symphonic Version feat. Karin)", img: "JCJCMS29.jpg", opts: { group: ["juice"], include: ["bside"] } },
@@ -709,19 +730,22 @@ dataSet[dataSetVersion].characterData = [
     { name: "Yuuki It's my Life!", img: "TBKFTRMS28.jpg", opts: { group: ["tsubaki"], include: ["aside"] } },
     { name: "Mousou Dake Nara Freedom", img: "TBKFTRMS29.jpg", opts: { group: ["tsubaki"], include: ["aside"] } },
     { name: "Demo... Ii yo", img: "TBKFTRMS30.jpg", opts: { group: ["tsubaki"], include: ["aside"] } },
-    { name: "Baby Spider", img: "TBKFTRMS31.jpg", opts: { group: ["tsubaki"], include: ["aside", "2024"] } },
-    { name: "Seishun Exabyte", img: "TBKFTRMS32.jpg", opts: { group: ["tsubaki"], include: ["aside", "2024"] } },
-    { name: "Kodou OK?", img: "TBKFTRMS33.jpg", opts: { group: ["tsubaki"], include: ["aside", "2024"] } },
-    { name: "My Days for You", img: "TBKFTRMS34.jpg", opts: { group: ["tsubaki"], include: ["aside", "2025"] } },
-    { name: "Kanashimi ga Tomaranai", img: "TBKFTRMS35.jpg", opts: { group: ["tsubaki"], include: ["aside", "2025"] } },
+    { name: "Baby Spider", img: "TBKFTRMS31.jpg", opts: { group: ["tsubaki"], include: ["aside"], year: ["2024"] } },
+    { name: "Seishun Exabyte", img: "TBKFTRMS32.jpg", opts: { group: ["tsubaki"], include: ["aside"], year: ["2024"] } },
+    { name: "Kodou OK?", img: "TBKFTRMS33.jpg", opts: { group: ["tsubaki"], include: ["aside"], year: ["2024"] } },
+    { name: "My Days for You", img: "TBKFTRMS34.jpg", opts: { group: ["tsubaki"], include: ["aside"], year: ["2025"] } },
+    { name: "Kanashimi ga Tomaranai", img: "TBKFTRMS35.jpg", opts: { group: ["tsubaki"], include: ["aside"], year: ["2025"] } },
 
     //B Sides
     { name: "Mou Saikou!", img: "TBKFTRMS13.jpg", opts: { group: ["tsubaki"], include: ["bside"] } },
     { name: "Hair up Sora e!", img: "TBKFTRMS16.jpg", opts: { group: ["tsubaki"], include: ["bside"] } },
     { name: "My Darling ~Do you love me?~", img: "TBKFTRMS17.jpg", opts: { group: ["tsubaki"], include: ["bside"] } },
     { name: "Koi no UFO Catcher", img: "TBKFTRMS18.jpg", opts: { group: ["tsubaki"], include: ["bside"] } },
-    { name: "Daisuki na no ni, Daisuki Dakara", img: "TBKFTRMS34.jpg", opts: { group: ["tsubaki"], include: ["bside", "2025"] } },
-    { name: "Tsukiyo no Pas de Deux", img: "TBKFTRMS35.jpg", opts: { group: ["tsubaki"], include: ["bside", "2025"] } },
+    { name: "Daisuki na no ni, Daisuki Dakara", img: "TBKFTRMS34.jpg", opts: { group: ["tsubaki"], include: ["bside"], year: ["2025"] } },
+    { name: "Tsukiyo no Pas de Deux", img: "TBKFTRMS35.jpg", opts: { group: ["tsubaki"], include: ["bside"], year: ["2025"] } },
+
+    //Digital songs
+    { name: "Secret Summer", img: "TBKFTRDS01.jpg", opts: { group: ["tsubaki"], include: ["digitalsong"], year: ["2025"] } },
 
     //Albums
 
@@ -743,17 +767,17 @@ dataSet[dataSetVersion].characterData = [
     { name: "Nineteen no Shinkirou", img: "TBKFTRA02.jpg", opts: { group: ["tsubaki"], include: ["album", "digitalsong"] } },
 
     // 3rd -Moment-
-    { name: "Power Flower ~Ima Koso Ichigan to Nare~", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
-    { name: "Stay free & Stay tuned", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
-    { name: "Shichibuzaki no Tsuzuki", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
-    { name: "EZPZ!!", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
-    { name: "Summer Challenger", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
-    { name: "Amayadori no Epilogue", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
-    { name: "Atashi Rhythm", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
-    { name: "Kimi to Boku no Kizuna", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
-    { name: "You're My Friend feat. KIKI", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
-    { name: "Kacchoii Uta", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
-    { name: "BE", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album", "a2024"] } },
+    { name: "Power Flower ~Ima Koso Ichigan to Nare~", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album"], year: ["2024"] } },
+    { name: "Stay free & Stay tuned", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album"], year: ["2024"] } },
+    { name: "Shichibuzaki no Tsuzuki", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album"], year: ["2024"] } },
+    { name: "EZPZ!!", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album"], year: ["2024"] } },
+    { name: "Summer Challenger", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album"], year: ["2024"] } },
+    { name: "Amayadori no Epilogue", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album"], year: ["2024"] } },
+    { name: "Atashi Rhythm", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album"], year: ["2024"] } },
+    { name: "Kimi to Boku no Kizuna", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album"], year: ["2024"] } },
+    { name: "You're My Friend feat. KIKI", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album"], year: ["2024"] } },
+    { name: "Kacchoii Uta", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album"], year: ["2024"] } },
+    { name: "BE", img: "TBKFTRA03.jpg", opts: { group: ["tsubaki"], include: ["album"], year: ["2024"] } },
 
     /* BEYOOOOONDS */
 
@@ -768,11 +792,11 @@ dataSet[dataSetVersion].characterData = [
     { name: "Hamkatsu Mokushiroku", img: "BYNDSMS08.jpg", opts: { group: ["beyond"], include: ["aside"] } },
     { name: "Motome yo... Unmei no Tabibito San", img: "BYNDSMS09.jpg", opts: { group: ["beyond"], include: ["aside"] } },
     { name: "Yume Sae Egakenai Yozora ni wa", img: "BYNDSMS10.jpg", opts: { group: ["beyond"], include: ["aside"] } },
-    { name: "Hai to Diamond", img: "BYNDSMS11.jpg", opts: { group: ["beyond"], include: ["aside", "2024"] } },
-    { name: "Go City Go", img: "BYNDSMS12.jpg", opts: { group: ["beyond"], include: ["aside", "2024"] } },
-    { name: "Hooke no Housoku", img: "BYNDSMS13.jpg", opts: { group: ["beyond"], include: ["aside", "2024"] } },
-    { name: "Do-Did-Done", img: "BYNDSMS14.jpg", opts: { group: ["beyond"], include: ["aside", "2025"] } },
-    { name: "Aa Kimi ni Tensei", img: "BYNDSMS15.jpg", opts: { group: ["beyond"], include: ["aside", "2025"] } },
+    { name: "Hai to Diamond", img: "BYNDSMS11.jpg", opts: { group: ["beyond"], include: ["aside"], year: ["2024"] } },
+    { name: "Go City Go", img: "BYNDSMS12.jpg", opts: { group: ["beyond"], include: ["aside"], year: ["2024"] } },
+    { name: "Hooke no Housoku", img: "BYNDSMS13.jpg", opts: { group: ["beyond"], include: ["aside"], year: ["2024"] } },
+    { name: "Do-Did-Done", img: "BYNDSMS14.jpg", opts: { group: ["beyond"], include: ["aside"], year: ["2025"] } },
+    { name: "Aa Kimi ni Tensei", img: "BYNDSMS15.jpg", opts: { group: ["beyond"], include: ["aside"], year: ["2025"] } },
 
     //B Sides
     { name: "GIRL ZONE", img: "BYNDSMS01.jpg", opts: { group: ["beyond"], include: ["bside"] } },
@@ -781,11 +805,11 @@ dataSet[dataSetVersion].characterData = [
     { name: "Yabai Koi no Yaiba", img: "BYNDSMS04.jpg", opts: { group: ["beyond"], include: ["bside"] } },
     { name: "Watashi to Odorinasai!", img: "BYNDSMS05.jpg", opts: { group: ["beyond"], include: ["bside"] } },
     { name: "Ninenmae no Yokohama Eki Nishiguchi", img: "BYNDSMS06.jpg", opts: { group: ["beyond"], include: ["bside"] } },
-    { name: "Koisuru Ginga", img: "BYNDSMS11.jpg", opts: { group: ["beyond"], include: ["bside", "2024"] } },
-    { name: "WORKER Sanka", img: "BYNDSMS12.jpg", opts: { group: ["beyond"], include: ["bside", "2024"] } },
-    { name: "Oh! Cantare", img: "BYNDSMS13.jpg", opts: { group: ["beyond"], include: ["bside", "2024"] } },
-    { name: "Disco Carnival", img: "BYNDSMS14.jpg", opts: { group: ["beyond"], include: ["bside", "2025"] } },
-    { name: "My First Pierce", img: "BYNDSMS15.jpg", opts: { group: ["beyond"], include: ["bside", "2025"] } },
+    { name: "Koisuru Ginga", img: "BYNDSMS11.jpg", opts: { group: ["beyond"], include: ["bside"], year: ["2024"] } },
+    { name: "WORKER Sanka", img: "BYNDSMS12.jpg", opts: { group: ["beyond"], include: ["bside"], year: ["2024"] } },
+    { name: "Oh! Cantare", img: "BYNDSMS13.jpg", opts: { group: ["beyond"], include: ["bside"], year: ["2024"] } },
+    { name: "Disco Carnival", img: "BYNDSMS14.jpg", opts: { group: ["beyond"], include: ["bside"], year: ["2025"] } },
+    { name: "My First Pierce", img: "BYNDSMS15.jpg", opts: { group: ["beyond"], include: ["bside"], year: ["2025"] } },
 
     //Digital songs
     { name: "Furefure Everyday", img: "BYNDSDS01.jpg", opts: { group: ["beyond"], include: ["digitalsong", "album"] } },
@@ -817,6 +841,15 @@ dataSet[dataSetVersion].characterData = [
     { name: "Junkan", img: "BYNDSA02.jpg", opts: { group: ["beyond"], include: ["album"] } },
     { name: "Get Back! Vinyl Kasa no Daibouken", img: "BYNDSA02.jpg", opts: { group: ["beyond"], include: ["album"] } },
 
+    // BEYOOOOONDS 3rd
+    { name: "Positive Program", img: "BYNDSA03.jpg", opts: { group: ["beyond"], include: ["album"], year: ["2025"] } },
+    { name: "Arigato Beat", img: "BYNDSA03.jpg", opts: { group: ["beyond"], include: ["album"], year: ["2025"] } },
+    { name: "Yume no Sokkyougeki", img: "BYNDSA03.jpg", opts: { group: ["beyond"], include: ["album"], year: ["2025"] } },
+    { name: "Jiko☆SHOW☆TIME", img: "BYNDSA03.jpg", opts: { group: ["beyond"], include: ["album"], year: ["2025"] } },
+    { name: "Koisuru Watashi wa Mujuuryoku", img: "BYNDSA03.jpg", opts: { group: ["beyond"], include: ["album"], year: ["2025"] } },
+    { name: "That's LIFE!", img: "BYNDSA03.jpg", opts: { group: ["beyond"], include: ["album"], year: ["2025"] } },
+    { name: "Kokoro no Hata", img: "BYNDSA03.jpg", opts: { group: ["beyond"], include: ["album"], year: ["2025"] } },
+
     /* OCHA NORMA */
 
     //A Sides
@@ -828,15 +861,19 @@ dataSet[dataSetVersion].characterData = [
     { name: "Ocha no Ma Mahoroba Ikoi no Ba ~Showa mo Reiwa mo Wacchawacha~", img: "OCNMMS06.jpg", opts: { group: ["ocha"], include: ["aside"] } },
     { name: "Shekenaare", img: "OCNMMS07.jpg", opts: { group: ["ocha"], include: ["aside"] } },
     { name: "Yoridori ME DREAM", img: "OCNMMS08.jpg", opts: { group: ["ocha"], include: ["aside"] } },
-    { name: "Chihayaburu", img: "OCNMMS09.jpg", opts: { group: ["ocha"], include: ["aside", "2024"] } },
-    { name: "Tomodachi Tentaizu", img: "OCNMMS10.jpg", opts: { group: ["ocha"], include: ["aside", "2024"] } },
+    { name: "Chihayaburu", img: "OCNMMS09.jpg", opts: { group: ["ocha"], include: ["aside"], year: ["2024"] } },
+    { name: "Tomodachi Tentaizu", img: "OCNMMS10.jpg", opts: { group: ["ocha"], include: ["aside"], year: ["2024"] } },
+    { name: "Onna no Aiso wa Buki ja nai", img: "OCNMMS11.jpg", opts: { group: ["ocha"], include: ["aside"], year: ["2025"] } },
+    { name: "Gakkou de wa Oshiete Kurenai Koto", img: "OCNMMS12.jpg", opts: { group: ["ocha"], include: ["aside"], year: ["2025"] } },
 
     //B Sides
     { name: "Date Zen'ya Kyousoukyoku", img: "OCNMMS01.jpg", opts: { group: ["ocha"], include: ["bside"] } },
     { name: "Go Your Way", img: "OCNMMS03.jpg", opts: { group: ["ocha"], include: ["bside"] } },
     { name: "Suhada wa Nettaiya", img: "OCNMMS04.jpg", opts: { group: ["ocha"], include: ["bside"] } },
-    { name: "Super Duper Sugar Power", img: "OCNMMS09.jpg", opts: { group: ["ocha"], include: ["bside", "2024"] } },
-    { name: "Uttoushi!", img: "OCNMMS10.jpg", opts: { group: ["ocha"], include: ["bside", "2024"] } },
+    { name: "Super Duper Sugar Power", img: "OCNMMS09.jpg", opts: { group: ["ocha"], include: ["bside"], year: ["2024"] } },
+    { name: "Uttoushi!", img: "OCNMMS10.jpg", opts: { group: ["ocha"], include: ["bside"], year: ["2024"] } },
+    { name: "Wakatteruttsu no!", img: "OCNMMS11.jpg", opts: { group: ["ocha"], include: ["bside"], year: ["2025"] } },
+    { name: "Damatte Tsuite Koi!", img: "OCNMMS12.jpg", opts: { group: ["ocha"], include: ["bside"], year: ["2025"] } },
 
     //Digital songs
     { name: "Ramen Daisuki Koizumi-san no Uta", img: "OCNMDS01.jpg", opts: { group: ["ocha"], include: ["digitalsong"] } },
@@ -844,28 +881,33 @@ dataSet[dataSetVersion].characterData = [
     //Albums
 
     //CHAnnel #1
-    { name: "Uchuu Kibo de Daisuki Sengen!", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
-    { name: "Lovey-Dovey", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
-    { name: "Hello! Umareta Imi ga Kitto Aru (OCHA NORMA Ver.)", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
-    { name: "Mistake (OCHA NORMA ver.)", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
-    { name: "cha cha SING (2024 OCHA NORMA ver.)", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
-    { name: "Good Luck no Munasawagi", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
-    { name: "Nanda Kanda Everyday!", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
-    { name: "Easy Easy", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
-    { name: "1/2", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
-    { name: "Peek a Boo", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
-    { name: "Ima ja Nakya, Kimi ja Nakya", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album", "a2024"] } },
+    { name: "Uchuu Kibo de Daisuki Sengen!", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album"], year: ["2024"] } },
+    { name: "Lovey-Dovey", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album"], year: ["2024"] } },
+    { name: "Hello! Umareta Imi ga Kitto Aru (OCHA NORMA Ver.)", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album"], year: ["2024"] } },
+    { name: "Mistake (OCHA NORMA ver.)", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album"], year: ["2024"] } },
+    { name: "cha cha SING (2024 OCHA NORMA ver.)", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album"], year: ["2024"] } },
+    { name: "Good Luck no Munasawagi", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album"], year: ["2024"] } },
+    { name: "Nanda Kanda Everyday!", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album"], year: ["2024"] } },
+    { name: "Easy Easy", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album"], year: ["2024"] } },
+    { name: "1/2", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album"], year: ["2024"] } },
+    { name: "Peek a Boo", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album"], year: ["2024"] } },
+    { name: "Ima ja Nakya, Kimi ja Nakya", img: "OCNMA01.jpg", opts: { group: ["ocha"], include: ["album"], year: ["2024"] } },
 
     /* ROSY CHRONICLE */
 
     //A Sides
-    { name: "Heirasshai! ~Nippon de Aimashou~", img: "RSCNCMS01.jpg", opts: { group: ["rosy"], include: ["aside", "2025"] } },
-    { name: "Ubu to Zuru", img: "RSCNCMS02.jpg", opts: { group: ["rosy"], include: ["aside", "2025"] } },
+    { name: "Heirasshai! ~Nippon de Aimashou~", img: "RSCNCMS01.jpg", opts: { group: ["rosy"], include: ["aside"], year: ["2025"] } },
+    { name: "Ubu to Zuru", img: "RSCNCMS02.jpg", opts: { group: ["rosy"], include: ["aside"], year: ["2025"] } },
+    { name: "Natsu no Inazuma", img: "RSCNCMS03.jpg", opts: { group: ["rosy"], include: ["aside"], year: ["2025"] } },
+    { name: "Gao Gao Gao", img: "RSCNCMS04.jpg", opts: { group: ["rosy"], include: ["aside"], year: ["2025"] } },
 
     //B Sides
-    { name: "CHO Chokotto Rock'n'Roll", img: "RSCNCMS01.jpg", opts: { group: ["rosy"], include: ["bside", "2025"] } },
-    { name: "Mirai Hajimari", img: "RSCNCMS02.jpg", opts: { group: ["rosy"], include: ["bside", "2025"] } },
-    { name: "8bit Kataomoi", img: "RSCNCMS02.jpg", opts: { group: ["rosy"], include: ["bside", "2025"] } },
+    { name: "CHO Chokotto Rock'n'Roll", img: "RSCNCMS01.jpg", opts: { group: ["rosy"], include: ["bside"], year: ["2025"] } },
+    { name: "Mirai Hajimari", img: "RSCNCMS02.jpg", opts: { group: ["rosy"], include: ["bside"], year: ["2025"] } },
+    { name: "8bit Kataomoi", img: "RSCNCMS02.jpg", opts: { group: ["rosy"], include: ["bside"], year: ["2025"] } },
+    { name: "Bara Yori Utsukushii Jinsei", img: "RSCNCMS03.jpg", opts: { group: ["rosy"], include: ["bside"], year: ["2025"] } },
+    { name: "Daisuki Dakedo Tsukiaenai", img: "RSCNCMS03.jpg", opts: { group: ["rosy"], include: ["bside"], year: ["2025"] } },
+    { name: "Onna de Chikyuu wa Mawatteru", img: "RSCNCMS04.jpg", opts: { group: ["rosy"], include: ["bside"], year: ["2025"] } },
 
     /* °C-ute */
 

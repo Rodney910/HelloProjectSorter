@@ -8,7 +8,7 @@ dataSet[dataSetVersion].options = [
         key: "group",
         img: "",
         sub: [
-            { name: "モーニング娘。'25", key: "momusu", img: "MNMSM2500.jpg", checked: false },
+            { name: "モーニング娘。'26", key: "momusu", img: "MNMSM2500.jpg", checked: false },
             { name: "アンジュルム", key: "angerme", img: "ANGM00.jpg", checked: false },
             { name: "Juice=Juice", key: "juice", img: "JCJC00.jpg", checked: false },
             { name: "つばきファクトリー", key: "tsubaki", img: "TBKFTR00.jpg", checked: false },
@@ -17,9 +17,9 @@ dataSet[dataSetVersion].options = [
             { name: "ロージークロニクル", key: "rosy", img: "RSCNC00.jpg", checked: false },
             { name: "ハロプロ研修生", key: "kss", img: "KSS00.jpg", checked: false },
             { name: "°C-ute", key: "cute", img: "CUTE00.jpg", checked: false },
-            { name: "Berryz工房", key: "berryz", img: "BRKB00.jpg", checked: false },
-            { name: "こぶしファクトリー", key: "kobushi", img: "KBSFTR00.jpg", checked: false },
-            { name: "カントリー・ガールズ", key: "country", img: "CTGRLS00.jpg", checked: false },
+            { name: "Berryz工房", key: "berryz", img: "BRKB000.jpg", checked: false },
+            { name: "こぶしファクトリー", key: "kobushi", img: "KBSFTR000.jpg", checked: false },
+            { name: "カントリー・ガールズ", key: "country", img: "CTGRLS000.jpg", checked: false },
             { name: "モーニング娘。OG", key: "momusuog", img: "MNMSMLOGO.jpg", checked: false },
             { name: "アンジュルム OG", key: "angermeog", img: "ANGMLOGO.jpg", checked: false },
             { name: "Juice=Juice OG", key: "juiceog", img: "JCJCLOGO.jpg", checked: false },
@@ -98,9 +98,9 @@ dataSet[dataSetVersion].characterData = [
     { name: "野中美希", img: "MNMSM2501.jpg", color: "#572A7B", opts: { group: ["momusu"] } }, // purple
     { name: "小田さくら", img: "MNMSM2502.jpg", color: "#B57EDC", opts: { group: ["momusu"] } }, // lavender
     { name: "牧野真莉愛", img: "MNMSM2503.jpg", color: "#FF90CF", opts: { group: ["momusu"] } }, // pink
-    { name: "羽賀朱音", img: "MNMSM2504.jpg", color: "#FF8C00", opts: { group: ["momusu"] } }, // orange
-    { name: "横山玲奈", img: "MNMSM2505.jpg", color: "#F9C926", opts: { group: ["momusu"] } }, // golden yellow
-    { name: "北川莉央", img: "MNMSM2506.jpg", color: "#00BBFF", opts: { group: ["momusu"] } }, // sea blue
+    { name: "羽賀朱音", img: "MNMSM2504.jpg", color: "#FF8C00", opts: { group: ["momusuog"] } }, // orange
+    { name: "横山玲奈", img: "MNMSM2505.jpg", color: "#F9C926", opts: { group: ["momusuog"] } }, // golden yellow
+    { name: "北川莉央", img: "MNMSM2506.jpg", color: "#00BBFF", opts: { group: ["momusuog"] } }, // sea blue
     { name: "岡村ほまれ", img: "MNMSM2507.jpg", color: "#FFE433", opts: { group: ["momusu"] } }, // daisy
     { name: "山﨑愛生", img: "MNMSM2508.jpg", color: "#3EB235", opts: { group: ["momusu"] } }, // bright green
     { name: "櫻井梨央", img: "MNMSM2509.jpg", color: "#EECBAD", opts: { group: ["momusu"] } }, // milk tea

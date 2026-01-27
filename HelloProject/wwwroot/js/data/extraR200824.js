@@ -1,4 +1,4 @@
-dataSetVersion = "idolsR200824"; // Cambia esto al crear una nueva versión del conjunto de datos en formato YYYY-MM-DD.
+dataSetVersion = "extraR200824"; // Cambia esto al crear una nueva versión del conjunto de datos en formato YYYY-MM-DD.
 dataSet[dataSetVersion] = {};
 
 dataSet[dataSetVersion].options = [
@@ -25,7 +25,9 @@ dataSet[dataSetVersion].options = [
             { name: "Juice=Juice OG", key: "juiceog", img: "JCJCLOGO.jpg", checked: false },
             { name: "Tsubaki Factory OG", key: "tsubakiog", img: "TBKFTRLOGO.jpg", checked: false },
             { name: "BEYOOOOONDS OG", key: "beyondog", img: "BYNDSLOGO.jpg", checked: false },
-            { name: "OCHA NORMA OG", key: "ochaog", img: "OCNMLOGO.jpg", checked: false }
+            { name: "OCHA NORMA OG", key: "ochaog", img: "OCNMLOGO.jpg", checked: false },
+            { name: "Current Acts", key: "current", img: "", checked: false },
+            { name: "Former Acts", key: "former", img: "", checked: false }
         ]
     }
 ];
@@ -228,6 +230,19 @@ dataSet[dataSetVersion].characterData = [
     { name: "Shimakura Rika", img: "BYNDSOG03.jpg", color: "#B57EDC", opts: { group: ["beyondog"] } }, // lavender
 
     { name: "Ishiguri Kanami", img: "OCNMOG01.jpg", color: "#FF8C00", opts: { group: ["ochaog"] } }, // orange
-    { name: "Tashiro Sumire", img: "OCNMOG02.jpg", color: "#9674EF", opts: { group: ["ochaog"] } } // light purple
+    { name: "Tashiro Sumire", img: "OCNMOG02.jpg", color: "#9674EF", opts: { group: ["ochaog"] } }, // light purple
+
+    { name: "Morning Musume '26", img: "MNMSM2500.jpg", opts: { group: ["current"] } },
+    { name: "ANGERME", img: "ANGM00.jpg", opts: { group: ["current"] } },
+    { name: "Juice=Juice", img: "JCJC00.jpg", opts: { group: ["current"] } },
+    { name: "Tsubaki Factory", img: "TBKFTR00.jpg", opts: { group: ["current"] } },
+    { name: "BEYOOOOONDS", img: "BYNDS00.jpg", opts: { group: ["current"] } },
+    { name: "OCHA NORMA", img: "OCNM00.jpg", opts: { group: ["current"] } },
+    { name: "Rosy Chronicle", img: "RSCNC00.jpg", opts: { group: ["current"] } },
+    //{ name: "Hello Pro Kenshuusei", img: "KSS00.jpg", opts: { group: ["current"] } },
+    { name: "°C-ute", img: "CUTE00.jpg", opts: { group: ["former"] } },
+    { name: "Berryz Koubou", img: "BRKB000.jpg", opts: { group: ["former"] } },
+    { name: "Kobushi Factory", img: "KBSFTR000.jpg", opts: { group: ["former"] } },
+    { name: "Country Girls", img: "CTGRLS000.jpg", opts: { group: ["former"] } },
 ];
 

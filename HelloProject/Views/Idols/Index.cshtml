@@ -25,7 +25,7 @@
     <link href="~/css/styles.css" rel="stylesheet" type="text/css">
 
     <script src="~/js/data.js"></script>
-    <script src="~/js/data/idolsK200824.js"></script>
+    <script src="~/js/data/idolsR200824.js"></script>
 
     <script src="~/js/dom-to-image.min.js"></script>
     <script src="~/js/html2canvas.min.js"></script>
@@ -62,15 +62,15 @@
 
     <div class="main-container">
 
-        @*TITULO*@ 
+       @*TITULO*@ 
 
         <div class="titlehp row">
             <div class="col-12 box">
-                <p style="font-family: 'Orbitron', sans-serif; color: #00e5ff; font-size: 1.8rem; margin: 0;">
+                <p class="hp-title">
                     <b>Hello! Project Member Sorter</b>
                 </p>
                 <p class="lang">
-                    <a asp-controller="Home" asp-action="Index">Romaji</a>
+                    <a asp-controller="Idols" asp-action="JpIndex">日本語</a>
                 </p>
             </div>
         </div>
@@ -118,22 +118,22 @@
             </div>
 
         </div>
+    
 
-
-        @*OPCIONES*@ 
+    @*OPCIONES*@ 
 
     <div>
 
-            <div class="row">
-                <div class="col-12">
-                    <div id="options" class="options"> </div>
-                    <div class="image selector">Display Images on Result: </div>
-                    <div class="time taken"> </div>
-                    <div class="results double-border"> </div>
-                </div>
+        <div class="row">
+            <div class="col-12">
+                <div id="options" class="options"> </div>
+                <div class="image selector">Display Images on Result: </div>
+                <div class="time taken"> </div>
+                <div class="results double-border"> </div>
             </div>
-
         </div>
+
+    </div>
 
     </div>
 

@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Member Sorter";
+    ViewData["Title"] = "Songs Sorter";
 }
 
 <!DOCTYPE html>
@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="~/css/styles.css">*@
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
     <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" rel="stylesheet">
     <link href="~/css/styles2.css" rel="stylesheet" type="text/css">
 
@@ -30,7 +31,7 @@
     <script src="~/js/html2canvas.min.js"></script>
     <script src="~/js/lz-string.min.js"></script>
     <script src="~/js/seedrandom.min.js"></script>
-    <script src="~/js/main.js"></script>
+    <script src="~/js/main2.js"></script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-64784129-2"></script>
     <script>
@@ -41,19 +42,40 @@
         gtag('config', 'UA-64784129-2');
     </script>
 
+    <style>
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* 🔹 Queda detrás del contenido */
+            pointer-events: none; /* No bloquea clics */
+        }
+    </style>
+
 </head>
 
 <body>
-    <div class="container">
+
+    <canvas id="particles"></canvas>
+
+    <div class="main-container">
+
+        @*TITULO*@ 
 
         <div class="titlehp row">
             <div class="col-12 box">
-                <p><b>Hello! Project Songs Sorter</b></p>
+                <p class="hp-title">
+                    <b>Hello! Project Songs Sorter</b>
+                </p>
                 <p class="lang">
                     <a asp-controller="Songs" asp-action="JpIndex">日本語</a>
                 </p>
             </div>
         </div>
+
+        @*BARRA DE PROGRESO*@ 
 
         <div class="row">
             <div class="progress-section col-12 box">
@@ -63,6 +85,8 @@
                 </div>
             </div>
         </div>
+
+        @*BATALLAS Y BOTONES*@ 
 
         <div class="mobrow row">
             <div class="col-4">
@@ -94,37 +118,96 @@
             </div>
 
         </div>
-    </div>
 
-    <div class="container">
 
-        <div class="row">
-            <div class="col-12">
-                <div id="options" class="options"> </div>
-                <div class="image selector">Display Images on Result: </div>
-                <div class="time taken"> </div>
-                <div class="results"> </div>
+        @*OPCIONES*@ 
+
+    <div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div id="options" class="options"> </div>
+                    <div class="image selector">Display Images on Result: </div>
+                    <div class="time taken"> </div>
+                    <div class="results double-border"> </div>
+                </div>
             </div>
+
         </div>
 
     </div>
 
-    <div class="container">
+    @*INFO*@ 
+
+    <div>
         <div class="row">
             <div class="col-12 info">
-                <h4>Keyboard Controls</h4>
-                <p><span class="keyboard">Keyboard controls during sorting:</span> <br><span class="keyboard">H/LeftArrow</span> (pick left) <br><span class="keyboard">J/DownArrow</span> (undo) <br><span class="keyboard">K/UpArrow</span> (tie) <br><span class="keyboard">L/RightArrow</span> (pick right) <br><span class="keyboard">S</span> (save progress).</p>
-                <p><span class="keyboard">Before sorting: </span><br><span class="keyboard">S/Enter</span> (start sorting) <br><span class="keyboard">L</span> (load progress).</p>
-                <p><span class="keyboard">1/2/3</span> always correspond to the first/second/third buttons.</p>
-
-                <br>
-                <a href="#" class="clearsave">Clear Save Data</a>
                 <p>By <a href="https://x.com/rodneyamarilla1">Nakajima</a> Modified from <a href="https://github.com/execfera/charasort/">charasort by execfera</a><br>Data updated by <a href="https://x.com/rodneyamarilla1">Nakajima</a></p>
                 <p>This site is just a fan site and doesn't affiliate with UP-FRONT PROMOTION.</p>
                 <p>Dedicado a la Hermandad H!P.</p>
             </div>
         </div>
     </div>
+
+    <script>
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const color = '#d500f9';
+        const maxParticles = 80;
+
+        function resizeCanvas() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        function createParticle() {
+          return {
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 3 + 1,
+            speedY: Math.random() * 0.6 - 0.3,
+            speedX: Math.random() * 0.6 - 0.3,
+            alpha: Math.random(),
+            life: Math.random() * 100 + 50,
+          };
+        }
+
+        function drawParticles() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          for (let i = 0; i < particles.length; i++) {
+            const p = particles[i];
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fillStyle = color + Math.floor(p.alpha * 255).toString(16).padStart(2, '0');
+            ctx.fill();
+            p.x += p.speedX;
+            p.y += p.speedY;
+            p.alpha -= 0.003;
+            p.life--;
+            if (p.alpha <= 0 || p.life <= 0) {
+              particles[i] = createParticle(); // reemplaza la partícula
+            }
+          }
+
+          if (particles.length < maxParticles) {
+            particles.push(createParticle());
+          }
+
+          requestAnimationFrame(drawParticles);
+        }
+
+        // Inicializa las partículas
+        for (let i = 0; i < maxParticles; i++) {
+          particles.push(createParticle());
+        }
+
+        drawParticles();
+    </script>
+
 </body>
 
 </html>

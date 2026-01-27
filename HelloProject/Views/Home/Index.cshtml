@@ -1,130 +1,454 @@
-﻿@{
-    ViewData["Title"] = "Member Sorter";
-}
-
-<!DOCTYPE html>
-
-<html>
-
+﻿<!DOCTYPE html>
+<html lang="es">
 <head>
-    <link rel="shortcut icon" href="~/assets/icons/Hermandad.ico" type="image/x-icon">
-    <link rel="icon" href="~/assets/icons/Hermandad.ico" type="image/x-icon">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="utf-8">
-    <meta name="og:site_name" content="Hello! Project Sorter">
-    <meta name="og:description" content="A simple website for sorting H!P idols in a formatted list.">
-    <meta name="og:image" content="https://i.imgur.com/IZzJMk6.jpg">
-    <title>Hello! Projec Sorting</title>
+    <meta charset="UTF-8">
+    <title>Hello! Project Sorter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    @*<link rel="stylesheet" type="text/css" href="~/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="~/css/styles.css">*@
+    <!-- FUENTES -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js"></script>
 
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet">
-    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" rel="stylesheet">
-    <link href="~/css/styles.css" rel="stylesheet" type="text/css">
+    <style>
+        /* ================================
+           VARIABLES GLOBALES
+        ================================ */
+        :root {
+            --home-main: #fcda42; /* Dorado oscuro */
+            --home-main-soft: #453501; /* Dorado más apagado para degradados */
+            --idol-main: #00e5ff;
+            --song-main: #d500f9;
+            --extra-main: #ff5252;
+            --dark-bg: #0d1117;
+            --dark-bg2: #161b22;
+            --border-glow: rgba(255,255,255,.08);
+            --text-light: #f5f6f8;
+            --text-muted: #9ba0ab;
+        }
 
-    <script src="~/js/data.js"></script>
-    <script src="~/js/data/idolsR200824.js"></script>
+        /* ================================
+           RESET / BODY
+        ================================ */
+        * {
+            box-sizing: border-box
+        }
 
-    <script src="~/js/dom-to-image.min.js"></script>
-    <script src="~/js/html2canvas.min.js"></script>
-    <script src="~/js/lz-string.min.js"></script>
-    <script src="~/js/seedrandom.min.js"></script>
-    <script src="~/js/main.js"></script>
+        body {
+            margin: 0;
+            font-family: Poppins,sans-serif;
+            background: radial-gradient(circle at top left, #2a2e36, #373d47, #40495c);
+            color: var(--text-light);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-64784129-2"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+        #particles {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
 
-        gtag('config', 'UA-64784129-2');
-    </script>
+        /* ================================
+           NAVBAR REAL
+        ================================ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            padding: 0 30px;
+            background: linear-gradient( 90deg, var(--home-main), var(--home-main-soft) );
+            box-shadow: 0 0 18px rgba(212,175,55,.55);
+            z-index: 1000;
+        }
 
+            .navbar img {
+                width: 40px;
+                height: 40px;
+                margin-right: 12px;
+            }
+
+            .navbar span {
+                font-family: Orbitron,sans-serif;
+                font-size: 1.1rem;
+                font-weight: 700;
+            }
+
+        /* ================================
+           CONTENIDO PRINCIPAL
+        ================================ */
+        .main-container {
+            margin-top: 110px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            background: var(--dark-bg2);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            padding: 50px 40px;
+            box-shadow: 0 0 25px rgba(0,0,0,.45);
+            animation: fadeIn .6s ease;
+        }
+
+        /* ================================
+           TITULO
+        ================================ */
+        .home-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+            .home-title h1 {
+                font-family: Orbitron,sans-serif;
+                font-size: 2.4rem;
+                margin: 0;
+                color: var(--home-main);
+                text-shadow: 0 0 15px rgba(212,175,55,.6);
+            }
+
+            .home-title p {
+                margin-top: 12px;
+                color: var(--text-muted);
+                font-size: .95rem;
+            }
+
+        /* ================================
+           GRID MENÚ
+        ================================ */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 35px;
+        }
+
+        /* ================================
+           CARD
+        ================================ */
+        .menu-card {
+            position: relative;
+            padding: 35px 25px;
+            background: linear-gradient(145deg,#141821,#1b1f2a);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: .35s ease;
+            overflow: hidden;
+        }
+
+            .menu-card::before {
+                display: none;
+            }
+
+            .menu-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 0 30px var(--glow);
+            }
+
+        /* ICONO */
+        .menu-icon {
+            font-size: 3.6rem;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 10px var(--glow));
+        }
+
+            .menu-icon img {
+                width: 3.6rem;
+                height: 3.6rem;
+                filter: drop-shadow(0 0 10px var(--glow));
+            }
+
+                .menu-icon img.emoji {
+                    width: 3.6rem;
+                    height: 3.6rem;
+                    filter: brightness(0) invert(1);
+                }
+
+        .idols .menu-icon img.emoji {
+            filter: brightness(0) invert(1) sepia(1) saturate(5000%) hue-rotate(165deg) brightness(1.05);
+        }
+
+        .songs .menu-icon img.emoji {
+            filter: brightness(0) invert(1) sepia(1) saturate(6000%) hue-rotate(275deg) brightness(1.1);
+        }
+
+        .extra .menu-icon img.emoji {
+            filter: brightness(0) saturate(100%) invert(76%) sepia(57%) saturate(818%) hue-rotate(303deg) brightness(100%) contrast(96%);
+        }
+
+        .menu-card {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* TEXTO */
+        .menu-card h2 {
+            font-family: Orbitron,sans-serif;
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+
+        .menu-card p {
+            font-size: .9rem;
+            color: #b5b9c4;
+        }
+
+        /* COLORES POR SECCIÓN */
+        .idols {
+            --glow: color-mix(in srgb, var(--idol-main) 60%, transparent);
+        }
+
+        .songs {
+            --glow: color-mix(in srgb, var(--song-main) 60%, transparent);
+        }
+
+        .extra {
+            --glow: color-mix(in srgb, var(--extra-main) 60%, transparent);
+        }
+
+        .idols h2 {
+            color: var(--idol-main)
+        }
+
+        .songs h2 {
+            color: var(--song-main)
+        }
+
+        .extra h2 {
+            color: var(--extra-main)
+        }
+
+        /* ================================
+           FOOTER INFO
+        ================================ */
+        .home-footer {
+            margin-top: 60px;
+            text-align: center;
+            font-size: .75rem;
+            color: #8a8f99;
+            line-height: 1.4em;
+        }
+
+        /* ================================
+           RESPONSIVE
+        ================================ */
+        @@media(max-width: 900px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .main-container {
+                padding: 35px 20px;
+            }
+        }
+
+        /* ================================
+           ANIMACIONES
+        ================================ */
+        @@keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        @@media (max-width: 600px) {
+            /* NAVBAR */
+            .navbar {
+                height: 56px;
+                padding: 0 16px;
+            }
+
+                .navbar img {
+                    width: 32px;
+                    height: 32px;
+                    margin-right: 8px;
+                }
+
+                .navbar span {
+                    font-size: 0.85rem;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            /* CONTENEDOR */
+            .main-container {
+                margin-top: 80px;
+                padding: 28px 16px;
+                border-radius: 16px;
+            }
+            /* TITULO */
+            .home-title {
+                margin-bottom: 32px;
+            }
+
+                .home-title h1 {
+                    font-size: 1.65rem;
+                    line-height: 1.25;
+                    text-shadow: 0 0 8px rgba(212,175,55,.45);
+                }
+
+                .home-title p {
+                    font-size: 0.85rem;
+                    margin-top: 8px;
+                }
+
+            /* FOOTER */
+            .home-footer {
+                margin-top: 40px;
+                font-size: 0.7rem;
+            }
+        }
+
+    </style>
 </head>
 
 <body>
-    <div class="container">
 
-        <div class="titlehp row">
-            <div class="col-12 box">
-                <p><b>Hello! Project Member Sorter</b></p>
-                <p class="lang">
-                    <a asp-controller="Home" asp-action="JpIndex">日本語</a>
-                </p>
-            </div>
-        </div>
+    <canvas id="particles"></canvas>
 
-        <div class="row">
-            <div class="progress-section col-12 box">
-                <span class="progressbattle"></span>
-                <div class="progressbar">
-                    <div class="progressfill"><span class="progresstext"></span></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="mobrow row">
-            <div class="col-4">
-                <div class="image-container left-container">
-                    <img src="~/assets/icons/HProsterL.png" class="left sort image">
-                    <div class="left sort text"><p></p></div>
-                </div>
-            </div>
-
-            <div class="col-4">
-                <div class="buttons" style="text-align:center;">
-                    <div class="starting start button">Click to Start!</div>
-                    <div class="starting load button">Load <span></span></div>
-                    <div class="loading button"><div></div><span>Loading...</span></div>
-                    <div class="sorting tie button">Tie</div>
-                    <div class="sorting undo button">Undo</div>
-                    <div class="sorting save button">Save Progress</div>
-                    <div class="finished save button">Generate Result URL</div>
-                    <div class="finished getimg button">Generate Image</div>
-                    <div class="finished list button">Generate Text List</div>
-                </div>
-            </div>
-
-            <div class="col-4">
-                <div class="image-container right-container">
-                    <img src="~/assets/icons/HProsterR.png" class="right sort image">
-                    <div class="right sort text"><p></p></div>
-                </div>
-            </div>
-
-        </div>
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <a class="navbar-brand d-flex align-items-center" asp-area="" asp-controller="Home" asp-action="Index">
+            <img src="~/assets/icons/Hermandad.png" alt="Logo" class="navbar-logo me-2" style="width: 40px; height: 40px; margin-right: 10px;" />
+        </a>
+        <span>Hello! Project Sorter & Rankings</span>
     </div>
 
-    <div class="container">
+    <!-- CONTENIDO -->
+    <div class="main-container">
 
-        <div class="row">
-            <div class="col-12">
-                <div id="options" class="options"> </div>
-                <div class="image selector">Display Images on Result: </div>
-                <div class="time taken"> </div>
-                <div class="results double-border"> </div>
-            </div>
+        <div class="home-title">
+            <h1>Hello! Project Sorter & Rankings</h1>
+            <p>Sort idols, songs, or build your own rankings</p>
+        </div>
+
+        <div class="menu-grid">
+
+            <a asp-controller="Idols"
+               asp-action="Index"
+               class="menu-card idols">
+
+                <div class="menu-icon">⭐</div>
+                <h2>Idols Sorter</h2>
+                <p>Rank Hello! Project members through head-to-head battles.</p>
+            </a>
+
+            <a asp-controller="Songs"
+               asp-action="Index"
+               class="menu-card songs">
+
+                <div class="menu-icon">🎵</div>
+                <h2>Songs Sorter</h2>
+                <p>Compare songs across generations and units.</p>
+            </a>
+
+            <a asp-controller="Others"
+               asp-action="Index"
+               class="menu-card extra">
+
+                <div class="menu-icon">✨</div>
+                <h2>Ranking</h2>
+                <p>Create your own ranking freely, without battles.</p>
+            </a>
+
+        </div>
+
+
+        <div class="home-footer">
+            This site is just a fan site and doesn't affiliate with UP-FRONT PROMOTION.<br>
+            Dedicado a la Hermandad H!P
         </div>
 
     </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-12 info">
-                <h4>Keyboard Controls</h4>
-                <p><span class="keyboard">Keyboard controls during sorting:</span> <br><span class="keyboard">H/LeftArrow</span> (pick left) <br><span class="keyboard">J/DownArrow</span> (undo) <br><span class="keyboard">K/UpArrow</span> (tie) <br><span class="keyboard">L/RightArrow</span> (pick right) <br><span class="keyboard">S</span> (save progress).</p>
-                <p><span class="keyboard">Before sorting: </span><br><span class="keyboard">S/Enter</span> (start sorting) <br><span class="keyboard">L</span> (load progress).</p>
-                <p><span class="keyboard">1/2/3</span> always correspond to the first/second/third buttons.</p>
+    <script>
+        /* PARTICLES */
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
 
-                <br>
-                <a href="#" class="clearsave">Clear Save Data</a>
-                <p>By <a href="https://x.com/rodneyamarilla1">Nakajima</a> Modified from <a href="https://github.com/execfera/charasort/">charasort by execfera</a><br>Data updated by <a href="https://x.com/rodneyamarilla1">Nakajima</a></p>
-                <p>This site is just a fan site and doesn't affiliate with UP-FRONT PROMOTION.</p>
-                <p>Dedicado a la Hermandad H!P.</p>
-            </div>
-        </div>
-    </div>
+        // Dorado oscuro / elegante
+        const color = '#d4af37';
+        const maxParticles = 160;
+
+        function resizeCanvas() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        function createParticle() {
+          return {
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 3 + 1,
+            speedY: Math.random() * 0.5 - 0.25,
+            speedX: Math.random() * 0.5 - 0.25,
+            alpha: Math.random() * 1 + 0.5,
+            life: Math.random() * 120 + 60,
+          };
+        }
+
+        function drawParticles() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          // Glow MUY sutil
+          ctx.shadowColor = 'rgba(212,175,55,0.6)';
+          ctx.shadowBlur = 8;
+
+          for (let i = 0; i < particles.length; i++) {
+            const p = particles[i];
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+
+            // Alpha en hex (igual que tu versión)
+            ctx.fillStyle =
+              color + Math.floor(p.alpha * 255).toString(16).padStart(2, '0');
+
+            ctx.fill();
+
+            p.x += p.speedX;
+            p.y += p.speedY;
+            p.alpha -= 0.0025;
+            p.life--;
+
+            if (p.alpha <= 0 || p.life <= 0) {
+              particles[i] = createParticle();
+            }
+          }
+
+          if (particles.length < maxParticles) {
+            particles.push(createParticle());
+          }
+
+          requestAnimationFrame(drawParticles);
+        }
+
+        // Inicializa las partículas
+        for (let i = 0; i < maxParticles; i++) {
+          particles.push(createParticle());
+        }
+
+        drawParticles();
+
+
+        twemoji.parse(document.body, {
+          folder: 'svg',
+          ext: '.svg'
+        });
+    </script>
+
 </body>
-
 </html>

@@ -34,7 +34,8 @@ dataSet[dataSetVersion].options = [
             { name: "Album songs", key: "album", img: "", checked: false },
             { name: "2024 songs", key: "2024", img: "", checked: false },
             { name: "2024 album songs", key: "a2024", img: "", checked: false },
-            { name: "2025 songs", key: "2025", img: "", checked: false }
+            { name: "2025 songs", key: "2025", img: "", checked: false },
+            { name: "2025 album songs", key: "a2025", img: "", checked: false },
         ]
     }
 ];
@@ -156,6 +157,10 @@ dataSet[dataSetVersion].characterData = [
     { name: "Neverending Shine", img: "MNMSMISA106.jpg" , opts: { group: ["momusu"], include: ["aside"] } },
     { name: "なんだかセンチメンタルな時の歌", img: "MNMSMISA107.jpg", opts: { group: ["momusu"], include: ["aside", "2024"] } },
     { name: "最KIYOU", img: "MNMSMISA108.jpg", opts: { group: ["momusu"], include: ["aside", "2024"] } },
+    { name: "気になるその気の歌", img: "MNMSMISA109.jpg", opts: { group: ["momusu"], include: ["aside", "2025"] } },
+    { name: "明るく良い子", img: "MNMSMISA110.jpg", opts: { group: ["momusu"], include: ["aside", "2025"] } },
+    { name: "てか HAPPYのHAPPY！", img: "MNMSMISA111.jpg", opts: { group: ["momusu"], include: ["aside", "2025"] } },
+    { name: "私のラミンタッチオーネ", img: "MNMSMISA112.jpg", opts: { group: ["momusu"], include: ["aside", "2025"] } },
 
     //B Sides
     { name: "A MEMORY OF SUMMER '98", img: "MNMSMISA02.jpg", opts: { group: ["momusu"], include: ["bside"] } },
@@ -567,6 +572,14 @@ dataSet[dataSetVersion].characterData = [
     { name: "まぁ、いっか！", img: "ANGMA04.jpg", opts: { group: ["angerme"], include: ["album"] } },
     { name: "Forever Friend", img: "ANGMA04.jpg", opts: { group: ["angerme"], include: ["album"] } },
 
+    // Keep Your Smile!
+    { name: "FAST PASS", img: "ANGMA05.jpg", opts: { group: ["angerme"], include: ["album", "a2025"] } },
+    { name: "Celebrate! Celebrate!", img: "ANGMA05.jpg", opts: { group: ["angerme"], include: ["album", "a2025"] } },
+    { name: "トラブルメーカー", img: "ANGMA05.jpg", opts: { group: ["angerme"], include: ["album", "a2025"] } },
+    { name: "プリズンブレイカー", img: "ANGMA05.jpg", opts: { group: ["angerme"], include: ["album", "a2025"] } },
+    { name: "右ななめ後ろから", img: "ANGMA05.jpg", opts: { group: ["angerme"], include: ["album", "a2025"] } },
+    { name: "午後3時スクランブル", img: "ANGMA05.jpg", opts: { group: ["angerme"], include: ["album", "a2025"] } },
+
     //Best Album Songs
     { name: "黄色い自転車とサンドウィッチ", img: "ANGMBA01.jpg", opts: { group: ["angerme"], include: ["album"] } },
 
@@ -621,6 +634,8 @@ dataSet[dataSetVersion].characterData = [
     { name: "おあいこ", img: "JCJCMS42.jpg", opts: { group: ["juice"], include: ["aside", "2024"] } },
     { name: "初恋の亡霊", img: "JCJCMS43.jpg", opts: { group: ["juice"], include: ["aside", "2025"] } },
     { name: "今夜はHearty Party", img: "JCJCMS44.jpg", opts: { group: ["juice"], include: ["aside", "2025"] } },
+    { name: "四の五の言わず颯さっと別れてあげた", img: "JCJCMS45.jpg", opts: { group: ["juice"], include: ["aside", "2025"] } },
+    { name: "盛れ！ミ・アモーレ", img: "JCJCMS46.jpg", opts: { group: ["juice"], include: ["aside", "2025"] } },
 
     //B Sides
     { name: "続いていくSTORY (Symphonic Version feat. Karin)", img: "JCJCMS29.jpg", opts: { group: ["juice"], include: ["bside"] } },
@@ -723,6 +738,9 @@ dataSet[dataSetVersion].characterData = [
     { name: "大好きなのに、大好きだから", img: "TBKFTRMS34.jpg", opts: { group: ["tsubaki"], include: ["bside", "2025"] } },
     { name: "月夜のパ・ド・ドゥ", img: "TBKFTRMS35.jpg", opts: { group: ["tsubaki"], include: ["bside", "2025"] } },
 
+    //Digital songs
+    { name: "シークレットサマー", img: "TBKFTRDS01.jpg", opts: { group: ["tsubaki"], include: ["digitalsong", "2025"] } },
+
     //Albums
 
     // First Bloom
@@ -817,6 +835,15 @@ dataSet[dataSetVersion].characterData = [
     { name: "循環", img: "BYNDSA02.jpg", opts: { group: ["beyond"], include: ["album"] } },
     { name: "Get Back！ビニール傘の大冒険", img: "BYNDSA02.jpg", opts: { group: ["beyond"], include: ["album"] } },
 
+    // BEYOOOOONDS 3rd
+    { name: "ポジティブプログラム", img: "BYNDSA03.jpg", opts: { group: ["beyond"], include: ["album", "a2025"] } },
+    { name: "ありがとビート", img: "BYNDSA03.jpg", opts: { group: ["beyond"], include: ["album", "a2025"] } },
+    { name: "夢の即興劇", img: "BYNDSA03.jpg", opts: { group: ["beyond"], include: ["album", "a2025"] } },
+    { name: "自己☆SHOW☆TIME", img: "BYNDSA03.jpg", opts: { group: ["beyond"], include: ["album", "a2025"] } },
+    { name: "恋する私は無重力", img: "BYNDSA03.jpg", opts: { group: ["beyond"], include: ["album", "a2025"] } },
+    { name: "That's LIFE!", img: "BYNDSA03.jpg", opts: { group: ["beyond"], include: ["album", "a2025"] } },
+    { name: "心の旗", img: "BYNDSA03.jpg", opts: { group: ["beyond"], include: ["album", "a2025"] } },
+
     /* OCHA NORMA */
 
     //A Sides
@@ -830,6 +857,8 @@ dataSet[dataSetVersion].characterData = [
     { name: "ヨリドリME DREAM", img: "OCNMMS08.jpg", opts: { group: ["ocha"], include: ["aside"] } },
     { name: "ちはやぶる", img: "OCNMMS09.jpg", opts: { group: ["ocha"], include: ["aside", "2024"] } },
     { name: "友達天体図", img: "OCNMMS10.jpg", opts: { group: ["ocha"], include: ["aside", "2024"] } },
+    { name: "女の愛想は武器じゃない", img: "OCNMMS11.jpg", opts: { group: ["ocha"], include: ["aside", "2025"] } },
+    { name: "学校では教えてくれないこと", img: "OCNMMS12.jpg", opts: { group: ["ocha"], include: ["aside", "2025"] } },
 
     //B Sides
     { name: "デート前夜狂想曲", img: "OCNMMS01.jpg", opts: { group: ["ocha"], include: ["bside"] } },
@@ -837,6 +866,8 @@ dataSet[dataSetVersion].characterData = [
     { name: "素肌は熱帯夜", img: "OCNMMS04.jpg", opts: { group: ["ocha"], include: ["bside"] } },
     { name: "Super Duper Sugar Power", img: "OCNMMS09.jpg", opts: { group: ["ocha"], include: ["bside", "2024"] } },
     { name: "ウットーシー！", img: "OCNMMS10.jpg", opts: { group: ["ocha"], include: ["bside", "2024"] } },
+    { name: "わかってるっつーの！", img: "OCNMMS11.jpg", opts: { group: ["ocha"], include: ["bside", "2025"] } },
+    { name: "黙ってついてこい！", img: "OCNMMS12.jpg", opts: { group: ["ocha"], include: ["bside", "2025"] } },
 
     //Digital songs
     { name: "ラーメン大好き小泉さんの唄", img: "OCNMDS01.jpg", opts: { group: ["ocha"], include: ["digitalsong"] } },
@@ -861,11 +892,16 @@ dataSet[dataSetVersion].characterData = [
     //A Sides
     { name: "へいらっしゃい！〜ニッポンで会いましょう〜", img: "RSCNCMS01.jpg", opts: { group: ["rosy"], include: ["aside", "2025"] } },
     { name: "ウブとズル", img: "RSCNCMS02.jpg", opts: { group: ["rosy"], include: ["aside", "2025"] } },
+    { name: "夏のイナズマ", img: "RSCNCMS03.jpg", opts: { group: ["rosy"], include: ["aside", "2025"] } },
+    { name: "ガオガオガオ", img: "RSCNCMS04.jpg", opts: { group: ["rosy"], include: ["aside", "2025"] } },
 
     //B Sides
     { name: "CHOちょこっとロッケンロール", img: "RSCNCMS01.jpg", opts: { group: ["rosy"], include: ["bside", "2025"] } },
     { name: "M未来ハジマリ", img: "RSCNCMS02.jpg", opts: { group: ["rosy"], include: ["bside", "2025"] } },
     { name: "8bit片想い", img: "RSCNCMS02.jpg", opts: { group: ["rosy"], include: ["bside", "2025"] } },
+    { name: "薔薇より美しい人生", img: "RSCNCMS03.jpg", opts: { group: ["rosy"], include: ["bside", "2025"] } },
+    { name: "ダイスキだけど付き合えない", img: "RSCNCMS03.jpg", opts: { group: ["rosy"], include: ["bside", "2025"] } },
+    { name: "女で地球は回ってる", img: "RSCNCMS04.jpg", opts: { group: ["rosy"], include: ["bside", "2025"] } },
 
     /* °C-ute */
 
