@@ -309,6 +309,54 @@
             }
         }
 
+        /* ================================
+           🔷 SHINDAN BUTTON
+        ================================== */
+
+        .shindan-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: -20px;
+            margin-bottom: 40px;
+        }
+
+        .shindan-btn {
+            font-family: Orbitron, sans-serif;
+            font-size: 0.9rem;
+            padding: 12px 28px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #001015;
+            /* Cyan sólido */
+            background: #00e5ff;
+            /* Glow neón */
+            box-shadow: 0 0 10px rgba(0,229,255,0.7), 0 0 20px rgba(0,229,255,0.5), 0 0 40px rgba(0,229,255,0.3);
+            transition: all 0.3s ease;
+            /* Animación vertical */
+            animation: floatY 2s ease-in-out infinite;
+        }
+
+            /* Hover más fuerte */
+            .shindan-btn:hover {
+                transform: scale(1.05);
+                box-shadow: 0 0 15px rgba(0,229,255,0.9), 0 0 30px rgba(0,229,255,0.7), 0 0 60px rgba(0,229,255,0.5);
+            }
+
+        /* Animación arriba-abajo */
+        @@keyframes floatY {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(8px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
     </style>
 </head>
 
@@ -331,6 +379,14 @@
             <h1>Hello! Project Sorter & Rankings</h1>
             <p>Sort idols, songs, or build your own rankings</p>
         </div>
+
+        @* <div class="shindan-wrapper">
+            <a asp-controller="Members"
+               asp-action="Index"
+               class="shindan-btn">
+                Shindan Test 2026 - Sistema de Calificaciones
+            </a>
+        </div> *@
 
         <div class="menu-grid">
 

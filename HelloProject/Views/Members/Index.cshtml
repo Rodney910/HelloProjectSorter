@@ -1,185 +1,1153 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
 <!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Shindan Test 2026 - Idol Rating</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Librería para exportación -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+        <style>
+            /* Variables para Modo Dark */
+            .theme-dark {
+                --primary: #0eedc3;
+                --bg-app: #3d4556;
+                --card-app: #2a303c;
+                --text-main: #e2e8f0;
+                --text-dim: #94a3b8;
+                --border-app: rgba(14, 237, 195, 0.2);
+                --table-header: #1e293b;
+                --input-bg: #1e293b;
+                --row-hover: rgba(14, 237, 195, 0.05);
+                --accent-glow: rgba(14, 237, 195, 0.3);
+                --dot-color: rgba(14, 237, 195, 0.05);
+                --color-canto: #0eedc3;
+                --color-baile: #ff69b4;
+                --color-vestuario: #fbbf24;
+                --color-extra: #c364fa;
+                /* Variables Premium Export */
+                --bg-color: #3d4556;
+                --card-bg: #2a303c;
+                --header-bg: #1e293b;
+                --border-color: rgba(14, 237, 195, 0.2);
+                --text-main-exp: #e2e8f0;
+                --text-sec: #94a3b8;
+                --item-box-bg: rgba(0, 0, 0, 0.2);
+                --accent-primary: #0eedc3;
+                --accent-secondary: #ff69b4;
+                --accent-amber: #fbbf24;
+                --accent-purple: #c364fa;
+                --accent-primary-soft: rgba(14, 237, 195, 0.1);
+                --accent-secondary-soft: rgba(255, 105, 180, 0.1);
+            }
 
-<html>
+            /* Variables para Modo Light */
+            .theme-light {
+                --primary: #ff69b4;
+                --bg-app: #fff5f8;
+                --card-app: #ffffff;
+                --text-main: #1e293b;
+                --text-dim: #64748b;
+                --border-app: rgba(255, 105, 180, 0.3);
+                --table-header: #fce7f3;
+                --input-bg: #fff;
+                --row-hover: rgba(255, 105, 180, 0.04);
+                --accent-glow: rgba(255, 105, 180, 0.2);
+                --dot-color: rgba(255, 105, 180, 0.1);
+                --color-canto: #ec4899;
+                --color-baile: #14b8a6;
+                --color-vestuario: #f59e0b;
+                --color-extra: #a855f7;
+                /* Variables Premium Export */
+                --bg-color: #fff5f8;
+                --card-bg: rgba(255, 255, 255, 0.85);
+                --header-bg: #fce7f3;
+                --border-color: rgba(20, 184, 166, 0.15);
+                --text-main-exp: #1e293b;
+                --text-sec: #475569;
+                --item-box-bg: rgba(0, 0, 0, 0.03);
+                --accent-primary: #ec4899;
+                --accent-secondary: #14b8a6;
+                --accent-amber: #f59e0b;
+                --accent-purple: #a855f7;
+                --accent-primary-soft: rgba(236, 72, 153, 0.1);
+                --accent-secondary-soft: rgba(20, 184, 166, 0.1);
+            }
 
-<head>
-    <link rel="shortcut icon" href="~/assets/icons/Hermandad.ico" type="image/x-icon">
-    <link rel="icon" href="~/assets/icons/Hermandad.ico" type="image/x-icon">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="utf-8">
-    <meta name="og:site_name" content="Hello! Project Sorter">
-    <meta name="og:description" content="A simple website for sorting H!P idols in a formatted list.">
-    <meta name="og:image" content="https://i.imgur.com/IZzJMk6.jpg">
-    <title>Hello! Projec Sorting</title>
+            body {
+                font-family: "Quicksand", sans-serif;
+                background-color: var(--bg-app);
+                color: var(--text-main);
+                transition: background-color 0.3s ease, color 0.3s ease;
+            }
 
-    @*<link rel="stylesheet" type="text/css" href="~/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="~/css/styles.css">*@
+            .dynamic-bg {
+                background-color: var(--bg-app);
+                background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
+                background-size: 30px 30px;
+            }
 
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet">
-    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" rel="stylesheet">
-    <link href="~/css/styles4.css" rel="stylesheet" type="text/css">
+            h1 {
+                font-family: "Orbitron", sans-serif;
+                letter-spacing: 2px;
+                color: var(--primary);
+                text-shadow: 0 0 15px var(--accent-glow);
+                transition: color 0.3s ease, text-shadow 0.3s ease;
+            }
 
-    <script src="~/js/data.js"></script>
-    <script src="~/js/data/2021-03-29.js"></script>
+            .glass-card {
+                background: var(--card-app);
+                border: 1px solid var(--border-app);
+                transition: background 0.3s ease, border 0.3s ease;
+            }
 
-    <script src="~/js/dom-to-image.min.js"></script>
-    <script src="~/js/html2canvas.min.js"></script>
-    <script src="~/js/lz-string.min.js"></script>
-    <script src="~/js/seedrandom.min.js"></script>
-    <script src="~/js/main.js"></script>
+            .cute-shadow {
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            }
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-64784129-2"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+            .rating-select {
+                appearance: none;
+                background-color: var(--input-bg);
+                background-repeat: no-repeat;
+                background-position: right 0.5rem center;
+                background-size: 0.8rem;
+                color: var(--primary);
+                border: 1px solid var(--border-app);
+            }
 
-        gtag('config', 'UA-64784129-2');
-    </script>
+            .theme-dark .rating-select {
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%230eedc3'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            }
 
-</head>
+            .theme-light .rating-select {
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23FF69B4'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            }
 
-<body>
-    <div class="container">
+            .select-canto {
+                color: var(--color-canto) !important;
+                border-color: var(--color-canto) !important;
+                outline: none;
+            }
 
-        <div class="titlehp row" style="text-align: center;align-items: center;align-content: center;">
-            <div class="col-12 box" style="text-align: center;align-items: center;align-content: center;">
-                <p><b>Hello! Project Member List</b></p>
+            .select-baile {
+                color: var(--color-baile) !important;
+                border-color: var(--color-baile) !important;
+                outline: none;
+            }
+
+            .select-vestuario {
+                color: var(--color-vestuario) !important;
+                border-color: var(--color-vestuario) !important;
+                outline: none;
+            }
+
+            .textarea-obs {
+                border-color: var(--color-extra) !important;
+                outline: none;
+            }
+
+            .btn-active {
+                background-color: var(--primary);
+                color: #fff;
+            }
+
+            .theme-dark .btn-active {
+                color: #1a1e26;
+            }
+
+            .btn-inactive {
+                background-color: var(--text-dim);
+                color: var(--card-app);
+                opacity: 0.6;
+            }
+
+            .modal-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.7);
+                display: none;
+                align-items: center;
+                justify-content: center;
+                z-index: 1000;
+                backdrop-filter: blur(4px);
+            }
+
+            .animate-fade-in {
+                animation: fadeIn 0.6s ease-out forwards;
+            }
+
+            /* EXPORT ROOT (se mantiene igual) */
+            #export-root {
+                position: absolute;
+                left: -9999px;
+                top: 0;
+                width: 1250px;
+                background-color: var(--bg-color);
+                padding: 50px;
+            }
+
+            /* FILA DE ENCABEZADO FIJA */
+            .premium-header-row {
+                display: grid;
+                background: var(--header-bg);
+                border: 1px solid var(--border-color);
+                border-radius: 1rem 1rem 0 0;
+                margin-bottom: 0;
+                min-width: 1000px;
+                overflow: hidden;
+            }
+
+            .premium-header-row.simple-mode {
+                grid-template-columns: 280px 1fr 1fr 1fr 200px;
+            }
+
+            .premium-header-row.detailed-mode {
+                grid-template-columns: 280px 220px 1fr 200px;
+            }
+
+            .header-cell {
+                padding: 1rem;
+                border-right: 1px solid var(--border-color);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 50px;
+            }
+
+            .header-cell:last-child {
+                border-right: none;
+            }
+
+            /* CARD STYLES MODIFICADOS PARA QUITAR HEADERS INTERNOS */
+            .premium-card {
+                background: var(--card-bg);
+                backdrop-filter: blur(10px);
+                border: 1px solid var(--border-color);
+                border-top: none; /* Evita doble borde con el anterior o el header */
+                display: grid;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+                margin-bottom: 0; /* Pegadas unas a otras para estilo tabla */
+                min-width: 1000px;
+                overflow: hidden;
+                align-items: stretch;
+            }
+
+            .premium-card:nth-child(even) {
+                background-color: var(--header-bg);
+            }
+
+            .premium-card:last-child {
+                border-radius: 0 0 1.25rem 1.25rem;
+                margin-bottom: 2rem;
+            }
+
+            .premium-card.simple-mode {
+                grid-template-columns: 280px 1fr 1fr 1fr 200px;
+            }
+
+            .premium-card.detailed-mode {
+                grid-template-columns: 280px 220px 1fr 200px;
+            }
+
+            /* COLUMNAS */
+            .col-section {
+                display: flex;
+                flex-direction: column;
+                border-right: 1px solid var(--border-color);
+                overflow: hidden;
+            }
+
+            .col-section:last-child {
+                border-right: none;
+            }
+
+            /* HEADERS */
+            .section-header {
+                padding: 1rem;
+                border-bottom: 1px solid var(--border-color);
+                background: var(--header-bg);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 50px;
+            }
+
+            .section-label {
+                font-family: "Orbitron", sans-serif;
+                font-size: 0.85rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.15em;
+                color: var(--accent-primary);
+            }
+
+            /* CONTENT */
+            .content-area {
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+                padding: 1rem;
+                justify-content: center;
+                gap: 0.75rem;
+                height: 100%;
+            }
+
+            /* PROFILE */
+            .profile-container {
+                text-align: center;
+                width: 100%;
+            }
+
+            .id-badge {
+                font-family: "Orbitron", sans-serif;
+                font-weight: 700;
+                font-size: 1.25rem;
+                color: var(--accent-primary);
+                margin-right: 0.4rem;
+            }
+
+            .idol-name {
+                font-family: "Quicksand", sans-serif;
+                font-weight: 700;
+                font-size: 1.25rem;
+                color: var(--text-main-exp);
+            }
+
+            .kanji-name {
+                font-size: 0.85rem;
+                font-weight: 700;
+                color: var(--accent-purple);
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                margin-bottom: 0.5rem;
+            }
+
+            .idol-photo {
+                width: 130px;
+                height: 130px;
+                object-fit: cover;
+                border-radius: 0.75rem;
+                border: 2px solid var(--border-color);
+                margin: 0.5rem auto;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                display: block;
+            }
+
+            .song-title {
+                color: var(--accent-secondary);
+                font-weight: 800;
+                font-style: italic;
+                font-size: 1rem;
+                margin-top: 0.25rem;
+            }
+
+            .original-artist {
+                font-size: 10px;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: var(--text-sec);
+                font-weight: 700;
+            }
+
+            /* SCORE */
+            .score-container {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                justify-content: center;
+                min-height: 90px;
+            }
+
+            /* SCORE BOX (DETALLADO) */
+            .score-box {
+                background: var(--item-box-bg);
+                border: 1px solid var(--border-color);
+                border-radius: 0.75rem;
+                display: flex;
+                align-items: center;
+                padding: 0.6rem 1rem;
+                width: 100%;
+                flex: 1;
+                min-height: 70px;
+            }
+
+            .icon-wrapper {
+                width: 44px;
+                height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 12px;
+                flex-shrink: 0;
+            }
+
+            /* ICON COLORS (manteniendo tu sistema) */
+            .icon-canto {
+                color: var(--accent-primary);
+                background: var(--accent-primary-soft);
+            }
+
+            .icon-baile {
+                color: var(--accent-secondary);
+                background: var(--accent-secondary-soft);
+            }
+
+            .icon-vestuario {
+                color: var(--accent-amber);
+                background: rgba(245, 158, 11, 0.1);
+            }
+
+            .score-details {
+                margin-left: 0.75rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .score-label-mini {
+                font-size: 9px;
+                text-transform: uppercase;
+                font-weight: 700;
+                opacity: 0.5;
+            }
+
+            .score-value {
+                font-family: "Quicksand", sans-serif;
+                font-weight: 700;
+                font-size: 1.75rem;
+                line-height: 1;
+            }
+
+            .score-value-simple {
+                font-family: "Quicksand", sans-serif;
+                font-weight: 700;
+                font-size: 2.5rem;
+                line-height: 1;
+            }
+
+            .score-value-large {
+                font-size: 2.5rem;
+                line-height: 1;
+            }
+
+            /* OBSERVATIONS */
+            .obs-box {
+                background: var(--item-box-bg);
+                border: 1px solid var(--border-color);
+                border-radius: 0.75rem;
+                padding: 0.75rem;
+                flex: 1;
+            }
+
+            .obs-text {
+                font-size: 0.9rem;
+                color: var(--text-sec);
+                font-style: italic;
+                line-height: 1.4;
+            }
+
+            /* AVERAGE */
+            .avg-display {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+                min-height: 100px;
+            }
+
+            .avg-number {
+                font-family: "Orbitron", sans-serif;
+                font-size: 3.5rem;
+                font-weight: 700;
+                color: var(--accent-purple);
+                line-height: 1;
+            }
+
+            .star-icon {
+                color: var(--accent-purple);
+                width: 48px;
+                height: 48px;
+            }
+
+            .score-value-large,
+            .score-value-simple,
+            .avg-number {
+                display: inline-block;
+                transform: translateY(-18px);
+            }
+
+            .score-label-mini {
+                display: inline-block;
+                transform: translateY(-5px);
+            }
+
+            .score-value {
+                display: inline-block;
+                transform: translateY(-12px);
+            }
+
+            #tableContainer {
+                cursor: grab;
+            }
+
+            #tableContainer.cursor-grabbing {
+                cursor: grabbing;
+            }
+
+            #tableContainer.no-select,
+            #tableContainer.no-select * {
+                user-select: none !important;
+            }
+
+            .main-navbar {
+                background: linear-gradient(90deg, var(--primary), var(--bg-app));
+                border-bottom: 2px solid var(--primary);
+                box-shadow: 0 0 12px var(--primary);
+            }
+        </style>
+    </head>
+    <body class="theme-dark transition-all">
+        <div class="min-h-screen p-4 md:p-8 dynamic-bg">
+            <!-- Header -->
+            <header class="max-w-7xl mx-auto mb-10 text-center animate-fade-in relative">
+                <div class="absolute right-0 top-0">
+                    <button id="themeToggle" class="p-3 rounded-xl glass-card text-[var(--primary)] hover:scale-110 transition-all cute-shadow">
+                        <span id="themeIcon"></span>
+                    </button>
+                </div>
+                <div class="inline-block p-1 px-4 rounded-md text-[var(--primary)] font-bold text-xs mb-4 tracking-[0.2em] uppercase" style="border: 1px solid var(--primary)">
+                    Sistema de Calificaciones
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">Shindan Test 2026</h1>
+                <p class="opacity-70 font-medium italic text-sm">Hello Pro Kenshuusei Happyoukai 2026 ~Haru no Koukai Jitsuryoku Shindan Test~</p>
+            </header>
+
+            <!-- Controles -->
+            <div class="max-w-7xl mx-auto mb-8 flex flex-wrap gap-6 justify-between items-center glass-card p-5 rounded-2xl cute-shadow" style="border: 1px solid var(--primary)">
+                <div class="flex flex-wrap gap-4 items-center">
+                    <span class="text-[10px] font-bold opacity-60 uppercase tracking-widest">Observaciones:</span>
+                    <div class="flex gap-2" id="obsControls">
+                        <button data-obs="canto" class="obs-btn flex items-center gap-2 px-3 py-1.5 rounded-lg text-[11px] font-bold transition-all btn-inactive">
+                            Canto <span class="eye-icon"></span>
+                        </button>
+                        <button data-obs="baile" class="obs-btn flex items-center gap-2 px-3 py-1.5 rounded-lg text-[11px] font-bold transition-all btn-inactive">
+                            Baile <span class="eye-icon"></span>
+                        </button>
+                        <button data-obs="vestuario" class="obs-btn flex items-center gap-2 px-3 py-1.5 rounded-lg text-[11px] font-bold transition-all btn-inactive">
+                            Vestuario <span class="eye-icon"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="flex gap-3">
+                    <button
+                        id="exportImage"
+                        class="flex items-center gap-2 px-4 py-1.5 rounded-lg text-[10px] font-bold bg-[var(--primary)] text-white shadow-lg hover:scale-105 transition-all"
+                    >
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        EXPORTAR IMAGEN
+                    </button>
+                    <button
+                        id="resetTrigger"
+                        class="flex items-center justify-center gap-2 px-4 py-1.5 rounded-lg text-[10px] font-bold bg-transparent text-[var(--primary)] hover:bg-[var(--accent-glow)] transition-all"
+                        style="border: 1px solid var(--primary)"
+                    >
+                        <i class="bi bi-arrow-clockwise text-sm"></i>
+                        REINICIAR DATOS
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tabla UI -->
+            <div id="tableContainer" class="max-w-7xl mx-auto overflow-x-auto rounded-2xl cute-shadow" style="border: 1px solid var(--primary)">
+                <table class="w-max min-w-full text-left border-collapse min-w-[1100px] bg-[var(--card-app)] transition-colors">
+                    <thead id="tableHeader"></thead>
+                    <tbody id="tableBody" class="divide-y divide-[var(--border-app)]"></tbody>
+                </table>
+            </div>
+
+            <footer class="max-w-7xl mx-auto mt-12 mb-8 text-center opacity-50 text-[10px] tracking-widest uppercase font-bold">
+                🌸 Hello Pro Kenshuusei Shindan Test © 2026 🌸
+            </footer>
+        </div>
+
+        <!-- Contenedor oculto para exportación -->
+        <div id="export-root"></div>
+
+        <!-- Modal -->
+        <div id="resetModal" class="modal-overlay">
+            <div class="glass-card p-8 rounded-3xl max-w-md w-full mx-4 text-center animate-fade-in shadow-2xl">
+                <h3 class="text-xl font-bold mb-2">¿Reiniciar todos los datos?</h3>
+                <p class="text-[var(--text-dim)] text-sm mb-6">Esta acción borrará todas las calificaciones y observaciones actuales.</p>
+                <div class="flex gap-4">
+                    <button id="cancelReset" class="flex-1 px-4 py-3 rounded-xl font-bold text-sm bg-[var(--text-dim)] text-[var(--card-app)]">CANCELAR</button>
+                    <button id="confirmReset" class="flex-1 px-4 py-3 rounded-xl font-bold text-sm bg-red-500 text-white shadow-lg">REINICIAR</button>
+                </div>
             </div>
         </div>
 
-        <div class="row" style="justify-content:center; margin-bottom:-20px;">
-            <a class="col-2 box" style="align-content:center; margin:10px 50px 50px 10px" asp-controller="Members" asp-action="MorningMusume">
-                <div class="option-item">
-                    <input id="momusu" type="radio" name="group" class="option-checkbox">
-                    <div class="image-wrapper">
-                        <img src="~/assets/icons/MNMSM2400.jpg" alt="Morning Musume '24" class="option-image">
-                        <div class="option-text">Morning Musume '24</div>
-                    </div>
-                </div>
-            </a>
-            <a class="col-2 box" style="align-content:center; margin:10px 50px 50px 10px" asp-controller="Members" asp-action="Angerme">
-                <div class="option-item">
-                    <input id="angerme" type="radio" name="group" class="option-checkbox">
-                    <div class="image-wrapper">
-                        <img src="~/assets/icons/ANGM00.jpg" alt="ANGERME" class="option-image">
-                        <div class="option-text">ANGERME</div>
-                    </div>
-                </div>
-            </a>
-            <a class="col-2 box" style="align-content:center; margin:10px 50px 50px 10px" asp-controller="Members" asp-action="JuiceJuice">
-                <div class="option-item">
-                    <input id="juice" type="radio" name="group" class="option-checkbox">
-                    <div class="image-wrapper">
-                        <img src="~/assets/icons/JCJC00.jpg" alt="Juice=Juice" class="option-image">
-                        <div class="option-text">Juice=Juice</div>
-                    </div>
-                </div>
-            </a>
-            <a class="col-2 box" style="align-content:center; margin:10px 50px 50px 10px" asp-controller="Members" asp-action="TsubakiFactory">
-                <div class="option-item">
-                    <input id="tsubaki" type="radio" name="group" class="option-checkbox">
-                    <div class="image-wrapper">
-                        <img src="~/assets/icons/TBKFTR00.jpg" alt="Tsubaki Factory" class="option-image">
-                        <div class="option-text">Tsubaki Factory</div>
-                    </div>
-                </div>
-            </a>
-        </div>
+        <script>
+            // --- DATA ---
+            const IDOLS_DATA = [
+                { id: 1, kanji: "坂本葵花", romaji: "Sakamoto Aoi", song: "Rock no Teigi", artist: "Tanaka Reina", img: "/assets/Kss/sakamoto_aoi.png" },
+                { id: 2, kanji: "苅部咲良", romaji: "Karibe Sara", song: "Yuugure Koi no Jikan", artist: "S/mileage", img: "/assets/Kss/karibe_sara.png" },
+                { id: 3, kanji: "鈴木琴美", romaji: "Suzuki Kotomi", song: "Suki Sugite Baka Mitai", artist: "DEF.DIVA", img: "/assets/Kss/suzuki_kotomi.png" },
+                { id: 4, kanji: "宮崎理帆", romaji: "Miyazaki Riho", song: "Watashi ga Iu Mae ni Dakishimenakya ne", artist: "Juice=Juice", img: "/assets/Kss/miyazaki_riho.png" },
+				{ id: 5, kanji: "宮越千尋", romaji: "Miyakoshi Chihiro", song: "Daisuki na no ni, Daisuki dakara", artist: "Tsubaki Factory", img: "/assets/Kss/miyakoshi_chihiro.png" },
+                { id: 6, kanji: "樋口爱海", romaji: "Higuchi Aika", song: "Nanchatte Renai", artist: "Morning Musume", img: "/assets/Kss/higuchi_aika.png" },
+                { id: 7, kanji: "大坪茉乃", romaji: "Otsubo Mano", song: "Fiesta! Fiesta!", artist: "Juice=Juice", img: "/assets/Kss/otsubo_mano.png" },
+                { id: 8, kanji: "坂田しおり", romaji: "Sakata Shiori", song: "Help me!!", artist: "Morning Musume", img: "/assets/Kss/sakata_shiori.png" },
+                { id: 9, kanji: "佐藤绚音", romaji: "Sato Ayane", song: "Aenai Nagai Nichiyoubi", artist: "Fujimoto Miki", img: "/assets/Kss/sato_ayane.png" },
+                { id: 10, kanji: "田村椰々", romaji: "Tamura Nana", song: "BaBaBa Burning Love!", artist: "ANGERME", img: "/assets/Kss/tamura_nana.png" },
+                { id: 11, kanji: "岸田桃果", romaji: "Kishida Momoka", song: "Kisoku Tadashiku Utsukushiku", artist: "ANGERME", img: "/assets/Kss/kishida_momoka.png" },
+                { id: 12, kanji: "长井莉依な", romaji: "Nagai Riina", song: "Dakishimete Dakishimete", artist: "Berryz Kobo", img: "/assets/Kss/nagai_riina.png" },
+                { id: 13, kanji: "染谷彩良", romaji: "Someya Sara", song: "Wagamama Ki no Mama Ai no Joke", artist: "Morning Musume", img: "/assets/Kss/someya_sara.png" },
+                { id: 14, kanji: "吉田光里", romaji: "Yoshida Hikari", song: "Only you", artist: "Morning Musume", img: "/assets/Kss/yoshida_hikari.png" },
+                { id: 15, kanji: "鈴木もあ", romaji: "Suzuki Moa", song: "Love take it all", artist: "°C-ute", img: "/assets/Kss/suzuki_moa.png" },
+                { id: 16, kanji: "青木優奈", romaji: "Aoki Yuna", song: "Gashin Shoutan", artist: "ANGERME", img: "/assets/Kss/aoki_yuna.png" },
+                { id: 17, kanji: "佐伯詩春", romaji: "Saeki Shiharu", song: "Ooki na Ai de Motenashite", artist: "°C-ute", img: "/assets/Kss/saeki_shiharu.png" },
+                { id: 18, kanji: "根本花凛", romaji: "Nemoto Karin", song: "BLOODY BULLET", artist: "Juice=Juice", img: "/assets/Kss/nemoto_karin.png" },
+                { id: 19, kanji: "斎藤ゆり夏", romaji: "Saitou Yurika", song: "Nen ni wa Nen", artist: "Kobushi Factory", img: "/assets/Kss/saitou_yurika.png" },
+                { id: 20, kanji: "大野愛莉", romaji: "Ono Airi", song: "Ashita Tenki ni Naare", artist: "Kobushi Factory", img: "/assets/Kss/ono_airi.png" },
+                { id: 21, kanji: "石川華望", romaji: "Ishikawa Hanano", song: "Onna no Aiso wa Buki ja nai", artist: "OCHA NORMA", img: "/assets/Kss/ishikawa_hanano.png" },
+                { id: 22, kanji: "服部琉愛", romaji: "Hattori Rua", song: "Ookii Hitomi", artist: "Morning Musume", img: "/assets/Kss/hattori_rua.png" },
+            ];
 
-        <div class="row" style="justify-content:center; margin-bottom:-20px;">
-            <a class="col-2 box" style="align-content:center; margin:10px 50px 50px 10px" asp-controller="Members" asp-action="Beyonds">
-                <div class="option-item">
-                    <input id="beyond" type="radio" name="group" class="option-checkbox">
-                    <div class="image-wrapper">
-                        <img src="~/assets/icons/BYNDS00.jpg" alt="BEYOOOOONDS" class="option-image">
-                        <div class="option-text">BEYOOOOONDS</div>
-                    </div>
-                </div>
-            </a>
-            <a class="col-2 box" style="align-content:center; margin:10px 50px 50px 10px" asp-controller="Members" asp-action="OchaNorma">
-                <div class="option-item">
-                    <input id="ocha" type="radio" name="group" class="option-checkbox">
-                    <div class="image-wrapper">
-                        <img src="~/assets/icons/OCNM00.jpg" alt="OCHA NORMA" class="option-image">
-                        <div class="option-text">OCHA NORMA</div>
-                    </div>
-                </div>
-            </a>
-            <a class="col-2 box" style="align-content:center; margin:10px 50px 50px 10px" asp-controller="Members" asp-action="RosyChronicle">
-                <div class="option-item">
-                    <input id="rosy" type="radio" name="group" class="option-checkbox">
-                    <div class="image-wrapper">
-                        <img src="~/assets/icons/RSCNC00.jpg" alt="Rosy Chronicle" class="option-image">
-                        <div class="option-text">Rosy Chronicle</div>
-                    </div>
-                </div>
-            </a>
-            <a class="col-2 box" style="align-content:center; margin:10px 50px 50px 10px" asp-controller="Members" asp-action="Kenshuusei">
-                <div class="option-item">
-                    <input id="kss" type="radio" name="group" class="option-checkbox">
-                    <div class="image-wrapper">
-                        <img src="~/assets/idols/KSS00.jpg" alt="Hello Pro Kenshuusei" class="option-image">
-                        <div class="option-text">Hello Pro Kenshuusei</div>
-                    </div>
-                </div>
-            </a>
-        </div>
+            const RATINGS_OPTS = ["N/A", ...Array.from({ length: 19 }, (_, i) => (1 + i * 0.5).toFixed(1))];
 
-        <div class="row" style="justify-content:center; margin-bottom:-20px;">
-            <a class="col-2 box" style="align-content:center; margin:10px 50px 50px 10px" asp-controller="Members" asp-action="Cute">
-                <div class="option-item">
-                    <input id="cute" type="radio" name="group" class="option-checkbox">
-                    <div class="image-wrapper">
-                        <img src="~/assets/idols/CUTE00.jpg" alt="°C-ute" class="option-image">
-                        <div class="option-text">°C-ute</div>
-                    </div>
-                </div>
-            </a>
-            <a class="col-2 box" style="align-content:center; margin:10px 50px 50px 10px" asp-controller="Members" asp-action="BerryzKoubou">
-                <div class="option-item">
-                    <input id="berryz" type="radio" name="group" class="option-checkbox">
-                    <div class="image-wrapper">
-                        <img src="~/assets/idols/BRKB00.jpg" alt="Berryz Koubou" class="option-image">
-                        <div class="option-text">Berryz Koubou</div>
-                    </div>
-                </div>
-            </a>
-            <a class="col-2 box" style="align-content:center; margin:10px 50px 50px 10px" asp-controller="Members" asp-action="KobushiFactory">
-                <div class="option-item">
-                    <input id="kobushi" type="radio" name="group" class="option-checkbox">
-                    <div class="image-wrapper">
-                        <img src="~/assets/idols/KBSFTR00.jpg" alt="Kobushi Factory" class="option-image">
-                        <div class="option-text">Kobushi Factory</div>
-                    </div>
-                </div>
-            </a>
-            <a class="col-2 box" style="align-content:center; margin:10px 50px 50px 10px" asp-controller="Members" asp-action="CountryGirls">
-                <div class="option-item">
-                    <input id="country" type="radio" name="group" class="option-checkbox">
-                    <div class="image-wrapper">
-                        <img src="~/assets/idols/CTGRLS00.jpg" alt="Country Girls" class="option-image">
-                        <div class="option-text">Country Girls</div>
-                    </div>
-                </div>
-            </a>
-        </div>
+            const ICONS = {
+                sun: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`,
+                moon: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`,
+                eye: `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>`,
+                eyeOff: `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>`,
+                canto: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>`,
+                baile: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>`,
+                vestuario: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.47a1 1 0 00.99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 002-2V10h2.15a1 1 0 00.99-.84l.58-3.47a2 2 0 00-1.34-2.23z"></path></svg>`,
+                star: `<svg class="star-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>`,
+            };
 
-    </div>
+            // --- STATE ---
+            let state = {
+                theme: "dark",
+                showObs: { canto: false, baile: false, vestuario: false },
+                ratings: {},
+            };
 
-    <div class="container">
-        <div class="row">
-            <div class="col-12 info">
-                <p>By <a href="https://x.com/rodneyamarilla1">Nakajima</a> Modified from <a href="https://github.com/execfera/charasort/">charasort by execfera</a><br>Data updated by <a href="https://x.com/rodneyamarilla1">Nakajima</a></p>
-                <p>This site is just a fan site and doesn't affiliate with UP-FRONT PROMOTION.</p>
-                <p>Dedicado a la Hermandad H!P.</p>
-            </div>
-        </div>
-    </div>
-</body>
+            const initRatings = () => {
+                IDOLS_DATA.forEach((idol) => {
+                    state.ratings[idol.id] = { canto: "N/A", baile: "N/A", vestuario: "N/A", obsCanto: "", obsBaile: "", obsVestuario: "" };
+                });
+            };
 
+            function formatScore(val) {
+                if (val === "N/A") return "N/A";
+
+                const num = parseFloat(val);
+
+                // Si es entero → sin decimal
+                if (Number.isInteger(num)) return num.toString();
+
+                return num.toString();
+            }
+
+            // --- UI RENDER ---
+            const calcAvg = (id) => {
+                const d = state.ratings[id];
+                const vals = [d.canto, d.baile, d.vestuario].filter((v) => v !== "N/A").map(parseFloat);
+
+                if (!vals.length) return "N/A";
+
+                const avg = vals.reduce((a, b) => a + b, 0) / vals.length;
+
+                return formatScore(avg.toFixed(1));
+            };
+
+            const renderTable = () => {
+                const header = document.getElementById("tableHeader");
+                const body = document.getElementById("tableBody");
+                header.innerHTML = `
+                        <tr class="bg-[var(--table-header)] text-[var(--primary)] border-b border-[var(--border-app)]">
+                            <th class="p-4 pl-6 font-bold w-14">#</th>
+                            <th class="p-4 font-bold min-w-[380px]">Idol & Performance</th>
+                            <th class="p-4 font-bold text-center" style="color:var(--color-canto)">Canto</th>
+                            ${state.showObs.canto ? `<th class="p-4 font-bold text-center" style="color:var(--color-extra)">Obs. Canto</th>` : ""}
+                            <th class="p-4 font-bold text-center" style="color:var(--color-baile)">Baile</th>
+                            ${state.showObs.baile ? `<th class="p-4 font-bold text-center" style="color:var(--color-extra)">Obs. Baile</th>` : ""}
+                            <th class="p-4 font-bold text-center" style="color:var(--color-vestuario)">Vestuario</th>
+                            ${state.showObs.vestuario ? `<th class="p-4 font-bold text-center" style="color:var(--color-extra)">Obs. Vestuario</th>` : ""}
+                            <th class="p-4 pr-6 font-bold text-center">Promedio</th>
+                        </tr>
+                    `;
+
+                body.innerHTML = IDOLS_DATA.map((idol) => {
+                    const r = state.ratings[idol.id];
+                    const avg = calcAvg(idol.id);
+                    return `
+                            <tr class="hover:bg-[var(--row-hover)] transition-all group">
+                                <td class="p-4 pl-6 font-bold text-[var(--text-dim)] group-hover:text-[var(--primary)]">${idol.id}</td>
+                                <td class="p-4">
+                                    <div class="flex items-center gap-4">
+                                        <img src="${idol.img}" class="w-16 h-16 rounded-xl object-cover" style="border: 1px solid var(--border-app);">
+                                        <div class="flex flex-col">
+                                            <div class="font-bold text-[var(--text-main)] text-lg mb-1">${idol.romaji} <span style="color:var(--color-extra)" class="text-sm">(${idol.kanji})</span></div>
+                                            <div class="flex flex-col gap-1 items-start">
+                                                <span class="text-[11px] font-bold bg-[var(--accent-glow)] text-[var(--primary)] px-2.5 py-0.5 rounded" style="border: 1px solid var(--primary);">${idol.song}</span>
+                                                <span class="text-[var(--text-dim)] text-[10px] ml-1">${idol.artist}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="p-4 text-center">
+                                    <select onchange="updateVal(${idol.id}, 'canto', this.value)" class="w-20 p-1.5 rounded-lg font-bold rating-select select-canto text-center text-xs">
+                                        ${RATINGS_OPTS.map((o) => `<option value="${o}" ${r.canto === o ? "selected" : ""}>${o}</option>`).join("")}
+                                    </select>
+                                </td>
+                                ${state.showObs.canto ? `<td class="p-4"><textarea oninput="updateVal(${idol.id}, 'obsCanto', this.value)" class="w-full p-2 text-xs rounded-lg bg-[var(--input-bg)] text-[var(--text-main)] border textarea-obs h-14 resize-none">${r.obsCanto}</textarea></td>` : ""}
+                                <td class="p-4 text-center">
+                                    <select onchange="updateVal(${idol.id}, 'baile', this.value)" class="w-20 p-1.5 rounded-lg font-bold rating-select select-baile text-center text-xs">
+                                        ${RATINGS_OPTS.map((o) => `<option value="${o}" ${r.baile === o ? "selected" : ""}>${o}</option>`).join("")}
+                                    </select>
+                                </td>
+                                ${state.showObs.baile ? `<td class="p-4"><textarea oninput="updateVal(${idol.id}, 'obsBaile', this.value)" class="w-full p-2 text-xs rounded-lg bg-[var(--input-bg)] text-[var(--text-main)] border textarea-obs h-14 resize-none">${r.obsBaile}</textarea></td>` : ""}
+                                <td class="p-4 text-center">
+                                    <select onchange="updateVal(${idol.id}, 'vestuario', this.value)" class="w-20 p-1.5 rounded-lg font-bold rating-select select-vestuario text-center text-xs">
+                                        ${RATINGS_OPTS.map((o) => `<option value="${o}" ${r.vestuario === o ? "selected" : ""}>${o}</option>`).join("")}
+                                    </select>
+                                </td>
+                                ${state.showObs.vestuario ? `<td class="p-4"><textarea oninput="updateVal(${idol.id}, 'obsVestuario', this.value)" class="w-full p-2 text-xs rounded-lg bg-[var(--input-bg)] text-[var(--text-main)] border textarea-obs h-14 resize-none">${r.obsVestuario}</textarea></td>` : ""}
+                                <td class="p-4 pr-6 text-center">
+                                    <div class="avg-display-${idol.id} text-xl font-bold" style="color: ${avg !== "N/A" ? "var(--color-extra)" : "var(--text-dim)"}">${avg}</div>
+                                </td>
+                            </tr>
+                        `;
+                }).join("");
+            };
+
+            // --- SISTEMA DE EXPORTACIÓN PREMIUM (1:1 STCardsPremium.html) ---
+
+            //         function createScoreSection(idol, rating) {
+            //             const isDetailed = state.showObs.canto || state.showObs.baile || state.showObs.vestuario;
+
+            //             const cantoVal = formatScore(rating.canto);
+            //             const baileVal = formatScore(rating.baile);
+            //             const vestVal = formatScore(rating.vestuario);
+
+            //             if (!isDetailed) {
+            //                 return `
+            //                     <div class="col-section">
+            //                         <div class="section-header"><span class="section-label">Canto</span></div>
+            //                         <div class="content-area">
+            //                             <div class="score-container">
+            //                                 <div class="icon-wrapper icon-canto">
+            //                                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+            //                                 </div>
+            //                                 <span class="score-value-simple score-value-large" style="color: var(--accent-primary)">${cantoVal}</span>
+            //                             </div>
+            //                         </div>
+            //                     </div>
+            //                     <div class="col-section">
+            //                         <div class="section-header"><span class="section-label" style="color: var(--accent-secondary);">Baile</span></div>
+            //                         <div class="content-area">
+            //                             <div class="score-container">
+            //                                 <div class="icon-wrapper icon-baile">
+            //                                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            //                                 </div>
+            //                                 <span class="score-value-simple score-value-large" style="color: var(--accent-secondary)">${baileVal}</span>
+            //                             </div>
+            //                         </div>
+            //                     </div>
+            //                     <div class="col-section">
+            //                         <div class="section-header"><span class="section-label" style="color: var(--accent-amber);">Vestuario</span></div>
+            //                         <div class="content-area">
+            //                             <div class="score-container">
+            //                                 <div class="icon-wrapper icon-vestuario">
+            //                                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.47a1 1 0 00.99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 002-2V10h2.15a1 1 0 00.99-.84l.58-3.47a2 2 0 00-1.34-2.23z"></path></svg>
+            //                                 </div>
+            //                                 <span class="score-value-simple score-value-large" style="color: var(--accent-amber)">${vestVal}</span>
+            //                             </div>
+            //                         </div>
+            //                     </div>
+            //                 `;
+            //             } else {
+            //                 // Modo Detallado
+            //                 const observations = [
+            //     rating.obsCanto || "Sin observaciones",
+            //     rating.obsBaile || "Sin observaciones",
+            //     rating.obsVestuario || "Sin observaciones"
+            // ];
+
+            //                 return `
+            //                     <div class="col-section">
+            //                         <div class="section-header"><span class="section-label">Calificaciones</span></div>
+            //                         <div class="content-area">
+            //                             <div class="score-box">
+            //                                 <div class="icon-wrapper icon-canto">
+            //                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+            //                                 </div>
+            //                                 <div class="score-details">
+            //                                     <span class="score-label-mini">Canto</span>
+            //                                     <span class="score-value" style="color: var(--accent-primary)">${cantoVal}</span>
+            //                                 </div>
+            //                             </div>
+            //                             <div class="score-box">
+            //                                 <div class="icon-wrapper icon-baile">
+            //                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            //                                 </div>
+            //                                 <div class="score-details">
+            //                                     <span class="score-label-mini">Baile</span>
+            //                                     <span class="score-value" style="color: var(--accent-secondary)">${baileVal}</span>
+            //                                 </div>
+            //                             </div>
+            //                             <div class="score-box">
+            //                                 <div class="icon-wrapper icon-vestuario">
+            //                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.47a1 1 0 00.99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 002-2V10h2.15a1 1 0 00.99-.84l.58-3.47a2 2 0 00-1.34-2.23z"></path></svg>
+            //                                 </div>
+            //                                 <div class="score-details">
+            //                                     <span class="score-label-mini">Vestuario</span>
+            //                                     <span class="score-value" style="color: var(--accent-amber)">${vestVal}</span>
+            //                                 </div>
+            //                             </div>
+            //                         </div>
+            //                     </div>
+            //                     <div class="col-section">
+            //                         <div class="section-header"><span class="section-label" style="color: var(--accent-purple)">Observaciones</span></div>
+            //                         <div class="content-area">
+            //                             ${observations.map(obs => `
+            //                                 <div class="obs-box">
+            //                                     <p class="obs-text">${obs}</p>
+            //                                 </div>
+            //                             `).join('')}
+            //                         </div>
+            //                     </div>
+            //                 `;
+            //             }
+            //         }
+
+            // --- SISTEMA DE EXPORTACIÓN (Títulos solo al inicio) ---
+
+            function createScoreContent(idol, rating, isDetailed) {
+                const cantoVal = formatScore(rating.canto);
+                const baileVal = formatScore(rating.baile);
+                const vestVal = formatScore(rating.vestuario);
+
+                if (!isDetailed) {
+                    return `
+                    <div class="col-section">
+                        <div class="content-area">
+                            <div class="score-container">
+                                        <div class="icon-wrapper icon-canto">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                                        </div>
+                                        <span class="score-value-simple score-value-large" style="color: var(--accent-primary)">${cantoVal}</span>
+                                    </div>
+                        </div>
+                    </div>
+                    <div class="col-section">
+                        <div class="content-area">
+                            <div class="score-container">
+                                        <div class="icon-wrapper icon-baile">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                                        </div>
+                                        <span class="score-value-simple score-value-large" style="color: var(--accent-secondary)">${baileVal}</span>
+                                    </div>
+                        </div>
+                    </div>
+                    <div class="col-section">
+                        <div class="content-area">
+                            <div class="score-container">
+                                        <div class="icon-wrapper icon-vestuario">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.47a1 1 0 00.99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 002-2V10h2.15a1 1 0 00.99-.84l.58-3.47a2 2 0 00-1.34-2.23z"></path></svg>
+                                        </div>
+                                        <span class="score-value-simple score-value-large" style="color: var(--accent-amber)">${vestVal}</span>
+                                    </div>
+                        </div>
+                    </div>
+                `;
+                } else {
+                    const observations = [rating.obsCanto || "Sin observaciones", rating.obsBaile || "Sin observaciones", rating.obsVestuario || "Sin observaciones"];
+
+                    return `
+                    <div class="col-section">
+                        <div class="content-area">
+                           <div class="score-box">
+                                        <div class="icon-wrapper icon-canto">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                                        </div>
+                                        <div class="score-details">
+                                            <span class="score-label-mini">Canto</span>
+                                            <span class="score-value" style="color: var(--accent-primary)">${cantoVal}</span>
+                                        </div>
+                                    </div>
+                                    <div class="score-box">
+                                        <div class="icon-wrapper icon-baile">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                                        </div>
+                                        <div class="score-details">
+                                            <span class="score-label-mini">Baile</span>
+                                            <span class="score-value" style="color: var(--accent-secondary)">${baileVal}</span>
+                                        </div>
+                                    </div>
+                                    <div class="score-box">
+                                        <div class="icon-wrapper icon-vestuario">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.47a1 1 0 00.99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 002-2V10h2.15a1 1 0 00.99-.84l.58-3.47a2 2 0 00-1.34-2.23z"></path></svg>
+                                        </div>
+                                        <div class="score-details">
+                                            <span class="score-label-mini">Vestuario</span>
+                                            <span class="score-value" style="color: var(--accent-amber)">${vestVal}</span>
+                                        </div>
+                                    </div>
+                        </div>
+                    </div>
+                    <div class="col-section">
+                        <div class="content-area">
+                            ${observations
+                                .map(
+                                    (obs) => `
+                                <div class="obs-box">
+                                    <p class="obs-text">${obs}</p>
+                                </div>
+                            `,
+                                )
+                                .join("")}
+                        </div>
+                    </div>
+                `;
+                }
+            }
+
+            function renderExportView(data) {
+                const root = document.getElementById("export-root");
+                root.className = `theme-${state.theme}`;
+                const isDetailed = state.showObs.canto || state.showObs.baile || state.showObs.vestuario;
+                const modeClass = isDetailed ? "detailed-mode" : "simple-mode";
+
+                // Definir encabezado de columnas (una sola vez)
+                let headerHTML = "";
+                if (!isDetailed) {
+                    headerHTML = `
+                    <div class="premium-header-row simple-mode">
+                        <div class="header-cell"><span class="section-label">Perfil</span></div>
+                        <div class="header-cell"><span class="section-label">Canto</span></div>
+                        <div class="header-cell"><span class="section-label" style="color: var(--accent-secondary);">Baile</span></div>
+                        <div class="header-cell"><span class="section-label" style="color: var(--accent-amber);">Vestuario</span></div>
+                        <div class="header-cell"><span class="section-label">Promedio</span></div>
+                    </div>
+                `;
+                } else {
+                    headerHTML = `
+                    <div class="premium-header-row detailed-mode">
+                        <div class="header-cell"><span class="section-label">Perfil</span></div>
+                        <div class="header-cell"><span class="section-label">Calificaciones</span></div>
+                        <div class="header-cell"><span class="section-label" style="color: var(--accent-purple);">Observaciones</span></div>
+                        <div class="header-cell"><span class="section-label">Promedio</span></div>
+                    </div>
+                `;
+                }
+
+                let html = `
+                        <div class="text-center mb-10">
+                            <h2 style="font-family:'Orbitron', sans-serif; color:var(--accent-primary); font-size: 38px; letter-spacing: 4px;">SHINDAN TEST 2026</h2>
+                        </div>
+                        ${headerHTML}
+                        <div id="cards-container">
+                    `;
+
+                data.forEach((idol) => {
+                    const rating = state.ratings[idol.id];
+                    const promedio = calcAvg(idol.id);
+                    const avgNum = promedio;
+
+                    html += `
+                    <div class="premium-card ${modeClass}">
+                        <!-- Columna Perfil (Datos sin header interno) -->
+                        <div class="col-section">
+                            <div class="content-area">
+                                <div class="profile-container">
+                                    <div class="mb-2">
+                                        <span class="id-badge">#${idol.id}</span>
+                                        <span class="idol-name">${idol.romaji}</span>
+                                    </div>
+                                    <div class="kanji-name">(${idol.kanji})</div>
+                                    <img src="${idol.img}" alt="${idol.romaji}" class="idol-photo" onerror="this.src='https://placehold.co/100x100?text=HP'">
+                                    <div>
+                                        <h3 class="song-title">"${idol.song}"</h3>
+                                        <p class="original-artist">${idol.artist}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Secciones de Puntuación/Observaciones -->
+                        ${createScoreContent(idol, rating, isDetailed)}
+
+                        <!-- Columna Promedio -->
+                        <div class="col-section">
+                            <div class="content-area">
+                                <div class="avg-display">
+                                    <span class="avg-number">${promedio}</span>
+                                    <div class="star-icon">${ICONS.star}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                });
+
+                html += `
+                        </div>
+                        <div class="mt-10 pt-10 text-center" style="border-top: 2px solid var(--accent-primary); font-family: 'Orbitron', sans-serif; color: var(--accent-primary)">
+                            🌸 HELLO PRO KENSHUUSEI SHINDAN TEST 2026 🌸
+                        </div>
+                    `;
+
+                root.innerHTML = html;
+            }
+
+            async function exportAsImage() {
+                const btn = document.getElementById("exportImage");
+                const originalText = btn.innerHTML;
+
+                btn.innerHTML = `GENERANDO...`;
+                btn.disabled = true;
+
+                try {
+                    await document.fonts.ready;
+
+                    const parts = [
+                        { data: IDOLS_DATA.slice(0, 11), name: "Part1" },
+                        { data: IDOLS_DATA.slice(11), name: "Part2" },
+                    ];
+
+                    for (const part of parts) {
+                        // 🔥 Renderiza solo ese grupo
+                        renderExportView(part.data);
+
+                        // pequeño delay para render completo
+                        await new Promise((r) => setTimeout(r, 400));
+
+                        const canvas = await html2canvas(document.getElementById("export-root"), {
+                            scale: 2.5,
+                            useCORS: true,
+                            backgroundColor: getComputedStyle(document.body).getPropertyValue("--bg-color").trim(),
+                        });
+
+                        const link = document.createElement("a");
+                        link.download = `Shindan_${part.name}_${Date.now()}.png`;
+                        link.href = canvas.toDataURL("image/png");
+                        link.click();
+
+                        // delay entre descargas (evita bloqueo del navegador)
+                        await new Promise((r) => setTimeout(r, 300));
+                    }
+                } catch (err) {
+                    console.error("Export Error:", err);
+                } finally {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                }
+            }
+
+            // --- GLOBAL HANDLERS ---
+            window.updateVal = (id, field, val) => {
+                state.ratings[id][field] = val;
+                if (!field.startsWith("obs")) {
+                    const avgEl = document.querySelector(`.avg-display-${id}`);
+                    const avg = calcAvg(id);
+                    avgEl.innerText = avg;
+                    avgEl.style.color = avg !== "N/A" ? "var(--color-extra)" : "var(--text-dim)";
+                }
+            };
+
+            // --- EVENTS ---
+            document.getElementById("themeToggle").onclick = () => {
+                state.theme = state.theme === "dark" ? "light" : "dark";
+                document.body.className = `theme-${state.theme} transition-all`;
+                document.getElementById("themeIcon").innerHTML = state.theme === "dark" ? ICONS.sun : ICONS.moon;
+            };
+
+            document.getElementById("obsControls").onclick = (e) => {
+                const btn = e.target.closest(".obs-btn");
+                if (!btn) return;
+                const type = btn.dataset.obs;
+                state.showObs[type] = !state.showObs[type];
+
+                document.querySelectorAll(".obs-btn").forEach((b) => {
+                    const t = b.dataset.obs;
+                    const active = state.showObs[t];
+                    b.className = `obs-btn flex items-center gap-2 px-3 py-1.5 rounded-lg text-[11px] font-bold transition-all ${active ? "btn-active" : "btn-inactive"}`;
+                    if (active && t === "baile") b.style.backgroundColor = "var(--color-baile)";
+                    else if (active && t === "vestuario") b.style.backgroundColor = "var(--color-vestuario)";
+                    else b.style.backgroundColor = "";
+                    b.querySelector(".eye-icon").innerHTML = active ? ICONS.eye : ICONS.eyeOff;
+                });
+                renderTable();
+            };
+
+            document.getElementById("exportImage").onclick = exportAsImage;
+            document.getElementById("resetTrigger").onclick = () => (document.getElementById("resetModal").style.display = "flex");
+            document.getElementById("cancelReset").onclick = () => (document.getElementById("resetModal").style.display = "none");
+            document.getElementById("confirmReset").onclick = () => {
+                initRatings();
+                renderTable();
+                document.getElementById("resetModal").style.display = "none";
+            };
+
+            // --- DRAG SCROLL ---
+            const container = document.getElementById("tableContainer");
+
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            container.addEventListener("mousedown", (e) => {
+                // Evita interferir con inputs
+                if (e.target.closest("select, textarea, input")) return;
+
+                isDown = true;
+                container.classList.add("cursor-grabbing");
+                container.classList.add("no-select");
+                startX = e.pageX - container.offsetLeft;
+                scrollLeft = container.scrollLeft;
+            });
+
+            container.addEventListener("mouseleave", () => {
+                isDown = false;
+                container.classList.remove("cursor-grabbing");
+                container.classList.remove("no-select");
+            });
+
+            container.addEventListener("mouseup", () => {
+                isDown = false;
+                container.classList.remove("cursor-grabbing");
+                container.classList.remove("no-select");
+            });
+
+            container.addEventListener("mousemove", (e) => {
+                if (!isDown) return;
+
+                e.preventDefault();
+
+                const x = e.pageX - container.offsetLeft;
+                const walk = (x - startX) * 1.5;
+                container.scrollLeft = scrollLeft - walk;
+            });
+
+            // --- INIT ---
+            initRatings();
+            document.querySelectorAll(".obs-btn").forEach((b) => {
+                const t = b.dataset.obs;
+                const active = state.showObs[t];
+                b.querySelector(".eye-icon").innerHTML = active ? ICONS.eye : ICONS.eyeOff;
+            });
+            document.getElementById("themeIcon").innerHTML = state.theme === "dark" ? ICONS.sun : ICONS.moon;
+            renderTable();
+        </script>
+    </body>
 </html>

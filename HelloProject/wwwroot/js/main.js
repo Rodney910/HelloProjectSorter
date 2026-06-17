@@ -272,6 +272,19 @@ function start() {
   });
 }
 
+
+function getCharacterImageSrc(imgName) {
+    if (!imgName) return '';
+
+    if (imgName.startsWith('data:image')) return imgName;
+    if (imgName.startsWith('http://') || imgName.startsWith('https://') || imgName.startsWith('/')) {
+        return `${imgName}${imgName.includes('?') ? '&' : '?'}v=${encodeURIComponent(currentVersion || dataSetVersion || 'dev')}`;
+    }
+
+    return `${imageRoot}${imgName}?v=${encodeURIComponent(currentVersion || dataSetVersion || 'dev')}`;
+}
+
+
 /** Displays the current state of the sorter. */
 /** Displays the current state of the sorter. */
 function display() {
@@ -289,8 +302,8 @@ function display() {
 
     progressBar(`Round N°: ${battleNo}`, percent);
 
-    document.querySelector('.left.sort.image').src = leftChar.img;
-    document.querySelector('.right.sort.image').src = rightChar.img;
+    document.querySelector('.left.sort.image').src = getCharacterImageSrc(leftChar.img);
+    document.querySelector('.right.sort.image').src = getCharacterImageSrc(rightChar.img);
 
 
 
@@ -494,7 +507,7 @@ function result(imageNum = 50) {
         const charName = reduceTextWidth(char.name, 'Arial 12px', 160);
         const charTooltip = char.name !== charName ? char.name : '';
         return `<div class="result-grid-item" style="border-color: ${char.color};">
-            <img src="${char.img}">
+            <img src="${getCharacterImageSrc(char.img)}">
             <div class="result-info">
                 <div class="result-name" title="${charTooltip}"><b>${num}.</b>${charName}</div>
             </div>
@@ -955,25 +968,40 @@ function decodeQuery(queryString = window.location.search.slice(1)) {
  * Preloads images in the filtered character data and converts to base64 representation.
 */
 function preloadImages() {
-  const totalLength = characterDataToSort.length;
-  let imagesLoaded = 0;
+    const totalLength = characterDataToSort.length;
+    let imagesLoaded = 0;
 
-  const loadImage = async (src) => {
-    const blob = await fetch(src).then(res => res.blob());
-    return new Promise((res, rej) => {
-      const reader = new FileReader();
-      reader.onload = ev => {
-        progressBar(`Loading Image ${++imagesLoaded}`, Math.floor(imagesLoaded * 100 / totalLength));
-        res(ev.target.result);
-      };
-      reader.onerror = rej;
-      reader.readAsDataURL(blob);
-    });
-  };
+    const version = encodeURIComponent(currentVersion || dataSetVersion || 'dev');
 
-  return Promise.all(characterDataToSort.map(async (char, idx) => {
-    characterDataToSort[idx].img = await loadImage(imageRoot + char.img);
-  }));
+    const getPreloadUrl = (imgName) => {
+        if (!imgName) return '';
+
+        if (imgName.startsWith('data:image')) return imgName;
+        if (imgName.startsWith('http://') || imgName.startsWith('https://') || imgName.startsWith('/')) {
+            return `${imgName}${imgName.includes('?') ? '&' : '?'}v=${version}`;
+        }
+
+        return `${imageRoot}${imgName}?v=${version}`;
+    };
+
+    return Promise.all(characterDataToSort.map((char) => {
+        return new Promise((resolve) => {
+            const img = new Image();
+
+            const done = () => {
+                progressBar(
+                    `Loading Image ${++imagesLoaded}`,
+                    Math.floor(imagesLoaded * 100 / totalLength)
+                );
+                resolve();
+            };
+
+            img.onload = done;
+            img.onerror = done;
+
+            img.src = getPreloadUrl(char.img);
+        });
+    }));
 }
 
 /**
